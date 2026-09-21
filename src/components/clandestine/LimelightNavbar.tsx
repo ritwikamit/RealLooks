@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, Calendar, UserCheck, Star } from 'lucide-react';
+import { Menu, X, Calendar, UserCheck } from 'lucide-react';
 import { BrandLogo } from '../BrandLogo';
 
 export type PageView = 'home' | 'about' | 'gallery' | 'contact';
@@ -27,8 +27,13 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [bookingCount, setBookingCount] = useState(0);
 
-  // Limelight spotlight state
+  // Active section index & hover index
   const [activeIndex, setActiveIndex] = useState(0);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+
+  const isScrollingToRef = useRef(false);
+  const scrollTimeoutRef = useRef<number | null>(null);
+
   const navItemRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const limelightRef = useRef<HTMLDivElement | null>(null);
 
@@ -36,69 +41,106 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
     { id: 'home', label: 'Home', targetHash: 'home' },
     { id: 'home', label: 'Services', targetHash: 'services' },
     { id: 'home', label: 'Schedule', targetHash: 'scheduler-section' },
-    { id: 'about', label: 'About' },
-    { id: 'gallery', label: 'Gallery' },
-    { id: 'contact', label: 'Contact' },
+    { id: 'home', label: 'About', targetHash: 'about' },
+    { id: 'home', label: 'Gallery', targetHash: 'gallery' },
+    { id: 'home', label: 'Contact', targetHash: 'contact' },
   ];
 
-  // Map subpage navigation to spotlight index
+  // Map subpages when navigated to standalone view
   useEffect(() => {
     if (activePage === 'about') setActiveIndex(3);
     else if (activePage === 'gallery') setActiveIndex(4);
     else if (activePage === 'contact') setActiveIndex(5);
   }, [activePage]);
 
-  // Smooth scroll tracking on Home page
+  // Robust & responsive scroll tracking on home page
   useEffect(() => {
     if (activePage !== 'home') return;
 
-    let ticking = false;
+    let rafId: number;
 
     const handleScrollTracking = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          const scrollPos = window.scrollY + 220;
-          const schedulerEl = document.getElementById('scheduler-section');
-          const servicesEl = document.getElementById('services');
+      if (isScrollingToRef.current) return;
 
-          if (schedulerEl && servicesEl) {
-            const schedulerTop = schedulerEl.offsetTop;
-            const servicesTop = servicesEl.offsetTop;
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(() => {
+        const scrollY = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
 
-            if (scrollPos >= schedulerTop - 120 && scrollPos < schedulerTop + schedulerEl.offsetHeight) {
-              setActiveIndex(2); // Schedule
-            } else if (scrollPos >= servicesTop - 120 && scrollPos < schedulerTop - 120) {
-              setActiveIndex(1); // Services
-            } else if (scrollPos < servicesTop - 120) {
-              setActiveIndex(0); // Home
+        // 1. Near the top of the page -> Home (index 0)
+        if (scrollY < 180) {
+          setActiveIndex(0);
+          return;
+        }
+
+        // 2. Near the bottom of the page -> Contact (index 5)
+        if (windowHeight + scrollY >= documentHeight - 120) {
+          setActiveIndex(5);
+          return;
+        }
+
+        // 3. Check section positions from bottom to top
+        const sectionTargets = [
+          { hash: 'home', index: 0 },
+          { hash: 'services', index: 1 },
+          { hash: 'scheduler-section', index: 2 },
+          { hash: 'about', index: 3 },
+          { hash: 'gallery', index: 4 },
+          { hash: 'contact', index: 5 },
+        ];
+
+        // Trigger line is just below sticky header
+        const triggerLine = 140;
+        let detectedIndex = 0;
+
+        for (let i = sectionTargets.length - 1; i >= 0; i--) {
+          const item = sectionTargets[i];
+          const el = document.getElementById(item.hash);
+          if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= triggerLine + 50) {
+              detectedIndex = item.index;
+              break;
             }
-          } else {
-            setActiveIndex(0);
           }
-          ticking = false;
-        });
-        ticking = true;
-      }
+        }
+
+        setActiveIndex(detectedIndex);
+      });
     };
 
     window.addEventListener('scroll', handleScrollTracking, { passive: true });
     handleScrollTracking();
-    return () => window.removeEventListener('scroll', handleScrollTracking);
+    return () => {
+      window.removeEventListener('scroll', handleScrollTracking);
+      cancelAnimationFrame(rafId);
+    };
   }, [activePage]);
 
-  // Update spotlight position with smooth interpolation
+  // Which index should the spotlight highlight: hoveredIndex takes immediate priority, else activeIndex
+  const displayIndex = hoveredIndex !== null ? hoveredIndex : activeIndex;
+
+  // Reposition spotlight smoothly whenever displayIndex or window size changes
   useEffect(() => {
-    const activeEl = navItemRefs.current[activeIndex];
-    const limelight = limelightRef.current;
-    if (activeEl && limelight) {
-      const elLeft = activeEl.offsetLeft;
-      const elWidth = activeEl.offsetWidth;
-      const limelightWidth = 46;
-      const targetX = elLeft + elWidth / 2 - limelightWidth / 2;
-      limelight.style.transform = `translateX(${targetX}px)`;
-      limelight.style.opacity = '1';
-    }
-  }, [activeIndex]);
+    const updateSpotlightPosition = () => {
+      const activeEl = navItemRefs.current[displayIndex];
+      const limelight = limelightRef.current;
+      if (activeEl && limelight) {
+        const elLeft = activeEl.offsetLeft;
+        const elWidth = activeEl.offsetWidth;
+        const beamWidth = Math.max(46, Math.min(elWidth * 0.78, 70));
+        const targetX = elLeft + (elWidth - beamWidth) / 2;
+        limelight.style.width = `${beamWidth}px`;
+        limelight.style.transform = `translateX(${targetX}px)`;
+        limelight.style.opacity = '1';
+      }
+    };
+
+    updateSpotlightPosition();
+    window.addEventListener('resize', updateSpotlightPosition);
+    return () => window.removeEventListener('resize', updateSpotlightPosition);
+  }, [displayIndex]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -123,15 +165,34 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
 
   const handleItemClick = (index: number, item: NavItem) => {
     setActiveIndex(index);
+    setHoveredIndex(null);
     setMobileMenuOpen(false);
-    onNavigate(item.id);
+
+    // Temporarily disable scroll tracking while smooth scrolling
+    isScrollingToRef.current = true;
+    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
+    scrollTimeoutRef.current = window.setTimeout(() => {
+      isScrollingToRef.current = false;
+    }, 850);
+
+    if (activePage !== 'home') {
+      onNavigate('home');
+    }
+
     if (item.targetHash) {
       setTimeout(() => {
         const el = document.getElementById(item.targetHash!);
         if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
+          const headerEl = document.querySelector('header');
+          const headerHeight = headerEl ? headerEl.offsetHeight + 16 : 80;
+          const elPosition = el.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elPosition - headerHeight;
+          window.scrollTo({
+            top: offsetPosition > 0 ? offsetPosition : 0,
+            behavior: 'smooth',
+          });
         }
-      }, 120);
+      }, 60);
     }
   };
 
@@ -141,11 +202,11 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
       <div
         className={`max-w-7xl mx-auto rounded-2xl sm:rounded-3xl transition-all duration-300 px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border ${
           isScrolled
-            ? 'bg-[#1E2611]/94 backdrop-blur-xl border-[#D6A838]/50 shadow-[0_12px_32px_rgba(0,0,0,0.35)]'
-            : 'bg-[#242F14]/88 backdrop-blur-lg border-[#D6A838]/30 shadow-[0_8px_24px_rgba(0,0,0,0.22)]'
+            ? 'bg-[#1A230F]/95 backdrop-blur-xl border-[#D6A838]/50 shadow-[0_12px_32px_rgba(0,0,0,0.35)]'
+            : 'bg-[#222E13]/90 backdrop-blur-lg border-[#D6A838]/35 shadow-[0_8px_24px_rgba(0,0,0,0.24)]'
         }`}
       >
-        {/* 1. Left: Brand Logo (Transparent, clean, aligned) */}
+        {/* 1. Left: Brand Logo (Transparent, aligned, sharp) */}
         <button
           onClick={() => handleItemClick(0, navItems[0])}
           className="flex items-center gap-2 cursor-pointer focus:outline-none transition-transform hover:scale-[1.02] flex-shrink-0"
@@ -154,42 +215,46 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
           <BrandLogo variant="header" />
         </button>
 
-        {/* 2. Center: Smooth Limelight Spotlight Navigation Bar */}
-        <nav className="hidden lg:flex items-center relative h-11 px-2">
-          {/* Spotlight Floating Indicator with smooth hardware-accelerated transform */}
+        {/* 2. Center: Highly Responsive Limelight Spotlight Navigation Bar */}
+        <nav
+          className="hidden md:flex items-center relative h-11 px-1 lg:px-2"
+          onMouseLeave={() => setHoveredIndex(null)}
+        >
+          {/* Spotlight Floating Indicator with ultra-responsive smooth spring ease */}
           <div
             ref={limelightRef}
-            className="pointer-events-none absolute top-0 left-0 h-[4px] w-[46px] rounded-full bg-gradient-to-r from-[#FFF4BD] via-[#D6A838] to-[#C29324] z-10"
+            className="pointer-events-none absolute top-0 left-0 h-[4px] rounded-full bg-gradient-to-r from-[#FFF4BD] via-[#D6A838] to-[#C29324] z-10"
             style={{
-              boxShadow: '0 4px 20px 3px rgba(214,168,56,0.85), 0 0 10px #FFF4BD',
-              transition: 'transform 0.48s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease',
+              boxShadow: '0 4px 20px 2px rgba(214,168,56,0.9), 0 0 10px #FFF4BD',
+              transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), width 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease',
               opacity: 0,
             }}
           >
             {/* Spotlight Light Cone Beam */}
             <div
-              className="absolute left-[-50%] top-[4px] w-[200%] h-[50px] pointer-events-none opacity-45"
+              className="absolute left-[-20%] top-[4px] w-[140%] h-[48px] pointer-events-none opacity-45"
               style={{
-                clipPath: 'polygon(12% 100%, 32% 0%, 68% 0%, 88% 100%)',
-                background: 'linear-gradient(to bottom, #D6A838, transparent)',
-                filter: 'drop-shadow(0 0 8px rgba(214,168,56,0.5))',
+                clipPath: 'polygon(15% 100%, 30% 0%, 70% 0%, 85% 100%)',
+                background: 'linear-gradient(to bottom, #D6A838, rgba(214,168,56,0.2) 60%, transparent)',
+                filter: 'drop-shadow(0 0 8px rgba(214,168,56,0.6))',
               }}
             />
           </div>
 
-          {/* Navigation Links */}
-          <div className="flex items-center gap-1">
+          {/* Navigation Links with instant responsive hover feedback */}
+          <div className="flex items-center gap-0.5 lg:gap-1">
             {navItems.map((item, idx) => {
-              const isActive = activeIndex === idx;
+              const isSelected = displayIndex === idx;
               return (
                 <button
                   key={item.label}
                   ref={(el) => (navItemRefs.current[idx] = el)}
                   onClick={() => handleItemClick(idx, item)}
-                  className={`relative px-4 py-2 text-xs font-bold tracking-wider uppercase rounded-xl transition-all duration-300 cursor-pointer select-none ${
-                    isActive
-                      ? 'text-[#FFF2A8] font-extrabold drop-shadow-[0_0_8px_rgba(255,244,189,0.5)]'
-                      : 'text-white/80 hover:text-white hover:bg-white/5'
+                  onMouseEnter={() => setHoveredIndex(idx)}
+                  className={`relative px-2.5 sm:px-3 lg:px-4 py-1.5 sm:py-2 text-[11px] lg:text-xs font-bold tracking-wider uppercase rounded-xl transition-all duration-150 cursor-pointer select-none ${
+                    isSelected
+                      ? 'text-[#FFF2A8] font-extrabold drop-shadow-[0_0_8px_rgba(255,244,189,0.75)] bg-white/12 scale-[1.03]'
+                      : 'text-white/80 hover:text-white hover:bg-white/10 active:scale-95'
                   }`}
                 >
                   {item.label}
@@ -210,7 +275,7 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
             )}
             <button
               onClick={onOpenBookings}
-              className="btn btn-sm btn-ghost bg-white/10 hover:bg-white/20 text-[#FAF8F5] border border-white/20 rounded-xl text-xs font-bold gap-2 px-3.5 transition-all cursor-pointer shadow-xs"
+              className="btn btn-sm btn-ghost bg-white/10 hover:bg-white/20 text-[#FAF8F5] border border-white/20 rounded-xl text-xs font-bold gap-2 px-3.5 transition-all cursor-pointer shadow-xs active:scale-95"
             >
               <UserCheck className="w-3.5 h-3.5 text-[#E5C460]" />
               <span>My Requests</span>
@@ -229,7 +294,7 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
         </div>
 
         {/* 4. Mobile Menu Controls */}
-        <div className="flex lg:hidden items-center gap-2">
+        <div className="flex md:hidden items-center gap-2">
           <div className="indicator">
             {bookingCount > 0 && (
               <span className="indicator-item badge badge-xs bg-[#12B5AF] text-white font-bold border-none">
@@ -257,7 +322,7 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="lg:hidden max-w-7xl mx-auto mt-2 rounded-2xl bg-[#1E2611]/95 backdrop-blur-xl border border-[#D6A838]/40 p-4 space-y-2 shadow-2xl">
+        <div className="md:hidden max-w-7xl mx-auto mt-2 rounded-2xl bg-[#1E2611]/95 backdrop-blur-xl border border-[#D6A838]/40 p-4 space-y-2 shadow-2xl">
           {navItems.map((item, idx) => (
             <button
               key={item.label}

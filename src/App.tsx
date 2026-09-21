@@ -109,7 +109,14 @@ export default function App() {
               <div className="hidden lg:block absolute inset-y-0 left-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
               <div className="hidden lg:block absolute inset-y-0 right-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
 
-              {/* Online Appointment Scheduler */}
+              {/* 1. Unisex Services Catalog */}
+              <div className="relative z-10">
+                <ServicesSection 
+                  onSelectService={handleSelectServiceFromCatalog}
+                />
+              </div>
+
+              {/* 2. Online Appointment Scheduler */}
               <div className="relative z-10">
                 <AppointmentScheduler 
                   initialServiceId={selectedServiceId}
@@ -117,52 +124,22 @@ export default function App() {
                 />
               </div>
 
-              {/* Unisex Services Catalog */}
+              {/* 3. About & Hospital-Grade Hygiene Standards */}
               <div className="relative z-10">
-                <ServicesSection 
-                  onSelectService={handleSelectServiceFromCatalog}
-                />
+                <AboutSection />
               </div>
 
-              {/* Explore Studio & Portfolio Banner on Home */}
-              <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                <div className="lucid-glass rounded-3xl p-8 sm:p-10 border border-white/80 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
-                  <div className="space-y-2 text-center md:text-left">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#4C5B2E]/10 text-[#2F3B1A] text-xs font-bold uppercase tracking-wider">
-                      <Sparkles className="w-3.5 h-3.5 text-[#D6A838]" />
-                      <span>Discover More About Real Looks</span>
-                    </div>
-                    <h3 className="text-2xl sm:text-3xl font-serif-title font-bold text-[#192018]">
-                      Hygiene Protocols, Certified Stylists & Lookbook
-                    </h3>
-                    <p className="text-sm text-[#677565] max-w-xl">
-                      Read about our hospital-grade sterilization standards in Dani Bigha or explore real client hair & beard transformations.
-                    </p>
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-3">
-                    <button
-                      onClick={() => handleNavigate('about')}
-                      className="btn btn-outline border-[#4C5B2E]/40 text-[#2F3B1A] hover:bg-[#4C5B2E] hover:text-white rounded-xl text-xs font-bold tracking-wider uppercase px-5 cursor-pointer shadow-2xs"
-                    >
-                      About & Hygiene
-                    </button>
-                    <button
-                      onClick={() => handleNavigate('gallery')}
-                      className="btn btn-outline border-[#12B5AF]/40 text-[#0D8F8B] hover:bg-[#12B5AF] hover:text-white rounded-xl text-xs font-bold tracking-wider uppercase px-5 cursor-pointer shadow-2xs"
-                    >
-                      Lookbook Gallery
-                    </button>
-                  </div>
-                </div>
+              {/* 4. Lookbook Transformations Gallery */}
+              <div className="relative z-10">
+                <GallerySection />
               </div>
 
-              {/* Verified Local Client Reviews */}
+              {/* 5. Verified Local Client Reviews */}
               <div className="relative z-10">
                 <TestimonialsSection />
               </div>
 
-              {/* Location, Opening Hours & Google Maps */}
+              {/* 6. Location, Opening Hours & Google Maps */}
               <div className="relative z-10">
                 <LocationContactSection />
               </div>

@@ -32,7 +32,19 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
   }, [rotatingWords.length]);
 
   return (
-    <section className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10 pb-10" id="home">
+    <section 
+      id="home"
+      className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10 pb-10"
+      style={{
+        background: `
+          radial-gradient(ellipse 95% 70% at 50% -12%, rgba(143, 211, 232, 0.65), transparent 75%),
+          radial-gradient(circle at 10% 28%, rgba(75, 156, 211, 0.38), transparent 52%),
+          radial-gradient(circle at 90% 32%, rgba(18, 181, 175, 0.32), transparent 50%),
+          radial-gradient(circle at 50% 85%, rgba(137, 207, 240, 0.28), transparent 60%),
+          linear-gradient(180deg, #E6F5FB 0%, #DCF0F9 38%, #D4ECF7 68%, #FAF9F5 100%)
+        `,
+      }}
+    >
       <style>{`
         @keyframes float-left {
           0%, 100% { transform: translate(0, 0); }
@@ -58,7 +70,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
         .clandestine-mouse {
           width: 20px;
           height: 32px;
-          border: 2px solid #3F4A25;
+          border: 2px solid #2B78AE;
           border-radius: 12px;
           position: relative;
           display: inline-block;
@@ -86,19 +98,20 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden -z-5 select-none">
         <motion.img
           initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 0.095, scale: 1 }}
+          animate={{ opacity: 0.12, scale: 1 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
           src="/images/logo.png"
           alt=""
           aria-hidden="true"
-          className="w-[840px] max-w-[90vw] h-auto object-contain filter drop-shadow-[0_0_80px_rgba(214,168,56,0.25)] mix-blend-multiply pointer-events-none"
+          className="w-[880px] max-w-[92vw] h-auto object-contain filter drop-shadow-[0_0_80px_rgba(75,156,211,0.25)] mix-blend-multiply pointer-events-none"
         />
       </div>
 
-      {/* 2. Ambient Theme Aura Blobs (Warm gold & deep olive) */}
+      {/* 2. Luminous Ambient Sky & Carolina Blue Aura Blobs */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-gradient-to-br from-[#4C5B2E]/14 via-[#52A296]/12 to-transparent rounded-full blur-3xl" />
-        <div className="absolute top-10 -right-32 w-[620px] h-[620px] bg-gradient-to-bl from-[#D6A838]/12 via-[#12B5AF]/10 to-transparent rounded-full blur-3xl" />
+        <div className="absolute -top-32 -left-32 w-[640px] h-[640px] bg-gradient-to-br from-[#4B9CD3]/25 via-[#12B5AF]/20 to-transparent rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-10 -right-32 w-[650px] h-[650px] bg-gradient-to-bl from-[#89CFF0]/32 via-[#8FD3E8]/28 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-1/4 w-[500px] h-[280px] bg-gradient-to-t from-[#12B5AF]/16 to-transparent rounded-full blur-2xl" />
       </div>
 
       {/* 3. Hero Main Content Container */}
