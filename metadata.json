@@ -1,0 +1,6 @@
+{
+  "name": "Real Looks Unisex Salon",
+  "description": "Premium unisex salon in Aurangabad, Bihar offering expert hair styling, grooming, skin care, and bridal services with an intuitive online appointment scheduler.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

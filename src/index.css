@@ -1,0 +1,284 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@layer base {
+  :root {
+    /* Base paper & canvas */
+    --paper-bg: #F8F9F5;
+    --paper-card: #FFFFFF;
+    --paper-muted: #EFF3ED;
+
+    /* Green spectrum: Olive + Seafoam + Mint */
+    --olive-deep: #2F3B1A;
+    --olive-primary: #4C5B2E;
+    --olive-soft: #63763D;
+    --seafoam-deep: #3A7D73;
+    --seafoam-primary: #52A296;
+    --seafoam-light: #7EBFB5;
+    --mint-deep: #479B7F;
+    --mint-primary: #86D6B9;
+    --mint-light: #C0F2DF;
+    --mint-mist: #E8FBF4;
+
+    /* Sky Blue spectrum: Tiffany Blue + Carolina Blue + Baby Blue */
+    --tiffany-deep: #0D8F8B;
+    --tiffany-primary: #12B5AF;
+    --tiffany-light: #5CE0DC;
+    --carolina-deep: #2B78AE;
+    --carolina-primary: #4B9CD3;
+    --carolina-light: #7EBAE6;
+    --baby-deep: #5AA9D4;
+    --baby-primary: #89CFF0;
+    --baby-light: #BFE6F7;
+    --baby-mist: #EDF8FD;
+
+    /* Glossy Metallic Gold */
+    --gold-bright: #FFF2A8;
+    --gold-primary: #D6A838;
+    --gold-rich: #C29324;
+    --gold-deep: #8E680E;
+    --gold-dark: #634705;
+
+    /* Typography neutrals */
+    --charcoal: #192018;
+    --body-text: #3D483B;
+    --sub-text: #677565;
+  }
+
+  body {
+    background-color: var(--paper-bg);
+    color: var(--body-text);
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-title {
+    font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  }
+
+  .font-cormorant {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+}
+
+/* Paper Texture & Micro-Grain */
+.paper-texture {
+  background-color: #F8F9F5;
+  background-image: radial-gradient(rgba(76, 91, 46, 0.04) 1px, transparent 0);
+  background-size: 24px 24px;
+}
+
+/* Side-edge fading square architectural grid lines for desktop/PC (applied outside hero section) */
+.square-grid-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(82, 162, 150, 0.15) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(76, 91, 46, 0.12) 1px, transparent 1px);
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.55) 12%,
+    rgba(0, 0, 0, 0.12) 24%,
+    transparent 36%,
+    transparent 64%,
+    rgba(0, 0, 0, 0.12) 76%,
+    rgba(0, 0, 0, 0.55) 88%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.55) 12%,
+    rgba(0, 0, 0, 0.12) 24%,
+    transparent 36%,
+    transparent 64%,
+    rgba(0, 0, 0, 0.12) 76%,
+    rgba(0, 0, 0, 0.55) 88%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+}
+
+/* =========================================================
+   LUCID GLASS & GLASSMORPHISM DESIGN UTILITIES
+========================================================= */
+
+.lucid-glass {
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: 
+    0 10px 32px 0 rgba(76, 91, 46, 0.05),
+    0 1px 2px 0 rgba(0, 0, 0, 0.02),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.lucid-glass-subtle {
+  background: rgba(255, 255, 255, 0.42);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  box-shadow: 
+    0 8px 24px 0 rgba(76, 91, 46, 0.04),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.lucid-glass-card {
+  background: rgba(255, 255, 255, 0.62);
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 14px 36px 0 rgba(76, 91, 46, 0.06),
+    0 2px 6px 0 rgba(0, 0, 0, 0.02),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 0.95);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lucid-glass-card:hover {
+  background: rgba(255, 255, 255, 0.78);
+  border-color: rgba(214, 168, 56, 0.45);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 20px 44px 0 rgba(76, 91, 46, 0.09),
+    0 4px 12px 0 rgba(214, 168, 56, 0.08),
+    inset 0 1.5px 1.5px 0 rgba(255, 255, 255, 1);
+}
+
+/* =========================================================
+   GLOSSY METALLIC GOLD STYLING
+========================================================= */
+
+.glossy-gold-gradient {
+  background: linear-gradient(135deg, #FFF6BD 0%, #F5D77F 22%, #D6A838 50%, #9E7412 78%, #FDE48D 100%);
+}
+
+.glossy-gold-btn {
+  background: linear-gradient(135deg, #FFF3AA 0%, #F3D270 20%, #D6A838 48%, #A87D16 75%, #FBE58B 100%);
+  box-shadow: 
+    0 8px 24px -4px rgba(214, 168, 56, 0.42),
+    0 2px 6px 0 rgba(142, 104, 14, 0.25),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1.5px 1px 0 rgba(110, 80, 8, 0.4);
+  position: relative;
+  overflow: hidden;
+}
+
+.glossy-gold-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.75s ease;
+}
+
+.glossy-gold-btn:hover::after {
+  left: 180%;
+}
+
+.glossy-gold-border {
+  border-image: linear-gradient(135deg, #FFF3AA, #D6A838, #8E680E, #FBE58B) 1;
+}
+
+.glossy-gold-badge {
+  background: linear-gradient(135deg, rgba(255, 246, 189, 0.75) 0%, rgba(245, 215, 127, 0.6) 40%, rgba(214, 168, 56, 0.5) 100%);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 
+    0 4px 16px 0 rgba(214, 168, 56, 0.2),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95);
+}
+
+.glossy-gold-text {
+  background: linear-gradient(135deg, #FFECA3 0%, #E6BA4A 30%, #C29324 60%, #8E680E 90%, #FFE58F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 1px 1px rgba(255, 255, 255, 0.6));
+}
+
+.glossy-olive-btn {
+  background: linear-gradient(135deg, #63763D 0%, #4C5B2E 35%, #343E1F 70%, #526332 100%);
+  box-shadow: 
+    0 10px 28px -4px rgba(76, 91, 46, 0.35),
+    0 2px 6px 0 rgba(0, 0, 0, 0.15),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.3),
+    inset 0 -1.5px 1px 0 rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.glossy-olive-btn::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.75s ease;
+}
+
+.glossy-olive-btn:hover::after {
+  left: 180%;
+}
+
+/* =========================================================
+   ORGANIC FLUID FLOW ANIMATIONS
+========================================================= */
+
+@keyframes organicHeroFlow {
+  0% {
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+  }
+  33% {
+    transform: translate(30px, -35px) rotate(4deg) scale(1.06);
+    border-radius: 65% 35% 50% 50% / 35% 35% 65% 65%;
+  }
+  66% {
+    transform: translate(-25px, 25px) rotate(-3deg) scale(0.95);
+    border-radius: 35% 65% 65% 35% / 55% 65% 35% 45%;
+  }
+  100% {
+    transform: translate(0px, 0px) rotate(0deg) scale(1);
+    border-radius: 42% 58% 70% 30% / 45% 45% 55% 55%;
+  }
+}
+
+.animate-hero-blob-1 {
+  animation: organicHeroFlow 22s ease-in-out infinite alternate;
+}
+
+.animate-hero-blob-2 {
+  animation: organicHeroFlow 28s ease-in-out infinite alternate-reverse;
+}
+
+.animate-hero-blob-3 {
+  animation: organicHeroFlow 32s ease-in-out infinite alternate;
+}
+
+/* Custom refined scrollbar */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(248, 249, 245, 0.8);
+}
+::-webkit-scrollbar-thumb {
+  background: #A8C4B8;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #52A296;
+}
