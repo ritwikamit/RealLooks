@@ -1,65 +1,70 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FadedAmbientBackground } from './components/FadedAmbientBackground';
-import { Navbar } from './components/Navbar';
-import { HeroOrganicFlow } from './components/HeroOrganicFlow';
-import { ServicesSection } from './components/ServicesSection';
-import { MastersSection } from './components/MastersSection';
-import { TestimonialsSection } from './components/TestimonialsSection';
-import { StoreSection } from './components/StoreSection';
-import { AboutSection } from './components/AboutSection';
-import { FAQSection } from './components/FAQSection';
+import { LimelightNavbar, PageView } from './components/clandestine/LimelightNavbar';
+import { ClandestineHeroSection } from './components/clandestine/ClandestineHeroSection';
+import { ClandestineEnhancedFooter } from './components/clandestine/ClandestineEnhancedFooter';
 import { AppointmentScheduler } from './components/AppointmentScheduler';
+import { ServicesSection } from './components/ServicesSection';
+import { AboutSection } from './components/AboutSection';
+import { GallerySection } from './components/GallerySection';
+import { TestimonialsSection } from './components/TestimonialsSection';
 import { LocationContactSection } from './components/LocationContactSection';
 import { MyBookingsModal } from './components/MyBookingsModal';
 import { MobileStickyBar } from './components/MobileStickyBar';
-import { Footer } from './components/Footer';
 import { BookingRequest } from './types';
+import { ArrowLeft, Calendar, Sparkles } from 'lucide-react';
 
 export default function App() {
+  const [activePage, setActivePage] = useState<PageView>('home');
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
   const [isBookingsModalOpen, setIsBookingsModalOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('home');
 
-  // Track active section on scroll for the Clandestine limelight navbar
-  useEffect(() => {
-    const sectionIds = ['home', 'services', 'masters', 'testimonials', 'store', 'about', 'faq', 'contact'];
-    const handleScroll = () => {
-      const scrollPos = window.scrollY + 250;
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sectionIds[i]);
-        if (el && el.offsetTop <= scrollPos) {
-          setActiveSection(sectionIds[i]);
-          break;
-        }
-      }
-    };
+  // Smooth navigation handler
+  const handleNavigate = (page: PageView) => {
+    setActivePage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  // Smooth scroll to target section
-  const handleScrollToSection = (sectionId: string) => {
-    const el = document.getElementById(sectionId);
-    if (el) {
-      el.scrollIntoView({ behavior: 'smooth' });
+  // Scroll to scheduler with smooth easing
+  const handleStartBooking = () => {
+    if (activePage !== 'home') {
+      setActivePage('home');
+      setTimeout(() => {
+        const el = document.getElementById('scheduler-section');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    } else {
+      const el = document.getElementById('scheduler-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
-  // Start booking directly
-  const handleStartBooking = () => {
-    handleScrollToSection('scheduler-section');
-  };
-
-  // When user selects a service from the catalog
-  const handleSelectService = (serviceId: string) => {
+  // When user clicks "Book This" on a specific service card
+  const handleSelectServiceFromCatalog = (serviceId: string) => {
     setSelectedServiceId(serviceId);
-    handleScrollToSection('scheduler-section');
+    if (activePage !== 'home') {
+      setActivePage('home');
+      setTimeout(() => {
+        const el = document.getElementById('scheduler-section');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    } else {
+      const el = document.getElementById('scheduler-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
-  // When user clicks "Book with Master"
-  const handleSelectMaster = (stylistId: string) => {
-    handleScrollToSection('scheduler-section');
+  const handleExploreServices = () => {
+    if (activePage !== 'home') {
+      setActivePage('home');
+      setTimeout(() => {
+        const el = document.getElementById('services');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    } else {
+      const el = document.getElementById('services');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   const handleBookingCompleted = (booking: BookingRequest) => {
@@ -67,97 +72,223 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col font-sans bg-[#000000] text-[#fafafa] selection:bg-[#8D43F4]/30 selection:text-white">
+    <div className="min-h-screen relative flex flex-col font-sans selection:bg-[#7F8F45]/25 selection:text-[#2F3B1A] bg-[#FAF9F5] rough-paper-canvas text-[#192018]">
       
-      {/* 1. Ambient Dark Violet Glow Canvas */}
+      {/* 1. Global Rough White Paper Canvas Texture & Ambient Color Glows */}
       <FadedAmbientBackground />
 
-      {/* 2. Clandestine Floating Island Limelight Navbar */}
-      <Navbar 
+      {/* 2. Clandestine Limelight Floating Navbar */}
+      <LimelightNavbar 
         onOpenBookings={() => setIsBookingsModalOpen(true)}
         onBookClick={handleStartBooking}
-        activeSection={activeSection}
-        onScrollToSection={handleScrollToSection}
+        activePage={activePage}
+        onNavigate={handleNavigate}
       />
 
-      {/* Main Continuous Clandestine Template Landing Page */}
+      {/* Main Content View Switcher */}
       <main className="flex-1">
         
-        {/* SECTION 1: HERO (Deep Black #000000) */}
-        <div id="home" className="bg-[#000000]">
-          <HeroOrganicFlow 
-            onStartBooking={handleStartBooking}
-            onExploreServices={() => handleScrollToSection('services')}
-          />
-        </div>
+        {/* =========================================================
+            HOME PAGE: Clandestine Hero + Scheduler + Services
+           ========================================================= */}
+        {activePage === 'home' && (
+          <>
+            {/* Clandestine Hero Section (No square lines on hero) */}
+            <ClandestineHeroSection 
+              onStartBooking={handleStartBooking}
+              onExploreServices={handleExploreServices}
+            />
 
-        <div className="h-[1px] bg-[#1a1a1a]" />
+            {/* Post-Hero Container with Visible Side-Edge Fading Square Grid Lines */}
+            <div className="relative w-full overflow-hidden">
+              
+              {/* Clearly visible square lines fading in from the side edges */}
+              <div className="square-grid-overlay hidden sm:block" aria-hidden="true" />
+              
+              {/* Subtle architectural margin guides on desktop */}
+              <div className="hidden lg:block absolute inset-y-0 left-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
+              <div className="hidden lg:block absolute inset-y-0 right-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
 
-        {/* SECTION 2: SERVICES (Secondary Dark #0a0a0a) */}
-        <div id="services" className="bg-[#0a0a0a]">
-          <ServicesSection 
-            onSelectService={handleSelectService}
-          />
-        </div>
+              {/* Online Appointment Scheduler */}
+              <div className="relative z-10">
+                <AppointmentScheduler 
+                  initialServiceId={selectedServiceId}
+                  onBookingSuccess={handleBookingCompleted}
+                />
+              </div>
 
-        <div className="h-[1px] bg-[#1a1a1a]" />
+              {/* Unisex Services Catalog */}
+              <div className="relative z-10">
+                <ServicesSection 
+                  onSelectService={handleSelectServiceFromCatalog}
+                />
+              </div>
 
-        {/* SECTION 3: MASTERS (Deep Black #000000) */}
-        <div id="masters" className="bg-[#000000]">
-          <MastersSection 
-            onSelectMaster={handleSelectMaster}
-          />
-        </div>
+              {/* Explore Studio & Portfolio Banner on Home */}
+              <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <div className="lucid-glass rounded-3xl p-8 sm:p-10 border border-white/80 shadow-md flex flex-col md:flex-row items-center justify-between gap-6">
+                  <div className="space-y-2 text-center md:text-left">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#4C5B2E]/10 text-[#2F3B1A] text-xs font-bold uppercase tracking-wider">
+                      <Sparkles className="w-3.5 h-3.5 text-[#D6A838]" />
+                      <span>Discover More About Real Looks</span>
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl font-serif-title font-bold text-[#192018]">
+                      Hygiene Protocols, Certified Stylists & Lookbook
+                    </h3>
+                    <p className="text-sm text-[#677565] max-w-xl">
+                      Read about our hospital-grade sterilization standards in Dani Bigha or explore real client hair & beard transformations.
+                    </p>
+                  </div>
 
-        <div className="h-[1px] bg-[#1a1a1a]" />
+                  <div className="flex flex-wrap items-center gap-3">
+                    <button
+                      onClick={() => handleNavigate('about')}
+                      className="btn btn-outline border-[#4C5B2E]/40 text-[#2F3B1A] hover:bg-[#4C5B2E] hover:text-white rounded-xl text-xs font-bold tracking-wider uppercase px-5 cursor-pointer shadow-2xs"
+                    >
+                      About & Hygiene
+                    </button>
+                    <button
+                      onClick={() => handleNavigate('gallery')}
+                      className="btn btn-outline border-[#12B5AF]/40 text-[#0D8F8B] hover:bg-[#12B5AF] hover:text-white rounded-xl text-xs font-bold tracking-wider uppercase px-5 cursor-pointer shadow-2xs"
+                    >
+                      Lookbook Gallery
+                    </button>
+                  </div>
+                </div>
+              </div>
 
-        {/* SECTION 4: TESTIMONIALS (Secondary Dark #0a0a0a) */}
-        <div id="testimonials" className="bg-[#0a0a0a]">
-          <TestimonialsSection />
-        </div>
+              {/* Verified Local Client Reviews */}
+              <div className="relative z-10">
+                <TestimonialsSection />
+              </div>
 
-        <div className="h-[1px] bg-[#1a1a1a]" />
+              {/* Location, Opening Hours & Google Maps */}
+              <div className="relative z-10">
+                <LocationContactSection />
+              </div>
 
-        {/* SECTION 5: SALON BOUTIQUE STORE (Deep Black #000000) */}
-        <div id="store" className="bg-[#000000]">
-          <StoreSection />
-        </div>
+            </div>
+          </>
+        )}
 
-        <div className="h-[1px] bg-[#1a1a1a]" />
+        {/* =========================================================
+            DEDICATED PAGE: ABOUT & HYGIENE STANDARDS
+           ========================================================= */}
+        {activePage === 'about' && (
+          <div className="relative w-full overflow-hidden py-8 sm:py-12">
+            <div className="square-grid-overlay hidden sm:block" aria-hidden="true" />
+            <div className="hidden lg:block absolute inset-y-0 left-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
+            <div className="hidden lg:block absolute inset-y-0 right-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
 
-        {/* SECTION 6: ABOUT US (Secondary Dark #0a0a0a) */}
-        <div id="about" className="bg-[#0a0a0a]">
-          <AboutSection />
-        </div>
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+              <div className="breadcrumbs text-xs font-semibold text-[#677565]">
+                <ul>
+                  <li>
+                    <button onClick={() => handleNavigate('home')} className="hover:text-[#2F3B1A] flex items-center gap-1">
+                      <ArrowLeft className="w-3.5 h-3.5" />
+                      <span>Home</span>
+                    </button>
+                  </li>
+                  <li className="text-[#2F3B1A] font-bold">About & Hygiene Standards</li>
+                </ul>
+              </div>
+            </div>
 
-        <div className="h-[1px] bg-[#1a1a1a]" />
+            <div className="relative z-10">
+              <AboutSection />
+            </div>
 
-        {/* SECTION 7: FAQ (Deep Black #000000) */}
-        <div id="faq" className="bg-[#000000]">
-          <FAQSection />
-        </div>
+            <div className="relative z-10 text-center py-10">
+              <button
+                onClick={handleStartBooking}
+                className="btn btn-primary px-8 py-3.5 rounded-2xl bg-gradient-to-r from-[#D6A838] to-[#C29324] hover:from-[#C29324] hover:to-[#8E680E] text-[#1F1703] font-bold text-xs tracking-wider uppercase border-none shadow-lg cursor-pointer inline-flex items-center gap-2"
+              >
+                <Calendar className="w-4 h-4" />
+                <span>Ready for Your Transformation? Book Appointment</span>
+              </button>
+            </div>
+          </div>
+        )}
 
-        <div className="h-[1px] bg-[#1a1a1a]" />
+        {/* =========================================================
+            DEDICATED PAGE: WORK PORTFOLIO GALLERY
+           ========================================================= */}
+        {activePage === 'gallery' && (
+          <div className="relative w-full overflow-hidden py-8 sm:py-12">
+            <div className="square-grid-overlay hidden sm:block" aria-hidden="true" />
+            <div className="hidden lg:block absolute inset-y-0 left-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
+            <div className="hidden lg:block absolute inset-y-0 right-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
 
-        {/* SECTION 8: APPOINTMENT SCHEDULER (Secondary Dark #0a0a0a) */}
-        <div id="scheduler-section" className="bg-[#0a0a0a]">
-          <AppointmentScheduler 
-            initialServiceId={selectedServiceId}
-            onBookingSuccess={handleBookingCompleted}
-          />
-        </div>
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+              <div className="breadcrumbs text-xs font-semibold text-[#677565]">
+                <ul>
+                  <li>
+                    <button onClick={() => handleNavigate('home')} className="hover:text-[#2F3B1A] flex items-center gap-1">
+                      <ArrowLeft className="w-3.5 h-3.5" />
+                      <span>Home</span>
+                    </button>
+                  </li>
+                  <li className="text-[#2F3B1A] font-bold">Lookbook Portfolio Gallery</li>
+                </ul>
+              </div>
+            </div>
 
-        <div className="h-[1px] bg-[#1a1a1a]" />
+            <div className="relative z-10">
+              <GallerySection />
+            </div>
 
-        {/* SECTION 9: STUDIO LOCATION & MAP (Deep Black #000000) */}
-        <div id="contact" className="bg-[#000000]">
-          <LocationContactSection />
-        </div>
+            <div className="relative z-10 text-center py-10">
+              <button
+                onClick={handleStartBooking}
+                className="btn btn-primary px-8 py-3.5 rounded-2xl bg-gradient-to-r from-[#D6A838] to-[#C29324] hover:from-[#C29324] hover:to-[#8E680E] text-[#1F1703] font-bold text-xs tracking-wider uppercase border-none shadow-lg cursor-pointer inline-flex items-center gap-2"
+              >
+                <Calendar className="w-4 h-4" />
+                <span>Like What You See? Book Your Slot</span>
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* =========================================================
+            DEDICATED PAGE: REVIEWS, LOCATION & CONTACT
+           ========================================================= */}
+        {activePage === 'contact' && (
+          <div className="relative w-full overflow-hidden py-8 sm:py-12">
+            <div className="square-grid-overlay hidden sm:block" aria-hidden="true" />
+            <div className="hidden lg:block absolute inset-y-0 left-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
+            <div className="hidden lg:block absolute inset-y-0 right-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
+
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
+              <div className="breadcrumbs text-xs font-semibold text-[#677565]">
+                <ul>
+                  <li>
+                    <button onClick={() => handleNavigate('home')} className="hover:text-[#2F3B1A] flex items-center gap-1">
+                      <ArrowLeft className="w-3.5 h-3.5" />
+                      <span>Home</span>
+                    </button>
+                  </li>
+                  <li className="text-[#2F3B1A] font-bold">Reviews, Studio Location & Contact</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="relative z-10">
+              <TestimonialsSection />
+            </div>
+
+            <div className="relative z-10">
+              <LocationContactSection />
+            </div>
+          </div>
+        )}
 
       </main>
 
-      {/* Clandestine Enhanced Footer */}
-      <Footer />
+      {/* Clandestine-Inspired Enhanced Footer */}
+      <ClandestineEnhancedFooter 
+        onNavigate={handleNavigate}
+        onBookClick={handleStartBooking}
+      />
 
       {/* Mobile Sticky Conversion Bar */}
       <MobileStickyBar 

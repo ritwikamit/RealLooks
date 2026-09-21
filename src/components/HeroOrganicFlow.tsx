@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Calendar, ChevronRight, Star, ArrowDown, Sparkles } from 'lucide-react';
+import React, { useEffect, useRef, useState } from 'react';
+import { motion } from 'motion/react';
+import { Calendar, Clock, MapPin, Sparkles, Scissors, ArrowDown, ShieldCheck, ChevronRight, Star, Award, Heart, CheckCircle } from 'lucide-react';
+import { BrandLogo } from './BrandLogo';
 import { SALON_INFO } from '../data/salonData';
 
 interface HeroOrganicFlowProps {
@@ -8,193 +9,435 @@ interface HeroOrganicFlowProps {
   onExploreServices: () => void;
 }
 
-const ROTATING_WORDS = [
-  'Hairstyling',
-  'Skin Radiance',
-  'Hair Botox',
-  'Beard Artistry',
-  'Bridal Glow'
-];
-
 export const HeroOrganicFlow: React.FC<HeroOrganicFlowProps> = ({
   onStartBooking,
   onExploreServices,
 }) => {
-  const [currentWordIdx, setCurrentWordIdx] = useState(0);
+  const canvasRef = useRef<HTMLCanvasElement | null>(null);
+  const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
 
+  // Interactive soft flowing wave animation in Canvas
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentWordIdx((prev) => (prev + 1) % ROTATING_WORDS.length);
-    }, 2800);
-    return () => clearInterval(timer);
-  }, []);
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let step = 0;
+
+    const resizeCanvas = () => {
+      const dpr = window.devicePixelRatio || 1;
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = rect.width * dpr;
+      canvas.height = rect.height * dpr;
+      ctx.scale(dpr, dpr);
+    };
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    // Dynamic wave parameters: Olive + Seafoam + Mint with Tiffany Blue and Glossy Gold
+    const waves = [
+      {
+        colorA: 'rgba(82, 162, 150, 0.14)',
+        colorB: 'rgba(134, 214, 185, 0.10)',
+        length: 0.0032,
+        speed: 0.008,
+        amplitude: 36,
+        offsetY: 0.62,
+      },
+      {
+        colorA: 'rgba(18, 181, 175, 0.12)',
+        colorB: 'rgba(75, 156, 211, 0.10)',
+        length: 0.0026,
+        speed: 0.006,
+        amplitude: 32,
+        offsetY: 0.70,
+      },
+      {
+        colorA: 'rgba(214, 168, 56, 0.12)',
+        colorB: 'rgba(137, 207, 240, 0.10)',
+        length: 0.0036,
+        speed: 0.010,
+        amplitude: 28,
+        offsetY: 0.78,
+      },
+    ];
+
+    const render = () => {
+      const rect = canvas.getBoundingClientRect();
+      const width = rect.width;
+      const height = rect.height;
+
+      ctx.clearRect(0, 0, width, height);
+      step += 1;
+
+      waves.forEach((w, index) => {
+        ctx.beginPath();
+        const baseOffsetY = height * w.offsetY + Math.sin(step * 0.01 + index) * 10;
+        ctx.moveTo(0, height);
+        ctx.lineTo(0, baseOffsetY);
+
+        for (let x = 0; x <= width; x += 12) {
+          const harmonic1 = Math.sin(x * w.length + step * w.speed);
+          const harmonic2 = Math.cos(x * w.length * 1.4 - step * w.speed * 0.6);
+          const harmonic3 = Math.sin(x * 0.001 + (mousePos.x - 0.5) * 1.2);
+          const y = baseOffsetY + (harmonic1 * 0.6 + harmonic2 * 0.4 + harmonic3 * 0.2) * w.amplitude;
+          ctx.lineTo(x, y);
+        }
+
+        ctx.lineTo(width, height);
+        ctx.closePath();
+
+        const grad = ctx.createLinearGradient(0, baseOffsetY - w.amplitude, width, height);
+        grad.addColorStop(0, w.colorA);
+        grad.addColorStop(1, w.colorB);
+
+        ctx.fillStyle = grad;
+        ctx.fill();
+      });
+
+      animationFrameId = requestAnimationFrame(render);
+    };
+
+    render();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('resize', resizeCanvas);
+    };
+  }, [mousePos]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const x = (e.clientX - rect.left) / rect.width;
+    const y = (e.clientY - rect.top) / rect.height;
+    setMousePos({ x, y });
+  };
+
+  const scrollToScheduler = () => {
+    const el = document.getElementById('scheduler-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      onStartBooking();
+    }
+  };
 
   return (
     <section 
-      id="home" 
-      className="relative w-full min-h-[92vh] flex items-center justify-center pt-24 sm:pt-28 pb-16 px-4 sm:px-6 lg:px-12 overflow-hidden bg-[#000000]"
+      onMouseMove={handleMouseMove}
+      className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden pt-6 sm:pt-10 pb-12 px-4 sm:px-6 lg:px-8 bg-transparent"
+      id="home"
     >
-      {/* Clandestine Ambient Radial Glow */}
-      <div 
-        className="absolute top-1/4 right-1/4 w-[500px] h-[500px] rounded-full pointer-events-none blur-[140px] opacity-35"
-        style={{ background: 'radial-gradient(circle, #8D43F4 0%, rgba(141,67,244,0.05) 70%, transparent 100%)' }}
+      {/* 1. Subtle Paper Texture Background & Organic Glow Auras */}
+      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+        {/* Soft olive top-left glow */}
+        <div className="absolute -top-24 -left-20 w-[540px] h-[540px] bg-gradient-to-tr from-[#4C5B2E]/15 via-[#52A296]/15 to-[#86D6B9]/10 rounded-full blur-3xl" />
+        
+        {/* Sky blue & Tiffany top-right glow */}
+        <div className="absolute top-10 -right-24 w-[600px] h-[600px] bg-gradient-to-bl from-[#12B5AF]/16 via-[#4B9CD3]/14 to-[#89CFF0]/18 rounded-full blur-3xl" />
+        
+        {/* Metallic warm gold center shimmer */}
+        <div className="absolute bottom-12 left-1/3 w-[500px] h-[340px] bg-gradient-to-t from-[#D6A838]/14 via-[#F5D77F]/08 to-transparent rounded-full blur-2xl" />
+      </div>
+
+      {/* 2. Soft Canvas Wave Flow (Interactive on mousemove) */}
+      <canvas 
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full pointer-events-none z-0 opacity-70"
       />
-      <div 
-        className="absolute bottom-10 left-10 w-[350px] h-[350px] rounded-full pointer-events-none blur-[120px] opacity-20"
-        style={{ background: 'radial-gradient(circle, #4C5B2E 0%, transparent 80%)' }}
-      />
 
-      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center relative z-10">
-        {/* Left Column: Clandestine Dynamic Typography & Actions */}
-        <div className="lg:col-span-6 flex flex-col justify-center text-left">
-          {/* Top category label */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#121212] border border-[#262626] text-xs font-semibold text-[#8D43F4] tracking-widest uppercase mb-6 w-fit shadow-sm">
-            <Sparkles className="w-3.5 h-3.5 text-[#8D43F4]" />
-            <span>Real Looks Salon • Aurangabad</span>
-          </div>
-
-          {/* Dynamic Headline with Clandestine Text Pill */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-[#fafafa] leading-[1.12]">
-            Experience <br />
-            <span className="inline-block my-1.5">
-              <AnimatePresence mode="wait">
-                <motion.span
-                  key={ROTATING_WORDS[currentWordIdx]}
-                  initial={{ y: 20, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: -20, opacity: 0 }}
-                  transition={{ duration: 0.35, ease: 'easeOut' }}
-                  className="inline-block px-3.5 sm:px-4 py-1 sm:py-1.5 bg-[#8D43F4] text-white rounded-xl shadow-[0_0_25px_rgba(141,67,244,0.45)] whitespace-nowrap"
-                >
-                  {ROTATING_WORDS[currentWordIdx]}
-                </motion.span>
-              </AnimatePresence>
-            </span>
-            <br />
-            at its finest.
-          </h1>
-
-          {/* Subtitle */}
-          <p className="mt-6 text-[#aaaaaa] text-base sm:text-lg leading-relaxed max-w-xl font-normal">
-            Bespoke unisex grooming, transformative organic hair therapies, and personalized beauty rituals crafted by seasoned masters in Dani Bigha, Aurangabad.
-          </p>
-
-          {/* Action CTAs */}
-          <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-            <button
-              onClick={() => onStartBooking()}
-              className="px-7 py-3.5 rounded-xl bg-[#8D43F4] text-white font-semibold text-sm sm:text-base tracking-wide shadow-[0_0_24px_rgba(141,67,244,0.4)] hover:bg-[#7b2fe0] hover:shadow-[0_0_30px_rgba(141,67,244,0.6)] active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-2"
+      {/* 3. Main Hero Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full my-auto py-4 sm:py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+          
+          {/* Left Column: Brand, Headline, Value Props & CTAs (7 cols) */}
+          <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
+            
+            {/* Official Logo (As in Documentation) */}
+            <motion.div
+              initial={{ opacity: 0, y: -16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="w-full max-w-[280px] sm:max-w-[340px] lg:max-w-[360px]"
             >
-              <Calendar className="w-4 h-4" />
-              <span>Schedule an Appointment</span>
-            </button>
+              <BrandLogo variant="full" className="items-center lg:items-start" />
+            </motion.div>
 
-            <button
-              onClick={onExploreServices}
-              className="px-6 py-3.5 rounded-xl bg-transparent border border-[#262626] text-[#e1e1e1] hover:text-white hover:bg-[#121212] hover:border-[#383838] font-medium text-sm sm:text-base transition-all cursor-pointer flex items-center justify-center gap-2"
+            {/* Status & Location Pill (DaisyUI enhanced) */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5"
             >
-              <span>Explore Our Services</span>
-              <ChevronRight className="w-4 h-4 text-[#8D43F4]" />
-            </button>
-          </div>
+              <div className="badge badge-lg py-3 px-3.5 bg-white/90 backdrop-blur-md border border-[#4C5B2E]/25 text-[#2F3B1A] font-semibold gap-2 shadow-xs">
+                <span className="flex h-2 w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#12B5AF] opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4C5B2E]"></span>
+                </span>
+                <span className="text-xs">Dani Bigha, Aurangabad, Bihar</span>
+              </div>
 
-          {/* Social Proof / Stats Strip */}
-          <div className="mt-10 pt-6 border-t border-[#1a1a1a] flex items-center gap-6 text-xs text-[#888888]">
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-[#fafafa] text-base">4.9★</span>
-              <span>850+ Google Reviews</span>
-            </div>
-            <span className="w-1 h-1 rounded-full bg-[#333333]" />
-            <div className="flex items-center gap-2">
-              <span className="font-bold text-[#fafafa] text-base">100%</span>
-              <span>Sterilized UV Care</span>
-            </div>
-            <span className="w-1 h-1 rounded-full bg-[#333333]" />
-            <div className="hidden sm:flex items-center gap-2">
-              <span className="font-bold text-[#fafafa] text-base">9AM-9PM</span>
-              <span>Daily Service</span>
-            </div>
-          </div>
-        </div>
+              <div className="badge badge-lg py-3 px-3.5 bg-gradient-to-r from-[#FFF4BD] to-[#F5D77F] border border-[#D6A838]/40 text-[#634705] font-bold gap-1.5 shadow-xs">
+                <Star className="w-3.5 h-3.5 fill-[#D6A838] text-[#D6A838]" />
+                <span className="text-xs">Open Today 9 AM – 9 PM</span>
+              </div>
+            </motion.div>
 
-        {/* Right Column: Clandestine Model Portrait with Floating Reviews */}
-        <div className="lg:col-span-6 relative flex items-center justify-center">
-          {/* Framed Editorial Image */}
-          <div className="relative w-full max-w-lg aspect-[4/5] rounded-2xl overflow-hidden border border-[#222222] bg-[#0c0c0c] shadow-[0_25px_60px_rgba(0,0,0,0.85)]">
-            <img
-              src="/images/clandestine/hero.webp"
-              alt="Real Looks Salon Model"
-              className="w-full h-full object-cover object-center transform hover:scale-105 transition-transform duration-700"
-              loading="eager"
-            />
-            {/* Dark vignette overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-          </div>
+            {/* Headline */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.25 }}
+              className="space-y-3"
+            >
+              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif-title font-extrabold text-[#192018] tracking-tight leading-[1.12]">
+                YOUR LOOK.{' '}
+                <span className="bg-gradient-to-r from-[#C29324] via-[#D6A838] to-[#4C5B2E] bg-clip-text text-transparent">
+                  YOUR SIGNATURE.
+                </span>
+              </h1>
+              <p className="text-sm sm:text-base lg:text-lg text-[#3D483B] max-w-xl font-normal leading-relaxed">
+                {SALON_INFO.heroSubtitle} Experience luxury hair styling, organic botox therapies, beard sculpting, and bridal radiance crafted for men and women.
+              </p>
+            </motion.div>
 
-          {/* Floating Review 1 (Top Left / Right) */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-            className="absolute -top-4 -left-4 sm:top-6 sm:-left-8 bg-[#111111]/95 backdrop-blur-md border border-[#262626] rounded-xl px-4 py-2.5 shadow-2xl flex items-center gap-3 animate-float-left z-20"
-          >
-            <div className="w-11 h-11 rounded-lg overflow-hidden flex-shrink-0 border border-[#333]">
-              <img
-                src="/images/clandestine/testimonials/hannah-miller.webp"
-                alt="Hannah Miller"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-[#fafafa]">Hannah Miller</p>
-              <div className="flex items-center gap-1 text-amber-400 text-xs mt-0.5">
-                <span>5.0</span>
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 fill-current text-amber-400" />
-                  ))}
+            {/* Value Props Row (DaisyUI Badges & Cards) */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.35 }}
+              className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full max-w-xl"
+            >
+              <div className="p-2.5 rounded-xl bg-white/80 backdrop-blur-sm border border-[#4C5B2E]/15 flex items-center gap-2 shadow-2xs">
+                <div className="w-7 h-7 rounded-lg bg-[#4C5B2E]/10 flex items-center justify-center text-[#4C5B2E]">
+                  <Scissors className="w-3.5 h-3.5" />
+                </div>
+                <div className="text-left leading-tight">
+                  <p className="text-[11px] font-bold text-[#192018]">Unisex Salon</p>
+                  <p className="text-[9px] text-[#677565]">Men & Women</p>
                 </div>
               </div>
-            </div>
-          </motion.div>
 
-          {/* Floating Review 2 (Bottom Right) */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="absolute -bottom-5 -right-3 sm:bottom-8 sm:-right-8 bg-[#111111]/95 backdrop-blur-md border border-[#262626] rounded-xl px-4 py-2.5 shadow-2xl flex items-center gap-3 animate-float-right z-20"
-          >
-            <div className="w-11 h-11 rounded-lg overflow-hidden flex-shrink-0 border border-[#333]">
-              <img
-                src="/images/clandestine/testimonials/naomi-bright.webp"
-                alt="Naomi Bright"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <p className="text-xs font-bold text-[#fafafa]">Naomi Bright</p>
-              <div className="flex items-center gap-1 text-amber-400 text-xs mt-0.5">
-                <span>5.0</span>
-                <div className="flex">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3 h-3 fill-current text-amber-400" />
-                  ))}
+              <div className="p-2.5 rounded-xl bg-white/80 backdrop-blur-sm border border-[#D6A838]/20 flex items-center gap-2 shadow-2xs">
+                <div className="w-7 h-7 rounded-lg bg-[#D6A838]/15 flex items-center justify-center text-[#8E680E]">
+                  <Sparkles className="w-3.5 h-3.5 text-[#C29324]" />
+                </div>
+                <div className="text-left leading-tight">
+                  <p className="text-[11px] font-bold text-[#192018]">Organic Care</p>
+                  <p className="text-[9px] text-[#677565]">Botox & Keratin</p>
                 </div>
               </div>
-            </div>
-          </motion.div>
+
+              <div className="p-2.5 rounded-xl bg-white/80 backdrop-blur-sm border border-[#12B5AF]/20 flex items-center gap-2 shadow-2xs">
+                <div className="w-7 h-7 rounded-lg bg-[#12B5AF]/15 flex items-center justify-center text-[#0D8F8B]">
+                  <ShieldCheck className="w-3.5 h-3.5" />
+                </div>
+                <div className="text-left leading-tight">
+                  <p className="text-[11px] font-bold text-[#192018]">UV Sterilized</p>
+                  <p className="text-[9px] text-[#677565]">100% Hygiene</p>
+                </div>
+              </div>
+
+              <div className="p-2.5 rounded-xl bg-white/80 backdrop-blur-sm border border-[#4B9CD3]/20 flex items-center gap-2 shadow-2xs">
+                <div className="w-7 h-7 rounded-lg bg-[#4B9CD3]/15 flex items-center justify-center text-[#2B78AE]">
+                  <Clock className="w-3.5 h-3.5" />
+                </div>
+                <div className="text-left leading-tight">
+                  <p className="text-[11px] font-bold text-[#192018]">Instant Slot</p>
+                  <p className="text-[9px] text-[#677565]">Direct Reserve</p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Action Buttons with DaisyUI enhancement & Luxury Styling */}
+            <motion.div 
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.45 }}
+              className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 w-full sm:w-auto pt-2"
+            >
+              {/* Primary Book Appointment CTA */}
+              <button
+                id="hero-book-now-button"
+                onClick={scrollToScheduler}
+                className="btn btn-primary w-full sm:w-auto px-7 py-3 rounded-2xl bg-gradient-to-r from-[#D6A838] via-[#E2C76B] to-[#C29324] hover:from-[#C29324] hover:to-[#8E680E] text-[#1F1703] font-bold text-xs tracking-wider uppercase border-none shadow-md hover:shadow-lg transition-all hover:scale-[1.02] active:scale-[0.98] flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <Calendar className="w-4 h-4 text-[#1F1703]" />
+                <span>Book Appointment</span>
+                <ChevronRight className="w-4 h-4 text-[#1F1703]" />
+              </button>
+
+              {/* Secondary Explore Services CTA */}
+              <button
+                id="hero-explore-services-button"
+                onClick={onExploreServices}
+                className="btn btn-outline w-full sm:w-auto px-6 py-3 rounded-2xl border-[#4C5B2E]/40 text-[#2F3B1A] hover:bg-[#4C5B2E] hover:text-white hover:border-[#4C5B2E] font-bold text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
+              >
+                <span>Explore Services</span>
+              </button>
+
+              {/* Directions Link */}
+              <a
+                id="hero-directions-link"
+                href={SALON_INFO.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-ghost w-full sm:w-auto px-5 py-3 rounded-2xl text-[#0D8F8B] hover:bg-[#12B5AF]/10 font-bold text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <MapPin className="w-4 h-4 text-[#0D8F8B]" />
+                <span>Directions</span>
+              </a>
+            </motion.div>
+
+            {/* Social Proof Snippet (DaisyUI Rating & Stat) */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.55 }}
+              className="flex items-center gap-3 pt-2"
+            >
+              <div className="rating rating-xs">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <input 
+                    key={i} 
+                    type="radio" 
+                    name="hero-rating" 
+                    className="mask mask-star-2 bg-[#D6A838]" 
+                    defaultChecked={i === 5} 
+                    readOnly 
+                  />
+                ))}
+              </div>
+              <span className="text-xs font-semibold text-[#3D483B]">
+                <strong className="text-[#192018]">4.9 / 5.0</strong> from 850+ verified local clients in Aurangabad
+              </span>
+            </motion.div>
+
+          </div>
+
+          {/* Right Column: Lady with Hair Model Portrait & Luxury Floating Elements (5 cols) */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94, x: 20 }}
+              animate={{ opacity: 1, scale: 1, x: 0 }}
+              transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
+              className="relative w-full max-w-sm sm:max-w-md"
+            >
+              {/* Outer Radiant Glow Ring */}
+              <div className="absolute -inset-2 bg-gradient-to-tr from-[#D6A838]/30 via-[#52A296]/20 to-[#86D6B9]/30 rounded-3xl blur-xl opacity-70 group-hover:opacity-100 transition-opacity" />
+
+              {/* Main Portrait Card */}
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D6A838]/30 bg-white/70 backdrop-blur-md">
+                
+                {/* Lady Image with Luxurious Styling */}
+                <div className="relative aspect-[3/4] overflow-hidden">
+                  <img
+                    src="/images/hero-lady.jpg"
+                    alt="Real Looks Salon - Hair Styling Excellence"
+                    className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                    loading="eager"
+                  />
+
+                  {/* Gradient Overlay for Legibility */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#192018]/70 via-transparent to-black/10" />
+
+                  {/* Top-Left Floating Badge */}
+                  <motion.div
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.6 }}
+                    className="absolute top-4 left-4"
+                  >
+                    <div className="badge badge-lg bg-white/95 backdrop-blur-md border border-[#D6A838]/40 text-[#2F3B1A] font-bold text-xs py-3 px-3.5 shadow-lg flex items-center gap-1.5">
+                      <Sparkles className="w-3.5 h-3.5 text-[#C29324]" />
+                      <span>Signature Blowout & Waves</span>
+                    </div>
+                  </motion.div>
+
+                  {/* Top-Right Organic Hair Badge */}
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.7 }}
+                    className="absolute top-4 right-4"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-[#4C5B2E]/90 text-[#FFF4BD] flex items-center justify-center shadow-lg border border-[#D6A838]/50">
+                      <Scissors className="w-4 h-4" />
+                    </div>
+                  </motion.div>
+
+                  {/* Bottom Image Overlay Card */}
+                  <div className="absolute bottom-4 inset-x-4">
+                    <div className="bg-white/90 backdrop-blur-md rounded-2xl p-3.5 border border-white/60 shadow-xl flex items-center justify-between">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#4C5B2E] to-[#2F3B1A] text-[#FFF4BD] flex items-center justify-center font-bold shadow-sm">
+                          <Award className="w-5 h-5 text-[#E5C460]" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold text-[#192018]">Luxury Hair Care</p>
+                          <p className="text-[10px] text-[#4C5B2E] font-medium flex items-center gap-1">
+                            <CheckCircle className="w-3 h-3 text-[#52A296]" />
+                            <span>Botox, Keratin & Gloss</span>
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <span className="badge badge-sm bg-[#52A296] text-white border-none font-bold text-[10px]">
+                          Unisex
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+
+              {/* Floating Decorative Pill at Bottom Right */}
+              <motion.div
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 }}
+                className="absolute -bottom-4 -left-3 sm:-left-6 z-20"
+              >
+                <div className="badge badge-lg bg-gradient-to-r from-[#2F3B1A] to-[#4C5B2E] text-[#FFF4BD] border border-[#D6A838]/50 py-3 px-4 shadow-xl flex items-center gap-2 font-bold text-xs">
+                  <Star className="w-3.5 h-3.5 fill-[#D6A838] text-[#D6A838]" />
+                  <span>Real Results. Real Looks.</span>
+                </div>
+              </motion.div>
+
+            </motion.div>
+          </div>
+
         </div>
       </div>
 
-      {/* Downward Scroll Indicator */}
-      <div 
-        onClick={onExploreServices}
-        className="absolute bottom-4 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 text-[#666666] hover:text-[#aaaaaa] cursor-pointer transition-colors select-none"
+      {/* 4. Downward Transition Button to Scheduler */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.85, duration: 0.8 }}
+        className="relative z-10 text-center pt-4 pb-1 flex flex-col items-center justify-center"
       >
-        <span className="text-[10px] tracking-[0.2em] font-semibold uppercase">Scroll Down</span>
-        <ArrowDown className="w-3.5 h-3.5 animate-bounce text-[#8D43F4]" />
-      </div>
+        <button
+          onClick={scrollToScheduler}
+          className="group inline-flex flex-col items-center gap-1 text-xs text-[#677565] hover:text-[#2F3B1A] transition-colors cursor-pointer"
+          aria-label="Scroll to Appointment Scheduler"
+        >
+          <span className="font-bold tracking-[0.2em] uppercase text-[10px] text-[#4C5B2E] group-hover:text-[#12B5AF] transition-colors">
+            Online Appointment Scheduler
+          </span>
+          <div className="w-8 h-8 rounded-full bg-white/80 border border-[#D6A838]/40 flex items-center justify-center shadow-xs group-hover:border-[#D6A838] group-hover:bg-white transition-all animate-bounce">
+            <ArrowDown className="w-3.5 h-3.5 text-[#C29324]" />
+          </div>
+        </button>
+
+        <div className="w-48 h-[1.5px] bg-gradient-to-r from-transparent via-[#D6A838]/50 to-transparent mt-2" />
+      </motion.div>
     </section>
   );
 };

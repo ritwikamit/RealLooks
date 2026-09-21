@@ -23,14 +23,10 @@ export interface Stylist {
   id: string;
   name: string;
   role: string;
-  specialty?: string;
-  specialties?: string[];
+  specialty: string;
   experienceYears: number;
-  availableDays?: number[];
+  availableDays: number[]; // 0=Sunday, 1=Monday, etc.
   avatar: string;
-  bio?: string;
-  rating?: number;
-  isAvailable?: boolean;
 }
 
 export interface BookingRequest {
@@ -38,7 +34,6 @@ export interface BookingRequest {
   serviceId: string;
   serviceName: string;
   servicePrice: number;
-  price?: number;
   serviceDuration: number;
   stylistId: string;
   stylistName: string;
@@ -54,54 +49,19 @@ export interface BookingRequest {
 
 export interface ReviewItem {
   id: string;
-  author?: string;
-  name?: string;
-  role?: string;
+  name: string;
   rating: number;
   date: string;
-  service?: string;
-  serviceTaken?: string;
+  service: string;
   comment: string;
   verified: boolean;
-  avatar?: string;
 }
 
 export interface GalleryItem {
   id: string;
   title: string;
-  category: string;
-  categoryLabel?: string;
+  category: 'all' | 'hair' | 'grooming' | 'facial' | 'bridal' | 'interior';
+  categoryLabel: string;
   imageUrl: string;
-  caption?: string;
   description?: string;
-}
-
-export interface StoreProduct {
-  id: string;
-  name: string;
-  tagline?: string;
-  category: string;
-  price: number;
-  oldPrice?: number;
-  originalPrice?: number;
-  volume: string;
-  image: string;
-  rating?: number;
-  badge?: string;
-  description: string;
-  inStock?: boolean;
-  isOrganic?: boolean;
-}
-
-export interface FAQItem {
-  id?: string;
-  question: string;
-  answer: string;
-  category?: string;
-}
-
-export interface TimeSlot {
-  time: string;
-  period: 'Morning' | 'Afternoon' | 'Evening';
-  isAvailable: boolean;
 }

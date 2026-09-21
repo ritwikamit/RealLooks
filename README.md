@@ -23,75 +23,50 @@ Engineered with artisan paper canvas aesthetics, organic wave physics, side-edge
 
 ## 🌿 Brand Identity & Design System
 
-The Real Looks digital experience is engineered to replicate the dark luxury aesthetic of the **[Clandestine Beauty Salon template](https://github.com/Northstrix/clandestine-beauty-salon-landing-page-template)**:
+The Real Looks digital presence is crafted with a bespoke color palette and tactile material design:
 
 | Element | Palette & Implementation | Description |
 | :--- | :--- | :--- |
-| **Obsidian Canvas** | Deep Black `#000000` & Secondary Dark `#0a0a0a` | Ultra-dark, minimalist foundation creating depth, contrast, and high-fashion allure. |
-| **Electric Violet Accent** | `#8D43F4` with hover `#7B2FE0` and radial glows | Signature neon-violet accent used for active states, CTA buttons, badges, and glowing rims. |
-| **Crisp Typography** | `#FAFAFA` (Headings), `#E1E1E1` (Body), `#AAAAAA` (Muted) | High-contrast editorial typography ensuring effortless readability across dark cards. |
-| **Delicate Borders** | `#1A1A1A` and `#242424` hairline card outlines | Subtle framing that separates components without visual clutter. |
-| **Ambient Radial Blooms** | Subtle violet & botanical emerald blur gradients | Atmospheric background illumination echoing haute coiffure sanctuaries. |
+| **Paper Canvas Texture** | `#F8F9F5` base with procedural micro-grain filter | A tactile, editorial paper background establishing a premium salon atmosphere. |
+| **Architectural Grid Lines** | Faded square lines from side edges (masked `0.95` to `transparent`) | Subtly frames content on PC/desktop screens for all sections **outside the hero**. |
+| **Olive Spectrum** | `#2F3B1A` (Deep), `#4C5B2E` (Primary), `#52A296` (Seafoam), `#86D6B9` (Mint) | Natural botanical luxury reflecting organic hair care and hygiene. |
+| **Sky Blue Spectrum** | `#0D8F8B` (Deep Tiffany), `#12B5AF` (Tiffany), `#4B9CD3` (Carolina), `#89CFF0` (Baby Blue) | Vibrant accents providing clarity, modernism, and fresh energy. |
+| **Glossy Gold** | `#FFF4BD` (Highlight), `#D6A838` (Primary Gold), `#C29324` (Rich), `#8E680E` (Deep) | Metallic prestige accents for CTAs, badges, and brand emblems. |
+| **Lucid Glassmorphism** | `rgba(255, 255, 255, 0.58)` backdrop-blur cards with high-specular rims | Floating cards and navigation elements that enhance depth and readability. |
 
 ---
 
 ## ✨ Features & Highlights
 
-### 1. 🌟 Signature Clandestine-Style Hero Showcase
-- **Rotating Headline Pills**: Animated keyword switcher cycling through `Hairstyling`, `Skin Radiance`, `Hair Botox`, `Beard Artistry`, and `Bridal Glow`.
-- **Editorial Model Portrait**: Framed high-fashion salon visual (`hero.webp`) with delicate dark borders and ambient lighting.
-- **Floating Client Review Chips**: Floating verified client review badges (Hannah Miller 5.0★, Naomi Bright 5.0★) with subtle floating keyframe physics.
-- **Action CTAs**: Quick access to "Schedule an Appointment" and "Explore Our Services".
+### 1. 🌟 Signature Hero Showcase
+- **Official Documentation Logo**: Features the high-fidelity intertwined **RL** brand emblem with male and female silhouettes, golden scissors, and botanical foliage.
+- **Hero Lady Hair Visual**: Showcases an editorial portrait of a woman with radiant, voluminous styled balayage waves aligning with the salon's luxury aesthetic.
+- **Interactive Harmonic Waves**: Real-time HTML5 Canvas animation that responds organically to mouse cursor velocity and coordinates.
+- **Hero Clean Paper Canvas**: Clean background free of square grid lines, allowing the brand visual and copy to shine.
 
-### 2. 💎 Clandestine Floating Island Limelight Navbar
-- **Island Geometry**: Floating centered pill navbar with `backdrop-blur-xl`, dark translucent fill, and delicate border.
-- **Limelight Active Section Indicator**: Automatically tracks scroll position and illuminates the active section (`Home`, `Services`, `Masters`, `Reviews`, `Store`, `About`, `FAQ`).
-- **Integrated Actions**: One-click "BOOK NOW" CTA, quick "My Requests" drawer trigger, and real-time open status indicator.
-
-### 3. ✂️ Meet Our Masters (Specialists Showcase)
-- Dedicated master stylist cards inspired by Clandestine's team presentation:
-  - **Sharon Katz**: Creative Hair Director & Nanoplastia Maestro
-  - **Mark Franklin**: Master Barber & Royal Beard Sculptor
-  - **Maria Garcia**: Senior Esthetician & Skin Specialist
-  - **Aviva Mar**: Color & Texture Specialist
-- Master cards feature avatar portraits, ratings, specialties badges, and one-click appointment scheduling.
-
-### 4. 🛍️ Salon Boutique & Aftercare Retail Store
-- Curated luxury aftercare formulas available directly in-salon:
-  - Restorative Botanical Shampoo
-  - Nourishing Moroccan Hair Serum
-  - Botanical Velvet Body Lotion
-  - Aromatherapy Studio Candle
-  - Hydrating Face Infusion Cream
-  - Essential Radiance Treatment Oil
-- Direct 1-click WhatsApp concierge product reservation.
-
-### 5. ❓ Unfolding Interactive FAQ Accordion
-- Smooth animated collapsible question cards answering the top client queries regarding hygiene, appointments, bridal bookings, and chemical treatment longevity.
-
-### 6. 📅 5-Step Appointment Scheduler Wizard
+### 2. 📅 5-Step Appointment Scheduler Wizard
 - **Step 1: Service Selection** — Browse and filter across Hair, Beard, Skin, Spa, and Bridal services.
 - **Step 2: Stylist Allocation** — Choose your preferred specialist (Senior Stylist, Colorist, Skin Expert).
 - **Step 3: Date & Slot Picking** — Instant calendar selection with Morning, Afternoon, and Evening slot filters.
 - **Step 4: Client Verification** — Customer contact and special requests entry with validation.
 - **Step 5: Confirmation & Export** — Direct reservation summary, WhatsApp integration, and calendar file (.ics) download.
 
-### 7. 🎨 daisyUI 5 UX/UI Integrations
+### 3. 🎨 daisyUI 5 UX/UI Integrations
 - Integrated **daisyUI 5** alongside **Tailwind CSS v4** to enrich UI components.
 - Responsive **daisyUI Badges** for service categories, certifications, and live operational status.
 - Interactive **daisyUI Ratings** (`mask-star-2`) showcasing verified 4.9★ reviews from local clients.
 - Polished **daisyUI Buttons** (`btn`, `btn-primary`, `btn-outline`, `btn-ghost`) styled to the salon's gold and olive theme.
 - **daisyUI Indicators** displaying real-time active booking counts on the navbar.
 
-### 8. 💇 Full Unisex Service Catalog
-- Segmented categories for men, women, and bridal makeovers with Clandestine hover-highlight rows:
+### 4. 💇 Full Unisex Service Catalog
+- Segmented categories for men, women, and bridal makeovers:
   - Executive Haircuts & Styling
   - Nanoplastia, Keratin & Organic Hair Botox
   - 24K Gold Glow & Deep Cleansing Facials
   - Royal Beard Sculpting & Shaving
   - Signature Pre-Bridal & Groom Packages
 
-### 9. 📍 Local Aurangabad Presence & SEO
+### 5. 📍 Local Aurangabad Presence & SEO
 - Embedded schema markup (`HairSalon` JSON-LD) tailored for Dani Bigha, Aurangabad, Bihar.
 - One-click Google Maps navigation, phone calling, and WhatsApp messaging.
 - Verified client reviews and studio hygiene protocol highlights.
@@ -103,7 +78,6 @@ The Real Looks digital experience is engineered to replicate the dark luxury aes
 - **Frontend Framework**: [React 19](https://react.dev/) + [TypeScript](https://www.typescriptlang.org/)
 - **Build Tool**: [Vite 8](https://vitejs.dev/) with `@tailwindcss/vite`
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/) & [daisyUI 5](https://daisyui.com/)
-- **Design Inspiration**: [Clandestine Beauty Salon](https://github.com/Northstrix/clandestine-beauty-salon-landing-page-template)
 - **Animation**: [Motion](https://motion.dev/) (Framer Motion) + HTML5 Canvas API
 - **Icons**: [Lucide React](https://lucide.dev/)
 - **Server**: Express.js (optional API backend runner)
@@ -155,7 +129,6 @@ RealLooks/
 ├── public/
 │   └── images/
 │       ├── logo.png                # Official Documentation Logo (RL Gold & Olive)
-│       ├── logo-emblem.png         # Cropped RL Monogram Emblem
 │       └── hero-lady.jpg           # Hero Hair Model Portrait
 ├── Real_Looks_Antigravity_Documentation_FINAL/
 │   ├── 01-product-requirements-document.md
@@ -165,24 +138,21 @@ RealLooks/
 │   └── real-looks-unisex-salon-logo-final.png
 ├── src/
 │   ├── components/
-│   │   ├── AboutSection.tsx        # Clandestine mosaic 3-photo grid & hygiene pillars
+│   │   ├── AboutSection.tsx        # Studio story, hygiene pillars & stats
 │   │   ├── AppointmentScheduler.tsx# 5-Step interactive booking wizard
 │   │   ├── BrandLogo.tsx           # Official logo renderer (full, header, monogram)
 │   │   ├── FadedAmbientBackground.tsx # Paper canvas & organic ambient color blobs
-│   │   ├── FAQSection.tsx          # Clandestine unfolding interactive accordion
 │   │   ├── Footer.tsx              # Brand links, social media, and location info
 │   │   ├── GallerySection.tsx      # Salon work portfolio with category filters
-│   │   ├── HeroOrganicFlow.tsx     # Clandestine hero: dynamic typography, hair lady model, wave canvas
+│   │   ├── HeroOrganicFlow.tsx     # Hero section: logo, hair lady model, wave canvas
 │   │   ├── LocationContactSection.tsx # Google Maps, opening hours, contact details
-│   │   ├── MastersSection.tsx      # Clandestine "Meet Our Masters" stylist showcase
 │   │   ├── MobileStickyBar.tsx     # Floating booking bar for mobile viewports
 │   │   ├── MyBookingsModal.tsx     # Client saved appointment manager (localStorage)
-│   │   ├── Navbar.tsx              # Clandestine floating limelight island navbar
-│   │   ├── ServicesSection.tsx     # Clandestine sequential highlight hover service rows
-│   │   ├── StoreSection.tsx        # Clandestine salon boutique aftercare retail store
+│   │   ├── Navbar.tsx              # Sticky glassmorphism header with status & badge
+│   │   ├── ServicesSection.tsx     # Unisex service cards and pricing
 │   │   └── TestimonialsSection.tsx # Verified customer feedback with star ratings
 │   ├── data/
-│   │   └── salonData.ts            # Salon configuration, services, stylists, products & FAQs
+│   │   └── salonData.ts            # Salon configuration, services, stylists & reviews
 │   ├── types.ts                    # TypeScript definitions
 │   ├── App.tsx                     # Main layout & side-edge square grid wrapper
 │   ├── index.css                   # Tailwind v4, daisyUI 5, paper texture & grid styling

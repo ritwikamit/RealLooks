@@ -9,28 +9,26 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="bg-[#050505] text-[#fafafa] pt-16 pb-24 lg:pb-12 border-t border-[#1a1a1a] relative overflow-hidden">
-      {/* Ambient subtle violet glow */}
-      <div 
-        className="absolute top-0 right-1/4 w-96 h-96 rounded-full pointer-events-none blur-[140px] opacity-15"
-        style={{ background: 'radial-gradient(circle, #8D43F4 0%, transparent 80%)' }}
-      />
+    <footer className="bg-[#121812] text-[#F6F8F5] pt-16 pb-24 lg:pb-12 border-t border-white/10 relative overflow-hidden">
+      {/* Background ambient subtle glow: Tiffany blue + Forest Olive + Gold */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-[#12B5AF]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#D6A838]/10 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-[#1a1a1a]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           
           {/* Brand Info */}
           <div className="space-y-4">
             <BrandLogo variant="header" light />
-            <p className="text-xs text-[#aaaaaa] leading-relaxed max-w-xs font-normal">
-              {SALON_INFO.tagline}. Bespoke grooming, couture hair styling, hair botox, and aesthetic experiences in Aurangabad, Bihar.
+            <p className="text-xs text-white/70 leading-relaxed max-w-xs font-normal">
+              {SALON_INFO.tagline}. Modern grooming, couture hair styling, hair botox & bridal experiences in Aurangabad, Bihar.
             </p>
-            <div className="flex gap-2.5 pt-2">
+            <div className="flex gap-3 pt-2">
               <a
                 href={SALON_INFO.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-[#121212] hover:bg-[#8D43F4] text-[#aaaaaa] hover:text-white flex items-center justify-center transition-all border border-[#242424] hover:border-transparent cursor-pointer"
+                className="w-9 h-9 rounded-2xl bg-white/10 hover:bg-[#E1306C] text-white flex items-center justify-center transition-colors border border-white/10"
                 title="Instagram Profile"
               >
                 <Instagram className="w-4 h-4" />
@@ -39,7 +37,7 @@ export const Footer: React.FC = () => {
                 href={SALON_INFO.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-[#121212] hover:bg-[#8D43F4] text-[#aaaaaa] hover:text-white flex items-center justify-center transition-all border border-[#242424] hover:border-transparent cursor-pointer"
+                className="w-9 h-9 rounded-2xl bg-white/10 hover:bg-[#1877F2] text-white flex items-center justify-center transition-colors border border-white/10"
                 title="Facebook Page"
               >
                 <Facebook className="w-4 h-4" />
@@ -49,30 +47,30 @@ export const Footer: React.FC = () => {
 
           {/* Quick Navigation Links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#8D43F4] mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#FFF2A8] mb-4">
               Explore Services
             </h4>
-            <ul className="space-y-2.5 text-xs text-[#888888] font-medium">
-              <li><a href="#services" className="hover:text-white transition-colors">Precision Hairdressing</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Deep Radiance Facial Therapy</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Nanoplastia & Hair Botox</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Architectural Brow Sculpting</a></li>
-              <li><a href="#services" className="hover:text-white transition-colors">Haute Editorial & Bridal Makeup</a></li>
+            <ul className="space-y-2.5 text-xs text-white/75 font-medium">
+              <li><a href="#services" className="hover:text-[#FFF2A8] transition-colors">Executive Haircuts (Men & Women)</a></li>
+              <li><a href="#services" className="hover:text-[#FFF2A8] transition-colors">Royal Beard Sculpt & Shave</a></li>
+              <li><a href="#services" className="hover:text-[#FFF2A8] transition-colors">24K Gold Radiance Facial</a></li>
+              <li><a href="#services" className="hover:text-[#FFF2A8] transition-colors">Nanoplastia & Hair Botox</a></li>
+              <li><a href="#services" className="hover:text-[#FFF2A8] transition-colors">Signature Bridal & Groom Makeovers</a></li>
             </ul>
           </div>
 
           {/* Hours & Availability */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#8D43F4] mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#FFF2A8] mb-4">
               Studio Timings
             </h4>
-            <div className="space-y-3 text-xs text-[#888888] font-normal">
+            <div className="space-y-3 text-xs text-white/75 font-normal">
               <div className="flex items-start gap-2.5">
-                <Clock className="w-4 h-4 text-[#8D43F4] flex-shrink-0 mt-0.5" />
+                <Clock className="w-4 h-4 text-[#D6A838] flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-bold text-[#fafafa]">Monday – Sunday</p>
-                  <p className="text-[#888888]">9:00 AM – 9:00 PM</p>
-                  <span className="text-[10px] text-[#8D43F4] font-medium block mt-1">Online appointment requests accepted 24/7</span>
+                  <p className="font-bold text-white">Monday – Sunday</p>
+                  <p className="text-white/70">9:00 AM – 9:00 PM</p>
+                  <span className="text-[10px] text-[#5CE0DC] font-semibold block mt-0.5">Online appointment requests accepted 24/7</span>
                 </div>
               </div>
             </div>
@@ -80,19 +78,19 @@ export const Footer: React.FC = () => {
 
           {/* Location & Contact */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#8D43F4] mb-4">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-[#FFF2A8] mb-4">
               Aurangabad Studio
             </h4>
-            <div className="space-y-3 text-xs text-[#888888]">
+            <div className="space-y-3 text-xs text-white/75">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#8D43F4] flex-shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-[#D6A838] flex-shrink-0 mt-0.5" />
                 <p className="leading-relaxed font-normal">
                   Q957+RR4, near Vayuputra Fitness Club, Dani Bigha, Aurangabad, Bihar 824101
                 </p>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#8D43F4] flex-shrink-0" />
-                <a href={`tel:${SALON_INFO.phoneClean}`} className="hover:text-[#8D43F4] text-[#fafafa] font-bold transition-colors">
+                <Phone className="w-4 h-4 text-[#D6A838] flex-shrink-0" />
+                <a href={`tel:${SALON_INFO.phoneClean}`} className="hover:text-[#FFF2A8] text-white font-bold">
                   {SALON_INFO.phone}
                 </a>
               </div>
@@ -101,21 +99,22 @@ export const Footer: React.FC = () => {
 
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#666666]">
-          <p>© {new Date().getFullYear()} Real Looks Unisex Salon. All rights reserved.</p>
-          <div className="flex items-center gap-6">
-            <a href="#services" className="hover:text-white transition-colors">Services</a>
-            <a href="#masters" className="hover:text-white transition-colors">Masters</a>
-            <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
-            <button
-              onClick={scrollToTop}
-              className="flex items-center gap-1.5 hover:text-[#8D43F4] transition-colors cursor-pointer"
-            >
-              <span>Back to Top</span>
-              <ArrowUp className="w-3.5 h-3.5" />
-            </button>
+        {/* Bottom Local SEO Bar & Copyright */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/50">
+          <div>
+            <p>© {new Date().getFullYear()} Real Looks Unisex Salon. All rights reserved.</p>
+            <p className="text-[10px] text-white/40 mt-0.5 font-normal">
+              Premier unisex salon in Dani Bigha, Aurangabad, Bihar • Near Vayuputra Fitness Club
+            </p>
           </div>
+
+          <button
+            onClick={scrollToTop}
+            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold transition-colors cursor-pointer border border-white/10"
+          >
+            <span>Back to top</span>
+            <ArrowUp className="w-3.5 h-3.5" />
+          </button>
         </div>
       </div>
     </footer>

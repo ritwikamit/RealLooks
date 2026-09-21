@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Clock, ChevronDown, ChevronUp, ArrowRight, Sparkles } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Clock, Sparkles, Check, ChevronRight, Scissors } from 'lucide-react';
 import { SERVICES } from '../data/salonData';
 
 interface ServicesSectionProps {
@@ -9,16 +9,14 @@ interface ServicesSectionProps {
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectService }) => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
-  const [showAll, setShowAll] = useState(false);
-  const [hoveredServiceId, setHoveredServiceId] = useState<string | null>(null);
 
   const categories = [
     { id: 'all', label: 'All Services' },
-    { id: 'hair', label: 'Hairdressing' },
-    { id: 'facial', label: 'Facial & Glow' },
-    { id: 'spa', label: 'Botox & Treatments' },
-    { id: 'bridal', label: 'Bridal & Makeup' },
-    { id: 'grooming', label: 'Grooming & Shave' },
+    { id: 'hair', label: 'Hair Cuts & Styling' },
+    { id: 'grooming', label: "Beard & Men's Grooming" },
+    { id: 'facial', label: 'Skin & Facial Glow' },
+    { id: 'spa', label: 'Hair Spa & Botox' },
+    { id: 'bridal', label: 'Bridal & Occasion' },
   ];
 
   const filtered = SERVICES.filter(item => {
@@ -26,39 +24,31 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
     return item.category === activeCategory;
   });
 
-  const displayedServices = showAll ? filtered : filtered.slice(0, 5);
-
   return (
-    <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
-      
-      {/* Section Header (Clandestine Style) */}
-      <div className="text-center max-w-3xl mx-auto mb-14">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141414] border border-[#242424] text-[#8D43F4] text-xs font-semibold uppercase tracking-widest mb-4">
-          <Sparkles className="w-3.5 h-3.5 text-[#8D43F4]" />
-          <span>Services</span>
+    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-16">
+      {/* Section Header */}
+      <div className="text-center max-w-3xl mx-auto mb-12">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full lucid-glass text-[#0D8F8B] text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
+          <Scissors className="w-3.5 h-3.5 text-[#D6A838]" />
+          <span>Services Designed For You</span>
         </div>
-
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#fafafa] tracking-tight">
-          Indulge in Our Exquisite Range of Services
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif-title font-bold text-[#192018] tracking-tight">
+          Couture Hair, Grooming & Beauty
         </h2>
-
-        <p className="mt-4 text-base text-[#aaaaaa] max-w-2xl mx-auto leading-relaxed">
-          From tailored hair design and nanoplastia restorative therapies to rejuvenating 24K facials, crafted for ultimate elevation.
+        <p className="mt-3 text-base text-[#677565] max-w-2xl mx-auto">
+          Every treatment is custom-tailored with dermatologically tested products, precision craft, and calming scalp rituals.
         </p>
 
-        {/* Category Pills */}
+        {/* Category Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mt-8">
           {categories.map(cat => (
             <button
               key={cat.id}
-              onClick={() => {
-                setActiveCategory(cat.id);
-                setShowAll(false);
-              }}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
+              onClick={() => setActiveCategory(cat.id)}
+              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-[#8D43F4] text-white shadow-[0_0_15px_rgba(141,67,244,0.4)]'
-                  : 'bg-[#121212] hover:bg-[#1c1c1c] text-[#aaaaaa] hover:text-white border border-[#242424]'
+                  ? 'glossy-olive-btn text-white shadow-xs'
+                  : 'lucid-glass text-[#3D483B] hover:bg-white/90'
               }`}
             >
               {cat.label}
@@ -67,108 +57,103 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
         </div>
       </div>
 
-      {/* Clandestine-Style Interactive Service Rows */}
-      <div className="space-y-3">
-        <AnimatePresence mode="popLayout">
-          {displayedServices.map((service, idx) => {
-            const isHovered = hoveredServiceId === service.id;
-            return (
-              <motion.div
-                key={service.id}
-                layout
-                initial={{ opacity: 0, y: 15 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.25, delay: idx * 0.04 }}
-                onMouseEnter={() => setHoveredServiceId(service.id)}
-                onMouseLeave={() => setHoveredServiceId(null)}
-                className={`group relative rounded-xl p-4 sm:p-5 transition-all duration-300 border cursor-pointer ${
-                  isHovered
-                    ? 'bg-[#141414] border-[#8D43F4]/60 shadow-[0_4px_30px_rgba(141,67,244,0.18)] translate-x-1 sm:translate-x-2'
-                    : 'bg-[#0d0d0d] border-[#1c1c1c] hover:border-[#282828]'
-                }`}
-                onClick={() => onSelectService(service.id)}
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                  
-                  {/* Left: Thumbnail & Service Info */}
-                  <div className="flex items-start sm:items-center gap-4 flex-1">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden flex-shrink-0 bg-[#141414] border border-[#262626]">
-                      <img
-                        src={service.image}
-                        alt={service.name}
-                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                        loading="lazy"
-                      />
-                    </div>
-
-                    <div className="space-y-1">
-                      <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="text-base sm:text-lg font-bold text-[#fafafa] group-hover:text-white transition-colors">
-                          {service.name}
-                        </h3>
-                        {service.isPopular && (
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-[#8D43F4]/20 text-[#c89fff] border border-[#8D43F4]/40">
-                            Popular
-                          </span>
-                        )}
-                      </div>
-
-                      <p className="text-xs sm:text-sm text-[#888888] line-clamp-1 max-w-xl">
-                        {service.description}
-                      </p>
-
-                      <div className="flex items-center gap-4 text-xs text-[#777777] pt-1">
-                        <span className="flex items-center gap-1">
-                          <Clock className="w-3.5 h-3.5 text-[#8D43F4]" />
-                          {service.durationMinutes} mins
-                        </span>
-                        <span>•</span>
-                        <span className="capitalize">{service.targetGender}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Right: Pricing & Book CTA */}
-                  <div className="flex items-center justify-between sm:justify-end gap-5 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#1c1c1c]">
-                    <div className="text-left sm:text-right">
-                      <span className="text-xs text-[#777777] block uppercase tracking-wider">Starts at</span>
-                      <span className="text-lg sm:text-xl font-bold text-[#fafafa]">
-                        ₹{service.price}
-                      </span>
-                    </div>
-
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        onSelectService(service.id);
-                      }}
-                      className="px-4 py-2 rounded-lg bg-[#8D43F4] text-white font-semibold text-xs tracking-wider uppercase transition-all shadow-[0_0_14px_rgba(141,67,244,0.35)] hover:bg-[#7b2fe0] hover:shadow-[0_0_20px_rgba(141,67,244,0.55)] cursor-pointer flex items-center gap-1.5"
-                    >
-                      <span>Book</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
-                  </div>
-
-                </div>
-              </motion.div>
-            );
-          })}
-        </AnimatePresence>
-      </div>
-
-      {/* Show More / Show Less Toggle Button */}
-      {filtered.length > 5 && (
-        <div className="mt-8 text-center">
-          <button
-            onClick={() => setShowAll(!showAll)}
-            className="px-6 py-2.5 rounded-full bg-[#121212] hover:bg-[#1a1a1a] border border-[#262626] text-[#e1e1e1] hover:text-white text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer inline-flex items-center gap-2"
+      {/* Services Cards Grid with Lucid Glassmorphic styling */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filtered.map(service => (
+          <motion.div
+            key={service.id}
+            layout
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.35 }}
+            className="group lucid-glass-card rounded-3xl overflow-hidden flex flex-col justify-between hover:scale-[1.01]"
           >
-            <span>{showAll ? 'Show Fewer Services' : `View All Services (${filtered.length})`}</span>
-            {showAll ? <ChevronUp className="w-4 h-4 text-[#8D43F4]" /> : <ChevronDown className="w-4 h-4 text-[#8D43F4]" />}
-          </button>
-        </div>
-      )}
+            {/* Service Image Header */}
+            <div className="relative h-48 overflow-hidden rounded-t-3xl">
+              <img
+                src={service.image}
+                alt={service.name}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
+              
+              {/* Badges */}
+              <div className="absolute top-3.5 left-3.5 flex items-center gap-1.5">
+                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider backdrop-blur-md ${
+                  service.targetGender === 'Men'
+                    ? 'bg-[#89CFF0]/85 text-[#14486D] border border-white/60'
+                    : service.targetGender === 'Women'
+                    ? 'bg-[#F5D77F]/90 text-[#594002] border border-white/60'
+                    : 'bg-white/90 text-[#2F3B1A] border border-white/60'
+                }`}>
+                  {service.targetGender}
+                </span>
+                {service.isPopular && (
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-md glossy-gold-badge text-[#4A3502] flex items-center gap-1">
+                    <Sparkles className="w-2.5 h-2.5 text-[#C29324]" /> Popular
+                  </span>
+                )}
+              </div>
+
+              {/* Price & Duration Overlaid with Glassmorphism */}
+              <div className="absolute bottom-3.5 left-3.5 right-3.5 flex items-end justify-between text-white">
+                <div>
+                  <span className="text-[10px] uppercase tracking-wider text-white/80 font-bold block">Starting at</span>
+                  <span className="text-2xl font-serif font-extrabold text-[#FFF2A8] drop-shadow-sm">
+                    ₹{service.price}
+                  </span>
+                </div>
+                <div className="flex items-center gap-1 text-xs text-white bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 shadow-2xs">
+                  <Clock className="w-3 h-3 text-[#FFF2A8]" />
+                  <span>{service.durationMinutes} min</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Service Content Details */}
+            <div className="p-5 flex-1 flex flex-col justify-between">
+              <div>
+                <h3 className="text-lg font-serif font-bold text-[#192018] group-hover:text-[#0D8F8B] transition-colors">
+                  {service.name}
+                </h3>
+                <p className="text-xs text-[#677565] mt-2 leading-relaxed">
+                  {service.description}
+                </p>
+
+                {/* Inclusions List */}
+                {service.includes && service.includes.length > 0 && (
+                  <div className="mt-4 pt-3 border-t border-black/5 space-y-1.5">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#52A296] block">
+                      Includes:
+                    </span>
+                    {service.includes.map((inc, i) => (
+                      <div key={i} className="flex items-center gap-2 text-xs text-[#3D483B]">
+                        <Check className="w-3.5 h-3.5 text-[#D6A838] flex-shrink-0" />
+                        <span>{inc}</span>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Action Button */}
+              <div className="mt-6 pt-4 border-t border-black/5 flex items-center justify-between">
+                <span className="text-xs text-[#677565]">
+                  Category: <strong className="text-[#2F3B1A]">{service.categoryName}</strong>
+                </span>
+                <button
+                  onClick={() => onSelectService(service.id)}
+                  className="px-4 py-2 rounded-xl glossy-gold-btn text-[#4A3502] font-extrabold text-xs uppercase tracking-wider flex items-center gap-1.5 hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/80 shadow-2xs"
+                >
+                  <span>Book This</span>
+                  <ChevronRight className="w-3.5 h-3.5 text-[#4A3502]" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 };
