@@ -68,37 +68,29 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
         }
       `}</style>
 
-      {/* 1. Visible Wide-Angled Luxury Salon Interior Background */}
+      {/* 1. Fully Visible Wide-Angled Luxury Salon Interior Background (Not Faded) */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden select-none">
         <img
           src="/images/salon-hero-interior.jpg"
           alt="Real Looks Unisex Salon Interior"
-          className="w-full h-full object-cover object-[center_35%] opacity-85 sm:opacity-90 filter saturate-[1.12] contrast-[1.08] brightness-[0.98] transform-gpu scale-[1.01]"
+          className="w-full h-full object-cover object-[center_35%] opacity-100 filter saturate-[1.06] contrast-[1.04]"
           loading="eager"
         />
 
-        {/* Ambient Top Gradient for Limelight Navbar Clarity */}
-        <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#FAF9F6]/90 via-[#FAF9F6]/50 to-transparent" />
+        {/* Gentle top shade for Limelight Navbar clarity */}
+        <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#FAF9F6]/85 via-[#FAF9F6]/35 to-transparent" />
 
-        {/* Subtle luxury vignette keeping peripheral salon chairs & illuminated mirrors visible */}
-        <div 
-          className="absolute inset-0"
-          style={{
-            background: 'radial-gradient(ellipse 95% 85% at 50% 38%, rgba(250, 249, 246, 0.22) 0%, rgba(250, 249, 246, 0.45) 58%, rgba(20, 26, 19, 0.28) 100%)',
-          }}
-        />
-
-        {/* Soft bottom canvas transition into next section */}
-        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#FAF9F6] via-[#FAF9F6]/85 to-transparent" />
+        {/* Clean bottom transition into next section */}
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#FAF9F6] via-[#FAF9F6]/60 to-transparent" />
       </div>
 
       {/* 2. Hero Centered Main Content Container (relative z-10) */}
       <div className="relative z-10 max-w-4xl mx-auto w-full my-auto py-6 sm:py-10 flex flex-col items-center text-center">
         
-        {/* Luxury Glassmorphic Center Card */}
-        <div className="relative w-full bg-[#FAF9F6]/82 sm:bg-[#FAF9F6]/80 backdrop-blur-xl border border-white/80 shadow-[0_20px_60px_rgba(20,26,19,0.12)] rounded-3xl p-6 sm:p-10 flex flex-col items-center text-center space-y-6 overflow-hidden">
+        {/* Luxury Glassmorphic Center Card with Full Golden Border */}
+        <div className="relative w-full bg-[#FAF9F6]/92 sm:bg-[#FAF9F6]/88 backdrop-blur-xl border-2 border-[#D6A838] shadow-[0_20px_60px_rgba(0,0,0,0.22),0_0_28px_rgba(214,168,56,0.32)] rounded-3xl p-6 sm:p-10 flex flex-col items-center text-center space-y-6 overflow-hidden">
           {/* Subtle gold luxury inner top accent */}
-          <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#D6A838]/60 to-transparent" />
+          <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#FFF4BD] to-transparent" />
 
           {/* Prominent Official Logo in Hero Section with Subtle Ambient Radiance */}
           <motion.div
@@ -275,25 +267,25 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mt-5 w-full grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto"
         >
-          <div className="bg-[#FAF9F6]/85 backdrop-blur-md border border-white/80 rounded-2xl p-3.5 sm:p-4 text-center shadow-xs">
+          <div className="bg-[#FAF9F6]/92 backdrop-blur-md border border-[#D6A838]/60 rounded-2xl p-3.5 sm:p-4 text-center shadow-xs">
             <div className="text-2xl sm:text-3xl font-serif font-extrabold text-[#141A13]">10,000+</div>
             <div className="text-[11px] font-bold text-[#8E680E] uppercase tracking-wider mt-0.5">Satisfied Clients</div>
             <div className="text-[10px] text-[#677565]">Aurangabad & Surrounding</div>
           </div>
 
-          <div className="bg-[#FAF9F6]/85 backdrop-blur-md border border-white/80 rounded-2xl p-3.5 sm:p-4 text-center shadow-xs">
+          <div className="bg-[#FAF9F6]/92 backdrop-blur-md border border-[#D6A838]/60 rounded-2xl p-3.5 sm:p-4 text-center shadow-xs">
             <div className="text-2xl sm:text-3xl font-serif font-extrabold text-[#5A4105]">12+</div>
             <div className="text-[11px] font-bold text-[#8E680E] uppercase tracking-wider mt-0.5">Master Artisans</div>
             <div className="text-[10px] text-[#677565]">Certified Stylists & Colorists</div>
           </div>
 
-          <div className="bg-[#FAF9F6]/85 backdrop-blur-md border border-white/80 rounded-2xl p-3.5 sm:p-4 text-center shadow-xs">
+          <div className="bg-[#FAF9F6]/92 backdrop-blur-md border border-[#D6A838]/60 rounded-2xl p-3.5 sm:p-4 text-center shadow-xs">
             <div className="text-2xl sm:text-3xl font-serif font-extrabold text-[#141A13]">100%</div>
             <div className="text-[11px] font-bold text-[#0D8F8B] uppercase tracking-wider mt-0.5">UV & Autoclaved</div>
             <div className="text-[10px] text-[#677565]">Hospital-Grade Hygiene</div>
           </div>
 
-          <div className="bg-[#FAF9F6]/85 backdrop-blur-md border border-white/80 rounded-2xl p-3.5 sm:p-4 text-center shadow-xs">
+          <div className="bg-[#FAF9F6]/92 backdrop-blur-md border border-[#D6A838]/60 rounded-2xl p-3.5 sm:p-4 text-center shadow-xs">
             <div className="text-2xl sm:text-3xl font-serif font-extrabold text-[#5A4105]">4.9★</div>
             <div className="text-[11px] font-bold text-[#8E680E] uppercase tracking-wider mt-0.5">Google Rating</div>
             <div className="text-[10px] text-[#677565]">850+ Verified Reviews</div>
