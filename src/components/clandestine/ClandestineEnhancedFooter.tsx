@@ -36,17 +36,17 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
         {/* Main 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           
-          {/* Col 1: Enlarged Logo in Lucid Plaque without duplicate text */}
+          {/* Col 1: Enlarged Glowing Logo without duplicate text */}
           <div className="space-y-4">
             <div 
-              className="inline-block p-3 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-[#D6A838]/50 shadow-[0_6px_24px_rgba(0,0,0,0.25),0_0_20px_rgba(214,168,56,0.3)] cursor-pointer group transition-all hover:scale-[1.03]"
+              className="inline-block cursor-pointer group"
               onClick={scrollToTop}
               title="Real Looks Unisex Salon"
             >
               <img
                 src="/images/logo.png"
                 alt="Real Looks Unisex Salon Logo"
-                className="h-14 sm:h-16 md:h-20 w-auto object-contain select-none"
+                className="h-20 sm:h-24 md:h-28 w-auto object-contain filter drop-shadow-[0_0_14px_rgba(255,255,255,0.85)] drop-shadow-[0_0_28px_rgba(214,168,56,0.7)] select-none transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
             </div>
