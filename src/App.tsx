@@ -5,9 +5,12 @@ import { ClandestineHeroSection } from './components/clandestine/ClandestineHero
 import { ClandestineEnhancedFooter } from './components/clandestine/ClandestineEnhancedFooter';
 import { AppointmentScheduler } from './components/AppointmentScheduler';
 import { ServicesSection } from './components/ServicesSection';
+import { MastersSection } from './components/MastersSection';
 import { AboutSection } from './components/AboutSection';
 import { GallerySection } from './components/GallerySection';
+import { StoreSection } from './components/StoreSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
+import { FAQSection } from './components/FAQSection';
 import { LocationContactSection } from './components/LocationContactSection';
 import { MyBookingsModal } from './components/MyBookingsModal';
 import { MobileStickyBar } from './components/MobileStickyBar';
@@ -17,6 +20,7 @@ import { ArrowLeft, Calendar, Sparkles } from 'lucide-react';
 export default function App() {
   const [activePage, setActivePage] = useState<PageView>('home');
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
+  const [selectedStylistId, setSelectedStylistId] = useState<string | null>(null);
   const [isBookingsModalOpen, setIsBookingsModalOpen] = useState(false);
 
   // Smooth navigation handler
@@ -42,6 +46,21 @@ export default function App() {
   // When user clicks "Book This" on a specific service card
   const handleSelectServiceFromCatalog = (serviceId: string) => {
     setSelectedServiceId(serviceId);
+    if (activePage !== 'home') {
+      setActivePage('home');
+      setTimeout(() => {
+        const el = document.getElementById('scheduler-section');
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    } else {
+      const el = document.getElementById('scheduler-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  // When user clicks "Book With [Stylist]" in Masters section
+  const handleSelectMaster = (stylistId: string) => {
+    setSelectedStylistId(stylistId);
     if (activePage !== 'home') {
       setActivePage('home');
       setTimeout(() => {
@@ -89,11 +108,11 @@ export default function App() {
       <main className="flex-1">
         
         {/* =========================================================
-            HOME PAGE: Clandestine Hero + Scheduler + Services
+            HOME PAGE: Clandestine Hero + Complete Professional Salon Experience
            ========================================================= */}
         {activePage === 'home' && (
           <>
-            {/* Clandestine Hero Section (No square lines on hero) */}
+            {/* Clandestine Hero Section (Animated Blue Gradient + Salon Trust Stats) */}
             <ClandestineHeroSection 
               onStartBooking={handleStartBooking}
               onExploreServices={handleExploreServices}
@@ -120,26 +139,44 @@ export default function App() {
               <div className="relative z-10">
                 <AppointmentScheduler 
                   initialServiceId={selectedServiceId}
+                  initialStylistId={selectedStylistId}
                   onBookingSuccess={handleBookingCompleted}
                 />
               </div>
 
-              {/* 3. About & Hospital-Grade Hygiene Standards */}
+              {/* 3. Master Stylists & Colorists */}
+              <div className="relative z-10">
+                <MastersSection 
+                  onSelectMaster={handleSelectMaster}
+                />
+              </div>
+
+              {/* 4. About & Hospital-Grade Hygiene Standards */}
               <div className="relative z-10">
                 <AboutSection />
               </div>
 
-              {/* 4. Lookbook Transformations Gallery */}
+              {/* 5. Lookbook Transformations Gallery */}
               <div className="relative z-10">
                 <GallerySection />
               </div>
 
-              {/* 5. Verified Local Client Reviews */}
+              {/* 6. Curated Hair & Skin Boutique Store */}
+              <div className="relative z-10">
+                <StoreSection />
+              </div>
+
+              {/* 7. Verified Local Client Reviews */}
               <div className="relative z-10">
                 <TestimonialsSection />
               </div>
 
-              {/* 6. Location, Opening Hours & Google Maps */}
+              {/* 8. Frequently Asked Questions Accordion */}
+              <div className="relative z-10">
+                <FAQSection />
+              </div>
+
+              {/* 9. Location, Opening Hours & Google Maps */}
               <div className="relative z-10">
                 <LocationContactSection />
               </div>

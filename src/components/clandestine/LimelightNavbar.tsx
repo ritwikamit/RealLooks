@@ -41,8 +41,9 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
     { id: 'home', label: 'Home', targetHash: 'home' },
     { id: 'home', label: 'Services', targetHash: 'services' },
     { id: 'home', label: 'Schedule', targetHash: 'scheduler-section' },
-    { id: 'home', label: 'About', targetHash: 'about' },
+    { id: 'home', label: 'Stylists', targetHash: 'masters' },
     { id: 'home', label: 'Gallery', targetHash: 'gallery' },
+    { id: 'home', label: 'Boutique', targetHash: 'store' },
     { id: 'home', label: 'Contact', targetHash: 'contact' },
   ];
 
@@ -50,7 +51,7 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
   useEffect(() => {
     if (activePage === 'about') setActiveIndex(3);
     else if (activePage === 'gallery') setActiveIndex(4);
-    else if (activePage === 'contact') setActiveIndex(5);
+    else if (activePage === 'contact') setActiveIndex(6);
   }, [activePage]);
 
   // Robust & responsive scroll tracking on home page
@@ -74,9 +75,9 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
           return;
         }
 
-        // 2. Near the bottom of the page -> Contact (index 5)
-        if (windowHeight + scrollY >= documentHeight - 120) {
-          setActiveIndex(5);
+        // 2. Near the bottom of the page -> Contact (index 6)
+        if (windowHeight + scrollY >= documentHeight - 140) {
+          setActiveIndex(6);
           return;
         }
 
@@ -85,9 +86,10 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
           { hash: 'home', index: 0 },
           { hash: 'services', index: 1 },
           { hash: 'scheduler-section', index: 2 },
-          { hash: 'about', index: 3 },
+          { hash: 'masters', index: 3 },
           { hash: 'gallery', index: 4 },
-          { hash: 'contact', index: 5 },
+          { hash: 'store', index: 5 },
+          { hash: 'contact', index: 6 },
         ];
 
         // Trigger line is just below sticky header
@@ -99,7 +101,7 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
           const el = document.getElementById(item.hash);
           if (el) {
             const rect = el.getBoundingClientRect();
-            if (rect.top <= triggerLine + 50) {
+            if (rect.top <= triggerLine + 60) {
               detectedIndex = item.index;
               break;
             }

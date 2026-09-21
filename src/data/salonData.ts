@@ -1,4 +1,4 @@
-import { ServiceItem, Stylist, ReviewItem, GalleryItem } from '../types';
+import { ServiceItem, Stylist, ReviewItem, GalleryItem, StoreProduct, FAQItem } from '../types';
 
 export const SALON_INFO = {
   name: 'Real Looks Unisex Salon',
@@ -154,38 +154,50 @@ export const STYLISTS: Stylist[] = [
   {
     id: 'any',
     name: 'First Available Specialist',
-    role: 'Recommended for quickest appointment',
+    role: 'Fast-Track Booking',
     specialty: 'Any available senior staff',
     experienceYears: 6,
     availableDays: [0, 1, 2, 3, 4, 5, 6],
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=400&q=80',
+    rating: 4.9,
+    bio: 'Optimal choice for swift appointments. Handled by our experienced on-duty senior master.',
+    specialties: ['Precision Cuts', 'Express Styling', 'Scalp Care']
   },
   {
     id: 'stylist-rahul',
     name: 'Rahul Kumar',
-    role: 'Senior Hair & Texture Specialist',
+    role: 'Senior Hair & Texture Director',
     specialty: 'Precision cuts, Fades, Keratin & Hair Botox',
     experienceYears: 8,
     availableDays: [1, 2, 3, 4, 5, 6],
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80'
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    rating: 5.0,
+    bio: 'Trained at leading academies, specializing in high-definition fades, bespoke hair texturizing, and formaldehyde-free Botox therapy.',
+    specialties: ['Hair Botox', 'Nanoplastia', 'Custom Fades', 'Balayage']
   },
   {
     id: 'stylist-priya',
     name: 'Priya Sharma',
-    role: 'Aesthetics & Bridal Stylist',
+    role: 'Lead Aesthetics & Bridal Artist',
     specialty: 'Facials, HD Bridal Makeup & Women Hair Designs',
     experienceYears: 7,
     availableDays: [0, 1, 2, 4, 5, 6],
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80'
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
+    rating: 4.9,
+    bio: 'Celebrated for breathtaking bridal transformations, airbrush techniques, and restorative organic facials that deliver lit-from-within glow.',
+    specialties: ['HD Bridal', 'Hydra Facial', 'Draping', 'Blowouts']
   },
   {
     id: 'stylist-amit',
     name: 'Amit Verma',
-    role: 'Master Barber & Beard Artist',
+    role: 'Master Barber & Beard Artisan',
     specialty: 'Classic straight razor shaves, Beard sculpting & Men spa',
-    experienceYears: 5,
+    experienceYears: 6,
     availableDays: [0, 2, 3, 4, 5, 6],
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80'
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=400&q=80',
+    rating: 5.0,
+    bio: 'Craftsman of precision beard lines, hot towel straight-razor shaving rituals, and men scalp revitalization treatments.',
+    specialties: ['Beard Sculpting', 'Straight Razor', 'Charcoal Detox', 'Head Massage']
   }
 ];
 
@@ -296,3 +308,100 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     description: 'Long-wearing HD makeup with traditional yet contemporary flair.'
   }
 ];
+
+export const STORE_PRODUCTS: StoreProduct[] = [
+  {
+    id: 'prod-olaplex-7',
+    name: 'Olaplex No. 7 Bonding Oil',
+    category: 'Hair Care & Repair',
+    price: 2800,
+    oldPrice: 3200,
+    description: 'Highly-concentrated, weightless reparative styling oil. Dramatically increases shine, softness, and color vibrancy while minimizing flyaways and heat damage up to 450°F.',
+    volume: '30 ml',
+    image: 'https://images.unsplash.com/photo-1608248597359-0a8a660a9270?auto=format&fit=crop&w=600&q=80',
+    tag: 'Bestseller'
+  },
+  {
+    id: 'prod-kerastase-elixir',
+    name: "Kérastase Elixir Ultime L'Original Oil",
+    category: 'Luxury Hair Elixir',
+    price: 3450,
+    oldPrice: 3900,
+    description: 'Iconic multi-use hair oil infused with sacred Marula and Camellia oils. Delivers 96-hour frizz control, mirror-like shine, and sensual floral fragrance.',
+    volume: '100 ml',
+    image: 'https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?auto=format&fit=crop&w=600&q=80',
+    tag: 'Salon Exclusive'
+  },
+  {
+    id: 'prod-loreal-mask',
+    name: "L'Oréal Professionnel Absolut Repair Mask",
+    category: 'Deep Conditioning',
+    price: 950,
+    oldPrice: 1100,
+    description: 'Enriched with Gold Quinoa + Protein. Instantly resurfaces damaged, sensitized hair leaving it 77% less damaged and 7x shinier with zero weighing down.',
+    volume: '250 ml',
+    image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=600&q=80',
+    tag: 'Instant Repair'
+  },
+  {
+    id: 'prod-moroccanoil',
+    name: 'Moroccanoil Treatment Original',
+    category: 'Argan Infusion',
+    price: 3600,
+    oldPrice: 4100,
+    description: 'The global pioneer in oil-infused hair care. Non-greasy antioxidant argan formula conditions, styles, and finishes hair with unmatched silky softness.',
+    volume: '100 ml',
+    image: 'https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=600&q=80',
+    tag: 'Classic Luxury'
+  },
+  {
+    id: 'prod-dermalogica-micro',
+    name: 'Dermalogica Daily Microfoliant',
+    category: 'Skin Luminosity',
+    price: 4200,
+    oldPrice: 4600,
+    description: 'Rice-based enzyme powder that micro-exfoliates dulling debris and instantly leaves skin noticeably smoother, brighter, and receptive to hydration.',
+    volume: '74 g',
+    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=600&q=80',
+    tag: 'Dermatologist Loved'
+  },
+  {
+    id: 'prod-schwarzkopf-dust',
+    name: 'Schwarzkopf Osis+ Dust It Mattifying Powder',
+    category: "Men's Styling & Texture",
+    price: 850,
+    oldPrice: 950,
+    description: 'Lightweight styling powder that creates incredible root lift, matte texture, and rough separation with 24-hour invisible control.',
+    volume: '10 g',
+    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80',
+    tag: 'Matte Finish'
+  }
+];
+
+export const FAQS: FAQItem[] = [
+  {
+    question: 'Do I need to book an appointment in advance or can I walk in?',
+    answer: 'While we warmly accept walk-in clients based on stylist availability, we strongly recommend reserving your slot online or via WhatsApp. Booking in advance guarantees direct priority access, zero waiting time, and your preferred master stylist.'
+  },
+  {
+    question: 'What hospital-grade hygiene and sterilization standards do you follow?',
+    answer: 'Client health is our utmost priority. Every metal shear, razor, clipper blade, and comb undergoes multi-stage ultrasonic cleansing followed by medical-grade UV and autoclave sterilization. Single-use disposable capes, neck wraps, and sanitized towels are provided for every single guest.'
+  },
+  {
+    question: 'Which professional product brands do you use in treatments?',
+    answer: 'We exclusively work with genuine, internationally certified salon brands including L’Oréal Professionnel, Kérastase, Olaplex, Moroccanoil, and Schwarzkopf Professional. Our hair botox and nanoplastia formulations are 100% formaldehyde-free and dermatologically certified.'
+  },
+  {
+    question: 'Can I choose a specific senior stylist or barber?',
+    answer: 'Yes! Our appointment booking portal allows you to select Rahul Kumar (Hair & Texture Director), Priya Sharma (Bridal & Aesthetics), Amit Verma (Master Barber), or the first available specialist depending on your schedule and requirements.'
+  },
+  {
+    question: 'Do you offer customized bridal and groom consultation sessions?',
+    answer: 'Yes, we provide full customized pre-wedding trials, hair texture diagnostics, skin priming regimens, and dress draping rehearsals. We recommend connecting with our lead bridal artist 2-4 weeks prior to your ceremony date.'
+  },
+  {
+    question: 'Where is Real Looks located and what are your opening hours?',
+    answer: 'We are situated in Dani Bigha, near Vayuputra Fitness Club, Aurangabad, Bihar (824101). We are open 7 days a week, Monday through Sunday, from 9:00 AM to 9:00 PM, with ample parking right outside.'
+  }
+];
+

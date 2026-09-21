@@ -25,11 +25,13 @@ import { ServiceItem, Stylist, BookingRequest } from '../types';
 
 interface AppointmentSchedulerProps {
   initialServiceId?: string | null;
+  initialStylistId?: string | null;
   onBookingSuccess?: (booking: BookingRequest) => void;
 }
 
 export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
   initialServiceId,
+  initialStylistId,
   onBookingSuccess,
 }) => {
   // Wizard steps: 1: Service -> 2: Specialist -> 3: Date & Time -> 4: Client Info -> 5: Confirmation
@@ -58,7 +60,7 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
   const [confirmedBooking, setConfirmedBooking] = useState<BookingRequest | null>(null);
   const [copiedLink, setCopiedLink] = useState<boolean>(false);
 
-  // Handle preselection when parent changes
+  // Handle service preselection when parent changes
   useEffect(() => {
     if (initialServiceId) {
       const found = SERVICES.find(s => s.id === initialServiceId);
@@ -70,6 +72,17 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
       setSelectedService(SERVICES[0]);
     }
   }, [initialServiceId]);
+
+  // Handle stylist preselection when parent changes
+  useEffect(() => {
+    if (initialStylistId) {
+      const found = STYLISTS.find(s => s.id === initialStylistId);
+      if (found) {
+        setSelectedStylist(found);
+        setStep(3);
+      }
+    }
+  }, [initialStylistId]);
 
   // Generate date options for the next 14 days
   const availableDates = Array.from({ length: 14 }).map((_, i) => {

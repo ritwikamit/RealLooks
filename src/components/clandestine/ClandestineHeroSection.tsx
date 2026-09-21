@@ -415,6 +415,36 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
           </div>
 
         </div>
+
+        {/* Professional Salon Trust Counter Strip */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.25 }}
+          className="mt-10 sm:mt-12 w-full grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-5xl mx-auto"
+        >
+          <div className="bg-white/85 backdrop-blur-md border border-[#4B9CD3]/30 rounded-2xl p-3.5 sm:p-4 text-center shadow-xs">
+            <div className="text-2xl sm:text-3xl font-serif font-extrabold text-[#0E2230]">10,000+</div>
+            <div className="text-[11px] font-bold text-[#2B78AE] uppercase tracking-wider mt-0.5">Satisfied Clients</div>
+            <div className="text-[10px] text-[#556977]">Aurangabad & Surrounding</div>
+          </div>
+          <div className="bg-white/85 backdrop-blur-md border border-[#D6A838]/35 rounded-2xl p-3.5 sm:p-4 text-center shadow-xs">
+            <div className="text-2xl sm:text-3xl font-serif font-extrabold text-[#5A4105]">12+</div>
+            <div className="text-[11px] font-bold text-[#8E680E] uppercase tracking-wider mt-0.5">Master Artisans</div>
+            <div className="text-[10px] text-[#556977]">Certified Stylists & Colorists</div>
+          </div>
+          <div className="bg-white/85 backdrop-blur-md border border-[#12B5AF]/35 rounded-2xl p-3.5 sm:p-4 text-center shadow-xs">
+            <div className="text-2xl sm:text-3xl font-serif font-extrabold text-[#0E2230]">100%</div>
+            <div className="text-[11px] font-bold text-[#0D8F8B] uppercase tracking-wider mt-0.5">UV & Autoclaved</div>
+            <div className="text-[10px] text-[#556977]">Hospital-Grade Hygiene</div>
+          </div>
+          <div className="bg-white/85 backdrop-blur-md border border-[#D6A838]/35 rounded-2xl p-3.5 sm:p-4 text-center shadow-xs">
+            <div className="text-2xl sm:text-3xl font-serif font-extrabold text-[#5A4105]">4.9★</div>
+            <div className="text-[11px] font-bold text-[#8E680E] uppercase tracking-wider mt-0.5">Google Rating</div>
+            <div className="text-[10px] text-[#556977]">850+ Verified Reviews</div>
+          </div>
+        </motion.div>
+
       </div>
 
       {/* Clandestine Minimalist Mouse Scroll Indicator */}

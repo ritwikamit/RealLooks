@@ -27,6 +27,9 @@ export interface Stylist {
   experienceYears: number;
   availableDays: number[]; // 0=Sunday, 1=Monday, etc.
   avatar: string;
+  rating?: number;
+  bio?: string;
+  specialties?: string[];
 }
 
 export interface BookingRequest {
@@ -65,3 +68,21 @@ export interface GalleryItem {
   imageUrl: string;
   description?: string;
 }
+
+export interface StoreProduct {
+  id: string;
+  name: string;
+  category: string;
+  price: number;
+  oldPrice?: number;
+  description: string;
+  volume: string;
+  image: string;
+  tag?: string;
+}
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
