@@ -94,14 +94,31 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
         }
       `}</style>
 
-      {/* 1. Luminous Ambient Sky & Carolina Blue Aura Blobs (z-0 behind watermark) */}
+      {/* 1. Ambient Sky & Carolina Blue Glow Blobs */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-32 -left-32 w-[660px] h-[660px] bg-gradient-to-br from-[#4B9CD3]/28 via-[#12B5AF]/22 to-transparent rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-10 -right-32 w-[680px] h-[680px] bg-gradient-to-bl from-[#89CFF0]/35 via-[#8FD3E8]/30 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-1/4 w-[520px] h-[300px] bg-gradient-to-t from-[#12B5AF]/18 to-transparent rounded-full blur-2xl" />
+        <div className="absolute -top-32 -left-32 w-[660px] h-[660px] bg-gradient-to-br from-[#4B9CD3]/25 via-[#12B5AF]/20 to-transparent rounded-full blur-3xl" />
+        <div className="absolute top-10 -right-32 w-[680px] h-[680px] bg-gradient-to-bl from-[#89CFF0]/30 via-[#8FD3E8]/25 to-transparent rounded-full blur-3xl" />
       </div>
 
-      {/* 2. Grand Prominent Real Looks Logo Watermark in Hero Centre (z-0 above background, below z-10 foreground) */}
+      {/* 2. Realistic Directional Key Light Source from Low-Left */}
+      <div 
+        className="absolute -bottom-24 -left-20 w-[820px] h-[820px] pointer-events-none z-0 select-none overflow-hidden"
+        style={{
+          background: 'radial-gradient(circle at 28% 72%, rgba(255, 244, 189, 0.70) 0%, rgba(214, 168, 56, 0.40) 32%, rgba(75, 156, 211, 0.20) 58%, transparent 78%)',
+          filter: 'blur(40px)',
+        }}
+      />
+
+      {/* 3. Angled Volumetric Light Beam Illuminating Center Logo from Low-Left */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-0 select-none"
+        style={{
+          background: 'linear-gradient(52deg, rgba(255, 244, 189, 0.32) 0%, rgba(255, 248, 220, 0.20) 24%, rgba(75, 156, 211, 0.08) 50%, transparent 72%)',
+          mixBlendMode: 'screen',
+        }}
+      />
+
+      {/* 4. Realistic 3D Center Logo with Low-Left Studio Key Lighting & Cast Shadows */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0 select-none">
         <img
           src="/images/logo.png"
@@ -109,10 +126,27 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
           aria-hidden="true"
           className="w-[880px] sm:w-[1060px] lg:w-[1240px] max-w-[95vw] h-auto object-contain pointer-events-none transition-all duration-700 select-none"
           style={{
-            opacity: 0.38,
-            filter: 'drop-shadow(0 0 50px rgba(75, 156, 211, 0.4)) drop-shadow(0 0 90px rgba(214, 168, 56, 0.25))',
+            opacity: 0.52,
+            filter: `
+              drop-shadow(-5px 6px 9px rgba(255, 255, 255, 0.95))
+              drop-shadow(-13px 15px 24px rgba(255, 242, 175, 0.80))
+              drop-shadow(16px -16px 24px rgba(10, 24, 38, 0.58))
+              drop-shadow(28px -26px 45px rgba(8, 18, 30, 0.38))
+              drop-shadow(0 0 65px rgba(75, 156, 211, 0.32))
+              contrast(1.14)
+              brightness(1.05)
+            `,
           }}
           loading="eager"
+        />
+
+        {/* Ambient Ground Light Glint beneath Logo */}
+        <div 
+          className="absolute inset-x-0 bottom-8 h-24 pointer-events-none"
+          style={{
+            background: 'radial-gradient(ellipse 55% 45% at 50% 60%, rgba(214, 168, 56, 0.22), transparent 70%)',
+            filter: 'blur(22px)',
+          }}
         />
       </div>
 
