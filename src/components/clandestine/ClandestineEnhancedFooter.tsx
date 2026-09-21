@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { MapPin, Phone, Clock, Instagram, Facebook, ArrowUp, Sparkles, MessageSquare, Heart } from 'lucide-react';
-import { BrandLogo } from '../BrandLogo';
+import React from 'react';
+import { MapPin, Phone, Clock, Instagram, Facebook, ArrowUp, MessageSquare } from 'lucide-react';
 import { SALON_INFO } from '../../data/salonData';
 import { PageView } from './LimelightNavbar';
 
@@ -13,15 +12,6 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
   onNavigate,
   onBookClick,
 }) => {
-  const [rotation, setRotation] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRotation((prev) => (prev + 20) % 360);
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -46,16 +36,26 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
         {/* Main 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           
-          {/* Col 1: Brand, Tagline, Rotating Accent */}
+          {/* Col 1: Enlarged Logo & REAL LOOKS Text */}
           <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <BrandLogo variant="header" light />
-              {/* Rotating Botanical Accent inspired by Clandestine Snowflake */}
-              <div
-                className="w-6 h-6 text-[#D6A838] transition-transform duration-1000 ease-in-out"
-                style={{ transform: `rotate(${rotation}deg)` }}
-              >
-                <Sparkles className="w-5 h-5" />
+            <div 
+              className="flex items-center gap-3.5 cursor-pointer group"
+              onClick={scrollToTop}
+              title="Real Looks Unisex Salon"
+            >
+              <img
+                src="/images/logo.png"
+                alt="Real Looks Unisex Salon Logo"
+                className="h-14 sm:h-16 w-auto object-contain filter drop-shadow-[0_2px_12px_rgba(214,168,56,0.35)] select-none transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="flex flex-col">
+                <span className="font-serif font-black text-xl sm:text-2xl tracking-[0.18em] uppercase text-white leading-none">
+                  REAL LOOKS
+                </span>
+                <span className="text-[10px] tracking-[0.26em] uppercase text-[#D6A838] font-bold mt-1">
+                  UNISEX SALON
+                </span>
               </div>
             </div>
 
@@ -182,22 +182,44 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
 
         </div>
 
-        {/* Bottom Bar: Copyright & Back to Top */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/50">
-          <div className="flex items-center gap-2">
+        {/* Bottom Bar: Centered Copyright & Developer Credit */}
+        <div className="pt-8 flex flex-col items-center justify-center text-center gap-3 text-xs text-white/60">
+          {/* Centered All Rights Reserved */}
+          <div className="flex flex-wrap items-center justify-center gap-2">
             <span>© {new Date().getFullYear()} Real Looks Unisex Salon. All rights reserved.</span>
-            <span>•</span>
-            <span className="text-[#D6A838]">Aurangabad, Bihar</span>
+            <span className="text-white/30">•</span>
+            <span className="text-[#D6A838] font-medium">Dani Bigha, Aurangabad, Bihar</span>
           </div>
 
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-1.5 text-xs text-[#FFF2A8] hover:text-white transition-colors cursor-pointer"
-            aria-label="Back to top"
-          >
-            <span>Back to top</span>
-            <ArrowUp className="w-4 h-4" />
-          </button>
+          {/* Designed and Developed by ACCustom Labs */}
+          <div className="flex items-center justify-center gap-2 text-white/70 text-[11px] sm:text-xs">
+            <span>Designed and Developed by</span>
+            <a
+              href="https://accustomlabs.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center hover:opacity-85 transition-opacity"
+              title="ACCustom Labs"
+            >
+              <img
+                src="/images/accustomlabs.svg"
+                alt="ACCustom Labs"
+                className="h-4 sm:h-4.5 w-auto object-contain inline-block align-middle filter drop-shadow-xs"
+              />
+            </a>
+          </div>
+
+          {/* Back to top */}
+          <div className="pt-1">
+            <button
+              onClick={scrollToTop}
+              className="inline-flex items-center gap-1.5 text-xs text-[#FFF2A8]/80 hover:text-[#FFF2A8] transition-colors cursor-pointer"
+              aria-label="Back to top"
+            >
+              <span>Back to top</span>
+              <ArrowUp className="w-3.5 h-3.5" />
+            </button>
+          </div>
         </div>
 
       </div>
