@@ -87,8 +87,8 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
       {/* 2. Hero Centered Main Content Container (relative z-10) */}
       <div className="relative z-10 max-w-4xl mx-auto w-full my-auto py-6 sm:py-10 flex flex-col items-center text-center">
         
-        {/* Luxury Lucid Blur Glassmorphic Center Card */}
-        <div className="relative w-full bg-white/50 sm:bg-white/40 backdrop-blur-2xl border border-white/80 shadow-[0_24px_64px_rgba(11,25,44,0.12),0_0_32px_rgba(214,168,56,0.22)] rounded-3xl p-5 sm:p-10 flex flex-col items-center text-center space-y-6 overflow-hidden">
+        {/* Luxury Lucid Blur Glassmorphic Center Card with Rich Golden Border */}
+        <div className="relative w-full bg-white/50 sm:bg-white/40 backdrop-blur-2xl border-2 border-[#D6A838] shadow-[0_24px_64px_rgba(11,25,44,0.12),0_0_32px_rgba(214,168,56,0.3)] rounded-3xl p-5 sm:p-10 flex flex-col items-center text-center space-y-6 overflow-hidden">
           {/* Subtle gold luxury inner top accent */}
           <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#FFF4BD] to-transparent" />
 
@@ -149,27 +149,27 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
             </p>
           </div>
 
-          {/* Location & Hours Strip (Lucid Blur) */}
+          {/* Location & Hours Strip (Lucid Blur with Gold Borders) */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs font-medium pt-1"
           >
-            <div className="flex items-center gap-2 bg-white/50 hover:bg-white/65 backdrop-blur-xl px-3.5 sm:px-4 py-2 rounded-full border border-white/80 shadow-[0_4px_16px_rgba(0,0,0,0.04)] text-[#141A13] transition-colors">
+            <div className="flex items-center gap-2 bg-white/50 hover:bg-white/65 backdrop-blur-xl px-3.5 sm:px-4 py-2 rounded-full border border-[#D6A838]/60 shadow-[0_4px_16px_rgba(214,168,56,0.1)] text-[#141A13] transition-colors">
               <MapPin className="w-3.5 h-3.5 text-[#8E680E] flex-shrink-0" />
               <span className="font-semibold text-[11px] sm:text-xs">Dani Bigha, Aurangabad, Bihar</span>
             </div>
 
-            <div className="flex items-center gap-2 bg-white/50 hover:bg-white/65 backdrop-blur-xl px-3.5 sm:px-4 py-2 rounded-full border border-white/80 shadow-[0_4px_16px_rgba(0,0,0,0.04)] text-[#5A4105] transition-colors">
+            <div className="flex items-center gap-2 bg-white/50 hover:bg-white/65 backdrop-blur-xl px-3.5 sm:px-4 py-2 rounded-full border border-[#D6A838]/60 shadow-[0_4px_16px_rgba(214,168,56,0.1)] text-[#5A4105] transition-colors">
               <Clock className="w-3.5 h-3.5 text-[#8E680E] flex-shrink-0" />
               <span className="font-semibold text-[11px] sm:text-xs">Open Daily 9:00 AM – 9:00 PM</span>
             </div>
           </motion.div>
 
-          {/* Value Props Row (Lucid Blur Cards) */}
+          {/* Value Props Row (Lucid Blur Cards with Golden Borders) */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 w-full max-w-2xl pt-1">
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/45 hover:bg-white/60 backdrop-blur-xl border border-white/75 flex items-center justify-center gap-2 sm:gap-2.5 shadow-[0_4px_16px_rgba(0,0,0,0.04)] transition-all hover:scale-[1.02]">
+            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/45 hover:bg-white/65 backdrop-blur-xl border-2 border-[#D6A838]/80 hover:border-[#D6A838] flex items-center justify-center gap-2 sm:gap-2.5 shadow-[0_4px_16px_rgba(214,168,56,0.15)] transition-all hover:scale-[1.02]">
               <div className="w-8 h-8 rounded-xl bg-[#4C5B2E]/12 flex items-center justify-center text-[#2F3B1A] flex-shrink-0">
                 <Scissors className="w-4 h-4" />
               </div>
@@ -179,7 +179,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
               </div>
             </div>
 
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/45 hover:bg-white/60 backdrop-blur-xl border border-white/75 flex items-center justify-center gap-2 sm:gap-2.5 shadow-[0_4px_16px_rgba(0,0,0,0.04)] transition-all hover:scale-[1.02]">
+            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/45 hover:bg-white/65 backdrop-blur-xl border-2 border-[#D6A838]/80 hover:border-[#D6A838] flex items-center justify-center gap-2 sm:gap-2.5 shadow-[0_4px_16px_rgba(214,168,56,0.15)] transition-all hover:scale-[1.02]">
               <div className="w-8 h-8 rounded-xl bg-[#D6A838]/20 flex items-center justify-center text-[#8E680E] flex-shrink-0">
                 <Sparkles className="w-4 h-4 text-[#C29324]" />
               </div>
@@ -189,7 +189,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
               </div>
             </div>
 
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/45 hover:bg-white/60 backdrop-blur-xl border border-white/75 flex items-center justify-center gap-2 sm:gap-2.5 shadow-[0_4px_16px_rgba(0,0,0,0.04)] transition-all hover:scale-[1.02]">
+            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/45 hover:bg-white/65 backdrop-blur-xl border-2 border-[#D6A838]/80 hover:border-[#D6A838] flex items-center justify-center gap-2 sm:gap-2.5 shadow-[0_4px_16px_rgba(214,168,56,0.15)] transition-all hover:scale-[1.02]">
               <div className="w-8 h-8 rounded-xl bg-[#12B5AF]/15 flex items-center justify-center text-[#0D8F8B] flex-shrink-0">
                 <ShieldCheck className="w-4 h-4" />
               </div>
@@ -199,7 +199,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
               </div>
             </div>
 
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/45 hover:bg-white/60 backdrop-blur-xl border border-white/75 flex items-center justify-center gap-2 sm:gap-2.5 shadow-[0_4px_16px_rgba(0,0,0,0.04)] transition-all hover:scale-[1.02]">
+            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/45 hover:bg-white/65 backdrop-blur-xl border-2 border-[#D6A838]/80 hover:border-[#D6A838] flex items-center justify-center gap-2 sm:gap-2.5 shadow-[0_4px_16px_rgba(214,168,56,0.15)] transition-all hover:scale-[1.02]">
               <div className="w-8 h-8 rounded-xl bg-[#4C5B2E]/12 flex items-center justify-center text-[#2F3B1A] flex-shrink-0">
                 <Clock className="w-4 h-4" />
               </div>

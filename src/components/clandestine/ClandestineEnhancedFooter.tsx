@@ -39,14 +39,15 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
           {/* Col 1: Enlarged Radiant Logo without duplicate text */}
           <div className="space-y-4">
             <div 
-              className="inline-block cursor-pointer group"
+              className="relative inline-block cursor-pointer group"
               onClick={scrollToTop}
               title="Real Looks Unisex Salon"
             >
+              <div className="absolute -inset-3 bg-gradient-to-r from-[#FFF4BD]/20 via-[#D6A838]/30 to-[#FAF9F6]/20 rounded-3xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity" />
               <img
-                src="/images/logo-light.png"
+                src="/images/logo.png"
                 alt="Real Looks Unisex Salon Logo"
-                className="h-24 sm:h-28 md:h-32 w-auto object-contain filter drop-shadow-[0_4px_24px_rgba(214,168,56,0.45)] select-none transition-transform duration-300 group-hover:scale-105"
+                className="relative h-24 sm:h-28 md:h-32 w-auto object-contain filter drop-shadow-[0_4px_24px_rgba(214,168,56,0.5)] select-none transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
             </div>
