@@ -74,17 +74,18 @@
   }
 }
 
-/* Luxury Artisan Canvas Texture */
+/* Luxury Artisan Canvas Texture with Thick Lines & Bold Intersection Dots */
 .rough-paper-canvas,
 .luxury-artisan-canvas {
   background-color: #FAF9F6;
+  background-size: 44px 44px;
   background-image: 
-    radial-gradient(rgba(214, 168, 56, 0.12) 1.5px, transparent 1.5px),
-    radial-gradient(rgba(47, 59, 26, 0.08) 1.5px, transparent 1.5px);
-  background-size: 36px 36px, 72px 72px;
+    radial-gradient(circle 4.5px at 0px 0px, #634705 0%, #8E680E 2.5px, #D6A838 4px, transparent 4.5px),
+    linear-gradient(to right, rgba(168, 125, 22, 0.45) 2.5px, transparent 2.5px),
+    linear-gradient(to bottom, rgba(47, 59, 26, 0.32) 2.5px, transparent 2.5px);
 }
 
-/* Square Mapping with Thicker Lines and Prominent Intersection Dots */
+/* Square Mapping with Thick Lines and Bold Intersection Dots */
 .square-mapping-edge-overlay,
 .architectural-edge-overlay {
   position: absolute;
@@ -93,30 +94,26 @@
   z-index: 0;
   background-size: 44px 44px;
   background-image: 
-    radial-gradient(circle 3px at 0px 0px, rgba(214, 168, 56, 0.7) 2.5px, transparent 3.5px),
-    linear-gradient(to right, rgba(214, 168, 56, 0.35) 2px, transparent 2px),
-    linear-gradient(to bottom, rgba(47, 59, 26, 0.22) 2px, transparent 2px);
+    radial-gradient(circle 5px at 0px 0px, #5A4004 0%, #8E680E 2.5px, #D6A838 4px, transparent 5px),
+    linear-gradient(to right, rgba(168, 125, 22, 0.55) 2.5px, transparent 2.5px),
+    linear-gradient(to bottom, rgba(47, 59, 26, 0.42) 2.5px, transparent 2.5px);
   mask-image: linear-gradient(
     to right,
-    transparent 0%,
-    rgba(0, 0, 0, 0.25) 5%,
-    rgba(0, 0, 0, 0.85) 15%,
-    rgba(0, 0, 0, 1) 25%,
-    rgba(0, 0, 0, 1) 75%,
-    rgba(0, 0, 0, 0.85) 85%,
-    rgba(0, 0, 0, 0.25) 95%,
-    transparent 100%
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.85) 8%,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0.85) 92%,
+    rgba(0, 0, 0, 0.45) 100%
   );
   -webkit-mask-image: linear-gradient(
     to right,
-    transparent 0%,
-    rgba(0, 0, 0, 0.25) 5%,
-    rgba(0, 0, 0, 0.85) 15%,
-    rgba(0, 0, 0, 1) 25%,
-    rgba(0, 0, 0, 1) 75%,
-    rgba(0, 0, 0, 0.85) 85%,
-    rgba(0, 0, 0, 0.25) 95%,
-    transparent 100%
+    rgba(0, 0, 0, 0.45) 0%,
+    rgba(0, 0, 0, 0.85) 8%,
+    rgba(0, 0, 0, 1) 20%,
+    rgba(0, 0, 0, 1) 80%,
+    rgba(0, 0, 0, 0.85) 92%,
+    rgba(0, 0, 0, 0.45) 100%
   );
   contain: paint;
 }

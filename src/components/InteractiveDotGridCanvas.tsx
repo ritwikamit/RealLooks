@@ -88,10 +88,10 @@ export const InteractiveDotGridCanvas: React.FC<InteractiveDotGridCanvasProps> =
           }}
         >
           {/* Outer gold halo ring */}
-          <div className="w-5 h-5 -translate-x-1/2 -translate-y-1/2 absolute left-1/2 top-1/2 rounded-full border border-[#D6A838]/60 bg-[#D6A838]/15 animate-ping opacity-60" />
+          <div className="w-6 h-6 -translate-x-1/2 -translate-y-1/2 absolute left-1/2 top-1/2 rounded-full border border-[#D6A838]/80 bg-[#D6A838]/20 animate-ping opacity-70" />
           
-          {/* Inner sparkling gold intersection dot */}
-          <div className="w-2.5 h-2.5 -translate-x-1/2 -translate-y-1/2 absolute left-1/2 top-1/2 rounded-full bg-gradient-to-tr from-[#D6A838] to-[#FFF4BD] shadow-[0_0_10px_#D6A838]" />
+          {/* Inner sparkling gold bold intersection dot */}
+          <div className="w-3.5 h-3.5 -translate-x-1/2 -translate-y-1/2 absolute left-1/2 top-1/2 rounded-full bg-gradient-to-tr from-[#5A4004] via-[#D6A838] to-[#FFF4BD] shadow-[0_0_14px_#D6A838] border border-[#FFF4BD]/60" />
         </div>
       )}
     </div>
