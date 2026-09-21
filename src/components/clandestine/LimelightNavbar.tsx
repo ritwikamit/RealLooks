@@ -197,72 +197,92 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full px-3 sm:px-6 lg:px-8 py-3 transition-all duration-300">
-      {/* Floating Pill Container */}
-      <div
-        className={`max-w-7xl mx-auto rounded-2xl sm:rounded-3xl transition-all duration-300 px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border ${
-          isScrolled
-            ? 'bg-[#1A230F]/95 backdrop-blur-xl border-[#D6A838]/50 shadow-[0_12px_32px_rgba(0,0,0,0.35)]'
-            : 'bg-[#222E13]/90 backdrop-blur-lg border-[#D6A838]/35 shadow-[0_8px_24px_rgba(0,0,0,0.24)]'
-        }`}
-      >
-        {/* 1. Left: Brand Logo (Transparent, aligned, sharp) */}
+    <header 
+      className={`sticky top-0 z-50 w-full transition-all duration-300 border-b ${
+        isScrolled
+          ? 'bg-[#142013]/95 backdrop-blur-xl border-[#D6A838]/35 shadow-[0_8px_30px_rgba(0,0,0,0.35)] py-2 sm:py-2.5'
+          : 'bg-[#1A2617]/90 backdrop-blur-lg border-white/10 shadow-[0_4px_20px_rgba(0,0,0,0.22)] py-2.5 sm:py-3'
+      }`}
+    >
+      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        {/* 1. Left: Brand Emblem + "Real Looks" Typography Beside Logo */}
         <button
           onClick={() => handleItemClick(0, navItems[0])}
-          className="flex items-center gap-2 cursor-pointer focus:outline-none transition-transform hover:scale-[1.02] flex-shrink-0"
+          className="flex items-center gap-2.5 sm:gap-3 cursor-pointer focus:outline-none transition-transform hover:scale-[1.02] flex-shrink-0 group"
           aria-label="Real Looks Home"
         >
-          <BrandLogo variant="header" />
-        </button>
-
-        {/* 2. Center: Highly Responsive Limelight Spotlight Navigation Bar */}
-        <nav
-          className="hidden md:flex items-center relative h-11 px-1 lg:px-2"
-          onMouseLeave={() => setHoveredIndex(null)}
-        >
-          {/* Spotlight Floating Indicator with ultra-responsive smooth spring ease */}
-          <div
-            ref={limelightRef}
-            className="pointer-events-none absolute top-0 left-0 h-[4px] rounded-full bg-gradient-to-r from-[#FFF4BD] via-[#D6A838] to-[#C29324] z-10"
-            style={{
-              boxShadow: '0 4px 20px 2px rgba(214,168,56,0.9), 0 0 10px #FFF4BD',
-              transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), width 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease',
-              opacity: 0,
-            }}
-          >
-            {/* Spotlight Light Cone Beam */}
-            <div
-              className="absolute left-[-20%] top-[4px] w-[140%] h-[48px] pointer-events-none opacity-45"
-              style={{
-                clipPath: 'polygon(15% 100%, 30% 0%, 70% 0%, 85% 100%)',
-                background: 'linear-gradient(to bottom, #D6A838, rgba(214,168,56,0.2) 60%, transparent)',
-                filter: 'drop-shadow(0 0 8px rgba(214,168,56,0.6))',
-              }}
+          {/* Logo Emblem in gold-accented circle */}
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full p-1 bg-gradient-to-br from-[#FFF4BD]/20 to-[#D6A838]/15 border border-[#D6A838]/50 flex items-center justify-center shadow-xs group-hover:border-[#FFF4BD] transition-colors">
+            <img
+              src="/images/logo-emblem.png"
+              alt="Real Looks Logo Emblem"
+              className="w-full h-full object-contain filter drop-shadow-xs"
             />
           </div>
 
-          {/* Navigation Links with instant responsive hover feedback */}
-          <div className="flex items-center gap-0.5 lg:gap-1">
-            {navItems.map((item, idx) => {
-              const isSelected = displayIndex === idx;
-              return (
-                <button
-                  key={item.label}
-                  ref={(el) => (navItemRefs.current[idx] = el)}
-                  onClick={() => handleItemClick(idx, item)}
-                  onMouseEnter={() => setHoveredIndex(idx)}
-                  className={`relative px-2.5 sm:px-3 lg:px-4 py-1.5 sm:py-2 text-[11px] lg:text-xs font-bold tracking-wider uppercase rounded-xl transition-all duration-150 cursor-pointer select-none ${
-                    isSelected
-                      ? 'text-[#FFF2A8] font-extrabold drop-shadow-[0_0_8px_rgba(255,244,189,0.75)] bg-white/12 scale-[1.03]'
-                      : 'text-white/80 hover:text-white hover:bg-white/10 active:scale-95'
-                  }`}
-                >
-                  {item.label}
-                </button>
-              );
-            })}
+          {/* "Real Looks" Written Beside Logo */}
+          <div className="flex flex-col text-left leading-tight">
+            <span className="font-serif-title font-extrabold text-base sm:text-lg lg:text-xl tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-[#FFF4BD] via-[#FAF9F5] to-[#D6A838] group-hover:from-white group-hover:to-[#FFF2A8] transition-colors">
+              Real Looks
+            </span>
+            <span className="text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.24em] text-[#E5C460]/90">
+              Unisex Salon
+            </span>
           </div>
-        </nav>
+        </button>
+
+        {/* 2. Center: Cylindrical Capsule Around Nav Bar with Limelight Spotlight */}
+        <div className="hidden md:flex items-center justify-center">
+          <div className="relative p-[1.5px] rounded-full bg-gradient-to-r from-[#D6A838]/40 via-[#FFF4BD]/20 to-[#D6A838]/40 shadow-[0_4px_16px_rgba(0,0,0,0.35)]">
+            <nav
+              className="relative flex items-center h-11 px-2 rounded-full bg-[#10190D]/85 backdrop-blur-xl shadow-[inset_0_2px_5px_rgba(0,0,0,0.6)]"
+              onMouseLeave={() => setHoveredIndex(null)}
+            >
+              {/* Spotlight Floating Indicator with ultra-responsive smooth spring ease */}
+              <div
+                ref={limelightRef}
+                className="pointer-events-none absolute top-0 left-0 h-[4px] rounded-full bg-gradient-to-r from-[#FFF4BD] via-[#D6A838] to-[#C29324] z-10"
+                style={{
+                  boxShadow: '0 4px 20px 2px rgba(214,168,56,0.95), 0 0 10px #FFF4BD',
+                  transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), width 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease',
+                  opacity: 0,
+                }}
+              >
+                {/* Spotlight Light Cone Beam */}
+                <div
+                  className="absolute left-[-20%] top-[4px] w-[140%] h-[48px] pointer-events-none opacity-45"
+                  style={{
+                    clipPath: 'polygon(15% 100%, 30% 0%, 70% 0%, 85% 100%)',
+                    background: 'linear-gradient(to bottom, #D6A838, rgba(214,168,56,0.2) 60%, transparent)',
+                    filter: 'drop-shadow(0 0 8px rgba(214,168,56,0.6))',
+                  }}
+                />
+              </div>
+
+              {/* Navigation Links with instant responsive hover feedback inside the cylinder */}
+              <div className="flex items-center gap-0.5 lg:gap-1">
+                {navItems.map((item, idx) => {
+                  const isSelected = displayIndex === idx;
+                  return (
+                    <button
+                      key={item.label}
+                      ref={(el) => (navItemRefs.current[idx] = el)}
+                      onClick={() => handleItemClick(idx, item)}
+                      onMouseEnter={() => setHoveredIndex(idx)}
+                      className={`relative px-3 sm:px-3.5 lg:px-4 py-1.5 text-[11px] lg:text-xs font-bold tracking-wider uppercase rounded-full transition-all duration-150 cursor-pointer select-none ${
+                        isSelected
+                          ? 'text-[#FFF2A8] font-extrabold drop-shadow-[0_0_8px_rgba(255,244,189,0.75)] bg-white/12 scale-[1.03]'
+                          : 'text-white/80 hover:text-white hover:bg-white/10 active:scale-95'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </nav>
+          </div>
+        </div>
 
         {/* 3. Right: Action Buttons (My Requests + BOOK NOW) */}
         <div className="hidden sm:flex items-center gap-3">

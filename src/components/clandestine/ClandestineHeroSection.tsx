@@ -94,32 +94,32 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
         }
       `}</style>
 
-      {/* 1. Grand Faded Real Looks Logo Watermark in Hero Background */}
+      {/* 1. Grand Faded-Yet-Clearly-Visible Real Looks Logo in Hero Background */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden -z-5 select-none">
         <motion.img
-          initial={{ opacity: 0, scale: 0.92 }}
-          animate={{ opacity: 0.12, scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 0.26, scale: 1 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
           src="/images/logo.png"
-          alt=""
+          alt="Real Looks Logo Watermark"
           aria-hidden="true"
-          className="w-[880px] max-w-[92vw] h-auto object-contain filter drop-shadow-[0_0_80px_rgba(75,156,211,0.25)] mix-blend-multiply pointer-events-none"
+          className="w-[940px] sm:w-[1100px] lg:w-[1260px] max-w-[96vw] h-auto object-contain filter drop-shadow-[0_0_80px_rgba(75,156,211,0.35)] pointer-events-none"
         />
       </div>
 
       {/* 2. Luminous Ambient Sky & Carolina Blue Aura Blobs */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
-        <div className="absolute -top-32 -left-32 w-[640px] h-[640px] bg-gradient-to-br from-[#4B9CD3]/25 via-[#12B5AF]/20 to-transparent rounded-full blur-3xl animate-pulse" />
-        <div className="absolute top-10 -right-32 w-[650px] h-[650px] bg-gradient-to-bl from-[#89CFF0]/32 via-[#8FD3E8]/28 to-transparent rounded-full blur-3xl" />
-        <div className="absolute bottom-10 left-1/4 w-[500px] h-[280px] bg-gradient-to-t from-[#12B5AF]/16 to-transparent rounded-full blur-2xl" />
+        <div className="absolute -top-32 -left-32 w-[660px] h-[660px] bg-gradient-to-br from-[#4B9CD3]/28 via-[#12B5AF]/22 to-transparent rounded-full blur-3xl animate-pulse" />
+        <div className="absolute top-10 -right-32 w-[680px] h-[680px] bg-gradient-to-bl from-[#89CFF0]/35 via-[#8FD3E8]/30 to-transparent rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-1/4 w-[520px] h-[300px] bg-gradient-to-t from-[#12B5AF]/18 to-transparent rounded-full blur-2xl" />
       </div>
 
-      {/* 3. Hero Main Content Container */}
+      {/* 3. Hero Main Content Container Aligned with Central Logo Watermark */}
       <div className="relative z-10 max-w-7xl mx-auto w-full my-auto py-6 sm:py-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* =========================================================
-              LEFT COLUMN: Editorial Typography, TextSwap, CTAs
+              LEFT COLUMN: Editorial Brand Motto, TextSwap, CTAs
              ========================================================= */}
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
             
@@ -128,7 +128,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
               initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#FFF4BD] to-[#F5D77F] border border-[#D6A838]/50 shadow-xs"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#FFF4BD] to-[#F5D77F] border border-[#D6A838]/60 shadow-xs"
             >
               <Sparkles className="w-3.5 h-3.5 text-[#8E680E]" />
               <span className="text-[11px] font-extrabold tracking-[0.22em] uppercase text-[#533C05]">
@@ -136,29 +136,30 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
               </span>
             </motion.div>
 
-            {/* Clandestine Morphing Headline with TextSwap */}
+            {/* Clandestine Morphing Headline Aligned with Logo Watermark */}
             <div className="space-y-3">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif-title font-extrabold text-[#192018] tracking-tight leading-[1.12]">
-                YOUR LOOK.{' '}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif-title font-extrabold text-[#0D1D27] tracking-tight leading-[1.1]">
+                LOOK GOOD.{' '}
                 <br className="hidden sm:inline" />
-                YOUR{' '}
+                FEEL GOOD.{' '}
+                <br />
                 <span className="inline-block relative overflow-hidden align-bottom">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={rotatingWords[wordIndex]}
-                      initial={{ y: 35, opacity: 0 }}
+                      initial={{ y: 40, opacity: 0 }}
                       animate={{ y: 0, opacity: 1 }}
-                      exit={{ y: -35, opacity: 0 }}
+                      exit={{ y: -40, opacity: 0 }}
                       transition={{ duration: 0.45, ease: 'easeOut' }}
-                      className="inline-block bg-gradient-to-r from-[#C29324] via-[#D6A838] to-[#4C5B2E] bg-clip-text text-transparent px-1 font-black"
+                      className="inline-block bg-gradient-to-r from-[#2B78AE] via-[#0D8F8B] to-[#C29324] bg-clip-text text-transparent font-black"
                     >
-                      {rotatingWords[wordIndex]}
+                      BE {rotatingWords[wordIndex]}
                     </motion.span>
                   </AnimatePresence>
                 </span>
               </h1>
 
-              <p className="text-sm sm:text-base lg:text-lg text-[#3D483B] max-w-xl font-normal leading-relaxed">
+              <p className="text-sm sm:text-base lg:text-lg text-[#2A3E4D] max-w-xl font-normal leading-relaxed">
                 {SALON_INFO.heroSubtitle} Discover couture hairdressing, organic botox therapies, beard sculpting, and radiant bridal artistry curated for men and women.
               </p>
             </div>
@@ -168,58 +169,58 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-[#4C5B2E] font-medium"
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-3.5 text-xs font-medium"
             >
-              <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-xl border border-[#4C5B2E]/15 shadow-2xs">
-                <MapPin className="w-3.5 h-3.5 text-[#C29324] flex-shrink-0" />
-                <span className="font-semibold text-[#192018]">Dani Bigha, Aurangabad, Bihar</span>
+              <div className="flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-[#4B9CD3]/30 shadow-xs">
+                <MapPin className="w-3.5 h-3.5 text-[#2B78AE] flex-shrink-0" />
+                <span className="font-semibold text-[#0E2230]">Dani Bigha, Aurangabad, Bihar</span>
               </div>
 
-              <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-xl border border-[#D6A838]/20 shadow-2xs">
+              <div className="flex items-center gap-2 bg-white/90 backdrop-blur-md px-4 py-2 rounded-full border border-[#D6A838]/30 shadow-xs">
                 <Clock className="w-3.5 h-3.5 text-[#8E680E] flex-shrink-0" />
-                <span className="font-semibold text-[#634705]">Open Daily 9:00 AM – 9:00 PM</span>
+                <span className="font-semibold text-[#5A4105]">Open Daily 9:00 AM – 9:00 PM</span>
               </div>
             </motion.div>
 
             {/* Value Props Row (DaisyUI Badges & Cards) */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full max-w-xl">
-              <div className="p-2.5 rounded-xl bg-white/85 backdrop-blur-sm border border-[#4C5B2E]/15 flex items-center gap-2 shadow-2xs">
-                <div className="w-7 h-7 rounded-lg bg-[#4C5B2E]/10 flex items-center justify-center text-[#4C5B2E]">
+              <div className="p-2.5 rounded-2xl bg-white/90 backdrop-blur-md border border-[#4B9CD3]/20 flex items-center gap-2 shadow-2xs">
+                <div className="w-7 h-7 rounded-xl bg-[#4B9CD3]/15 flex items-center justify-center text-[#2B78AE]">
                   <Scissors className="w-3.5 h-3.5" />
                 </div>
                 <div className="text-left leading-tight">
-                  <p className="text-[11px] font-bold text-[#192018]">Unisex Salon</p>
-                  <p className="text-[9px] text-[#677565]">Men & Women</p>
+                  <p className="text-[11px] font-bold text-[#0E1A24]">Unisex Salon</p>
+                  <p className="text-[9px] text-[#556977]">Men & Women</p>
                 </div>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-white/85 backdrop-blur-sm border border-[#D6A838]/20 flex items-center gap-2 shadow-2xs">
-                <div className="w-7 h-7 rounded-lg bg-[#D6A838]/15 flex items-center justify-center text-[#8E680E]">
+              <div className="p-2.5 rounded-2xl bg-white/90 backdrop-blur-md border border-[#D6A838]/25 flex items-center gap-2 shadow-2xs">
+                <div className="w-7 h-7 rounded-xl bg-[#D6A838]/20 flex items-center justify-center text-[#8E680E]">
                   <Sparkles className="w-3.5 h-3.5 text-[#C29324]" />
                 </div>
                 <div className="text-left leading-tight">
-                  <p className="text-[11px] font-bold text-[#192018]">Organic Care</p>
-                  <p className="text-[9px] text-[#677565]">Botox & Keratin</p>
+                  <p className="text-[11px] font-bold text-[#0E1A24]">Organic Care</p>
+                  <p className="text-[9px] text-[#556977]">Botox & Keratin</p>
                 </div>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-white/85 backdrop-blur-sm border border-[#12B5AF]/20 flex items-center gap-2 shadow-2xs">
-                <div className="w-7 h-7 rounded-lg bg-[#12B5AF]/15 flex items-center justify-center text-[#0D8F8B]">
+              <div className="p-2.5 rounded-2xl bg-white/90 backdrop-blur-md border border-[#12B5AF]/25 flex items-center gap-2 shadow-2xs">
+                <div className="w-7 h-7 rounded-xl bg-[#12B5AF]/15 flex items-center justify-center text-[#0D8F8B]">
                   <ShieldCheck className="w-3.5 h-3.5" />
                 </div>
                 <div className="text-left leading-tight">
-                  <p className="text-[11px] font-bold text-[#192018]">UV Sterilized</p>
-                  <p className="text-[9px] text-[#677565]">Hospital-Grade</p>
+                  <p className="text-[11px] font-bold text-[#0E1A24]">UV Sterilized</p>
+                  <p className="text-[9px] text-[#556977]">Hospital-Grade</p>
                 </div>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-white/85 backdrop-blur-sm border border-[#4B9CD3]/20 flex items-center gap-2 shadow-2xs">
-                <div className="w-7 h-7 rounded-lg bg-[#4B9CD3]/15 flex items-center justify-center text-[#2B78AE]">
+              <div className="p-2.5 rounded-2xl bg-white/90 backdrop-blur-md border border-[#4B9CD3]/25 flex items-center gap-2 shadow-2xs">
+                <div className="w-7 h-7 rounded-xl bg-[#4B9CD3]/15 flex items-center justify-center text-[#2B78AE]">
                   <Clock className="w-3.5 h-3.5" />
                 </div>
                 <div className="text-left leading-tight">
-                  <p className="text-[11px] font-bold text-[#192018]">Instant Slot</p>
-                  <p className="text-[9px] text-[#677565]">Direct Reserve</p>
+                  <p className="text-[11px] font-bold text-[#0E1A24]">Instant Slot</p>
+                  <p className="text-[9px] text-[#556977]">Direct Reserve</p>
                 </div>
               </div>
             </div>
@@ -239,7 +240,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
 
               <button
                 onClick={onExploreServices}
-                className="btn btn-outline w-full sm:w-auto px-7 py-3.5 rounded-2xl border-[#4C5B2E]/40 text-[#2F3B1A] hover:bg-[#4C5B2E] hover:text-white hover:border-[#4C5B2E] font-bold text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
+                className="btn btn-outline w-full sm:w-auto px-7 py-3.5 rounded-2xl border-[#2B78AE]/40 text-[#193F5E] hover:bg-[#2B78AE] hover:text-white hover:border-[#2B78AE] font-bold text-xs tracking-wider uppercase transition-all flex items-center justify-center gap-2 cursor-pointer shadow-2xs"
               >
                 <span>Explore Services</span>
               </button>
@@ -269,8 +270,8 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
                   />
                 ))}
               </div>
-              <span className="text-xs font-semibold text-[#3D483B]">
-                <strong className="text-[#192018]">4.9 / 5.0</strong> from 850+ local clients in Aurangabad
+              <span className="text-xs font-semibold text-[#2A3E4D]">
+                <strong className="text-[#0E1A24]">4.9 / 5.0</strong> from 850+ local clients in Aurangabad
               </span>
             </div>
 
@@ -282,8 +283,8 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
           <div className="lg:col-span-5 flex justify-center lg:justify-end relative">
             <div className="relative w-full max-w-sm sm:max-w-md">
               
-              {/* Outer Golden Glow Aura */}
-              <div className="absolute -inset-2 bg-gradient-to-tr from-[#D6A838]/30 via-[#52A296]/20 to-[#86D6B9]/30 rounded-3xl blur-xl opacity-70" />
+              {/* Outer Blue & Gold Glow Aura */}
+              <div className="absolute -inset-2 bg-gradient-to-tr from-[#4B9CD3]/40 via-[#12B5AF]/25 to-[#D6A838]/30 rounded-3xl blur-xl opacity-75" />
 
               {/* Main Portrait Card */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D6A838]/35 bg-white/70 backdrop-blur-md">
