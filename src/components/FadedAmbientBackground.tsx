@@ -7,16 +7,16 @@ export const FadedAmbientBackground: React.FC = () => {
       aria-hidden="true" 
       className="pointer-events-none fixed inset-0 overflow-hidden -z-10 select-none"
     >
-      {/* 1. Base Rough White Art Paper Canvas */}
-      <div className="absolute inset-0 bg-[#FAF9F5] rough-paper-canvas" />
+      {/* 1. Base Luxury Artisan Canvas Texture */}
+      <div className="absolute inset-0 bg-[#FAF9F6] luxury-artisan-canvas" />
 
-      {/* Procedural Micro-Fiber Rough White Paper Filter */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.06] mix-blend-multiply pointer-events-none">
-        <filter id="rough-paper-grain">
-          <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="4" stitchTiles="stitch" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0.22   0 0 0 0 0.24   0 0 0 0 0.2   0 0 0 1 0" />
+      {/* Procedural Micro-Silk Luxury Canvas Filter */}
+      <svg className="absolute inset-0 w-full h-full opacity-[0.035] mix-blend-multiply pointer-events-none">
+        <filter id="luxury-canvas-weave">
+          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+          <feColorMatrix type="matrix" values="0 0 0 0 0.18   0 0 0 0 0.20   0 0 0 0 0.16   0 0 0 1 0" />
         </filter>
-        <rect width="100%" height="100%" filter="url(#rough-paper-grain)" />
+        <rect width="100%" height="100%" filter="url(#luxury-canvas-weave)" />
       </svg>
 
       {/* Multi-layer Organic Gradient Ambient Blobs across website (Faded & Lucid) */}

@@ -72,9 +72,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col font-sans selection:bg-[#7F8F45]/25 selection:text-[#2F3B1A] bg-[#FAF9F5] rough-paper-canvas text-[#192018]">
+    <div className="min-h-screen relative flex flex-col font-sans selection:bg-[#4B9CD3]/25 selection:text-[#0D1D27] bg-[#FAF9F6] luxury-artisan-canvas text-[#192018]">
       
-      {/* 1. Global Rough White Paper Canvas Texture & Ambient Color Glows */}
+      {/* 1. Global Redesigned Luxury Artisan Canvas & Ambient Color Glows */}
       <FadedAmbientBackground />
 
       {/* 2. Clandestine Limelight Floating Navbar */}
@@ -99,15 +99,15 @@ export default function App() {
               onExploreServices={handleExploreServices}
             />
 
-            {/* Post-Hero Container with Visible Side-Edge Fading Square Grid Lines */}
+            {/* Post-Hero Container with Architectural Edge Overlay */}
             <div className="relative w-full overflow-hidden">
               
-              {/* Clearly visible square lines fading in from the side edges */}
-              <div className="square-grid-overlay hidden sm:block" aria-hidden="true" />
+              {/* Soft ambient architectural hairline guides fading towards edges */}
+              <div className="architectural-edge-overlay hidden sm:block" aria-hidden="true" />
               
-              {/* Subtle architectural margin guides on desktop */}
-              <div className="hidden lg:block absolute inset-y-0 left-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
-              <div className="hidden lg:block absolute inset-y-0 right-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
+              {/* Subtle architectural gold margin guides on desktop */}
+              <div className="hidden lg:block absolute inset-y-0 left-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
+              <div className="hidden lg:block absolute inset-y-0 right-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
 
               {/* 1. Unisex Services Catalog */}
               <div className="relative z-10">
@@ -153,9 +153,9 @@ export default function App() {
            ========================================================= */}
         {activePage === 'about' && (
           <div className="relative w-full overflow-hidden py-8 sm:py-12">
-            <div className="square-grid-overlay hidden sm:block" aria-hidden="true" />
-            <div className="hidden lg:block absolute inset-y-0 left-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
-            <div className="hidden lg:block absolute inset-y-0 right-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
+            <div className="architectural-edge-overlay hidden sm:block" aria-hidden="true" />
+            <div className="hidden lg:block absolute inset-y-0 left-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
+            <div className="hidden lg:block absolute inset-y-0 right-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
               <div className="breadcrumbs text-xs font-semibold text-[#677565]">
@@ -192,9 +192,9 @@ export default function App() {
            ========================================================= */}
         {activePage === 'gallery' && (
           <div className="relative w-full overflow-hidden py-8 sm:py-12">
-            <div className="square-grid-overlay hidden sm:block" aria-hidden="true" />
-            <div className="hidden lg:block absolute inset-y-0 left-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
-            <div className="hidden lg:block absolute inset-y-0 right-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
+            <div className="architectural-edge-overlay hidden sm:block" aria-hidden="true" />
+            <div className="hidden lg:block absolute inset-y-0 left-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
+            <div className="hidden lg:block absolute inset-y-0 right-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
               <div className="breadcrumbs text-xs font-semibold text-[#677565]">
@@ -231,9 +231,9 @@ export default function App() {
            ========================================================= */}
         {activePage === 'contact' && (
           <div className="relative w-full overflow-hidden py-8 sm:py-12">
-            <div className="square-grid-overlay hidden sm:block" aria-hidden="true" />
-            <div className="hidden lg:block absolute inset-y-0 left-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
-            <div className="hidden lg:block absolute inset-y-0 right-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
+            <div className="architectural-edge-overlay hidden sm:block" aria-hidden="true" />
+            <div className="hidden lg:block absolute inset-y-0 left-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
+            <div className="hidden lg:block absolute inset-y-0 right-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
 
             <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-6">
               <div className="breadcrumbs text-xs font-semibold text-[#677565]">
