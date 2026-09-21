@@ -223,13 +223,15 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
         {/* 1. Left: Official Brand Logo with radiant white & gold ambient glow */}
         <button
           onClick={() => handleItemClick(0, navItems[0])}
-          className="flex items-center cursor-pointer focus:outline-none transition-transform hover:scale-[1.03] flex-shrink-0"
+          className="relative group flex items-center cursor-pointer focus:outline-none transition-transform hover:scale-[1.03] flex-shrink-0"
           aria-label="Real Looks Home"
         >
+          {/* Luminous ambient aura glow behind the logo matching footer */}
+          <div className="absolute -inset-2 bg-gradient-to-r from-[#FFF4BD]/35 via-[#D6A838]/50 to-[#FAF9F6]/35 rounded-2xl blur-md opacity-90 group-hover:opacity-100 transition-opacity pointer-events-none" />
           <img
             src="/images/logo.png"
             alt="Real Looks Unisex Salon"
-            className="h-11 sm:h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_0_12px_rgba(255,255,255,0.85)] drop-shadow-[0_0_24px_rgba(214,168,56,0.65)] select-none transition-transform duration-300"
+            className="relative h-11 sm:h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_0_14px_rgba(255,255,255,0.9)] drop-shadow-[0_0_28px_rgba(214,168,56,0.75)] select-none transition-transform duration-300"
             loading="eager"
           />
         </button>

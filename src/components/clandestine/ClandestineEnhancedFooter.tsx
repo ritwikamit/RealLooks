@@ -39,14 +39,16 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
           {/* Col 1: Enlarged Glowing Logo without duplicate text */}
           <div className="space-y-4">
             <div 
-              className="inline-block cursor-pointer group"
+              className="relative inline-block cursor-pointer group"
               onClick={scrollToTop}
               title="Real Looks Unisex Salon"
             >
+              {/* Luminous ambient aura glow behind the logo matching header */}
+              <div className="absolute -inset-3 bg-gradient-to-r from-[#FFF4BD]/25 via-[#D6A838]/40 to-[#FAF9F6]/25 rounded-3xl blur-xl opacity-85 group-hover:opacity-100 transition-opacity pointer-events-none" />
               <img
                 src="/images/logo.png"
                 alt="Real Looks Unisex Salon Logo"
-                className="h-20 sm:h-24 md:h-28 w-auto object-contain filter drop-shadow-[0_0_14px_rgba(255,255,255,0.85)] drop-shadow-[0_0_28px_rgba(214,168,56,0.7)] select-none transition-transform duration-300 group-hover:scale-105"
+                className="relative h-20 sm:h-24 md:h-28 w-auto object-contain filter drop-shadow-[0_0_14px_rgba(255,255,255,0.9)] drop-shadow-[0_0_28px_rgba(214,168,56,0.75)] select-none transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
             </div>
