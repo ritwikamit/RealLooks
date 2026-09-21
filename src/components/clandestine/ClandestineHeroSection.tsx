@@ -37,15 +37,46 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
       className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10 pb-10"
       style={{
         background: `
-          radial-gradient(ellipse 95% 70% at 50% -12%, rgba(143, 211, 232, 0.65), transparent 75%),
-          radial-gradient(circle at 10% 28%, rgba(75, 156, 211, 0.38), transparent 52%),
-          radial-gradient(circle at 90% 32%, rgba(18, 181, 175, 0.32), transparent 50%),
-          radial-gradient(circle at 50% 85%, rgba(137, 207, 240, 0.28), transparent 60%),
-          linear-gradient(180deg, #E6F5FB 0%, #DCF0F9 38%, #D4ECF7 68%, #FAF9F5 100%)
+          radial-gradient(ellipse 90% 75% at 50% -10%, rgba(143, 211, 232, 0.75), transparent 70%),
+          radial-gradient(circle at 15% 35%, rgba(75, 156, 211, 0.45), transparent 50%),
+          radial-gradient(circle at 85% 40%, rgba(18, 181, 175, 0.40), transparent 50%),
+          linear-gradient(135deg, #E3F4FC 0%, #CEECF9 25%, #BBE4F6 50%, #D2E7F6 75%, #EDF7FD 100%)
         `,
+        backgroundSize: '220% 220%',
+        animation: 'blueMeshFlow 16s ease-in-out infinite',
       }}
     >
       <style>{`
+        @keyframes blueMeshFlow {
+          0% {
+            background-position: 0% 30%;
+          }
+          50% {
+            background-position: 100% 70%;
+          }
+          100% {
+            background-position: 0% 30%;
+          }
+        }
+        @keyframes orbDrift1 {
+          0%, 100% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(60px, -40px) scale(1.15); }
+          66% { transform: translate(-40px, 30px) scale(0.92); }
+        }
+        @keyframes orbDrift2 {
+          0%, 100% { transform: translate(0px, 0px) scale(1); }
+          33% { transform: translate(-55px, 45px) scale(1.10); }
+          66% { transform: translate(45px, -30px) scale(0.94); }
+        }
+        @keyframes orbDrift3 {
+          0%, 100% { transform: translate(0px, 0px) scale(1); }
+          50% { transform: translate(30px, -45px) scale(1.2); }
+        }
+        @keyframes waveShimmer {
+          0% { opacity: 0.35; transform: translateY(0) scaleY(1); }
+          50% { opacity: 0.65; transform: translateY(-10px) scaleY(1.05); }
+          100% { opacity: 0.35; transform: translateY(0) scaleY(1); }
+        }
         @keyframes float-left {
           0%, 100% { transform: translate(0, 0); }
           50% { transform: translate(-12px, -10px); }
@@ -94,63 +125,40 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
         }
       `}</style>
 
-      {/* 1. Ambient Sky & Carolina Blue Glow Blobs */}
+      {/* Dynamic Animated Fluid Gradient Blue Background (No Logo) */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        <div className="absolute -top-32 -left-32 w-[660px] h-[660px] bg-gradient-to-br from-[#4B9CD3]/25 via-[#12B5AF]/20 to-transparent rounded-full blur-3xl" />
-        <div className="absolute top-10 -right-32 w-[680px] h-[680px] bg-gradient-to-bl from-[#89CFF0]/30 via-[#8FD3E8]/25 to-transparent rounded-full blur-3xl" />
-      </div>
-
-      {/* 2. Realistic Directional Key Light Source from Low-Left */}
-      <div 
-        className="absolute -bottom-24 -left-20 w-[820px] h-[820px] pointer-events-none z-0 select-none overflow-hidden"
-        style={{
-          background: 'radial-gradient(circle at 28% 72%, rgba(255, 244, 189, 0.70) 0%, rgba(214, 168, 56, 0.40) 32%, rgba(75, 156, 211, 0.20) 58%, transparent 78%)',
-          filter: 'blur(40px)',
-        }}
-      />
-
-      {/* 3. Angled Volumetric Light Beam Illuminating Center Logo from Low-Left */}
-      <div 
-        className="absolute inset-0 pointer-events-none z-0 select-none"
-        style={{
-          background: 'linear-gradient(52deg, rgba(255, 244, 189, 0.32) 0%, rgba(255, 248, 220, 0.20) 24%, rgba(75, 156, 211, 0.08) 50%, transparent 72%)',
-          mixBlendMode: 'screen',
-        }}
-      />
-
-      {/* 4. Realistic 3D Center Logo with Low-Left Studio Key Lighting & Cast Shadows */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0 select-none">
-        <img
-          src="/images/logo.png"
-          alt="Real Looks Logo"
-          aria-hidden="true"
-          className="w-[880px] sm:w-[1060px] lg:w-[1240px] max-w-[95vw] h-auto object-contain pointer-events-none transition-all duration-700 select-none"
-          style={{
-            opacity: 0.52,
-            filter: `
-              drop-shadow(-5px 6px 9px rgba(255, 255, 255, 0.95))
-              drop-shadow(-13px 15px 24px rgba(255, 242, 175, 0.80))
-              drop-shadow(16px -16px 24px rgba(10, 24, 38, 0.58))
-              drop-shadow(28px -26px 45px rgba(8, 18, 30, 0.38))
-              drop-shadow(0 0 65px rgba(75, 156, 211, 0.32))
-              contrast(1.14)
-              brightness(1.05)
-            `,
-          }}
-          loading="eager"
-        />
-
-        {/* Ambient Ground Light Glint beneath Logo */}
+        {/* Floating Carolina & Sky Blue Fluid Orb */}
         <div 
-          className="absolute inset-x-0 bottom-8 h-24 pointer-events-none"
+          className="absolute -top-24 -left-24 w-[720px] h-[720px] rounded-full bg-gradient-to-br from-[#4B9CD3]/38 via-[#8FD3E8]/32 to-[#89CFF0]/25 blur-3xl"
+          style={{ animation: 'orbDrift1 18s ease-in-out infinite' }}
+        />
+
+        {/* Floating Tiffany Cyan & Electric Sky Orb */}
+        <div 
+          className="absolute top-10 -right-28 w-[740px] h-[740px] rounded-full bg-gradient-to-bl from-[#12B5AF]/32 via-[#4B9CD3]/34 to-[#89CFF0]/38 blur-3xl"
+          style={{ animation: 'orbDrift2 22s ease-in-out infinite' }}
+        />
+
+        {/* Floating Center-Bottom Luminous Blue Aura */}
+        <div 
+          className="absolute -bottom-20 left-1/4 w-[800px] h-[480px] rounded-full bg-gradient-to-t from-[#89CFF0]/38 via-[#5CE0DC]/25 to-transparent blur-3xl"
+          style={{ animation: 'orbDrift3 20s ease-in-out infinite' }}
+        />
+
+        {/* Shimmering Ambient Light Waves */}
+        <div 
+          className="absolute inset-0 opacity-40 mix-blend-overlay"
           style={{
-            background: 'radial-gradient(ellipse 55% 45% at 50% 60%, rgba(214, 168, 56, 0.22), transparent 70%)',
-            filter: 'blur(22px)',
+            background: 'radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.6) 0%, transparent 60%)',
+            animation: 'waveShimmer 10s ease-in-out infinite',
           }}
         />
+
+        {/* Soft bottom canvas transition fade into luxury artisan canvas */}
+        <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#FAF9F6] via-[#FAF9F6]/60 to-transparent pointer-events-none" />
       </div>
 
-      {/* 3. Hero Main Content Container Aligned with Central Logo Watermark (relative z-10) */}
+      {/* Hero Main Content Container (relative z-10) */}
       <div className="relative z-10 max-w-7xl mx-auto w-full my-auto py-6 sm:py-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
