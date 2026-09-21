@@ -220,16 +220,16 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
       }}
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* 1. Left: Official Brand Logo directly in header (High contrast on light luxury glass) */}
+        {/* 1. Left: Official Brand Logo directly in header with high contrast and radiance */}
         <button
           onClick={() => handleItemClick(0, navItems[0])}
-          className="flex items-center cursor-pointer focus:outline-none transition-transform hover:scale-[1.03] flex-shrink-0"
+          className="flex items-center cursor-pointer focus:outline-none transition-all hover:scale-[1.03] flex-shrink-0 p-1 sm:p-1.5 rounded-2xl bg-white/[0.08] hover:bg-white/[0.14] border border-white/15 shadow-xs"
           aria-label="Real Looks Home"
         >
           <img
-            src="/images/logo.png"
+            src="/images/logo-light.png"
             alt="Real Looks Unisex Salon"
-            className="h-11 sm:h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_2px_8px_rgba(214,168,56,0.25)] select-none"
+            className="h-10 sm:h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_2px_14px_rgba(214,168,56,0.5)] select-none"
             loading="eager"
           />
         </button>

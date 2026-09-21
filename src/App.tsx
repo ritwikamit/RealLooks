@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import Lenis from 'lenis';
 import { FadedAmbientBackground } from './components/FadedAmbientBackground';
 import { InteractiveDotGridCanvas } from './components/InteractiveDotGridCanvas';
 import { LimelightNavbar, PageView } from './components/clandestine/LimelightNavbar';
@@ -23,11 +24,43 @@ export default function App() {
   const [selectedServiceId, setSelectedServiceId] = useState<string | null>(null);
   const [selectedStylistId, setSelectedStylistId] = useState<string | null>(null);
   const [isBookingsModalOpen, setIsBookingsModalOpen] = useState(false);
+  const lenisRef = useRef<Lenis | null>(null);
+
+  // Initialize Lenis ultra-smooth momentum scrolling
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical',
+      gestureOrientation: 'vertical',
+      smoothWheel: true,
+      touchMultiplier: 1.4,
+    });
+    lenisRef.current = lenis;
+
+    let rafId: number;
+    function raf(time: number) {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    }
+
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+      lenisRef.current = null;
+    };
+  }, []);
 
   // Smooth navigation handler
   const handleNavigate = (page: PageView) => {
     setActivePage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (lenisRef.current) {
+      lenisRef.current.scrollTo(0, { immediate: false, duration: 0.8 });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
   };
 
   // Scroll to scheduler with smooth easing
@@ -36,11 +69,19 @@ export default function App() {
       setActivePage('home');
       setTimeout(() => {
         const el = document.getElementById('scheduler-section');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        if (el && lenisRef.current) {
+          lenisRef.current.scrollTo(el, { offset: -70, duration: 1.1 });
+        } else if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
       }, 150);
     } else {
       const el = document.getElementById('scheduler-section');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el && lenisRef.current) {
+        lenisRef.current.scrollTo(el, { offset: -70, duration: 1.1 });
+      } else if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -51,11 +92,19 @@ export default function App() {
       setActivePage('home');
       setTimeout(() => {
         const el = document.getElementById('scheduler-section');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        if (el && lenisRef.current) {
+          lenisRef.current.scrollTo(el, { offset: -70, duration: 1.1 });
+        } else if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
       }, 150);
     } else {
       const el = document.getElementById('scheduler-section');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el && lenisRef.current) {
+        lenisRef.current.scrollTo(el, { offset: -70, duration: 1.1 });
+      } else if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -66,11 +115,19 @@ export default function App() {
       setActivePage('home');
       setTimeout(() => {
         const el = document.getElementById('scheduler-section');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        if (el && lenisRef.current) {
+          lenisRef.current.scrollTo(el, { offset: -70, duration: 1.1 });
+        } else if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
       }, 150);
     } else {
       const el = document.getElementById('scheduler-section');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el && lenisRef.current) {
+        lenisRef.current.scrollTo(el, { offset: -70, duration: 1.1 });
+      } else if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 
@@ -79,11 +136,19 @@ export default function App() {
       setActivePage('home');
       setTimeout(() => {
         const el = document.getElementById('services');
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        if (el && lenisRef.current) {
+          lenisRef.current.scrollTo(el, { offset: -70, duration: 1.1 });
+        } else if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
       }, 150);
     } else {
       const el = document.getElementById('services');
-      if (el) el.scrollIntoView({ behavior: 'smooth' });
+      if (el && lenisRef.current) {
+        lenisRef.current.scrollTo(el, { offset: -70, duration: 1.1 });
+      } else if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
     }
   };
 

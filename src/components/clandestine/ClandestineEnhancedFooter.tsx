@@ -17,7 +17,7 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
   };
 
   return (
-    <footer className="relative bg-[#171D0E] text-[#F8F9F5] pt-16 pb-12 border-t border-[#D6A838]/30 overflow-hidden select-none">
+    <footer className="relative bg-[#171D0E] text-[#F8F9F5] pt-16 pb-28 lg:pb-14 border-t border-[#D6A838]/30 overflow-hidden select-none">
       
       {/* Background Subtle Gradient Blobs */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#12B5AF]/08 rounded-full blur-3xl pointer-events-none" />
@@ -36,27 +36,19 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
         {/* Main 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           
-          {/* Col 1: Enlarged Logo & REAL LOOKS Text */}
+          {/* Col 1: Enlarged Radiant Logo without duplicate text */}
           <div className="space-y-4">
             <div 
-              className="flex items-center gap-3.5 cursor-pointer group"
+              className="inline-block cursor-pointer group"
               onClick={scrollToTop}
               title="Real Looks Unisex Salon"
             >
               <img
-                src="/images/logo.png"
+                src="/images/logo-light.png"
                 alt="Real Looks Unisex Salon Logo"
-                className="h-14 sm:h-16 w-auto object-contain filter drop-shadow-[0_2px_12px_rgba(214,168,56,0.35)] select-none transition-transform duration-300 group-hover:scale-105"
+                className="h-24 sm:h-28 md:h-32 w-auto object-contain filter drop-shadow-[0_4px_24px_rgba(214,168,56,0.45)] select-none transition-transform duration-300 group-hover:scale-105"
                 loading="lazy"
               />
-              <div className="flex flex-col">
-                <span className="font-serif font-black text-xl sm:text-2xl tracking-[0.18em] uppercase text-white leading-none">
-                  REAL LOOKS
-                </span>
-                <span className="text-[10px] tracking-[0.26em] uppercase text-[#D6A838] font-bold mt-1">
-                  UNISEX SALON
-                </span>
-              </div>
             </div>
 
             <p className="text-xs text-white/70 leading-relaxed max-w-xs font-normal">
@@ -191,20 +183,20 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
             <span className="text-[#D6A838] font-medium">Dani Bigha, Aurangabad, Bihar</span>
           </div>
 
-          {/* Designed and Developed by ACCustom Labs */}
-          <div className="flex items-center justify-center gap-2.5 text-white/70 text-[11px] sm:text-xs">
-            <span>Designed and Developed by</span>
+          {/* Designed and Developed by AC Custom Labs */}
+          <div className="flex flex-wrap items-center justify-center gap-2 text-white/75 text-xs sm:text-sm font-medium">
+            <span className="leading-none">Designed and Developed by</span>
             <a
               href="https://accustomlabs.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center hover:opacity-90 transition-opacity"
-              title="ACCustom Labs"
+              className="inline-flex items-center hover:opacity-85 transition-opacity"
+              title="AC Custom Labs"
             >
               <img
                 src="/images/accustomlabs.png"
-                alt="ACCustom Labs"
-                className="h-5 sm:h-6 w-auto object-contain inline-block align-middle"
+                alt="AC Custom Labs"
+                className="h-4.5 sm:h-5 w-auto object-contain inline-block"
               />
             </a>
           </div>

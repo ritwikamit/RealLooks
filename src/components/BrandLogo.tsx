@@ -28,9 +28,9 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
     return (
       <div className={`flex items-center select-none group ${className}`}>
         <img
-          src="/images/logo.png"
+          src={light ? "/images/logo-light.png" : "/images/logo.png"}
           alt="Real Looks Unisex Salon"
-          className="h-10 sm:h-12 w-auto max-w-[180px] sm:max-w-[220px] object-contain filter drop-shadow-[0_2px_8px_rgba(0,0,0,0.25)] transition-transform duration-300 group-hover:scale-105"
+          className="h-10 sm:h-12 w-auto max-w-[180px] sm:max-w-[220px] object-contain filter drop-shadow-[0_2px_12px_rgba(214,168,56,0.35)] transition-transform duration-300 group-hover:scale-105"
           loading="eager"
         />
       </div>
@@ -41,7 +41,7 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({
   return (
     <div className={`flex flex-col items-center text-center select-none ${className}`}>
       <img
-        src="/images/logo.png"
+        src={light ? "/images/logo-light.png" : "/images/logo.png"}
         alt="Real Looks Unisex Salon"
         className="w-auto h-28 sm:h-36 lg:h-44 max-w-full object-contain filter drop-shadow-md transition-transform duration-300 hover:scale-[1.02]"
         loading="eager"
