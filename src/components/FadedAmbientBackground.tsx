@@ -4,20 +4,10 @@ export const FadedAmbientBackground: React.FC = () => {
   return (
     <div 
       aria-hidden="true" 
-      className="pointer-events-none fixed inset-0 overflow-hidden -z-10 select-none contain-strict"
-      style={{ contain: 'strict' }}
+      className="pointer-events-none fixed inset-0 overflow-hidden -z-10 select-none bg-[#FAF9F6]"
     >
       {/* 1. Base Luxury Artisan Canvas Texture */}
       <div className="absolute inset-0 bg-[#FAF9F6] luxury-artisan-canvas" />
-
-      {/* Procedural Micro-Silk Luxury Canvas Weave (Ultra-lightweight static SVG) */}
-      <svg className="absolute inset-0 w-full h-full opacity-[0.032] mix-blend-multiply pointer-events-none">
-        <filter id="luxury-canvas-weave">
-          <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
-          <feColorMatrix type="matrix" values="0 0 0 0 0.18   0 0 0 0 0.20   0 0 0 0 0.16   0 0 0 1 0" />
-        </filter>
-        <rect width="100%" height="100%" filter="url(#luxury-canvas-weave)" />
-      </svg>
 
       {/* Static Optimized Luxury Ambient Glows (Zero CPU/GPU animation overhead during scroll) */}
       {/* Top Left: Warm Gold & Deep Olive */}
