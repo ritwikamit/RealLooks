@@ -4,9 +4,9 @@ import { Navbar } from './components/Navbar';
 import { HeroOrganicFlow } from './components/HeroOrganicFlow';
 import { ServicesSection } from './components/ServicesSection';
 import { MastersSection } from './components/MastersSection';
-import { AboutSection } from './components/AboutSection';
 import { TestimonialsSection } from './components/TestimonialsSection';
 import { StoreSection } from './components/StoreSection';
+import { AboutSection } from './components/AboutSection';
 import { FAQSection } from './components/FAQSection';
 import { AppointmentScheduler } from './components/AppointmentScheduler';
 import { LocationContactSection } from './components/LocationContactSection';
@@ -22,9 +22,9 @@ export default function App() {
 
   // Track active section on scroll for the Clandestine limelight navbar
   useEffect(() => {
-    const sectionIds = ['home', 'services', 'masters', 'about', 'reviews', 'store', 'faq', 'contact'];
+    const sectionIds = ['home', 'services', 'masters', 'testimonials', 'store', 'about', 'faq', 'contact'];
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 200;
+      const scrollPos = window.scrollY + 250;
       for (let i = sectionIds.length - 1; i >= 0; i--) {
         const el = document.getElementById(sectionIds[i]);
         if (el && el.offsetTop <= scrollPos) {
@@ -67,9 +67,9 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col font-sans selection:bg-[#7F8F45]/25 selection:text-[#2F3B1A] bg-[#FAF9F5] rough-paper-canvas text-[#192018]">
+    <div className="min-h-screen relative flex flex-col font-sans bg-[#000000] text-[#fafafa] selection:bg-[#8D43F4]/30 selection:text-white">
       
-      {/* 1. Global Rough White Paper Canvas Texture & Faded Ambient Color Glows */}
+      {/* 1. Ambient Dark Violet Glow Canvas */}
       <FadedAmbientBackground />
 
       {/* 2. Clandestine Floating Island Limelight Navbar */}
@@ -80,78 +80,78 @@ export default function App() {
         onScrollToSection={handleScrollToSection}
       />
 
-      {/* Main Continuous Luxury Landing Page */}
-      <main className="flex-1 pt-16 sm:pt-20">
+      {/* Main Continuous Clandestine Template Landing Page */}
+      <main className="flex-1">
         
-        {/* =========================================================
-            SECTION 1: CLANDESTINE HERO (No square lines, pure canvas)
-           ========================================================= */}
-        <HeroOrganicFlow 
-          onStartBooking={handleStartBooking}
-          onExploreServices={() => handleScrollToSection('services')}
-        />
+        {/* SECTION 1: HERO (Deep Black #000000) */}
+        <div id="home" className="bg-[#000000]">
+          <HeroOrganicFlow 
+            onStartBooking={handleStartBooking}
+            onExploreServices={() => handleScrollToSection('services')}
+          />
+        </div>
 
-        {/* =========================================================
-            POST-HERO SECTIONS (Wrapped with visible side grid lines)
-           ========================================================= */}
-        <div className="relative w-full overflow-hidden">
-          
-          {/* Visible square lines fading in from side edges outside hero */}
-          <div className="square-grid-overlay hidden sm:block" aria-hidden="true" />
-          
-          {/* Subtle architectural vertical guides */}
-          <div className="hidden lg:block absolute inset-y-0 left-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
-          <div className="hidden lg:block absolute inset-y-0 right-6 w-[1.5px] bg-gradient-to-b from-transparent via-[#3A7D73]/25 to-transparent pointer-events-none z-0" aria-hidden="true" />
-          <div className="hidden xl:block absolute inset-y-0 left-20 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
-          <div className="hidden xl:block absolute inset-y-0 right-20 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
+        <div className="h-[1px] bg-[#1a1a1a]" />
 
-          {/* SECTION 2: SERVICES SHOWCASE (Clandestine sequential hover table) */}
-          <div className="relative z-10">
-            <ServicesSection 
-              onSelectService={handleSelectService}
-            />
-          </div>
+        {/* SECTION 2: SERVICES (Secondary Dark #0a0a0a) */}
+        <div id="services" className="bg-[#0a0a0a]">
+          <ServicesSection 
+            onSelectService={handleSelectService}
+          />
+        </div>
 
-          {/* SECTION 3: MASTERS / SPECIALISTS (Clandestine meet our masters) */}
-          <div className="relative z-10">
-            <MastersSection 
-              onSelectMaster={handleSelectMaster}
-            />
-          </div>
+        <div className="h-[1px] bg-[#1a1a1a]" />
 
-          {/* SECTION 4: ABOUT US (Clandestine diced mosaic image grid) */}
-          <div className="relative z-10">
-            <AboutSection />
-          </div>
+        {/* SECTION 3: MASTERS (Deep Black #000000) */}
+        <div id="masters" className="bg-[#000000]">
+          <MastersSection 
+            onSelectMaster={handleSelectMaster}
+          />
+        </div>
 
-          {/* SECTION 5: TESTIMONIALS (Clandestine verified review cards) */}
-          <div className="relative z-10">
-            <TestimonialsSection />
-          </div>
+        <div className="h-[1px] bg-[#1a1a1a]" />
 
-          {/* SECTION 6: SALON BOUTIQUE STORE (Clandestine store section) */}
-          <div className="relative z-10">
-            <StoreSection />
-          </div>
+        {/* SECTION 4: TESTIMONIALS (Secondary Dark #0a0a0a) */}
+        <div id="testimonials" className="bg-[#0a0a0a]">
+          <TestimonialsSection />
+        </div>
 
-          {/* SECTION 7: FAQ (Clandestine unfolding accordion) */}
-          <div className="relative z-10">
-            <FAQSection />
-          </div>
+        <div className="h-[1px] bg-[#1a1a1a]" />
 
-          {/* SECTION 8: APPOINTMENT SCHEDULER WIZARD */}
-          <div className="relative z-10">
-            <AppointmentScheduler 
-              initialServiceId={selectedServiceId}
-              onBookingSuccess={handleBookingCompleted}
-            />
-          </div>
+        {/* SECTION 5: SALON BOUTIQUE STORE (Deep Black #000000) */}
+        <div id="store" className="bg-[#000000]">
+          <StoreSection />
+        </div>
 
-          {/* SECTION 9: STUDIO LOCATION, MAP & HOURS */}
-          <div className="relative z-10">
-            <LocationContactSection />
-          </div>
+        <div className="h-[1px] bg-[#1a1a1a]" />
 
+        {/* SECTION 6: ABOUT US (Secondary Dark #0a0a0a) */}
+        <div id="about" className="bg-[#0a0a0a]">
+          <AboutSection />
+        </div>
+
+        <div className="h-[1px] bg-[#1a1a1a]" />
+
+        {/* SECTION 7: FAQ (Deep Black #000000) */}
+        <div id="faq" className="bg-[#000000]">
+          <FAQSection />
+        </div>
+
+        <div className="h-[1px] bg-[#1a1a1a]" />
+
+        {/* SECTION 8: APPOINTMENT SCHEDULER (Secondary Dark #0a0a0a) */}
+        <div id="scheduler-section" className="bg-[#0a0a0a]">
+          <AppointmentScheduler 
+            initialServiceId={selectedServiceId}
+            onBookingSuccess={handleBookingCompleted}
+          />
+        </div>
+
+        <div className="h-[1px] bg-[#1a1a1a]" />
+
+        {/* SECTION 9: STUDIO LOCATION & MAP (Deep Black #000000) */}
+        <div id="contact" className="bg-[#000000]">
+          <LocationContactSection />
         </div>
 
       </main>

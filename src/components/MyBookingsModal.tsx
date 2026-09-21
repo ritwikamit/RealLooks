@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
-import { X, Calendar, MessageSquare, PhoneCall, Trash2, Scissors } from 'lucide-react';
+import { X, Calendar, MessageSquare, Trash2, Scissors } from 'lucide-react';
 import { BookingRequest } from '../types';
 import { SALON_INFO } from '../data/salonData';
 
@@ -43,119 +43,106 @@ export const MyBookingsModal: React.FC<MyBookingsModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-md flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.95 }}
-        className="relative max-w-lg w-full lucid-glass rounded-3xl border border-white/80 shadow-2xl overflow-hidden flex flex-col max-h-[85vh]"
+        className="relative max-w-lg w-full bg-[#0e0e0e] rounded-2xl border border-[#242424] shadow-2xl overflow-hidden flex flex-col max-h-[85vh]"
       >
         {/* Modal Header */}
-        <div className="px-6 py-4 bg-white/70 border-b border-black/5 flex items-center justify-between">
+        <div className="px-6 py-4 bg-[#141414] border-b border-[#222222] flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#4C5B2E] to-[#52A296] text-white flex items-center justify-center shadow-2xs">
-              <Calendar className="w-4 h-4 text-[#FFF2A8]" />
+            <div className="w-8 h-8 rounded-xl bg-[#8D43F4] text-white flex items-center justify-center shadow-md">
+              <Calendar className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-base font-serif font-bold text-[#192018]">
-                My Appointment Requests
+              <h3 className="text-base font-bold text-[#fafafa]">
+                My Saved Appointments
               </h3>
-              <p className="text-[11px] text-[#677565]">
-                Saved locally on this device
+              <p className="text-[11px] text-[#aaaaaa]">
+                {bookings.length} active reservation request{bookings.length === 1 ? '' : 's'}
               </p>
             </div>
           </div>
+
           <button
             onClick={onClose}
-            className="p-1.5 rounded-xl text-[#677565] hover:text-[#192018] hover:bg-white/80 transition-colors cursor-pointer"
+            className="p-1.5 rounded-lg bg-[#1c1c1c] text-[#888888] hover:text-white hover:bg-[#262626] transition-colors cursor-pointer"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Modal Body */}
+        {/* Modal Content */}
         <div className="p-6 overflow-y-auto space-y-4 flex-1">
           {bookings.length === 0 ? (
             <div className="text-center py-10 space-y-3">
-              <div className="w-12 h-12 rounded-2xl lucid-glass text-[#0D8F8B] flex items-center justify-center mx-auto border border-white/80">
-                <Scissors className="w-6 h-6 text-[#D6A838]" />
+              <div className="w-12 h-12 rounded-full bg-[#181818] border border-[#282828] flex items-center justify-center mx-auto text-[#888888]">
+                <Calendar className="w-6 h-6 text-[#8D43F4]" />
               </div>
-              <h4 className="text-sm font-bold text-[#192018]">
-                No Appointments Scheduled Yet
-              </h4>
-              <p className="text-xs text-[#677565] max-w-xs mx-auto">
-                Choose a service and reserve your spot in under a minute with our online scheduler.
+              <p className="text-sm font-semibold text-[#fafafa]">No active appointments</p>
+              <p className="text-xs text-[#888888] max-w-xs mx-auto">
+                Schedule your tailored salon session in under a minute with instant confirmation.
               </p>
               <button
                 onClick={() => {
                   onClose();
                   onNewBooking();
                 }}
-                className="px-5 py-2.5 rounded-2xl glossy-gold-btn text-[#4A3502] font-extrabold text-xs uppercase tracking-wider transition-all cursor-pointer shadow-xs border border-white/80"
+                className="mt-2 px-5 py-2.5 rounded-xl bg-[#8D43F4] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#7b2fe0] shadow-[0_0_15px_rgba(141,67,244,0.4)] cursor-pointer"
               >
-                Schedule First Appointment
+                Book Appointment
               </button>
             </div>
           ) : (
-            bookings.map((b) => (
+            bookings.map((booking) => (
               <div
-                key={b.id}
-                className="p-4 rounded-2xl lucid-glass-card shadow-2xs space-y-3"
+                key={booking.id}
+                className="p-4 rounded-xl bg-[#141414] border border-[#242424] space-y-3"
               >
                 <div className="flex items-start justify-between">
                   <div>
-                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-md glossy-gold-badge text-[#4A3502] tracking-wider">
-                      {b.id}
+                    <span className="text-[10px] font-mono text-[#8D43F4] bg-[#8D43F4]/10 px-2 py-0.5 rounded border border-[#8D43F4]/20 block w-fit mb-1">
+                      {booking.id}
                     </span>
-                    <h4 className="text-sm font-bold text-[#192018] mt-1.5">
-                      {b.serviceName}
+                    <h4 className="text-sm font-bold text-[#fafafa] flex items-center gap-1.5">
+                      <Scissors className="w-3.5 h-3.5 text-[#8D43F4]" />
+                      <span>{booking.serviceName}</span>
                     </h4>
                   </div>
                   <button
-                    onClick={() => removeBooking(b.id)}
-                    className="text-gray-400 hover:text-red-500 p-1 cursor-pointer transition-colors"
-                    title="Remove from history"
+                    onClick={() => removeBooking(booking.id)}
+                    className="text-[#666666] hover:text-red-400 p-1 transition-colors cursor-pointer"
+                    title="Remove from saved list"
                   >
-                    <Trash2 className="w-3.5 h-3.5" />
+                    <Trash2 className="w-4 h-4" />
                   </button>
                 </div>
 
-                <div className="grid grid-cols-2 gap-2 text-xs text-[#3D483B] bg-white/60 p-3 rounded-xl border border-black/5">
+                <div className="grid grid-cols-2 gap-2 text-xs text-[#aaaaaa] pt-1">
                   <div>
-                    <span className="text-[10px] text-[#677565] block font-semibold">Date & Time</span>
-                    <strong>{b.date} • {b.time}</strong>
+                    <span className="text-[10px] text-[#666666] block">Stylist</span>
+                    <span className="font-semibold text-[#fafafa]">{booking.stylistName}</span>
                   </div>
                   <div>
-                    <span className="text-[10px] text-[#677565] block font-semibold">Stylist / Specialist</span>
-                    <strong>{b.stylistName}</strong>
-                  </div>
-                  <div>
-                    <span className="text-[10px] text-[#677565] block font-semibold">Client</span>
-                    <strong>{b.customerName}</strong>
-                  </div>
-                  <div>
-                    <span className="text-[10px] text-[#677565] block font-semibold">Price</span>
-                    <strong className="text-[#2F3B1A]">₹{b.servicePrice}</strong>
+                    <span className="text-[10px] text-[#666666] block">Slot</span>
+                    <span className="font-semibold text-[#fafafa]">{booking.date} at {booking.time}</span>
                   </div>
                 </div>
 
-                {/* Quick actions for each booking */}
-                <div className="flex items-center gap-2 pt-1">
+                <div className="pt-2 border-t border-[#202020] flex items-center justify-between">
+                  <span className="text-xs font-bold text-[#8D43F4]">
+                    ₹{booking.price}
+                  </span>
                   <a
-                    href={`https://wa.me/${SALON_INFO.whatsapp}?text=${encodeURIComponent(`Hello Real Looks, Checking on my booking ${b.id} for ${b.serviceName} on ${b.date} at ${b.time}.`)}`}
+                    href={`https://wa.me/${SALON_INFO.whatsapp}?text=${encodeURIComponent(`Hello Real Looks Salon, I would like to check on my booking reference ${booking.id} for ${booking.serviceName}.`)}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex-1 py-2 px-3 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#15803D] font-bold text-xs flex items-center justify-center gap-1.5 border border-[#25D366]/30 transition-all"
+                    className="inline-flex items-center gap-1 text-xs font-semibold text-emerald-400 hover:text-emerald-300"
                   >
                     <MessageSquare className="w-3.5 h-3.5" />
-                    <span>WhatsApp</span>
-                  </a>
-                  <a
-                    href={`tel:${SALON_INFO.phoneClean}`}
-                    className="py-2 px-3 rounded-xl lucid-glass text-[#192018] font-bold text-xs flex items-center justify-center gap-1.5 border border-white/80 transition-all"
-                  >
-                    <PhoneCall className="w-3.5 h-3.5 text-[#D6A838]" />
-                    <span>Call Salon</span>
+                    <span>WhatsApp Inquiry</span>
                   </a>
                 </div>
               </div>
@@ -164,20 +151,25 @@ export const MyBookingsModal: React.FC<MyBookingsModalProps> = ({
         </div>
 
         {/* Modal Footer */}
-        <div className="p-4 bg-white/70 border-t border-black/5 flex items-center justify-between">
-          <span className="text-xs text-[#677565] font-medium">
-            {bookings.length} request(s) on file
-          </span>
-          <button
-            onClick={() => {
-              onClose();
-              onNewBooking();
-            }}
-            className="px-4 py-2 rounded-xl glossy-gold-btn text-[#4A3502] font-bold text-xs uppercase tracking-wider cursor-pointer border border-white/80"
-          >
-            + Book Another Service
-          </button>
-        </div>
+        {bookings.length > 0 && (
+          <div className="p-4 bg-[#141414] border-t border-[#222222] flex items-center justify-between">
+            <button
+              onClick={() => {
+                onClose();
+                onNewBooking();
+              }}
+              className="text-xs font-semibold text-[#8D43F4] hover:underline"
+            >
+              + Book Another Service
+            </button>
+            <button
+              onClick={onClose}
+              className="px-4 py-2 rounded-xl bg-[#222222] hover:bg-[#2c2c2c] text-white text-xs font-semibold"
+            >
+              Close
+            </button>
+          </div>
+        )}
       </motion.div>
     </div>
   );

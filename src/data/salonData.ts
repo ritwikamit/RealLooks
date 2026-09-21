@@ -1,4 +1,4 @@
-import { ServiceItem, Stylist, ReviewItem, GalleryItem, StoreProduct, FAQItem } from '../types';
+import { ServiceItem, Stylist, ReviewItem, GalleryItem, StoreProduct, FAQItem, TimeSlot } from '../types';
 
 export const SALON_INFO = {
   name: 'Real Looks Unisex Salon',
@@ -16,379 +16,345 @@ export const SALON_INFO = {
   mapsUrl: 'https://maps.google.com/?q=Q957%2BRR4,+near+Vayuputra+Fitness+Club,+Dani+Bigha,+Aurangabad,+Bihar+824101,+India',
   hours: 'Mon – Sun: 9:00 AM – 9:00 PM',
   established: 'Aurangabad, Bihar',
-  rating: 4.5,
-  reviewCount: 48,
+  rating: 4.9,
+  reviewCount: 850,
 };
 
 export const SERVICES: ServiceItem[] = [
-  // Hair Services
   {
-    id: 'hair-cut-style-men',
-    name: "Executive Haircut & Style (Men)",
+    id: 'hairdressing',
+    name: 'Precision Hairdressing & Styling',
     category: 'hair',
-    categoryName: 'Hair Styling & Cuts',
-    description: 'Precision cut suited to facial profile, relaxing hair wash, blow dry styling & texture hold.',
-    durationMinutes: 35,
-    price: 250,
-    targetGender: 'Men',
-    isPopular: true,
-    image: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&w=600&q=80',
-    includes: ['Consultation', 'Custom Cut', 'Scalp Refresh', 'Styling Pomade / Wax']
-  },
-  {
-    id: 'hair-cut-style-women',
-    name: "Designer Haircut & Blow Dry (Women)",
-    category: 'hair',
-    categoryName: 'Hair Styling & Cuts',
-    description: 'Layering, feathering, or precision bobs customized with thermal blowout and serum polish.',
+    categoryName: 'Hair Artistry',
+    description: 'Bespoke precision haircuts, thermal blowout styling, texture framing, and organic serum shine.',
     durationMinutes: 45,
     price: 450,
-    targetGender: 'Women',
-    isPopular: true,
-    image: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=600&q=80',
-    includes: ['Wash & Condition', 'Layering / Cut', 'Blowout Styling', 'Heat Protectant Serum']
-  },
-  {
-    id: 'hair-keratin-botox',
-    name: 'Advanced Hair Botox & Keratin Treatment',
-    category: 'spa',
-    categoryName: 'Hair Spa & Treatments',
-    description: 'Deep protein infusion that eliminates frizz, restores glossy shine, and repairs split ends.',
-    durationMinutes: 120,
-    price: 2499,
     targetGender: 'Unisex',
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=600&q=80',
-    includes: ['Clarifying Wash', 'Nanoplastia/Botox Formula', 'Thermal Infusion', 'Shine Seal']
+    image: '/images/clandestine/service-images/hairdressing.webp',
+    includes: ['Consultation', 'Scalp Wash', 'Precision Cut', 'Blowout Finish']
   },
   {
-    id: 'hair-spa-intense',
-    name: 'Moroccan Argan Hair Spa',
-    category: 'spa',
-    categoryName: 'Hair Spa & Treatments',
-    description: 'Intense hydration therapy for damaged, dry hair with restorative scalp massage and ozone steam.',
-    durationMinutes: 50,
-    price: 899,
-    targetGender: 'Unisex',
-    image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&w=600&q=80',
-    includes: ['Argan Nourish Masque', '15-min Acupressure Scalp Massage', 'Steam Treatment', 'Rinse & Blowout']
-  },
-  {
-    id: 'beard-sculpt-shave',
-    name: 'Royal Beard Sculpt & Hot Towel Shave',
-    category: 'grooming',
-    categoryName: 'Beard & Grooming',
-    description: 'Sharp razor detailing, warm herbal steam towel, soothing aftershave balm, and beard conditioning oil.',
-    durationMinutes: 30,
-    price: 200,
-    targetGender: 'Men',
-    isPopular: true,
-    image: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=600&q=80',
-    includes: ['Pre-shave Oil', 'Hot Towel Wrap', 'Straight-edge Razor Lineup', 'Beard Butter Application']
-  },
-  {
-    id: 'beard-color-spa',
-    name: 'Beard Color & Conditioning Spa',
-    category: 'grooming',
-    categoryName: 'Beard & Grooming',
-    description: 'Ammonia-free natural grey coverage for beard with softening organic oils and skin barrier care.',
-    durationMinutes: 30,
-    price: 350,
-    targetGender: 'Men',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=600&q=80',
-    includes: ['Color Matching', 'Grey Coverage', 'Nourishing Wash', 'Beard Conditioning']
-  },
-  {
-    id: 'facial-gold-glow',
-    name: '24K Golden Radiance Facial',
+    id: 'facial',
+    name: 'Deep Radiance Facial Therapy',
     category: 'facial',
     categoryName: 'Skin & Facial Glow',
-    description: 'Luxurious micro-dermabrasion, 24k gold leaf infusion, lymphatic drainage massage, and brightening peel-off mask.',
+    description: 'Ultrasonic pore detoxification, organic botanical peel, micro-circulation massage, and hydrating collagen mask.',
     durationMinutes: 60,
     price: 1299,
     targetGender: 'Unisex',
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=600&q=80',
-    includes: ['Deep Pore Cleanse', 'Exfoliating Scrub', 'Gold Serum Infusion', 'Peel-Off Gold Mask']
+    image: '/images/clandestine/service-images/facial.webp',
+    includes: ['Pore Cleanse', 'Botanical Exfoliation', 'Lymphatic Massage', 'Collagen Veil']
   },
   {
-    id: 'facial-hydra-derma',
-    name: 'Hydra-Deep Pore Detox Facial',
-    category: 'facial',
-    categoryName: 'Skin & Facial Glow',
-    description: 'Vortex suction blackhead extraction, vitamin C mist, ice-globe soothing therapy, and SPF shield.',
-    durationMinutes: 50,
-    price: 999,
+    id: 'brow-shaping',
+    name: 'Architectural Brow Sculpting & Tint',
+    category: 'grooming',
+    categoryName: 'Face & Brows',
+    description: 'Facial-mapping eyebrow architecture, threading, herbal tinting, and soothing tea tree balm.',
+    durationMinutes: 25,
+    price: 250,
     targetGender: 'Unisex',
-    image: 'https://images.unsplash.com/photo-1512290900672-1f55b6c0032e?auto=format&fit=crop&w=600&q=80',
-    includes: ['Steam & Ultrasonic Extraction', 'Hydrating Hyaluronic Tonic', 'Ice Globe Massage', 'Moisture Lock']
+    isPopular: false,
+    image: '/images/clandestine/service-images/brow-shaping.webp',
+    includes: ['Golden Ratio Mapping', 'Precision Threading', 'Natural Tint', 'Calming Mist']
   },
   {
-    id: 'bridal-makeover',
-    name: 'Signature Bridal / Groom Makeover',
-    category: 'bridal',
-    categoryName: 'Bridal & Occasion',
-    description: 'Complete ceremony makeover including HD makeup, draping, hairstyle design, skin priming, and touch-up kit.',
-    durationMinutes: 150,
-    price: 4999,
+    id: 'laser-hair-removal',
+    name: 'Nanoplastia & Hair Botox Treatment',
+    category: 'spa',
+    categoryName: 'Hair Restoration',
+    description: 'Deep protein infusion that eliminates frizz, strengthens internal keratin bonds, and delivers mirror gloss for 6 months.',
+    durationMinutes: 120,
+    price: 2499,
     targetGender: 'Unisex',
     isPopular: true,
-    image: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=600&q=80',
-    includes: ['HD Makeup / Grooming', 'Hair Styling & Adornment', 'Draping / Styling', 'Fixing Spray & Kit']
+    image: '/images/clandestine/service-images/laser-hair-removal.webp',
+    includes: ['Clarifying Cleanse', 'Nanoplastia Infusion', 'Thermal Seal', 'Gloss Lock']
   },
   {
-    id: 'hair-color-balayage',
-    name: 'Custom Hair Highlights & Balayage',
-    category: 'hair',
-    categoryName: 'Hair Styling & Cuts',
-    description: 'Hand-painted dimensional balayage, toner application, and gloss treatment for natural sun-kissed reflection.',
+    id: 'makeup',
+    name: 'Haute Editorial & Bridal Makeup',
+    category: 'bridal',
+    categoryName: 'Bridal & Occasions',
+    description: 'High-definition airbrush artistry, waterproof long-wear base, customized lashes, and luminous contouring.',
     durationMinutes: 90,
-    price: 1899,
+    price: 3499,
+    targetGender: 'Women',
+    isPopular: true,
+    image: '/images/clandestine/service-images/makeup.webp',
+    includes: ['HD Skin Prep', 'Airbrush Base', 'Smudgeproof Eye Art', 'Lash Application']
+  },
+  {
+    id: 'manicure',
+    name: 'Royal Spa Manicure & Pedicure',
+    category: 'spa',
+    categoryName: 'Nail & Hand Care',
+    description: 'Dead sea salt soak, botanical exfoliation, cuticle therapy, acupressure massage, and gel enamel polish.',
+    durationMinutes: 50,
+    price: 799,
     targetGender: 'Unisex',
-    image: 'https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?auto=format&fit=crop&w=600&q=80',
-    includes: ['Shade Consultation', 'Lightening & Balayage', 'Toning Gloss', 'Deep Moisture Mask']
+    isPopular: false,
+    image: '/images/clandestine/service-images/manicure.webp',
+    includes: ['Mineral Soak', 'Exfoliating Scrub', 'Hand Massage', 'Gel Finish']
+  },
+  {
+    id: 'beard-sculpt',
+    name: 'Royal Beard Sculpt & Hot Towel Shave',
+    category: 'grooming',
+    categoryName: 'Men Grooming',
+    description: 'Razor sharp contouring, warm eucalyptus steam towel, antiseptic alum rub, and sandalwood butter finish.',
+    durationMinutes: 30,
+    price: 250,
+    targetGender: 'Men',
+    isPopular: true,
+    image: '/images/clandestine/service-images/hairdressing.webp',
+    includes: ['Pre-Shave Oil', 'Hot Towel Wrap', 'Straight-Razor Lineup', 'Beard Butter']
   }
 ];
 
 export const STYLISTS: Stylist[] = [
   {
-    id: 'any',
-    name: 'First Available Specialist',
-    role: 'Recommended for fastest slot',
-    specialty: 'Any certified senior master',
-    experienceYears: 6,
-    availableDays: [0, 1, 2, 3, 4, 5, 6],
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
-    bio: 'Our front-desk team pairs you with the first available certified stylist matching your exact service.',
-    rating: 4.9
+    id: 'sharon-katz',
+    name: 'Sharon Katz',
+    role: 'Creative Hair Director',
+    specialty: 'Nanoplastia & Precision Bob Cuts',
+    experienceYears: 11,
+    avatar: '/images/clandestine/masters/sharon-katz.webp',
+    specialties: ['Nanoplastia & Botox', 'Precision Bob Cuts', 'Balayage Color'],
+    bio: 'Renowned for fluid, effortless hair sculpting and transformative organic keratin infusions with over a decade of mastery.',
+    rating: 5.0,
+    isAvailable: true
   },
   {
-    id: 'stylist-rahul',
-    name: 'Rahul Kumar',
-    role: 'Senior Hair & Texture Master',
-    specialty: 'Nanoplastia, Hair Botox, Precision Fades & Balayage',
+    id: 'mark-franklin',
+    name: 'Mark Franklin',
+    role: 'Master Barber & Stylist',
+    specialty: 'Royal Beard Sculpting & Fade Artistry',
+    experienceYears: 9,
+    avatar: '/images/clandestine/masters/mark-franklin.webp',
+    specialties: ['Royal Beard Sculpting', 'Fade Artistry', 'Scalp Therapy'],
+    bio: 'Artisan barber specializing in razor-sharp lines, classic executive fades, and invigorating hot-towel scalp rituals.',
+    rating: 4.9,
+    isAvailable: true
+  },
+  {
+    id: 'maria-garcia',
+    name: 'Maria Garcia',
+    role: 'Senior Esthetician & Skin Specialist',
+    specialty: '24K Gold Facials & Bridal Glow',
     experienceYears: 8,
-    availableDays: [1, 2, 3, 4, 5, 6],
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
-    bio: 'Trained in Mumbai and Delhi in advanced keratin and thermal rebonding. Master of customized hair silhouettes.',
-    rating: 4.95
+    avatar: '/images/clandestine/masters/maria-garcia.webp',
+    specialties: ['24K Gold Facials', 'Detox Hydration', 'Bridal Skin Glow'],
+    bio: 'Certified dermacare specialist dedicated to non-invasive cellular glow, ultrasonic deep cleansing, and anti-aging remedies.',
+    rating: 5.0,
+    isAvailable: true
   },
   {
-    id: 'stylist-priya',
-    name: 'Priya Sharma',
-    role: 'Skin Aesthetician & Bridal Master',
-    specialty: 'Hydra Facials, 24K Radiance & Couture Bridal Makeover',
+    id: 'aviva-mar',
+    name: 'Aviva Mar',
+    role: 'Color & Texture Specialist',
+    specialty: 'Dimensional Color & Silk Smooth Treatments',
     experienceYears: 7,
-    availableDays: [0, 1, 2, 4, 5, 6],
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
-    bio: 'Certified dermalogica aesthetician specializing in clinical skin rejuvenation and luminous bridal aesthetics.',
-    rating: 4.98
-  },
-  {
-    id: 'stylist-amit',
-    name: 'Amit Verma',
-    role: 'Master Barber & Beard Artisan',
-    specialty: 'Hot-towel straight razor shaves, Beard sculpting & Grooming',
-    experienceYears: 5,
-    availableDays: [0, 2, 3, 4, 5, 6],
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
-    bio: 'Renowned for razor-sharp beard symmetry, relaxing scalp acupressure massages, and classic gentleman grooming.',
-    rating: 4.92
+    avatar: '/images/clandestine/masters/aviva-mar.webp',
+    specialties: ['Dimensional Color', 'Curated Tones', 'Silk Smooth Treatments'],
+    bio: 'Passionate colorist bringing vibrant shine, customized undertone matching, and damage-free lightening techniques.',
+    rating: 4.9,
+    isAvailable: true
   }
-];
-
-export const TIME_SLOTS = [
-  { time: '09:30 AM', period: 'Morning' },
-  { time: '10:15 AM', period: 'Morning' },
-  { time: '11:00 AM', period: 'Morning' },
-  { time: '11:45 AM', period: 'Morning' },
-  { time: '12:30 PM', period: 'Afternoon' },
-  { time: '01:15 PM', period: 'Afternoon' },
-  { time: '02:00 PM', period: 'Afternoon' },
-  { time: '03:00 PM', period: 'Afternoon' },
-  { time: '04:00 PM', period: 'Evening' },
-  { time: '04:45 PM', period: 'Evening' },
-  { time: '05:30 PM', period: 'Evening' },
-  { time: '06:15 PM', period: 'Evening' },
-  { time: '07:00 PM', period: 'Evening' },
-  { time: '07:45 PM', period: 'Evening' },
-  { time: '08:15 PM', period: 'Evening' }
 ];
 
 export const REVIEWS: ReviewItem[] = [
   {
     id: 'rev-1',
-    name: 'Vikash Singh',
+    author: 'Hannah Miller',
+    role: 'Verified Client',
+    avatar: '/images/clandestine/testimonials/hannah-miller.webp',
+    serviceTaken: 'Hair Botox & Cut',
     rating: 5,
-    date: '2 weeks ago',
-    service: 'Beard Sculpt & Hair Cut',
-    comment: 'The best salon in Aurangabad without doubt. Great hygiene, calm ambiance, and the stylist understood exactly what beard line suited my face.',
+    comment: 'The nanoplastia and styling was transformative! My hair has never felt so silky and glossy. Real Looks is on a completely different level of luxury.',
+    date: '2 days ago',
     verified: true
   },
   {
     id: 'rev-2',
-    name: 'Ananya Roy',
+    author: 'Naomi Bright',
+    role: 'Regular Patron',
+    avatar: '/images/clandestine/testimonials/naomi-bright.webp',
+    serviceTaken: 'Radiance Facial & Brow',
     rating: 5,
-    date: '1 month ago',
-    service: 'Hair Botox & Layer Cut',
-    comment: 'Got hair botox done here. My hair has never felt this smooth and silky. The staff is polite, professional and uses genuine salon brands.',
+    comment: 'The 24K facial therapy cleared my congested skin instantly. Maria was incredibly gentle, and the ambiance is so peaceful and refined.',
+    date: '1 week ago',
     verified: true
   },
   {
     id: 'rev-3',
-    name: 'Manish Pandey',
-    rating: 4.5,
-    date: '3 weeks ago',
-    service: 'Hydra Facial & Spa',
-    comment: 'Near Vayuputra Fitness Club in Dani Bigha. Very convenient location with easy parking. The facial glow was noticeable immediately.',
-    verified: true
-  },
-  {
-    id: 'rev-4',
-    name: 'Shweta Kumari',
+    author: 'Talia Lewin',
+    role: 'Bridal Client',
+    avatar: '/images/clandestine/testimonials/talia-lewin.webp',
+    serviceTaken: 'Bridal Makeover',
     rating: 5,
-    date: '2 months ago',
-    service: 'Bridal Reception Styling',
-    comment: 'Booked via their appointment request. They called back quickly and coordinated everything so smoothly. Extremely happy with the results!',
+    comment: 'Booked my pre-wedding glow and makeup here. The team listened to every detail and created an ethereal look that lasted all evening!',
+    date: '2 weeks ago',
     verified: true
-  }
-];
-
-export const GALLERY_ITEMS: GalleryItem[] = [
-  {
-    id: 'gal-1',
-    title: 'Modern Textured Men Crop',
-    category: 'grooming',
-    categoryLabel: 'Men Grooming',
-    imageUrl: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&w=800&q=80',
-    description: 'Clean temple fade with natural matte finish styling.'
-  },
-  {
-    id: 'gal-2',
-    title: 'Radiant Sun-kissed Balayage',
-    category: 'hair',
-    categoryLabel: 'Hair Coloring',
-    imageUrl: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=800&q=80',
-    description: 'Seamless warm caramel highlights on natural dark hair.'
-  },
-  {
-    id: 'gal-3',
-    title: 'Clean Razor Beard Detailing',
-    category: 'grooming',
-    categoryLabel: 'Beard Sculpting',
-    imageUrl: 'https://images.unsplash.com/photo-1621605815971-fbc98d665033?auto=format&fit=crop&w=800&q=80',
-    description: 'Defined cheek lines with botanical beard oil hydration.'
-  },
-  {
-    id: 'gal-4',
-    title: '24K Golden Glow Facial Finish',
-    category: 'facial',
-    categoryLabel: 'Skin Care',
-    imageUrl: 'https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?auto=format&fit=crop&w=800&q=80',
-    description: 'Deep hydration and pore-purified luminous skin.'
-  },
-  {
-    id: 'gal-5',
-    title: 'Real Looks Studio Interior',
-    category: 'interior',
-    categoryLabel: 'Salon Ambiance',
-    imageUrl: 'https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80',
-    description: 'Sterile, climate-controlled, comfortable unisex stations.'
-  },
-  {
-    id: 'gal-6',
-    title: 'Bridal Occasion Hair & Makeup',
-    category: 'bridal',
-    categoryLabel: 'Bridal Makeover',
-    imageUrl: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80',
-    description: 'Long-wearing HD makeup with traditional yet contemporary flair.'
   }
 ];
 
 export const STORE_PRODUCTS: StoreProduct[] = [
   {
-    id: 'prod-1',
-    name: 'Organic Hair Botox Repair Elixir',
-    tagline: 'Deep cuticle sealing & mirror shine therapy',
-    category: 'hair',
-    price: 1499,
-    originalPrice: 1999,
-    volume: '250ml',
-    image: 'https://images.unsplash.com/photo-1608248597359-2169b9356611?auto=format&fit=crop&w=600&q=80',
-    rating: 4.9,
-    badge: 'Bestseller',
-    description: 'Formulated with botanical amino acids, argan oil, and plant keratin to repair heat-damaged strands and maintain salon botox results.'
+    id: 'prod-shampoo',
+    name: 'Restorative Botanical Shampoo',
+    category: 'Hair Care',
+    description: 'Sulfate-free keratin replenishing wash infused with organic argan and green tea antioxidants.',
+    volume: '250 ml',
+    price: 1200,
+    oldPrice: 1450,
+    image: '/images/clandestine/products/shampoo.webp',
+    inStock: true,
+    isOrganic: true
   },
   {
-    id: 'prod-2',
-    name: 'Moroccan Argan Liquid Gold Gloss',
-    tagline: 'Weightless anti-frizz thermal protectant',
-    category: 'hair',
-    price: 1199,
-    originalPrice: 1499,
-    volume: '100ml',
-    image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=600&q=80',
-    rating: 4.8,
-    badge: 'Salon Exclusive',
-    description: 'Cold-pressed pure Moroccan argan oil infused with vitamin E. Delivers radiant shine without greasiness.'
+    id: 'prod-serum',
+    name: 'Nourishing Moroccan Hair Serum',
+    category: 'Hair Care',
+    description: 'Ultra-lightweight cold-pressed argan elixir providing 48-hour thermal protection and brilliant gloss.',
+    volume: '100 ml',
+    price: 1450,
+    oldPrice: 1750,
+    image: '/images/clandestine/products/serum.webp',
+    inStock: true,
+    isOrganic: true
   },
   {
-    id: 'prod-3',
-    name: 'Gentleman Royal Beard Sculpting Balm',
-    tagline: 'Cedarwood, jojoba & organic shea hold',
-    category: 'beard',
-    price: 699,
-    originalPrice: 899,
-    volume: '75g',
-    image: 'https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=600&q=80',
-    rating: 4.9,
-    badge: 'Popular for Men',
-    description: 'Tames unruly beard whiskers while deeply conditioning the underlying skin. Natural matte hold with a subtle woody aroma.'
+    id: 'prod-lotion',
+    name: 'Botanical Velvet Body Lotion',
+    category: 'Body Care',
+    description: 'Deep hydration formula enriched with shea butter, aloe vera, and delicate neroli essence.',
+    volume: '300 ml',
+    price: 950,
+    image: '/images/clandestine/products/lotion.webp',
+    inStock: true,
+    isOrganic: true
   },
   {
-    id: 'prod-4',
-    name: '24K Golden Collagen Radiance Drops',
-    tagline: 'Skin brightening & youth-restorative facial serum',
-    category: 'skin',
-    price: 1799,
-    originalPrice: 2299,
-    volume: '50ml',
-    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80',
-    rating: 4.95,
-    badge: 'Luxury Care',
-    description: 'Micro-gold flakes suspended in hyaluronic acid and niacinamide. Enhances skin luminosity and boosts post-facial hydration.'
+    id: 'prod-candle',
+    name: 'Aromatherapy Studio Candle',
+    category: 'Wellness',
+    description: 'Hand-poured pure soy wax candle infused with lavender, sandalwood, and amber for relaxing evenings.',
+    volume: '200 g',
+    price: 750,
+    image: '/images/clandestine/products/candle.webp',
+    inStock: true,
+    isOrganic: true
+  },
+  {
+    id: 'prod-cream',
+    name: 'Hydrating Face Infusion Cream',
+    category: 'Skin Care',
+    description: 'Intense peptide barrier restoration cream designed to lock in moisture and revitalize dull skin.',
+    volume: '50 ml',
+    price: 1650,
+    oldPrice: 1950,
+    image: '/images/clandestine/products/cream.webp',
+    inStock: true,
+    isOrganic: true
+  },
+  {
+    id: 'prod-oil',
+    name: 'Essential Radiance Treatment Oil',
+    category: 'Face & Hair',
+    description: 'Multi-purpose 24K gold infused botanical dry oil that deeply nourishes skin, beard, and hair ends.',
+    volume: '60 ml',
+    price: 1150,
+    image: '/images/clandestine/products/oil.webp',
+    inStock: true,
+    isOrganic: true
   }
 ];
 
 export const FAQS: FAQItem[] = [
   {
-    question: 'Do I need an appointment or do you accept walk-ins?',
-    answer: 'While we happily welcome walk-in guests whenever a styling station is free, we strongly encourage booking an online appointment through our website. Reserving your slot guarantees zero waiting time and allows our master stylists to prepare your customized station in advance.',
-    category: 'Bookings'
+    id: 'faq-1',
+    question: 'How do I schedule an appointment with a specific master?',
+    answer: 'You can click "Book Appointment" on any master card in the Meet Our Masters section, or use our 5-step booking wizard where you can choose your preferred stylist, date, and time slot.'
   },
   {
-    question: 'What hygiene and sterilization protocols do you follow?',
-    answer: 'Hygiene is our hallmark in Aurangabad. All scissors, clippers, razor handles, and grooming guards undergo medical-grade UV sterilization between each client. We use fresh, single-use neck strips, disposable razor blades, and freshly laundered towels for every service.',
-    category: 'Hygiene'
+    id: 'faq-2',
+    question: 'What hygiene standards do you maintain at Real Looks?',
+    answer: 'We operate under strict hospital-grade cleanliness standards. All metal instruments undergo 3-step ultrasonic cleaning followed by medical autoclave and UV sterilization. Towels and capes are strictly single-use or sanitized at 90°C.'
   },
   {
-    question: 'What is the difference between Hair Botox and Keratin treatments?',
-    answer: 'Keratin primarily straightens and smooths coarse or curly hair by bonding a protective protein layer onto the shaft. Hair Botox is a non-chemical, deep-conditioning treatment that repairs damaged fibers, restores moisture, and eliminates frizz without altering your natural hair texture.',
-    category: 'Hair Treatments'
+    id: 'faq-3',
+    question: 'What is the difference between Hair Botox and Keratin?',
+    answer: 'Keratin treatments focus on maximum straightening and bond reformation, while Hair Botox is a deep restorative conditioning treatment with hyaluronic acid and collagen that eliminates frizz and repairs damaged fibers without formaldehyde.'
   },
   {
-    question: 'Are your skin facials and products suitable for sensitive skin?',
-    answer: 'Yes! Every facial service begins with a complimentary skin analysis by our certified aesthetician Priya Sharma. We customize the serums, massage gels, and masks based on your skin type—whether sensitive, acne-prone, oily, or mature.',
-    category: 'Skin Care'
+    id: 'faq-4',
+    question: 'Are walk-ins accepted or is prior reservation required?',
+    answer: 'We always welcome walk-ins! However, to minimize waiting times and guarantee your preferred master stylist during peak evening and weekend hours, we recommend booking online or via WhatsApp.'
   },
   {
-    question: 'Where is Real Looks located and is parking available?',
-    answer: 'We are situated at Q957+RR4, Dani Bigha, near Vayuputra Fitness Club in Aurangabad, Bihar (PIN 824101). Our location is easily accessible with convenient, dedicated front-row vehicle parking.',
-    category: 'Location'
+    id: 'faq-5',
+    question: 'How far in advance should bridal services be booked?',
+    answer: 'For wedding packages and pre-bridal skin/hair regimens, we recommend reserving your slots 3 to 6 weeks in advance to schedule trial consultations and customized skin prep routines.'
   },
   {
-    question: 'Do you offer pre-bridal and groom makeover packages?',
-    answer: 'Yes! We offer curated bespoke pre-wedding packages for both brides and grooms, including hair rejuvenation, 24K gold radiance facials, body polishing, beard grooming, and trial makeup sessions.',
-    category: 'Bridal'
+    id: 'faq-6',
+    question: 'Can I purchase your boutique aftercare products in-salon?',
+    answer: 'Yes! All curated botanical formulas shown in our Salon Boutique section are available directly at our front desk or via WhatsApp reservation for in-salon pickup.'
   }
 ];
+
+export const GALLERY_ITEMS: GalleryItem[] = [
+  {
+    id: 'g-1',
+    title: 'Editorial Balayage',
+    category: 'Hair',
+    imageUrl: '/images/clandestine/service-images/hairdressing.webp',
+    caption: 'Seamless dimensional honey tones'
+  },
+  {
+    id: 'g-2',
+    title: 'Hydra Facial Glow',
+    category: 'Skin',
+    imageUrl: '/images/clandestine/service-images/facial.webp',
+    caption: 'Deep pore radiance therapy'
+  },
+  {
+    id: 'g-3',
+    title: 'Royal Beard Sculpt',
+    category: 'Grooming',
+    imageUrl: '/images/clandestine/service-images/brow-shaping.webp',
+    caption: 'Crisp razor contouring'
+  },
+  {
+    id: 'g-4',
+    title: 'Nanoplastia Gloss',
+    category: 'Hair',
+    imageUrl: '/images/clandestine/service-images/laser-hair-removal.webp',
+    caption: 'Mirror shine keratin infusion'
+  }
+];
+
+export const PROMO_DATA = {
+  activeOffer: '🌟 Spring Renewal: Flat 20% OFF on Hair Botox & 24K Gold Facial packages this week!',
+  code: 'LUXE20'
+};
+
+export const TIME_SLOTS: TimeSlot[] = [
+  { time: '09:00 AM', period: 'Morning', isAvailable: true },
+  { time: '09:45 AM', period: 'Morning', isAvailable: true },
+  { time: '10:30 AM', period: 'Morning', isAvailable: true },
+  { time: '11:15 AM', period: 'Morning', isAvailable: true },
+  { time: '12:00 PM', period: 'Afternoon', isAvailable: true },
+  { time: '01:00 PM', period: 'Afternoon', isAvailable: true },
+  { time: '02:00 PM', period: 'Afternoon', isAvailable: true },
+  { time: '03:00 PM', period: 'Afternoon', isAvailable: true },
+  { time: '04:00 PM', period: 'Afternoon', isAvailable: true },
+  { time: '05:00 PM', period: 'Evening', isAvailable: true },
+  { time: '06:00 PM', period: 'Evening', isAvailable: true },
+  { time: '07:00 PM', period: 'Evening', isAvailable: true },
+  { time: '08:00 PM', period: 'Evening', isAvailable: true },
+];
+

@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Clock, Sparkles, ChevronRight, Scissors, ChevronDown, ChevronUp, Check, ArrowRight } from 'lucide-react';
+import { Clock, ChevronDown, ChevronUp, ArrowRight, Sparkles } from 'lucide-react';
 import { SERVICES } from '../data/salonData';
-import { ServiceItem } from '../types';
 
 interface ServicesSectionProps {
   onSelectService: (serviceId: string) => void;
@@ -15,11 +14,11 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
 
   const categories = [
     { id: 'all', label: 'All Services' },
-    { id: 'hair', label: 'Hair Cuts & Styling' },
-    { id: 'grooming', label: "Beard & Grooming" },
-    { id: 'facial', label: 'Skin & Facials' },
-    { id: 'spa', label: 'Botox & Hair Spa' },
-    { id: 'bridal', label: 'Bridal & Occasion' },
+    { id: 'hair', label: 'Hairdressing' },
+    { id: 'facial', label: 'Facial & Glow' },
+    { id: 'spa', label: 'Botox & Treatments' },
+    { id: 'bridal', label: 'Bridal & Makeup' },
+    { id: 'grooming', label: 'Grooming & Shave' },
   ];
 
   const filtered = SERVICES.filter(item => {
@@ -30,21 +29,21 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
   const displayedServices = showAll ? filtered : filtered.slice(0, 5);
 
   return (
-    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
+    <section id="services" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       
-      {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-12">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#4C5B2E]/10 border border-[#4C5B2E]/25 text-[#2F3B1A] text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
-          <Scissors className="w-3.5 h-3.5 text-[#D6A838]" />
-          <span>Services Designed For You</span>
+      {/* Section Header (Clandestine Style) */}
+      <div className="text-center max-w-3xl mx-auto mb-14">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#141414] border border-[#242424] text-[#8D43F4] text-xs font-semibold uppercase tracking-widest mb-4">
+          <Sparkles className="w-3.5 h-3.5 text-[#8D43F4]" />
+          <span>Services</span>
         </div>
 
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif-title font-bold text-[#192018] tracking-tight">
-          Couture Grooming & Hair Artistry
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#fafafa] tracking-tight">
+          Indulge in Our Exquisite Range of Services
         </h2>
 
-        <p className="mt-3 text-base text-[#677565] max-w-2xl mx-auto">
-          Every service is customized with organic botanical formulations, scalp rituals, and precision styling for men and women.
+        <p className="mt-4 text-base text-[#aaaaaa] max-w-2xl mx-auto leading-relaxed">
+          From tailored hair design and nanoplastia restorative therapies to rejuvenating 24K facials, crafted for ultimate elevation.
         </p>
 
         {/* Category Pills */}
@@ -56,10 +55,10 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                 setActiveCategory(cat.id);
                 setShowAll(false);
               }}
-              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
+              className={`px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-all cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-[#2F3B1A] text-[#FFF4BD] shadow-sm'
-                  : 'bg-white/80 hover:bg-white text-[#3D483B] border border-[#4C5B2E]/15'
+                  ? 'bg-[#8D43F4] text-white shadow-[0_0_15px_rgba(141,67,244,0.4)]'
+                  : 'bg-[#121212] hover:bg-[#1c1c1c] text-[#aaaaaa] hover:text-white border border-[#242424]'
               }`}
             >
               {cat.label}
@@ -69,7 +68,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
       </div>
 
       {/* Clandestine-Style Interactive Service Rows */}
-      <div className="space-y-3.5">
+      <div className="space-y-3">
         <AnimatePresence mode="popLayout">
           {displayedServices.map((service, idx) => {
             const isHovered = hoveredServiceId === service.id;
@@ -80,20 +79,21 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -15 }}
-                transition={{ duration: 0.3, delay: idx * 0.05 }}
+                transition={{ duration: 0.25, delay: idx * 0.04 }}
                 onMouseEnter={() => setHoveredServiceId(service.id)}
                 onMouseLeave={() => setHoveredServiceId(null)}
-                className={`group relative rounded-2xl p-5 sm:p-6 transition-all duration-300 border ${
+                className={`group relative rounded-xl p-4 sm:p-5 transition-all duration-300 border cursor-pointer ${
                   isHovered
-                    ? 'bg-white shadow-xl border-[#D6A838]/60 translate-x-1 sm:translate-x-2'
-                    : 'bg-white/75 backdrop-blur-md border-[#4C5B2E]/15 hover:bg-white/95 shadow-sm'
+                    ? 'bg-[#141414] border-[#8D43F4]/60 shadow-[0_4px_30px_rgba(141,67,244,0.18)] translate-x-1 sm:translate-x-2'
+                    : 'bg-[#0d0d0d] border-[#1c1c1c] hover:border-[#282828]'
                 }`}
+                onClick={() => onSelectService(service.id)}
               >
-                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                   
                   {/* Left: Thumbnail & Service Info */}
                   <div className="flex items-start sm:items-center gap-4 flex-1">
-                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden flex-shrink-0 bg-[#2F3B1A] border border-[#4C5B2E]/20 shadow-xs">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl overflow-hidden flex-shrink-0 bg-[#141414] border border-[#262626]">
                       <img
                         src={service.image}
                         alt={service.name}
@@ -102,66 +102,48 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                       />
                     </div>
 
-                    <div className="space-y-1 flex-1">
+                    <div className="space-y-1">
                       <div className="flex flex-wrap items-center gap-2">
-                        <h3 className={`font-serif-title text-base sm:text-xl font-bold transition-colors ${
-                          isHovered ? 'text-[#C29324]' : 'text-[#192018]'
-                        }`}>
+                        <h3 className="text-base sm:text-lg font-bold text-[#fafafa] group-hover:text-white transition-colors">
                           {service.name}
                         </h3>
-
-                        <span className={`badge badge-sm text-[10px] font-bold border-none ${
-                          service.targetGender === 'Men'
-                            ? 'bg-[#89CFF0]/25 text-[#14486D]'
-                            : service.targetGender === 'Women'
-                            ? 'bg-[#F5D77F]/30 text-[#634705]'
-                            : 'bg-[#86D6B9]/25 text-[#0D8F8B]'
-                        }`}>
-                          {service.targetGender}
-                        </span>
-
                         {service.isPopular && (
-                          <span className="badge badge-sm bg-gradient-to-r from-[#FFF4BD] to-[#F5D77F] text-[#634705] font-bold text-[10px] border border-[#D6A838]/40">
-                            ★ Popular
+                          <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase bg-[#8D43F4]/20 text-[#c89fff] border border-[#8D43F4]/40">
+                            Popular
                           </span>
                         )}
                       </div>
 
-                      <p className="text-xs sm:text-sm text-[#677565] max-w-2xl leading-relaxed">
+                      <p className="text-xs sm:text-sm text-[#888888] line-clamp-1 max-w-xl">
                         {service.description}
                       </p>
 
-                      {service.includes && (
-                        <div className="hidden sm:flex flex-wrap items-center gap-2 pt-1">
-                          {service.includes.map((inc, i) => (
-                            <span key={i} className="text-[10px] text-[#4C5B2E] font-medium flex items-center gap-0.5">
-                              <Check className="w-3 h-3 text-[#12B5AF]" /> {inc}
-                            </span>
-                          ))}
-                        </div>
-                      )}
+                      <div className="flex items-center gap-4 text-xs text-[#777777] pt-1">
+                        <span className="flex items-center gap-1">
+                          <Clock className="w-3.5 h-3.5 text-[#8D43F4]" />
+                          {service.durationMinutes} mins
+                        </span>
+                        <span>•</span>
+                        <span className="capitalize">{service.targetGender}</span>
+                      </div>
                     </div>
                   </div>
 
-                  {/* Right: Duration, Price & Action CTA */}
-                  <div className="flex items-center justify-between lg:justify-end gap-6 pt-3 lg:pt-0 border-t lg:border-t-0 border-black/05 flex-shrink-0">
-                    <div className="text-left lg:text-right">
-                      <div className="flex items-center lg:justify-end gap-1 text-xs text-[#677565] font-medium">
-                        <Clock className="w-3.5 h-3.5 text-[#52A296]" />
-                        <span>{service.durationMinutes} mins</span>
-                      </div>
-                      <span className="text-xl sm:text-2xl font-serif font-extrabold text-[#192018] block mt-0.5">
+                  {/* Right: Pricing & Book CTA */}
+                  <div className="flex items-center justify-between sm:justify-end gap-5 pt-2 sm:pt-0 border-t sm:border-t-0 border-[#1c1c1c]">
+                    <div className="text-left sm:text-right">
+                      <span className="text-xs text-[#777777] block uppercase tracking-wider">Starts at</span>
+                      <span className="text-lg sm:text-xl font-bold text-[#fafafa]">
                         ₹{service.price}
                       </span>
                     </div>
 
                     <button
-                      onClick={() => onSelectService(service.id)}
-                      className={`px-5 py-2.5 rounded-xl font-bold text-xs tracking-wider uppercase transition-all flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95 ${
-                        isHovered
-                          ? 'bg-gradient-to-r from-[#D6A838] to-[#C29324] text-[#1F1703] shadow-md scale-105'
-                          : 'bg-[#2F3B1A] text-[#FFF4BD] hover:bg-[#4C5B2E]'
-                      }`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        onSelectService(service.id);
+                      }}
+                      className="px-4 py-2 rounded-lg bg-[#8D43F4] text-white font-semibold text-xs tracking-wider uppercase transition-all shadow-[0_0_14px_rgba(141,67,244,0.35)] hover:bg-[#7b2fe0] hover:shadow-[0_0_20px_rgba(141,67,244,0.55)] cursor-pointer flex items-center gap-1.5"
                     >
                       <span>Book</span>
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -175,19 +157,18 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
         </AnimatePresence>
       </div>
 
-      {/* Show More / Show Less Toggle (Clandestine Style) */}
+      {/* Show More / Show Less Toggle Button */}
       {filtered.length > 5 && (
-        <div className="text-center pt-8">
+        <div className="mt-8 text-center">
           <button
             onClick={() => setShowAll(!showAll)}
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/90 hover:bg-white text-[#2F3B1A] border border-[#4C5B2E]/30 font-bold text-xs tracking-wider uppercase transition-all shadow-xs hover:shadow-md cursor-pointer active:scale-95"
+            className="px-6 py-2.5 rounded-full bg-[#121212] hover:bg-[#1a1a1a] border border-[#262626] text-[#e1e1e1] hover:text-white text-xs font-semibold uppercase tracking-wider transition-all cursor-pointer inline-flex items-center gap-2"
           >
-            <span>{showAll ? 'Show Less Services' : `Show All ${filtered.length} Services`}</span>
-            {showAll ? <ChevronUp className="w-4 h-4 text-[#D6A838]" /> : <ChevronDown className="w-4 h-4 text-[#D6A838]" />}
+            <span>{showAll ? 'Show Fewer Services' : `View All Services (${filtered.length})`}</span>
+            {showAll ? <ChevronUp className="w-4 h-4 text-[#8D43F4]" /> : <ChevronDown className="w-4 h-4 text-[#8D43F4]" />}
           </button>
         </div>
       )}
-
     </section>
   );
 };

@@ -23,47 +23,48 @@ Engineered with artisan paper canvas aesthetics, organic wave physics, side-edge
 
 ## 🌿 Brand Identity & Design System
 
-The Real Looks digital presence is crafted with a bespoke color palette and tactile material design:
+The Real Looks digital experience is engineered to replicate the dark luxury aesthetic of the **[Clandestine Beauty Salon template](https://github.com/Northstrix/clandestine-beauty-salon-landing-page-template)**:
 
 | Element | Palette & Implementation | Description |
 | :--- | :--- | :--- |
-| **Paper Canvas Texture** | `#F8F9F5` base with procedural micro-grain filter | A tactile, editorial paper background establishing a premium salon atmosphere. |
-| **Architectural Grid Lines** | Faded square lines from side edges (masked `0.95` to `transparent`) | Subtly frames content on PC/desktop screens for all sections **outside the hero**. |
-| **Olive Spectrum** | `#2F3B1A` (Deep), `#4C5B2E` (Primary), `#52A296` (Seafoam), `#86D6B9` (Mint) | Natural botanical luxury reflecting organic hair care and hygiene. |
-| **Sky Blue Spectrum** | `#0D8F8B` (Deep Tiffany), `#12B5AF` (Tiffany), `#4B9CD3` (Carolina), `#89CFF0` (Baby Blue) | Vibrant accents providing clarity, modernism, and fresh energy. |
-| **Glossy Gold** | `#FFF4BD` (Highlight), `#D6A838` (Primary Gold), `#C29324` (Rich), `#8E680E` (Deep) | Metallic prestige accents for CTAs, badges, and brand emblems. |
-| **Lucid Glassmorphism** | `rgba(255, 255, 255, 0.58)` backdrop-blur cards with high-specular rims | Floating cards and navigation elements that enhance depth and readability. |
+| **Obsidian Canvas** | Deep Black `#000000` & Secondary Dark `#0a0a0a` | Ultra-dark, minimalist foundation creating depth, contrast, and high-fashion allure. |
+| **Electric Violet Accent** | `#8D43F4` with hover `#7B2FE0` and radial glows | Signature neon-violet accent used for active states, CTA buttons, badges, and glowing rims. |
+| **Crisp Typography** | `#FAFAFA` (Headings), `#E1E1E1` (Body), `#AAAAAA` (Muted) | High-contrast editorial typography ensuring effortless readability across dark cards. |
+| **Delicate Borders** | `#1A1A1A` and `#242424` hairline card outlines | Subtle framing that separates components without visual clutter. |
+| **Ambient Radial Blooms** | Subtle violet & botanical emerald blur gradients | Atmospheric background illumination echoing haute coiffure sanctuaries. |
 
 ---
 
 ## ✨ Features & Highlights
 
 ### 1. 🌟 Signature Clandestine-Style Hero Showcase
-- **Rotating Signature Phrases**: Animated headline switching between `YOUR SIGNATURE.`, `ELEGANCE & PRECISION.`, `BOTANICAL LUXURY.`, and `UNISEX ARTISTRY.`
-- **Official Documentation Logo**: Features the high-fidelity intertwined **RL** brand emblem with male and female silhouettes, golden scissors, and botanical foliage.
-- **Hero Lady Hair Visual**: Showcases an editorial portrait of a woman with radiant, voluminous styled balayage waves aligning with the salon's luxury aesthetic.
-- **Floating Verified Review Pill**: Highlighting 4.9★ rating with 850+ local client reviews.
-- **Hero Clean Paper Canvas**: Clean background free of square grid lines, allowing the brand visual and copy to shine.
+- **Rotating Headline Pills**: Animated keyword switcher cycling through `Hairstyling`, `Skin Radiance`, `Hair Botox`, `Beard Artistry`, and `Bridal Glow`.
+- **Editorial Model Portrait**: Framed high-fashion salon visual (`hero.webp`) with delicate dark borders and ambient lighting.
+- **Floating Client Review Chips**: Floating verified client review badges (Hannah Miller 5.0★, Naomi Bright 5.0★) with subtle floating keyframe physics.
+- **Action CTAs**: Quick access to "Schedule an Appointment" and "Explore Our Services".
 
 ### 2. 💎 Clandestine Floating Island Limelight Navbar
-- **Island Geometry**: Floating `rounded-full` pill with `backdrop-blur-xl`, delicate specular gold border, and ambient gradient glow.
-- **Active Section Limelight**: Smoothly tracks current section and highlights links on hover and scroll.
-- **Integrated Actions**: One-click "Book Now" CTA, quick "My Requests" drawer trigger, and real-time open status indicator.
+- **Island Geometry**: Floating centered pill navbar with `backdrop-blur-xl`, dark translucent fill, and delicate border.
+- **Limelight Active Section Indicator**: Automatically tracks scroll position and illuminates the active section (`Home`, `Services`, `Masters`, `Reviews`, `Store`, `About`, `FAQ`).
+- **Integrated Actions**: One-click "BOOK NOW" CTA, quick "My Requests" drawer trigger, and real-time open status indicator.
 
 ### 3. ✂️ Meet Our Masters (Specialists Showcase)
 - Dedicated master stylist cards inspired by Clandestine's team presentation:
-  - **Rahul Kumar**: Creative Hair Director & Nanoplastia Maestro
-  - **Priya Sharma**: Senior Esthetician & Bridal Glow Specialist
-  - **Amit Verma**: Master Barber & Royal Beard Sculptor
-- Direct "Book with Specialist" routing into the appointment scheduler with preselected master.
+  - **Sharon Katz**: Creative Hair Director & Nanoplastia Maestro
+  - **Mark Franklin**: Master Barber & Royal Beard Sculptor
+  - **Maria Garcia**: Senior Esthetician & Skin Specialist
+  - **Aviva Mar**: Color & Texture Specialist
+- Master cards feature avatar portraits, ratings, specialties badges, and one-click appointment scheduling.
 
 ### 4. 🛍️ Salon Boutique & Aftercare Retail Store
 - Curated luxury aftercare formulas available directly in-salon:
-  - Organic Hair Botox Revitalizing Mask
-  - Pure Moroccan Argan Elixir Serum
-  - Ayurvedic Sandalwood Beard Sculpting Balm
-  - 24K Gold Radiance Facial Oil
-- Direct 1-click WhatsApp concierge product reservations.
+  - Restorative Botanical Shampoo
+  - Nourishing Moroccan Hair Serum
+  - Botanical Velvet Body Lotion
+  - Aromatherapy Studio Candle
+  - Hydrating Face Infusion Cream
+  - Essential Radiance Treatment Oil
+- Direct 1-click WhatsApp concierge product reservation.
 
 ### 5. ❓ Unfolding Interactive FAQ Accordion
 - Smooth animated collapsible question cards answering the top client queries regarding hygiene, appointments, bridal bookings, and chemical treatment longevity.
