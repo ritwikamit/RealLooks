@@ -67,39 +67,44 @@
   background-color: #FAF9F6;
   background-image: 
     radial-gradient(rgba(214, 168, 56, 0.05) 1px, transparent 1px),
-    radial-gradient(rgba(75, 156, 211, 0.035) 1px, transparent 1px);
+    radial-gradient(rgba(47, 59, 26, 0.035) 1px, transparent 1px);
   background-size: 36px 36px, 72px 72px;
 }
 
-/* Redesigned Architectural Edge Overlay: Soft ambient hairline guide fading towards edges */
-.square-grid-overlay,
+/* Square Mapping Faded from the Two Sides of the Screen (Except Hero) */
+.square-mapping-edge-overlay,
 .architectural-edge-overlay {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  background-size: 48px 48px;
+  background-size: 44px 44px;
   background-image: 
-    linear-gradient(to right, rgba(214, 168, 56, 0.12) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(75, 156, 211, 0.08) 1px, transparent 1px);
+    linear-gradient(to right, rgba(214, 168, 56, 0.18) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(47, 59, 26, 0.12) 1px, transparent 1px);
   mask-image: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.3) 15%,
-    transparent 35%,
-    transparent 65%,
-    rgba(0, 0, 0, 0.3) 85%,
-    rgba(0, 0, 0, 0.8) 100%
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.6) 12%,
+    rgba(0, 0, 0, 0.18) 24%,
+    transparent 36%,
+    transparent 64%,
+    rgba(0, 0, 0, 0.18) 76%,
+    rgba(0, 0, 0, 0.6) 88%,
+    rgba(0, 0, 0, 0.95) 100%
   );
   -webkit-mask-image: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.8) 0%,
-    rgba(0, 0, 0, 0.3) 15%,
-    transparent 35%,
-    transparent 65%,
-    rgba(0, 0, 0, 0.3) 85%,
-    rgba(0, 0, 0, 0.8) 100%
+    rgba(0, 0, 0, 0.95) 0%,
+    rgba(0, 0, 0, 0.6) 12%,
+    rgba(0, 0, 0, 0.18) 24%,
+    transparent 36%,
+    transparent 64%,
+    rgba(0, 0, 0, 0.18) 76%,
+    rgba(0, 0, 0, 0.6) 88%,
+    rgba(0, 0, 0, 0.95) 100%
   );
+  contain: paint;
 }
 
 /* =========================================================

@@ -121,8 +121,8 @@ export default function App() {
             {/* Post-Hero Container with Architectural Edge Overlay */}
             <div className="relative w-full overflow-hidden">
               
-              {/* Soft ambient architectural hairline guides fading towards edges */}
-              <div className="architectural-edge-overlay hidden sm:block" aria-hidden="true" />
+              {/* Square mapping faded from the two sides of the screen (Except Hero) */}
+              <div className="square-mapping-edge-overlay" aria-hidden="true" />
               
               {/* Subtle architectural gold margin guides on desktop */}
               <div className="hidden lg:block absolute inset-y-0 left-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
@@ -190,7 +190,7 @@ export default function App() {
            ========================================================= */}
         {activePage === 'about' && (
           <div className="relative w-full overflow-hidden py-8 sm:py-12">
-            <div className="architectural-edge-overlay hidden sm:block" aria-hidden="true" />
+            <div className="square-mapping-edge-overlay" aria-hidden="true" />
             <div className="hidden lg:block absolute inset-y-0 left-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
             <div className="hidden lg:block absolute inset-y-0 right-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
 
@@ -229,7 +229,7 @@ export default function App() {
            ========================================================= */}
         {activePage === 'gallery' && (
           <div className="relative w-full overflow-hidden py-8 sm:py-12">
-            <div className="architectural-edge-overlay hidden sm:block" aria-hidden="true" />
+            <div className="square-mapping-edge-overlay" aria-hidden="true" />
             <div className="hidden lg:block absolute inset-y-0 left-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
             <div className="hidden lg:block absolute inset-y-0 right-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
 
@@ -268,7 +268,7 @@ export default function App() {
            ========================================================= */}
         {activePage === 'contact' && (
           <div className="relative w-full overflow-hidden py-8 sm:py-12">
-            <div className="architectural-edge-overlay hidden sm:block" aria-hidden="true" />
+            <div className="square-mapping-edge-overlay" aria-hidden="true" />
             <div className="hidden lg:block absolute inset-y-0 left-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
             <div className="hidden lg:block absolute inset-y-0 right-6 w-[1px] bg-gradient-to-b from-transparent via-[#D6A838]/20 to-transparent pointer-events-none z-0" aria-hidden="true" />
 
