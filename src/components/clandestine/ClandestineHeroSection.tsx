@@ -94,27 +94,29 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
         }
       `}</style>
 
-      {/* 1. Grand Faded-Yet-Clearly-Visible Real Looks Logo in Hero Background */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden -z-5 select-none">
-        <motion.img
-          initial={{ opacity: 0, scale: 0.94 }}
-          animate={{ opacity: 0.26, scale: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut" }}
-          src="/images/logo.png"
-          alt="Real Looks Logo Watermark"
-          aria-hidden="true"
-          className="w-[940px] sm:w-[1100px] lg:w-[1260px] max-w-[96vw] h-auto object-contain filter drop-shadow-[0_0_80px_rgba(75,156,211,0.35)] pointer-events-none"
-        />
-      </div>
-
-      {/* 2. Luminous Ambient Sky & Carolina Blue Aura Blobs */}
-      <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+      {/* 1. Luminous Ambient Sky & Carolina Blue Aura Blobs (z-0 behind watermark) */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <div className="absolute -top-32 -left-32 w-[660px] h-[660px] bg-gradient-to-br from-[#4B9CD3]/28 via-[#12B5AF]/22 to-transparent rounded-full blur-3xl animate-pulse" />
         <div className="absolute top-10 -right-32 w-[680px] h-[680px] bg-gradient-to-bl from-[#89CFF0]/35 via-[#8FD3E8]/30 to-transparent rounded-full blur-3xl" />
         <div className="absolute bottom-10 left-1/4 w-[520px] h-[300px] bg-gradient-to-t from-[#12B5AF]/18 to-transparent rounded-full blur-2xl" />
       </div>
 
-      {/* 3. Hero Main Content Container Aligned with Central Logo Watermark */}
+      {/* 2. Grand Prominent Real Looks Logo Watermark in Hero Centre (z-0 above background, below z-10 foreground) */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden z-0 select-none">
+        <img
+          src="/images/logo.png"
+          alt="Real Looks Logo"
+          aria-hidden="true"
+          className="w-[880px] sm:w-[1060px] lg:w-[1240px] max-w-[95vw] h-auto object-contain pointer-events-none transition-all duration-700 select-none"
+          style={{
+            opacity: 0.38,
+            filter: 'drop-shadow(0 0 50px rgba(75, 156, 211, 0.4)) drop-shadow(0 0 90px rgba(214, 168, 56, 0.25))',
+          }}
+          loading="eager"
+        />
+      </div>
+
+      {/* 3. Hero Main Content Container Aligned with Central Logo Watermark (relative z-10) */}
       <div className="relative z-10 max-w-7xl mx-auto w-full my-auto py-6 sm:py-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
