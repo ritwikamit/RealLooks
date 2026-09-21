@@ -264,10 +264,10 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
       </div>
 
       {/* Main Glassmorphic Scheduler Container */}
-      <div className="lucid-glass rounded-3xl border border-white/80 shadow-[0_16px_40px_0_rgba(76,91,46,0.08)] overflow-hidden">
+      <div className="lucid-glass rounded-3xl border border-[#D6A838]/30 shadow-[0_20px_50px_0_rgba(11,25,44,0.12)] overflow-hidden">
         
-        {/* Step Progress Tracker */}
-        <div className="bg-white/40 border-b border-white/60 px-4 sm:px-8 py-4.5 backdrop-blur-md">
+        {/* Step Progress Tracker with Luxury Blue Gradient */}
+        <div className="bg-gradient-to-r from-[#0B192C] via-[#163859] to-[#0D5C75] border-b border-[#D6A838]/30 px-4 sm:px-8 py-4.5 text-white">
           <div className="flex items-center justify-between max-w-3xl mx-auto">
             {[
               { num: 1, label: 'Service' },
@@ -283,19 +283,19 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
                   <div 
                     className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full flex items-center justify-center text-xs font-bold transition-all ${
                       isCompleted 
-                        ? 'bg-[#12B5AF] text-white shadow-xs' 
+                        ? 'bg-[#12B5AF] text-white shadow-xs ring-2 ring-[#12B5AF]/40' 
                         : isActive 
-                        ? 'glossy-gold-btn text-[#4A3502] ring-4 ring-[#D6A838]/25 shadow-xs' 
-                        : 'bg-white/60 text-[#677565] border border-white/80'
+                        ? 'bg-gradient-to-r from-[#D6A838] to-[#C29324] text-[#1F1703] ring-4 ring-[#D6A838]/35 shadow-md font-black' 
+                        : 'bg-white/15 text-white/60 border border-white/20'
                     }`}
                   >
                     {isCompleted ? <Check className="w-4 h-4" /> : s.num}
                   </div>
-                  <span className={`hidden md:inline text-xs font-bold ${isActive ? 'text-[#192018]' : 'text-[#677565]'}`}>
+                  <span className={`hidden md:inline text-xs font-bold ${isActive ? 'text-[#FFF2A8] font-black' : isCompleted ? 'text-white' : 'text-white/60'}`}>
                     {s.label}
                   </span>
                   {idx < 4 && (
-                    <div className={`hidden sm:block h-[1.5px] flex-1 mx-2 transition-all ${step > s.num ? 'bg-[#12B5AF]' : 'bg-black/10'}`} />
+                    <div className={`hidden sm:block h-[1.5px] flex-1 mx-2 transition-all ${step > s.num ? 'bg-[#12B5AF]' : 'bg-white/20'}`} />
                   )}
                 </div>
               );

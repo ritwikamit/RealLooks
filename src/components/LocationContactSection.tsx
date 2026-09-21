@@ -20,24 +20,27 @@ export const LocationContactSection: React.FC = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         
-        {/* Contact Info Card with Lucid Glass */}
-        <div className="lg:col-span-5 lucid-glass-card rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
-          <div className="space-y-6">
-            <h3 className="text-2xl font-serif font-bold text-[#192018]">
+        {/* Contact Info Card with Luxury Blue Gradient */}
+        <div className="lg:col-span-5 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6 bg-gradient-to-br from-[#0B192C] via-[#14304D] to-[#0D4B5E] text-white border border-[#D6A838]/40 shadow-xl relative overflow-hidden">
+          {/* Subtle gold glow in corner */}
+          <div className="absolute -right-12 -top-12 w-48 h-48 bg-[#D6A838]/10 rounded-full blur-2xl pointer-events-none" />
+          
+          <div className="space-y-6 relative z-10">
+            <h3 className="text-2xl font-serif font-bold text-white">
               Real Looks Unisex Salon
             </h3>
 
             {/* Address */}
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-2xl bg-[#4C5B2E]/10 text-[#4C5B2E] flex items-center justify-center flex-shrink-0 mt-0.5 border border-[#4C5B2E]/20">
-                <MapPin className="w-5 h-5 text-[#4C5B2E]" />
+              <div className="w-10 h-10 rounded-2xl bg-white/10 text-[#FFF2A8] flex items-center justify-center flex-shrink-0 mt-0.5 border border-[#D6A838]/30">
+                <MapPin className="w-5 h-5 text-[#D6A838]" />
               </div>
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#52A296]">Address</span>
-                <p className="text-sm font-semibold text-[#192018] mt-0.5 leading-snug">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#D6A838]">Address</span>
+                <p className="text-sm font-semibold text-white mt-0.5 leading-snug">
                   {SALON_INFO.address}
                 </p>
-                <p className="text-xs text-[#677565] mt-1 font-normal">
+                <p className="text-xs text-white/70 mt-1 font-normal">
                   Landmark: Near Vayuputra Fitness Club, Dani Bigha
                 </p>
               </div>
@@ -45,15 +48,15 @@ export const LocationContactSection: React.FC = () => {
 
             {/* Hours */}
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-2xl bg-[#D6A838]/15 text-[#8E680E] flex items-center justify-center flex-shrink-0 mt-0.5 border border-[#D6A838]/30">
+              <div className="w-10 h-10 rounded-2xl bg-white/10 text-[#D6A838] flex items-center justify-center flex-shrink-0 mt-0.5 border border-[#D6A838]/30">
                 <Clock className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#8E680E]">Opening Hours</span>
-                <p className="text-sm font-semibold text-[#192018] mt-0.5">
+                <span className="text-xs font-bold uppercase tracking-wider text-[#D6A838]">Opening Hours</span>
+                <p className="text-sm font-semibold text-white mt-0.5">
                   Monday – Sunday: 9:00 AM – 9:00 PM
                 </p>
-                <span className="inline-block text-[11px] text-[#0D8F8B] font-bold bg-[#86D6B9]/20 px-2 py-0.5 rounded-md mt-1 border border-[#86D6B9]/40">
+                <span className="inline-block text-[11px] text-[#FFF2A8] font-bold bg-[#D6A838]/20 px-2 py-0.5 rounded-md mt-1 border border-[#D6A838]/40">
                   Open 7 Days a Week
                 </span>
               </div>
@@ -61,15 +64,15 @@ export const LocationContactSection: React.FC = () => {
 
             {/* Direct Connect */}
             <div className="flex items-start gap-3.5">
-              <div className="w-10 h-10 rounded-2xl bg-[#89CFF0]/20 text-[#14486D] flex items-center justify-center flex-shrink-0 mt-0.5 border border-[#89CFF0]/40">
-                <Phone className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-2xl bg-white/10 text-white flex items-center justify-center flex-shrink-0 mt-0.5 border border-white/20">
+                <Phone className="w-5 h-5 text-[#86D6B9]" />
               </div>
               <div>
-                <span className="text-xs font-bold uppercase tracking-wider text-[#14486D]">Direct Booking & Inquiry</span>
+                <span className="text-xs font-bold uppercase tracking-wider text-white/80">Direct Booking & Inquiry</span>
                 <div className="flex flex-wrap gap-2 mt-1.5">
                   <a
                     href={`tel:${SALON_INFO.phoneClean}`}
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl lucid-glass hover:bg-white text-[#2F3B1A] font-bold text-xs border border-white/80 shadow-2xs"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold text-xs border border-white/20 transition-colors shadow-2xs"
                   >
                     <Phone className="w-3.5 h-3.5 text-[#D6A838]" />
                     <span>{SALON_INFO.phone}</span>
@@ -78,7 +81,7 @@ export const LocationContactSection: React.FC = () => {
                     href={`https://wa.me/${SALON_INFO.whatsapp}?text=${encodeURIComponent("Hello Real Looks Salon, I would like to inquire about appointments.")}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#25D366]/15 hover:bg-[#25D366]/25 text-[#15803D] font-bold text-xs border border-[#25D366]/30 shadow-2xs"
+                    className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#25D366]/20 hover:bg-[#25D366]/30 text-[#86EFAC] font-bold text-xs border border-[#25D366]/40 transition-colors shadow-2xs"
                   >
                     <MessageSquare className="w-3.5 h-3.5 text-[#25D366]" />
                     <span>WhatsApp</span>
@@ -88,8 +91,8 @@ export const LocationContactSection: React.FC = () => {
             </div>
 
             {/* Socials */}
-            <div className="pt-3 border-t border-black/5">
-              <span className="text-xs font-bold uppercase tracking-wider text-[#677565] block mb-2">
+            <div className="pt-3 border-t border-white/10">
+              <span className="text-xs font-bold uppercase tracking-wider text-white/70 block mb-2">
                 Follow The Looks
               </span>
               <div className="flex gap-2">
@@ -97,16 +100,16 @@ export const LocationContactSection: React.FC = () => {
                   href={SALON_INFO.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl lucid-glass hover:bg-white text-xs font-bold text-[#192018] border border-white/80"
+                  className="flex items-center gap-2 px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-bold text-white border border-white/20 transition-colors"
                 >
-                  <Instagram className="w-4 h-4 text-[#E1306C]" />
+                  <Instagram className="w-4 h-4 text-[#FF7597]" />
                   <span>@reallookssalon_aurangabad</span>
                 </a>
                 <a
                   href={SALON_INFO.facebook}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 p-2 rounded-xl lucid-glass hover:bg-white text-[#1877F2] border border-white/80"
+                  className="flex items-center gap-1.5 p-2 rounded-xl bg-white/10 hover:bg-white/20 text-[#60A5FA] border border-white/20 transition-colors"
                   title="Facebook Page"
                 >
                   <Facebook className="w-4 h-4" />
@@ -120,9 +123,9 @@ export const LocationContactSection: React.FC = () => {
             href={SALON_INFO.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full py-3.5 px-4 rounded-2xl glossy-gold-btn text-[#4A3502] font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-sm hover:scale-[1.02] active:scale-[0.98] transition-all border border-white/80"
+            className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-[#D6A838] to-[#C29324] hover:from-[#C29324] hover:to-[#8E680E] text-[#1F1703] font-extrabold text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-lg hover:scale-[1.02] active:scale-[0.98] transition-all border border-[#D6A838]/60 relative z-10"
           >
-            <Navigation className="w-4 h-4 text-[#4A3502]" />
+            <Navigation className="w-4 h-4 text-[#1F1703]" />
             <span>Open in Google Maps Navigation</span>
           </a>
         </div>

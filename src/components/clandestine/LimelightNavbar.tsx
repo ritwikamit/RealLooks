@@ -2,12 +2,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Menu, X, Calendar, UserCheck } from 'lucide-react';
 import { BrandLogo } from '../BrandLogo';
 
-export type PageView = 'home' | 'about' | 'gallery' | 'contact';
+export type PageView = 'home' | 'services' | 'masters' | 'gallery' | 'store' | 'about' | 'contact';
 
 interface NavItem {
   id: PageView;
   label: string;
-  targetHash?: string;
 }
 
 interface LimelightNavbarProps {
@@ -32,33 +31,33 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
   const activeIndexRef = useRef(0);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
-  const isScrollingToRef = useRef(false);
-  const scrollTimeoutRef = useRef<number | null>(null);
-
   const navItemRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const limelightRef = useRef<HTMLDivElement | null>(null);
 
   const navItems: NavItem[] = [
-    { id: 'home', label: 'Home', targetHash: 'home' },
-    { id: 'home', label: 'Services', targetHash: 'services' },
-    { id: 'home', label: 'Schedule', targetHash: 'scheduler-section' },
-    { id: 'home', label: 'Stylists', targetHash: 'masters' },
-    { id: 'home', label: 'Gallery', targetHash: 'gallery' },
-    { id: 'home', label: 'Boutique', targetHash: 'store' },
-    { id: 'home', label: 'Contact', targetHash: 'contact' },
+    { id: 'home', label: 'Home' },
+    { id: 'services', label: 'Services' },
+    { id: 'masters', label: 'Artisans' },
+    { id: 'gallery', label: 'Lookbook' },
+    { id: 'store', label: 'Boutique' },
+    { id: 'about', label: 'About' },
+    { id: 'contact', label: 'Contact' },
   ];
 
-  // Map subpages when navigated to standalone view
+  // Map active page to limelight position
   useEffect(() => {
-    if (activePage === 'about') {
-      setActiveIndex(3);
-      activeIndexRef.current = 3;
-    } else if (activePage === 'gallery') {
-      setActiveIndex(4);
-      activeIndexRef.current = 4;
-    } else if (activePage === 'contact') {
-      setActiveIndex(6);
-      activeIndexRef.current = 6;
+    const pageIndexMap: Record<PageView, number> = {
+      home: 0,
+      services: 1,
+      masters: 2,
+      gallery: 3,
+      store: 4,
+      about: 5,
+      contact: 6,
+    };
+    if (pageIndexMap[activePage] !== undefined) {
+      setActiveIndex(pageIndexMap[activePage]);
+      activeIndexRef.current = pageIndexMap[activePage];
     }
   }, [activePage]);
 
@@ -201,43 +200,24 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
     setActiveIndex(index);
     setHoveredIndex(null);
     setMobileMenuOpen(false);
-
-    // Temporarily disable scroll tracking while smooth scrolling
-    isScrollingToRef.current = true;
-    if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
-    scrollTimeoutRef.current = window.setTimeout(() => {
-      isScrollingToRef.current = false;
-    }, 850);
-
-    if (activePage !== 'home') {
-      onNavigate('home');
-    }
-
-    if (item.targetHash) {
-      setTimeout(() => {
-        const el = document.getElementById(item.targetHash!);
-        if (el) {
-          const headerEl = document.querySelector('header');
-          const headerHeight = headerEl ? headerEl.offsetHeight + 16 : 80;
-          const elPosition = el.getBoundingClientRect().top + window.pageYOffset;
-          const offsetPosition = elPosition - headerHeight;
-          window.scrollTo({
-            top: offsetPosition > 0 ? offsetPosition : 0,
-            behavior: 'smooth',
-          });
-        }
-      }, 60);
-    }
+    onNavigate(item.id);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
     <header 
-      className={`sticky top-0 z-50 w-full transition-all duration-250 border-b ${
+      className={`sticky top-0 z-50 w-full transition-all duration-300 border-b border-[#D6A838]/40 ${
         isScrolled
-          ? 'bg-[#FAF9F6]/96 backdrop-blur-2xl border-[#D6A838]/35 shadow-[0_8px_30px_rgba(0,0,0,0.07)] py-2 sm:py-2.5'
-          : 'bg-[#FAF9F6]/90 backdrop-blur-xl border-[#D6A838]/20 shadow-[0_4px_20px_rgba(0,0,0,0.04)] py-2.5 sm:py-3'
+          ? 'py-2 sm:py-2.5 shadow-[0_16px_45px_rgba(11,25,44,0.5)]'
+          : 'py-2.5 sm:py-3.5 shadow-[0_10px_30px_rgba(11,25,44,0.35)]'
       }`}
-      style={{ transform: 'translate3d(0,0,0)', backfaceVisibility: 'hidden' }}
+      style={{ 
+        background: 'linear-gradient(135deg, rgba(11, 25, 44, 0.96) 0%, rgba(20, 42, 68, 0.95) 45%, rgba(13, 76, 92, 0.96) 100%)',
+        backdropFilter: 'blur(20px)',
+        WebkitBackdropFilter: 'blur(20px)',
+        transform: 'translate3d(0,0,0)', 
+        backfaceVisibility: 'hidden' 
+      }}
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* 1. Left: Official Brand Logo directly in header (High contrast on light luxury glass) */}
@@ -281,7 +261,7 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
             />
           </div>
 
-          {/* Clean Open Navigation Links — pure typography illuminated by the nav light, NO cylinder or box */}
+          {/* Clean Open Navigation Links — pure typography illuminated by the nav light */}
           <div className="flex items-center gap-1 sm:gap-2 lg:gap-3">
             {navItems.map((item, idx) => {
               const isSelected = displayIndex === idx;
@@ -293,8 +273,8 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
                   onMouseEnter={() => setHoveredIndex(idx)}
                   className={`relative px-3 sm:px-3.5 lg:px-4 py-2 text-[11px] lg:text-xs font-bold tracking-wider uppercase transition-colors duration-150 cursor-pointer select-none ${
                     isSelected
-                      ? 'text-[#8E680E] font-black drop-shadow-[0_0_8px_rgba(214,168,56,0.4)] scale-[1.03]'
-                      : 'text-[#2F3B1A]/80 hover:text-[#182416] active:scale-95'
+                      ? 'text-[#FFF2A8] font-black drop-shadow-[0_0_12px_rgba(214,168,56,0.7)] scale-[1.03]'
+                      : 'text-white/80 hover:text-[#FFF4BD] active:scale-95'
                   }`}
                 >
                   {item.label}
@@ -315,9 +295,9 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
             )}
             <button
               onClick={onOpenBookings}
-              className="btn btn-sm btn-ghost bg-black/5 hover:bg-black/10 text-[#2F3B1A] border border-[#D6A838]/30 rounded-xl text-xs font-bold gap-2 px-3.5 transition-all cursor-pointer shadow-2xs active:scale-95"
+              className="btn btn-sm btn-ghost bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl text-xs font-bold gap-2 px-3.5 transition-all cursor-pointer shadow-2xs active:scale-95"
             >
-              <UserCheck className="w-3.5 h-3.5 text-[#8E680E]" />
+              <UserCheck className="w-3.5 h-3.5 text-[#D6A838]" />
               <span>My Requests</span>
             </button>
           </div>
@@ -343,40 +323,40 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
             )}
             <button
               onClick={onOpenBookings}
-              className="p-2 rounded-xl bg-black/5 text-[#2F3B1A] border border-[#D6A838]/30 cursor-pointer"
+              className="p-2 rounded-xl bg-white/10 text-white border border-[#D6A838]/40 cursor-pointer"
               aria-label="My Bookings"
             >
-              <UserCheck className="w-4 h-4 text-[#8E680E]" />
+              <UserCheck className="w-4 h-4 text-[#D6A838]" />
             </button>
           </div>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl bg-black/5 text-[#2F3B1A] border border-[#D6A838]/30 cursor-pointer"
+            className="p-2 rounded-xl bg-white/10 text-white border border-[#D6A838]/40 cursor-pointer"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden max-w-7xl mx-auto mt-2 rounded-2xl bg-[#FAF9F6]/98 backdrop-blur-2xl border border-[#D6A838]/40 p-4 space-y-2 shadow-2xl">
+        <div className="md:hidden max-w-7xl mx-auto mt-2 rounded-2xl bg-[#0B192C]/98 backdrop-blur-2xl border border-[#D6A838]/40 p-4 space-y-2 shadow-2xl">
           {navItems.map((item, idx) => (
             <button
               key={item.label}
               onClick={() => handleItemClick(idx, item)}
               className={`w-full text-left px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-colors ${
                 activeIndex === idx
-                  ? 'bg-[#D6A838]/20 text-[#8E680E] font-black'
-                  : 'text-[#2F3B1A]/85 hover:bg-black/5'
+                  ? 'bg-[#D6A838]/25 text-[#FFF2A8] font-black'
+                  : 'text-white/85 hover:bg-white/10'
               }`}
             >
               {item.label}
             </button>
           ))}
-          <div className="pt-2 border-t border-black/10">
+          <div className="pt-2 border-t border-white/10">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
