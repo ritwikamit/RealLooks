@@ -184,8 +184,8 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
           </div>
 
           {/* Designed and Developed by AC Custom Labs */}
-          <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-white/70 text-xs sm:text-sm font-normal">
-            <span className="leading-none">Designed and Developed by</span>
+          <div className="flex items-center justify-center gap-2 text-white/70 text-xs sm:text-sm font-normal">
+            <span>Designed and Developed by</span>
             <a
               href="https://accustomlabs.com"
               target="_blank"
@@ -196,7 +196,7 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
               <img
                 src="/images/accustomlabs.png"
                 alt="AC Custom Labs"
-                className="h-3.5 sm:h-4 w-auto object-contain inline-block align-middle"
+                className="h-3.5 sm:h-4 w-auto object-contain block"
               />
             </a>
           </div>
