@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Calendar, ChevronRight, Sparkles, Scissors, Clock, Star, ShieldCheck, MapPin } from 'lucide-react';
-import { BrandLogo } from '../BrandLogo';
+import { Calendar, ChevronRight, Sparkles, Scissors, Clock, Star, ShieldCheck, MapPin, Award } from 'lucide-react';
 import { SALON_INFO } from '../../data/salonData';
 
 interface ClandestineHeroSectionProps {
@@ -33,19 +32,19 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
   }, [rotatingWords.length]);
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-between overflow-hidden px-4 sm:px-6 lg:px-8 pt-4 sm:pt-8 pb-10">
+    <section className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden px-4 sm:px-6 lg:px-8 pt-6 sm:pt-10 pb-10" id="home">
       <style>{`
         @keyframes float-left {
           0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(-14px, -10px); }
+          50% { transform: translate(-12px, -10px); }
         }
         @keyframes float-right {
           0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(14px, -12px); }
+          50% { transform: translate(12px, -12px); }
         }
         @keyframes float-slow {
           0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(-8px, 12px); }
+          50% { transform: translate(-8px, 10px); }
         }
         .anim-float-left {
           animation: float-left 6s ease-in-out infinite;
@@ -83,54 +82,50 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
         }
       `}</style>
 
-      {/* Hero Ambient Theme Aura (No square lines on hero) */}
+      {/* 1. Grand Faded Real Looks Logo Watermark in Hero Background */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden -z-5 select-none">
+        <motion.img
+          initial={{ opacity: 0, scale: 0.92 }}
+          animate={{ opacity: 0.095, scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+          src="/images/logo.png"
+          alt=""
+          aria-hidden="true"
+          className="w-[840px] max-w-[90vw] h-auto object-contain filter drop-shadow-[0_0_80px_rgba(214,168,56,0.25)] mix-blend-multiply pointer-events-none"
+        />
+      </div>
+
+      {/* 2. Ambient Theme Aura Blobs (Warm gold & deep olive) */}
       <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
         <div className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-gradient-to-br from-[#4C5B2E]/14 via-[#52A296]/12 to-transparent rounded-full blur-3xl" />
         <div className="absolute top-10 -right-32 w-[620px] h-[620px] bg-gradient-to-bl from-[#D6A838]/12 via-[#12B5AF]/10 to-transparent rounded-full blur-3xl" />
       </div>
 
-      <div className="max-w-7xl mx-auto w-full my-auto py-6 sm:py-10">
+      {/* 3. Hero Main Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto w-full my-auto py-6 sm:py-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           
           {/* =========================================================
-              LEFT COLUMN: Brand, TextSwap Headline, Badges & CTAs
+              LEFT COLUMN: Editorial Typography, TextSwap, CTAs
              ========================================================= */}
           <div className="lg:col-span-7 flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
             
-            {/* Real Looks Official Transparent Logo */}
+            {/* Elegant Eyebrow Badge (No dot) */}
             <motion.div
-              initial={{ opacity: 0, y: -16 }}
+              initial={{ opacity: 0, y: -12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7 }}
-              className="w-full max-w-[290px] sm:max-w-[360px]"
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#FFF4BD] to-[#F5D77F] border border-[#D6A838]/50 shadow-xs"
             >
-              <BrandLogo variant="full" className="items-center lg:items-start" />
-            </motion.div>
-
-            {/* Status & Location Pill (DaisyUI enhanced) */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: 0.15 }}
-              className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5"
-            >
-              <div className="badge badge-lg py-3 px-3.5 bg-white/90 backdrop-blur-md border border-[#4C5B2E]/25 text-[#2F3B1A] font-semibold gap-2 shadow-xs">
-                <span className="flex h-2 w-2 relative">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#12B5AF] opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4C5B2E]"></span>
-                </span>
-                <span className="text-xs">Dani Bigha, Aurangabad, Bihar</span>
-              </div>
-
-              <div className="badge badge-lg py-3 px-3.5 bg-gradient-to-r from-[#FFF4BD] to-[#F5D77F] border border-[#D6A838]/40 text-[#634705] font-bold gap-1.5 shadow-xs">
-                <Star className="w-3.5 h-3.5 fill-[#D6A838] text-[#D6A838]" />
-                <span className="text-xs">Open 9 AM – 9 PM Daily</span>
-              </div>
+              <Sparkles className="w-3.5 h-3.5 text-[#8E680E]" />
+              <span className="text-[11px] font-extrabold tracking-[0.22em] uppercase text-[#533C05]">
+                UNISEX COUTURE SALON & WELLNESS
+              </span>
             </motion.div>
 
             {/* Clandestine Morphing Headline with TextSwap */}
             <div className="space-y-3">
-              <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif-title font-extrabold text-[#192018] tracking-tight leading-[1.12]">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif-title font-extrabold text-[#192018] tracking-tight leading-[1.12]">
                 YOUR LOOK.{' '}
                 <br className="hidden sm:inline" />
                 YOUR{' '}
@@ -142,7 +137,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
                       animate={{ y: 0, opacity: 1 }}
                       exit={{ y: -35, opacity: 0 }}
                       transition={{ duration: 0.45, ease: 'easeOut' }}
-                      className="inline-block bg-gradient-to-r from-[#C29324] via-[#D6A838] to-[#4C5B2E] bg-clip-text text-transparent px-1.5 font-black"
+                      className="inline-block bg-gradient-to-r from-[#C29324] via-[#D6A838] to-[#4C5B2E] bg-clip-text text-transparent px-1 font-black"
                     >
                       {rotatingWords[wordIndex]}
                     </motion.span>
@@ -151,13 +146,31 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
               </h1>
 
               <p className="text-sm sm:text-base lg:text-lg text-[#3D483B] max-w-xl font-normal leading-relaxed">
-                {SALON_INFO.heroSubtitle} Experience luxury hair styling, organic botox therapies, precision beard sculpting, and radiant bridal artistry for men and women.
+                {SALON_INFO.heroSubtitle} Discover couture hairdressing, organic botox therapies, beard sculpting, and radiant bridal artistry curated for men and women.
               </p>
             </div>
 
-            {/* Value Props Row (DaisyUI Badges) */}
+            {/* Location & Hours Strip (Pasted cleanly with NO dots anywhere) */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-[#4C5B2E] font-medium"
+            >
+              <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-xl border border-[#4C5B2E]/15 shadow-2xs">
+                <MapPin className="w-3.5 h-3.5 text-[#C29324] flex-shrink-0" />
+                <span className="font-semibold text-[#192018]">Dani Bigha, Aurangabad, Bihar</span>
+              </div>
+
+              <div className="flex items-center gap-1.5 bg-white/80 backdrop-blur-sm px-3 py-1.5 rounded-xl border border-[#D6A838]/20 shadow-2xs">
+                <Clock className="w-3.5 h-3.5 text-[#8E680E] flex-shrink-0" />
+                <span className="font-semibold text-[#634705]">Open Daily 9:00 AM – 9:00 PM</span>
+              </div>
+            </motion.div>
+
+            {/* Value Props Row (DaisyUI Badges & Cards) */}
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 w-full max-w-xl">
-              <div className="p-2.5 rounded-xl bg-white/80 backdrop-blur-sm border border-[#4C5B2E]/15 flex items-center gap-2 shadow-2xs">
+              <div className="p-2.5 rounded-xl bg-white/85 backdrop-blur-sm border border-[#4C5B2E]/15 flex items-center gap-2 shadow-2xs">
                 <div className="w-7 h-7 rounded-lg bg-[#4C5B2E]/10 flex items-center justify-center text-[#4C5B2E]">
                   <Scissors className="w-3.5 h-3.5" />
                 </div>
@@ -167,7 +180,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
                 </div>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-white/80 backdrop-blur-sm border border-[#D6A838]/20 flex items-center gap-2 shadow-2xs">
+              <div className="p-2.5 rounded-xl bg-white/85 backdrop-blur-sm border border-[#D6A838]/20 flex items-center gap-2 shadow-2xs">
                 <div className="w-7 h-7 rounded-lg bg-[#D6A838]/15 flex items-center justify-center text-[#8E680E]">
                   <Sparkles className="w-3.5 h-3.5 text-[#C29324]" />
                 </div>
@@ -177,7 +190,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
                 </div>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-white/80 backdrop-blur-sm border border-[#12B5AF]/20 flex items-center gap-2 shadow-2xs">
+              <div className="p-2.5 rounded-xl bg-white/85 backdrop-blur-sm border border-[#12B5AF]/20 flex items-center gap-2 shadow-2xs">
                 <div className="w-7 h-7 rounded-lg bg-[#12B5AF]/15 flex items-center justify-center text-[#0D8F8B]">
                   <ShieldCheck className="w-3.5 h-3.5" />
                 </div>
@@ -187,7 +200,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
                 </div>
               </div>
 
-              <div className="p-2.5 rounded-xl bg-white/80 backdrop-blur-sm border border-[#4B9CD3]/20 flex items-center gap-2 shadow-2xs">
+              <div className="p-2.5 rounded-xl bg-white/85 backdrop-blur-sm border border-[#4B9CD3]/20 flex items-center gap-2 shadow-2xs">
                 <div className="w-7 h-7 rounded-lg bg-[#4B9CD3]/15 flex items-center justify-center text-[#2B78AE]">
                   <Clock className="w-3.5 h-3.5" />
                 </div>
@@ -256,7 +269,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
           <div className="lg:col-span-5 flex justify-center lg:justify-end relative">
             <div className="relative w-full max-w-sm sm:max-w-md">
               
-              {/* Outer Golden Glow */}
+              {/* Outer Golden Glow Aura */}
               <div className="absolute -inset-2 bg-gradient-to-tr from-[#D6A838]/30 via-[#52A296]/20 to-[#86D6B9]/30 rounded-3xl blur-xl opacity-70" />
 
               {/* Main Portrait Card */}

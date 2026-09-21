@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, Calendar, UserCheck, ChevronDown, Sparkles, MapPin, Camera, Star, Info, Scissors, Clock } from 'lucide-react';
+import { Menu, X, Calendar, UserCheck, Star } from 'lucide-react';
 import { BrandLogo } from '../BrandLogo';
 
 export type PageView = 'home' | 'about' | 'gallery' | 'contact';
@@ -7,7 +7,6 @@ export type PageView = 'home' | 'about' | 'gallery' | 'contact';
 interface NavItem {
   id: PageView;
   label: string;
-  icon?: React.ReactNode;
   targetHash?: string;
 }
 
@@ -34,7 +33,7 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
   const limelightRef = useRef<HTMLDivElement | null>(null);
 
   const navItems: NavItem[] = [
-    { id: 'home', label: 'Home' },
+    { id: 'home', label: 'Home', targetHash: 'home' },
     { id: 'home', label: 'Services', targetHash: 'services' },
     { id: 'home', label: 'Schedule', targetHash: 'scheduler-section' },
     { id: 'about', label: 'About' },
@@ -42,24 +41,61 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
     { id: 'contact', label: 'Contact' },
   ];
 
-  // Map activePage to nav index
+  // Map subpage navigation to spotlight index
   useEffect(() => {
     if (activePage === 'about') setActiveIndex(3);
     else if (activePage === 'gallery') setActiveIndex(4);
     else if (activePage === 'contact') setActiveIndex(5);
-    else setActiveIndex(0);
   }, [activePage]);
 
-  // Update spotlight position
+  // Smooth scroll tracking on Home page
+  useEffect(() => {
+    if (activePage !== 'home') return;
+
+    let ticking = false;
+
+    const handleScrollTracking = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollPos = window.scrollY + 220;
+          const schedulerEl = document.getElementById('scheduler-section');
+          const servicesEl = document.getElementById('services');
+
+          if (schedulerEl && servicesEl) {
+            const schedulerTop = schedulerEl.offsetTop;
+            const servicesTop = servicesEl.offsetTop;
+
+            if (scrollPos >= schedulerTop - 120 && scrollPos < schedulerTop + schedulerEl.offsetHeight) {
+              setActiveIndex(2); // Schedule
+            } else if (scrollPos >= servicesTop - 120 && scrollPos < schedulerTop - 120) {
+              setActiveIndex(1); // Services
+            } else if (scrollPos < servicesTop - 120) {
+              setActiveIndex(0); // Home
+            }
+          } else {
+            setActiveIndex(0);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', handleScrollTracking, { passive: true });
+    handleScrollTracking();
+    return () => window.removeEventListener('scroll', handleScrollTracking);
+  }, [activePage]);
+
+  // Update spotlight position with smooth interpolation
   useEffect(() => {
     const activeEl = navItemRefs.current[activeIndex];
     const limelight = limelightRef.current;
     if (activeEl && limelight) {
-      const elRect = activeEl.offsetLeft;
+      const elLeft = activeEl.offsetLeft;
       const elWidth = activeEl.offsetWidth;
-      const limelightWidth = 44;
-      const left = elRect + elWidth / 2 - limelightWidth / 2;
-      limelight.style.left = `${left}px`;
+      const limelightWidth = 46;
+      const targetX = elLeft + elWidth / 2 - limelightWidth / 2;
+      limelight.style.transform = `translateX(${targetX}px)`;
       limelight.style.opacity = '1';
     }
   }, [activeIndex]);
@@ -92,22 +128,24 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
     if (item.targetHash) {
       setTimeout(() => {
         const el = document.getElementById(item.targetHash!);
-        if (el) el.scrollIntoView({ behavior: 'smooth' });
-      }, 150);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 120);
     }
   };
 
   return (
     <header className="sticky top-0 z-50 w-full px-3 sm:px-6 lg:px-8 py-3 transition-all duration-300">
-      {/* Floating Pill Container inspired by Clandestine Template */}
+      {/* Floating Pill Container */}
       <div
         className={`max-w-7xl mx-auto rounded-2xl sm:rounded-3xl transition-all duration-300 px-4 sm:px-6 py-2.5 sm:py-3 flex items-center justify-between border ${
           isScrolled
-            ? 'bg-[#1E2611]/92 backdrop-blur-xl border-[#D6A838]/50 shadow-[0_12px_32px_rgba(0,0,0,0.35)]'
-            : 'bg-[#253014]/85 backdrop-blur-lg border-[#D6A838]/30 shadow-[0_8px_24px_rgba(0,0,0,0.25)]'
+            ? 'bg-[#1E2611]/94 backdrop-blur-xl border-[#D6A838]/50 shadow-[0_12px_32px_rgba(0,0,0,0.35)]'
+            : 'bg-[#242F14]/88 backdrop-blur-lg border-[#D6A838]/30 shadow-[0_8px_24px_rgba(0,0,0,0.22)]'
         }`}
       >
-        {/* 1. Left: Brand Logo (Transparent, aligned, perfectly sized) */}
+        {/* 1. Left: Brand Logo (Transparent, clean, aligned) */}
         <button
           onClick={() => handleItemClick(0, navItems[0])}
           className="flex items-center gap-2 cursor-pointer focus:outline-none transition-transform hover:scale-[1.02] flex-shrink-0"
@@ -116,28 +154,30 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
           <BrandLogo variant="header" />
         </button>
 
-        {/* 2. Center: Clandestine Spotlight / Limelight Navigation Bar */}
+        {/* 2. Center: Smooth Limelight Spotlight Navigation Bar */}
         <nav className="hidden lg:flex items-center relative h-11 px-2">
-          {/* Spotlight / Limelight Floating Indicator */}
+          {/* Spotlight Floating Indicator with smooth hardware-accelerated transform */}
           <div
             ref={limelightRef}
-            className="pointer-events-none absolute top-0 h-[4px] w-[44px] rounded-full bg-[#D6A838] transition-all duration-300 ease-out z-10"
+            className="pointer-events-none absolute top-0 left-0 h-[4px] w-[46px] rounded-full bg-gradient-to-r from-[#FFF4BD] via-[#D6A838] to-[#C29324] z-10"
             style={{
-              boxShadow: '0 4px 18px 2px #D6A838',
+              boxShadow: '0 4px 20px 3px rgba(214,168,56,0.85), 0 0 10px #FFF4BD',
+              transition: 'transform 0.48s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.3s ease',
               opacity: 0,
             }}
           >
             {/* Spotlight Light Cone Beam */}
             <div
-              className="absolute left-[-40%] top-[4px] w-[180%] h-[48px] pointer-events-none opacity-40"
+              className="absolute left-[-50%] top-[4px] w-[200%] h-[50px] pointer-events-none opacity-45"
               style={{
-                clipPath: 'polygon(15% 100%, 30% 0%, 70% 0%, 85% 100%)',
+                clipPath: 'polygon(12% 100%, 32% 0%, 68% 0%, 88% 100%)',
                 background: 'linear-gradient(to bottom, #D6A838, transparent)',
+                filter: 'drop-shadow(0 0 8px rgba(214,168,56,0.5))',
               }}
             />
           </div>
 
-          {/* Navigation Links with Hover/Active Spotlight */}
+          {/* Navigation Links */}
           <div className="flex items-center gap-1">
             {navItems.map((item, idx) => {
               const isActive = activeIndex === idx;
@@ -146,9 +186,9 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
                   key={item.label}
                   ref={(el) => (navItemRefs.current[idx] = el)}
                   onClick={() => handleItemClick(idx, item)}
-                  className={`relative px-4 py-2 text-xs font-bold tracking-wider uppercase rounded-xl transition-all duration-300 cursor-pointer ${
+                  className={`relative px-4 py-2 text-xs font-bold tracking-wider uppercase rounded-xl transition-all duration-300 cursor-pointer select-none ${
                     isActive
-                      ? 'text-[#FFF2A8] font-extrabold'
+                      ? 'text-[#FFF2A8] font-extrabold drop-shadow-[0_0_8px_rgba(255,244,189,0.5)]'
                       : 'text-white/80 hover:text-white hover:bg-white/5'
                   }`}
                 >
@@ -177,19 +217,18 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
             </button>
           </div>
 
-          {/* Clandestine Refined Chronicle "BOOK NOW" Button */}
+          {/* Clandestine Chronicle "BOOK NOW" Button */}
           <button
             onClick={onBookClick}
             className="relative group overflow-hidden px-5 py-2 rounded-xl bg-gradient-to-r from-[#D6A838] via-[#E2C76B] to-[#C29324] hover:from-[#C29324] hover:to-[#8E680E] text-[#1F1703] font-extrabold text-xs tracking-wider uppercase border border-white/40 shadow-md hover:shadow-lg transition-all hover:scale-[1.03] active:scale-95 flex items-center gap-1.5 cursor-pointer"
           >
             <Calendar className="w-3.5 h-3.5 text-[#1F1703]" />
             <span>BOOK NOW</span>
-            {/* Shimmer line */}
             <span className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
           </button>
         </div>
 
-        {/* 4. Mobile Menu Toggle */}
+        {/* 4. Mobile Menu Controls */}
         <div className="flex lg:hidden items-center gap-2">
           <div className="indicator">
             {bookingCount > 0 && (
