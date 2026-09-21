@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { motion } from 'motion/react';
-import { Clock, Sparkles, Check, ChevronRight, Scissors } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Clock, Sparkles, ChevronRight, Scissors, ChevronDown, ChevronUp, Check, ArrowRight } from 'lucide-react';
 import { SERVICES } from '../data/salonData';
+import { ServiceItem } from '../types';
 
 interface ServicesSectionProps {
   onSelectService: (serviceId: string) => void;
@@ -9,13 +10,15 @@ interface ServicesSectionProps {
 
 export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectService }) => {
   const [activeCategory, setActiveCategory] = useState<string>('all');
+  const [showAll, setShowAll] = useState(false);
+  const [hoveredServiceId, setHoveredServiceId] = useState<string | null>(null);
 
   const categories = [
     { id: 'all', label: 'All Services' },
     { id: 'hair', label: 'Hair Cuts & Styling' },
-    { id: 'grooming', label: "Beard & Men's Grooming" },
-    { id: 'facial', label: 'Skin & Facial Glow' },
-    { id: 'spa', label: 'Hair Spa & Botox' },
+    { id: 'grooming', label: "Beard & Grooming" },
+    { id: 'facial', label: 'Skin & Facials' },
+    { id: 'spa', label: 'Botox & Hair Spa' },
     { id: 'bridal', label: 'Bridal & Occasion' },
   ];
 
@@ -24,31 +27,39 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
     return item.category === activeCategory;
   });
 
+  const displayedServices = showAll ? filtered : filtered.slice(0, 5);
+
   return (
-    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-16">
+    <section id="services" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
+      
       {/* Section Header */}
       <div className="text-center max-w-3xl mx-auto mb-12">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full lucid-glass text-[#0D8F8B] text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#4C5B2E]/10 border border-[#4C5B2E]/25 text-[#2F3B1A] text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
           <Scissors className="w-3.5 h-3.5 text-[#D6A838]" />
           <span>Services Designed For You</span>
         </div>
+
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif-title font-bold text-[#192018] tracking-tight">
-          Couture Hair, Grooming & Beauty
+          Couture Grooming & Hair Artistry
         </h2>
+
         <p className="mt-3 text-base text-[#677565] max-w-2xl mx-auto">
-          Every treatment is custom-tailored with dermatologically tested products, precision craft, and calming scalp rituals.
+          Every service is customized with organic botanical formulations, scalp rituals, and precision styling for men and women.
         </p>
 
-        {/* Category Tabs */}
+        {/* Category Pills */}
         <div className="flex flex-wrap justify-center gap-2 mt-8">
           {categories.map(cat => (
             <button
               key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
+              onClick={() => {
+                setActiveCategory(cat.id);
+                setShowAll(false);
+              }}
               className={`px-4 py-2 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'glossy-olive-btn text-white shadow-xs'
-                  : 'lucid-glass text-[#3D483B] hover:bg-white/90'
+                  ? 'bg-[#2F3B1A] text-[#FFF4BD] shadow-sm'
+                  : 'bg-white/80 hover:bg-white text-[#3D483B] border border-[#4C5B2E]/15'
               }`}
             >
               {cat.label}
@@ -57,103 +68,126 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
         </div>
       </div>
 
-      {/* Services Cards Grid with Lucid Glassmorphic styling */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filtered.map(service => (
-          <motion.div
-            key={service.id}
-            layout
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.35 }}
-            className="group lucid-glass-card rounded-3xl overflow-hidden flex flex-col justify-between hover:scale-[1.01]"
-          >
-            {/* Service Image Header */}
-            <div className="relative h-48 overflow-hidden rounded-t-3xl">
-              <img
-                src={service.image}
-                alt={service.name}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent" />
-              
-              {/* Badges */}
-              <div className="absolute top-3.5 left-3.5 flex items-center gap-1.5">
-                <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md uppercase tracking-wider backdrop-blur-md ${
-                  service.targetGender === 'Men'
-                    ? 'bg-[#89CFF0]/85 text-[#14486D] border border-white/60'
-                    : service.targetGender === 'Women'
-                    ? 'bg-[#F5D77F]/90 text-[#594002] border border-white/60'
-                    : 'bg-white/90 text-[#2F3B1A] border border-white/60'
-                }`}>
-                  {service.targetGender}
-                </span>
-                {service.isPopular && (
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-md glossy-gold-badge text-[#4A3502] flex items-center gap-1">
-                    <Sparkles className="w-2.5 h-2.5 text-[#C29324]" /> Popular
-                  </span>
-                )}
-              </div>
+      {/* Clandestine-Style Interactive Service Rows */}
+      <div className="space-y-3.5">
+        <AnimatePresence mode="popLayout">
+          {displayedServices.map((service, idx) => {
+            const isHovered = hoveredServiceId === service.id;
+            return (
+              <motion.div
+                key={service.id}
+                layout
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.3, delay: idx * 0.05 }}
+                onMouseEnter={() => setHoveredServiceId(service.id)}
+                onMouseLeave={() => setHoveredServiceId(null)}
+                className={`group relative rounded-2xl p-5 sm:p-6 transition-all duration-300 border ${
+                  isHovered
+                    ? 'bg-white shadow-xl border-[#D6A838]/60 translate-x-1 sm:translate-x-2'
+                    : 'bg-white/75 backdrop-blur-md border-[#4C5B2E]/15 hover:bg-white/95 shadow-sm'
+                }`}
+              >
+                <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                  
+                  {/* Left: Thumbnail & Service Info */}
+                  <div className="flex items-start sm:items-center gap-4 flex-1">
+                    <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl overflow-hidden flex-shrink-0 bg-[#2F3B1A] border border-[#4C5B2E]/20 shadow-xs">
+                      <img
+                        src={service.image}
+                        alt={service.name}
+                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                        loading="lazy"
+                      />
+                    </div>
 
-              {/* Price & Duration Overlaid with Glassmorphism */}
-              <div className="absolute bottom-3.5 left-3.5 right-3.5 flex items-end justify-between text-white">
-                <div>
-                  <span className="text-[10px] uppercase tracking-wider text-white/80 font-bold block">Starting at</span>
-                  <span className="text-2xl font-serif font-extrabold text-[#FFF2A8] drop-shadow-sm">
-                    ₹{service.price}
-                  </span>
-                </div>
-                <div className="flex items-center gap-1 text-xs text-white bg-black/40 backdrop-blur-md px-3 py-1 rounded-full border border-white/30 shadow-2xs">
-                  <Clock className="w-3 h-3 text-[#FFF2A8]" />
-                  <span>{service.durationMinutes} min</span>
-                </div>
-              </div>
-            </div>
+                    <div className="space-y-1 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className={`font-serif-title text-base sm:text-xl font-bold transition-colors ${
+                          isHovered ? 'text-[#C29324]' : 'text-[#192018]'
+                        }`}>
+                          {service.name}
+                        </h3>
 
-            {/* Service Content Details */}
-            <div className="p-5 flex-1 flex flex-col justify-between">
-              <div>
-                <h3 className="text-lg font-serif font-bold text-[#192018] group-hover:text-[#0D8F8B] transition-colors">
-                  {service.name}
-                </h3>
-                <p className="text-xs text-[#677565] mt-2 leading-relaxed">
-                  {service.description}
-                </p>
+                        <span className={`badge badge-sm text-[10px] font-bold border-none ${
+                          service.targetGender === 'Men'
+                            ? 'bg-[#89CFF0]/25 text-[#14486D]'
+                            : service.targetGender === 'Women'
+                            ? 'bg-[#F5D77F]/30 text-[#634705]'
+                            : 'bg-[#86D6B9]/25 text-[#0D8F8B]'
+                        }`}>
+                          {service.targetGender}
+                        </span>
 
-                {/* Inclusions List */}
-                {service.includes && service.includes.length > 0 && (
-                  <div className="mt-4 pt-3 border-t border-black/5 space-y-1.5">
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#52A296] block">
-                      Includes:
-                    </span>
-                    {service.includes.map((inc, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-[#3D483B]">
-                        <Check className="w-3.5 h-3.5 text-[#D6A838] flex-shrink-0" />
-                        <span>{inc}</span>
+                        {service.isPopular && (
+                          <span className="badge badge-sm bg-gradient-to-r from-[#FFF4BD] to-[#F5D77F] text-[#634705] font-bold text-[10px] border border-[#D6A838]/40">
+                            ★ Popular
+                          </span>
+                        )}
                       </div>
-                    ))}
-                  </div>
-                )}
-              </div>
 
-              {/* Action Button */}
-              <div className="mt-6 pt-4 border-t border-black/5 flex items-center justify-between">
-                <span className="text-xs text-[#677565]">
-                  Category: <strong className="text-[#2F3B1A]">{service.categoryName}</strong>
-                </span>
-                <button
-                  onClick={() => onSelectService(service.id)}
-                  className="px-4 py-2 rounded-xl glossy-gold-btn text-[#4A3502] font-extrabold text-xs uppercase tracking-wider flex items-center gap-1.5 hover:scale-105 active:scale-95 transition-all cursor-pointer border border-white/80 shadow-2xs"
-                >
-                  <span>Book This</span>
-                  <ChevronRight className="w-3.5 h-3.5 text-[#4A3502]" />
-                </button>
-              </div>
-            </div>
-          </motion.div>
-        ))}
+                      <p className="text-xs sm:text-sm text-[#677565] max-w-2xl leading-relaxed">
+                        {service.description}
+                      </p>
+
+                      {service.includes && (
+                        <div className="hidden sm:flex flex-wrap items-center gap-2 pt-1">
+                          {service.includes.map((inc, i) => (
+                            <span key={i} className="text-[10px] text-[#4C5B2E] font-medium flex items-center gap-0.5">
+                              <Check className="w-3 h-3 text-[#12B5AF]" /> {inc}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Right: Duration, Price & Action CTA */}
+                  <div className="flex items-center justify-between lg:justify-end gap-6 pt-3 lg:pt-0 border-t lg:border-t-0 border-black/05 flex-shrink-0">
+                    <div className="text-left lg:text-right">
+                      <div className="flex items-center lg:justify-end gap-1 text-xs text-[#677565] font-medium">
+                        <Clock className="w-3.5 h-3.5 text-[#52A296]" />
+                        <span>{service.durationMinutes} mins</span>
+                      </div>
+                      <span className="text-xl sm:text-2xl font-serif font-extrabold text-[#192018] block mt-0.5">
+                        ₹{service.price}
+                      </span>
+                    </div>
+
+                    <button
+                      onClick={() => onSelectService(service.id)}
+                      className={`px-5 py-2.5 rounded-xl font-bold text-xs tracking-wider uppercase transition-all flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95 ${
+                        isHovered
+                          ? 'bg-gradient-to-r from-[#D6A838] to-[#C29324] text-[#1F1703] shadow-md scale-105'
+                          : 'bg-[#2F3B1A] text-[#FFF4BD] hover:bg-[#4C5B2E]'
+                      }`}
+                    >
+                      <span>Book</span>
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+
+                </div>
+              </motion.div>
+            );
+          })}
+        </AnimatePresence>
       </div>
+
+      {/* Show More / Show Less Toggle (Clandestine Style) */}
+      {filtered.length > 5 && (
+        <div className="text-center pt-8">
+          <button
+            onClick={() => setShowAll(!showAll)}
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/90 hover:bg-white text-[#2F3B1A] border border-[#4C5B2E]/30 font-bold text-xs tracking-wider uppercase transition-all shadow-xs hover:shadow-md cursor-pointer active:scale-95"
+          >
+            <span>{showAll ? 'Show Less Services' : `Show All ${filtered.length} Services`}</span>
+            {showAll ? <ChevronUp className="w-4 h-4 text-[#D6A838]" /> : <ChevronDown className="w-4 h-4 text-[#D6A838]" />}
+          </button>
+        </div>
+      )}
+
     </section>
   );
 };

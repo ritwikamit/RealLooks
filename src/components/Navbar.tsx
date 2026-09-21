@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Calendar, UserCheck, ChevronDown, Sparkles, MapPin, Camera, Star, Info } from 'lucide-react';
+import { Menu, X, Calendar, UserCheck, Sparkles, Scissors, Award, Info, Star, ShoppingBag, HelpCircle } from 'lucide-react';
 import { BrandLogo } from './BrandLogo';
 
 export type PageView = 'home' | 'about' | 'gallery' | 'contact';
@@ -7,15 +7,15 @@ export type PageView = 'home' | 'about' | 'gallery' | 'contact';
 interface NavbarProps {
   onOpenBookings: () => void;
   onBookClick: () => void;
-  activePage?: PageView;
-  onNavigate?: (page: PageView) => void;
+  activeSection?: string;
+  onScrollToSection?: (sectionId: string) => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   onOpenBookings,
   onBookClick,
-  activePage = 'home',
-  onNavigate,
+  activeSection = 'home',
+  onScrollToSection,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -23,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -42,263 +42,155 @@ export const Navbar: React.FC<NavbarProps> = ({
     }
   }, []);
 
-  const handleNavClick = (page: PageView, hash?: string) => {
+  const navItems = [
+    { id: 'home', label: 'Home', icon: Sparkles },
+    { id: 'services', label: 'Services', icon: Scissors },
+    { id: 'masters', label: 'Masters', icon: Award },
+    { id: 'about', label: 'About', icon: Info },
+    { id: 'reviews', label: 'Reviews', icon: Star },
+    { id: 'store', label: 'Store', icon: ShoppingBag },
+    { id: 'faq', label: 'FAQ', icon: HelpCircle },
+  ];
+
+  const handleItemClick = (targetId: string) => {
     setMobileMenuOpen(false);
-    if (onNavigate) {
-      onNavigate(page);
-    }
-    if (hash) {
-      setTimeout(() => {
-        const el = document.getElementById(hash);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
+    if (onScrollToSection) {
+      onScrollToSection(targetId);
+    } else {
+      const el = document.getElementById(targetId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
     }
   };
 
   return (
-    <header
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'py-2.5 shadow-xl bg-gradient-to-r from-[#1B230F] via-[#2F3C18] to-[#404F23] border-b border-[#D6A838]/50'
-          : 'py-3.5 sm:py-4 shadow-md bg-gradient-to-r from-[#212A13] via-[#35431C] to-[#465627] border-b border-[#D6A838]/35'
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        
-        {/* 1. Official Transparent Logo (Correctly aligned & background-free) */}
-        <button
-          onClick={() => handleNavClick('home')}
-          className="flex items-center gap-2 cursor-pointer focus:outline-none transition-transform hover:scale-[1.02]"
-          aria-label="Real Looks Unisex Salon Home"
+    <>
+      {/* Floating Island Limelight Navbar (Clandestine Style) */}
+      <header className="fixed top-2 sm:top-4 inset-x-0 z-50 flex justify-center px-3 sm:px-6 pointer-events-none">
+        <div 
+          className={`pointer-events-auto w-full max-w-7xl rounded-full transition-all duration-300 flex items-center justify-between px-4 sm:px-6 py-2 sm:py-2.5 ${
+            isScrolled
+              ? 'bg-[#1D250F]/95 backdrop-blur-xl border border-[#D6A838]/50 shadow-[0_10px_35px_rgba(0,0,0,0.35)]'
+              : 'bg-[#222A13]/90 backdrop-blur-lg border border-[#D6A838]/35 shadow-[0_8px_30px_rgba(47,59,26,0.2)]'
+          }`}
         >
-          <BrandLogo variant="header" />
-        </button>
-
-        {/* 2. Main Desktop Navigation (Streamlined) */}
-        <nav className="hidden lg:flex items-center gap-7">
-          {/* Home */}
+          {/* 1. Official Brand Logo (Background Removed, Perfectly Aligned) */}
           <button
-            onClick={() => handleNavClick('home')}
-            className={`text-xs font-bold tracking-wider uppercase transition-colors relative py-1 cursor-pointer ${
-              activePage === 'home'
-                ? 'text-[#FFF2A8] font-extrabold'
-                : 'text-white/85 hover:text-[#FFF2A8]'
-            }`}
+            onClick={() => handleItemClick('home')}
+            className="flex items-center gap-2 cursor-pointer focus:outline-none transition-transform hover:scale-105 select-none flex-shrink-0"
+            aria-label="Real Looks Unisex Salon Home"
           >
-            Home
-            {activePage === 'home' && (
-              <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-[#D6A838] rounded-full" />
-            )}
+            <BrandLogo variant="header" />
           </button>
 
-          {/* Services */}
-          <button
-            onClick={() => handleNavClick('home', 'services')}
-            className="text-xs font-bold text-white/85 hover:text-[#FFF2A8] tracking-wider uppercase transition-colors py-1 cursor-pointer"
-          >
-            Services
-          </button>
+          {/* 2. Clandestine Limelight Center Nav (Desktop) */}
+          <nav className="hidden xl:flex items-center gap-1 bg-black/20 rounded-full p-1 border border-white/10 backdrop-blur-md">
+            {navItems.map((item) => {
+              const Icon = item.icon;
+              const isActive = activeSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => handleItemClick(item.id)}
+                  className={`relative px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all duration-300 flex items-center gap-1.5 cursor-pointer select-none ${
+                    isActive
+                      ? 'bg-gradient-to-r from-[#D6A838] to-[#C29324] text-[#1F1703] shadow-sm'
+                      : 'text-white/80 hover:text-white hover:bg-white/10'
+                  }`}
+                >
+                  <Icon className={`w-3 h-3 ${isActive ? 'text-[#1F1703]' : 'text-[#D6A838]'}`} />
+                  <span>{item.label}</span>
+                </button>
+              );
+            })}
+          </nav>
 
-          {/* Scheduler */}
-          <button
-            onClick={() => handleNavClick('home', 'scheduler-section')}
-            className="text-xs font-bold text-white/85 hover:text-[#FFF2A8] tracking-wider uppercase transition-colors py-1 cursor-pointer"
-          >
-            Schedule
-          </button>
-
-          {/* Explore More Pages Dropdown (DaisyUI Dropdown) */}
-          <div className="dropdown dropdown-hover dropdown-bottom">
-            <div
-              tabIndex={0}
-              role="button"
-              className={`text-xs font-bold tracking-wider uppercase flex items-center gap-1.5 py-1 cursor-pointer transition-colors ${
-                activePage !== 'home' ? 'text-[#FFF2A8]' : 'text-white/85 hover:text-[#FFF2A8]'
-              }`}
-            >
-              <span>Explore Pages</span>
-              <ChevronDown className="w-3.5 h-3.5 text-[#D6A838]" />
+          {/* 3. Action Buttons (Right) */}
+          <div className="flex items-center gap-2.5">
+            {/* My Requests Button with DaisyUI Indicator Badge */}
+            <div className="indicator hidden sm:inline-flex">
+              {bookingCount > 0 && (
+                <span className="indicator-item badge badge-primary badge-xs bg-[#12B5AF] text-white font-bold border-none shadow-xs">
+                  {bookingCount}
+                </span>
+              )}
+              <button
+                id="navbar-my-bookings-button"
+                onClick={onOpenBookings}
+                className="btn btn-sm btn-ghost bg-white/10 hover:bg-white/20 text-[#FAF8F5] border border-white/20 rounded-full text-xs font-bold gap-1.5 px-3.5 transition-all cursor-pointer shadow-xs"
+              >
+                <UserCheck className="w-3.5 h-3.5 text-[#E5C460]" />
+                <span className="hidden md:inline">My Requests</span>
+              </button>
             </div>
 
-            <ul
-              tabIndex={0}
-              className="dropdown-content menu p-2 shadow-2xl bg-[#212A13] border border-[#D6A838]/40 rounded-2xl w-56 text-[#F8F9F5] z-50 mt-2 backdrop-blur-md"
-            >
-              <li>
-                <button
-                  onClick={() => handleNavClick('about')}
-                  className={`flex items-center gap-2.5 py-2.5 text-xs font-bold rounded-xl hover:bg-[#35431C] ${
-                    activePage === 'about' ? 'bg-[#35431C] text-[#FFF2A8]' : 'text-white/90'
-                  }`}
-                >
-                  <Info className="w-4 h-4 text-[#D6A838]" />
-                  <span>About & Hygiene</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNavClick('gallery')}
-                  className={`flex items-center gap-2.5 py-2.5 text-xs font-bold rounded-xl hover:bg-[#35431C] ${
-                    activePage === 'gallery' ? 'bg-[#35431C] text-[#FFF2A8]' : 'text-white/90'
-                  }`}
-                >
-                  <Camera className="w-4 h-4 text-[#89CFF0]" />
-                  <span>Lookbook Gallery</span>
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => handleNavClick('contact')}
-                  className={`flex items-center gap-2.5 py-2.5 text-xs font-bold rounded-xl hover:bg-[#35431C] ${
-                    activePage === 'contact' ? 'bg-[#35431C] text-[#FFF2A8]' : 'text-white/90'
-                  }`}
-                >
-                  <MapPin className="w-4 h-4 text-[#86D6B9]" />
-                  <span>Reviews & Location</span>
-                </button>
-              </li>
-            </ul>
-          </div>
-        </nav>
-
-        {/* 3. Desktop Action Buttons */}
-        <div className="hidden sm:flex items-center gap-3">
-          {/* My Requests Button with DaisyUI Indicator Badge */}
-          <div className="indicator">
-            {bookingCount > 0 && (
-              <span className="indicator-item badge badge-primary badge-xs bg-[#12B5AF] text-white font-bold border-none shadow-xs">
-                {bookingCount}
-              </span>
-            )}
+            {/* Clandestine Glossy Gold CTA Button */}
             <button
-              id="navbar-my-bookings-button"
-              onClick={onOpenBookings}
-              className="btn btn-sm btn-ghost bg-white/10 hover:bg-white/20 text-[#FAF8F5] border border-white/20 rounded-xl text-xs font-bold gap-2 px-3.5 transition-all cursor-pointer shadow-xs"
+              id="navbar-book-now-button"
+              onClick={onBookClick}
+              className="btn btn-sm bg-gradient-to-r from-[#D6A838] via-[#E2C76B] to-[#C29324] hover:from-[#C29324] hover:to-[#8E680E] text-[#1F1703] font-extrabold text-xs tracking-wider uppercase rounded-full border-none shadow-md hover:shadow-lg transition-all hover:scale-105 active:scale-95 px-5 flex items-center gap-1.5 cursor-pointer"
             >
-              <UserCheck className="w-3.5 h-3.5 text-[#E5C460]" />
-              <span>My Requests</span>
+              <Calendar className="w-3.5 h-3.5 text-[#1F1703]" />
+              <span>BOOK NOW</span>
+            </button>
+
+            {/* Mobile Hamburger Menu Toggle */}
+            <button
+              id="mobile-menu-toggle-button"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="xl:hidden p-2 rounded-full bg-white/10 text-white border border-white/20 cursor-pointer hover:bg-white/20"
+              aria-label="Toggle Navigation Menu"
+            >
+              {mobileMenuOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
             </button>
           </div>
-
-          {/* Glossy Gold Primary CTA Button */}
-          <button
-            id="navbar-book-now-button"
-            onClick={onBookClick}
-            className="btn btn-sm bg-gradient-to-r from-[#D6A838] via-[#E2C76B] to-[#C29324] hover:from-[#C29324] hover:to-[#8E680E] text-[#1F1703] font-extrabold text-xs tracking-wider uppercase rounded-xl border-none shadow-md hover:shadow-lg transition-all hover:scale-[1.02] active:scale-95 px-5 flex items-center gap-1.5 cursor-pointer"
-          >
-            <Calendar className="w-3.5 h-3.5 text-[#1F1703]" />
-            <span>BOOK NOW</span>
-          </button>
         </div>
+      </header>
 
-        {/* 4. Mobile Menu Controls */}
-        <div className="flex lg:hidden items-center gap-2">
-          {/* Mobile My Requests Button */}
-          <div className="indicator">
-            {bookingCount > 0 && (
-              <span className="indicator-item badge badge-xs bg-[#12B5AF] text-white font-bold border-none">
-                {bookingCount}
-              </span>
-            )}
-            <button
-              onClick={onOpenBookings}
-              className="p-2 rounded-xl bg-white/10 text-[#FAF8F5] border border-white/20 cursor-pointer"
-              aria-label="My Requests"
-            >
-              <UserCheck className="w-4 h-4 text-[#E5C460]" />
-            </button>
-          </div>
-
-          {/* Hamburger Menu Toggle */}
-          <button
-            id="mobile-menu-toggle-button"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl bg-white/10 text-white border border-white/20 cursor-pointer"
-            aria-label="Toggle Mobile Menu"
-          >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
-        </div>
-
-      </div>
-
-      {/* 5. Mobile Slide-down Drawer Menu */}
+      {/* Mobile Slide-down Glass Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[#D6A838]/30 bg-[#212A13]/95 backdrop-blur-xl px-4 py-6 space-y-3 shadow-2xl">
-          <button
-            onClick={() => handleNavClick('home')}
-            className={`w-full text-left px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider ${
-              activePage === 'home' ? 'bg-[#35431C] text-[#FFF2A8]' : 'text-white/90 hover:bg-white/10'
-            }`}
-          >
-            Home
-          </button>
+        <div className="xl:hidden fixed inset-x-4 top-20 z-50 rounded-3xl bg-[#1D250F]/98 backdrop-blur-2xl border border-[#D6A838]/40 shadow-2xl p-5 space-y-2">
+          {navItems.map((item) => {
+            const Icon = item.icon;
+            const isActive = activeSection === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => handleItemClick(item.id)}
+                className={`w-full text-left px-4 py-3 rounded-2xl font-bold text-xs uppercase tracking-wider flex items-center gap-2.5 transition-colors ${
+                  isActive ? 'bg-[#35431C] text-[#FFF2A8]' : 'text-white/85 hover:bg-white/10'
+                }`}
+              >
+                <Icon className="w-4 h-4 text-[#D6A838]" />
+                <span>{item.label}</span>
+              </button>
+            );
+          })}
 
-          <button
-            onClick={() => handleNavClick('home', 'services')}
-            className="w-full text-left px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white/90 hover:bg-white/10"
-          >
-            Services Catalog
-          </button>
-
-          <button
-            onClick={() => handleNavClick('home', 'scheduler-section')}
-            className="w-full text-left px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider text-white/90 hover:bg-white/10"
-          >
-            Online Scheduler
-          </button>
-
-          <div className="border-t border-white/15 pt-2 space-y-1">
-            <span className="text-[10px] uppercase font-bold tracking-widest text-[#D6A838] px-4 block">
-              Dedicated Pages
-            </span>
+          <div className="pt-3 border-t border-white/10 flex items-center justify-between gap-3">
             <button
-              onClick={() => handleNavClick('about')}
-              className={`w-full text-left px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2.5 ${
-                activePage === 'about' ? 'bg-[#35431C] text-[#FFF2A8]' : 'text-white/90 hover:bg-white/10'
-              }`}
+              onClick={() => {
+                setMobileMenuOpen(false);
+                onOpenBookings();
+              }}
+              className="flex-1 py-2.5 rounded-xl bg-white/10 text-[#FFF2A8] font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2"
             >
-              <Info className="w-4 h-4 text-[#D6A838]" />
-              <span>About Real Looks & Hygiene</span>
+              <UserCheck className="w-4 h-4" />
+              <span>My Requests ({bookingCount})</span>
             </button>
 
-            <button
-              onClick={() => handleNavClick('gallery')}
-              className={`w-full text-left px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2.5 ${
-                activePage === 'gallery' ? 'bg-[#35431C] text-[#FFF2A8]' : 'text-white/90 hover:bg-white/10'
-              }`}
-            >
-              <Camera className="w-4 h-4 text-[#89CFF0]" />
-              <span>Work Portfolio Gallery</span>
-            </button>
-
-            <button
-              onClick={() => handleNavClick('contact')}
-              className={`w-full text-left px-4 py-2.5 rounded-xl font-bold text-xs flex items-center gap-2.5 ${
-                activePage === 'contact' ? 'bg-[#35431C] text-[#FFF2A8]' : 'text-white/90 hover:bg-white/10'
-              }`}
-            >
-              <MapPin className="w-4 h-4 text-[#86D6B9]" />
-              <span>Location, Hours & Reviews</span>
-            </button>
-          </div>
-
-          <div className="pt-3">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
                 onBookClick();
               }}
-              className="w-full py-3 rounded-xl bg-gradient-to-r from-[#D6A838] to-[#C29324] text-[#1F1703] font-bold text-xs tracking-wider uppercase shadow-md flex items-center justify-center gap-2"
+              className="flex-1 py-2.5 rounded-xl bg-gradient-to-r from-[#D6A838] to-[#C29324] text-[#1F1703] font-bold text-xs tracking-wider uppercase flex items-center justify-center gap-2"
             >
               <Calendar className="w-4 h-4" />
-              <span>Book Appointment Now</span>
+              <span>Book Slot</span>
             </button>
           </div>
         </div>
       )}
-    </header>
+    </>
   );
 };

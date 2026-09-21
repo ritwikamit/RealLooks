@@ -27,6 +27,8 @@ export interface Stylist {
   experienceYears: number;
   availableDays: number[]; // 0=Sunday, 1=Monday, etc.
   avatar: string;
+  bio?: string;
+  rating?: number;
 }
 
 export interface BookingRequest {
@@ -55,6 +57,7 @@ export interface ReviewItem {
   service: string;
   comment: string;
   verified: boolean;
+  avatar?: string;
 }
 
 export interface GalleryItem {
@@ -64,4 +67,24 @@ export interface GalleryItem {
   categoryLabel: string;
   imageUrl: string;
   description?: string;
+}
+
+export interface StoreProduct {
+  id: string;
+  name: string;
+  tagline: string;
+  category: 'hair' | 'beard' | 'skin';
+  price: number;
+  originalPrice?: number;
+  volume: string;
+  image: string;
+  rating: number;
+  badge?: string;
+  description: string;
+}
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+  category: string;
 }

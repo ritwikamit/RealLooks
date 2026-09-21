@@ -1,4 +1,4 @@
-import { ServiceItem, Stylist, ReviewItem, GalleryItem } from '../types';
+import { ServiceItem, Stylist, ReviewItem, GalleryItem, StoreProduct, FAQItem } from '../types';
 
 export const SALON_INFO = {
   name: 'Real Looks Unisex Salon',
@@ -154,38 +154,46 @@ export const STYLISTS: Stylist[] = [
   {
     id: 'any',
     name: 'First Available Specialist',
-    role: 'Recommended for quickest appointment',
-    specialty: 'Any available senior staff',
+    role: 'Recommended for fastest slot',
+    specialty: 'Any certified senior master',
     experienceYears: 6,
     availableDays: [0, 1, 2, 3, 4, 5, 6],
-    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80'
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=300&q=80',
+    bio: 'Our front-desk team pairs you with the first available certified stylist matching your exact service.',
+    rating: 4.9
   },
   {
     id: 'stylist-rahul',
     name: 'Rahul Kumar',
-    role: 'Senior Hair & Texture Specialist',
-    specialty: 'Precision cuts, Fades, Keratin & Hair Botox',
+    role: 'Senior Hair & Texture Master',
+    specialty: 'Nanoplastia, Hair Botox, Precision Fades & Balayage',
     experienceYears: 8,
     availableDays: [1, 2, 3, 4, 5, 6],
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80'
+    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80',
+    bio: 'Trained in Mumbai and Delhi in advanced keratin and thermal rebonding. Master of customized hair silhouettes.',
+    rating: 4.95
   },
   {
     id: 'stylist-priya',
     name: 'Priya Sharma',
-    role: 'Aesthetics & Bridal Stylist',
-    specialty: 'Facials, HD Bridal Makeup & Women Hair Designs',
+    role: 'Skin Aesthetician & Bridal Master',
+    specialty: 'Hydra Facials, 24K Radiance & Couture Bridal Makeover',
     experienceYears: 7,
     availableDays: [0, 1, 2, 4, 5, 6],
-    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=200&q=80'
+    avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&q=80',
+    bio: 'Certified dermalogica aesthetician specializing in clinical skin rejuvenation and luminous bridal aesthetics.',
+    rating: 4.98
   },
   {
     id: 'stylist-amit',
     name: 'Amit Verma',
-    role: 'Master Barber & Beard Artist',
-    specialty: 'Classic straight razor shaves, Beard sculpting & Men spa',
+    role: 'Master Barber & Beard Artisan',
+    specialty: 'Hot-towel straight razor shaves, Beard sculpting & Grooming',
     experienceYears: 5,
     availableDays: [0, 2, 3, 4, 5, 6],
-    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=200&q=80'
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=300&q=80',
+    bio: 'Renowned for razor-sharp beard symmetry, relaxing scalp acupressure massages, and classic gentleman grooming.',
+    rating: 4.92
   }
 ];
 
@@ -294,5 +302,93 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     categoryLabel: 'Bridal Makeover',
     imageUrl: 'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=800&q=80',
     description: 'Long-wearing HD makeup with traditional yet contemporary flair.'
+  }
+];
+
+export const STORE_PRODUCTS: StoreProduct[] = [
+  {
+    id: 'prod-1',
+    name: 'Organic Hair Botox Repair Elixir',
+    tagline: 'Deep cuticle sealing & mirror shine therapy',
+    category: 'hair',
+    price: 1499,
+    originalPrice: 1999,
+    volume: '250ml',
+    image: 'https://images.unsplash.com/photo-1608248597359-2169b9356611?auto=format&fit=crop&w=600&q=80',
+    rating: 4.9,
+    badge: 'Bestseller',
+    description: 'Formulated with botanical amino acids, argan oil, and plant keratin to repair heat-damaged strands and maintain salon botox results.'
+  },
+  {
+    id: 'prod-2',
+    name: 'Moroccan Argan Liquid Gold Gloss',
+    tagline: 'Weightless anti-frizz thermal protectant',
+    category: 'hair',
+    price: 1199,
+    originalPrice: 1499,
+    volume: '100ml',
+    image: 'https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=600&q=80',
+    rating: 4.8,
+    badge: 'Salon Exclusive',
+    description: 'Cold-pressed pure Moroccan argan oil infused with vitamin E. Delivers radiant shine without greasiness.'
+  },
+  {
+    id: 'prod-3',
+    name: 'Gentleman Royal Beard Sculpting Balm',
+    tagline: 'Cedarwood, jojoba & organic shea hold',
+    category: 'beard',
+    price: 699,
+    originalPrice: 899,
+    volume: '75g',
+    image: 'https://images.unsplash.com/photo-1621607512214-68297480165e?auto=format&fit=crop&w=600&q=80',
+    rating: 4.9,
+    badge: 'Popular for Men',
+    description: 'Tames unruly beard whiskers while deeply conditioning the underlying skin. Natural matte hold with a subtle woody aroma.'
+  },
+  {
+    id: 'prod-4',
+    name: '24K Golden Collagen Radiance Drops',
+    tagline: 'Skin brightening & youth-restorative facial serum',
+    category: 'skin',
+    price: 1799,
+    originalPrice: 2299,
+    volume: '50ml',
+    image: 'https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&fit=crop&w=600&q=80',
+    rating: 4.95,
+    badge: 'Luxury Care',
+    description: 'Micro-gold flakes suspended in hyaluronic acid and niacinamide. Enhances skin luminosity and boosts post-facial hydration.'
+  }
+];
+
+export const FAQS: FAQItem[] = [
+  {
+    question: 'Do I need an appointment or do you accept walk-ins?',
+    answer: 'While we happily welcome walk-in guests whenever a styling station is free, we strongly encourage booking an online appointment through our website. Reserving your slot guarantees zero waiting time and allows our master stylists to prepare your customized station in advance.',
+    category: 'Bookings'
+  },
+  {
+    question: 'What hygiene and sterilization protocols do you follow?',
+    answer: 'Hygiene is our hallmark in Aurangabad. All scissors, clippers, razor handles, and grooming guards undergo medical-grade UV sterilization between each client. We use fresh, single-use neck strips, disposable razor blades, and freshly laundered towels for every service.',
+    category: 'Hygiene'
+  },
+  {
+    question: 'What is the difference between Hair Botox and Keratin treatments?',
+    answer: 'Keratin primarily straightens and smooths coarse or curly hair by bonding a protective protein layer onto the shaft. Hair Botox is a non-chemical, deep-conditioning treatment that repairs damaged fibers, restores moisture, and eliminates frizz without altering your natural hair texture.',
+    category: 'Hair Treatments'
+  },
+  {
+    question: 'Are your skin facials and products suitable for sensitive skin?',
+    answer: 'Yes! Every facial service begins with a complimentary skin analysis by our certified aesthetician Priya Sharma. We customize the serums, massage gels, and masks based on your skin type—whether sensitive, acne-prone, oily, or mature.',
+    category: 'Skin Care'
+  },
+  {
+    question: 'Where is Real Looks located and is parking available?',
+    answer: 'We are situated at Q957+RR4, Dani Bigha, near Vayuputra Fitness Club in Aurangabad, Bihar (PIN 824101). Our location is easily accessible with convenient, dedicated front-row vehicle parking.',
+    category: 'Location'
+  },
+  {
+    question: 'Do you offer pre-bridal and groom makeover packages?',
+    answer: 'Yes! We offer curated bespoke pre-wedding packages for both brides and grooms, including hair rejuvenation, 24K gold radiance facials, body polishing, beard grooming, and trial makeup sessions.',
+    category: 'Bridal'
   }
 ];
