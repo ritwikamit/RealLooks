@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FadedAmbientBackground } from './components/FadedAmbientBackground';
+import { InteractiveDotGridCanvas } from './components/InteractiveDotGridCanvas';
 import { LimelightNavbar, PageView } from './components/clandestine/LimelightNavbar';
 import { ClandestineHeroSection } from './components/clandestine/ClandestineHeroSection';
 import { ClandestineEnhancedFooter } from './components/clandestine/ClandestineEnhancedFooter';
@@ -95,6 +96,7 @@ export default function App() {
       
       {/* 1. Global Redesigned Luxury Artisan Canvas & Ambient Color Glows */}
       <FadedAmbientBackground />
+      <InteractiveDotGridCanvas activePage={activePage} />
 
       {/* 2. Clandestine Limelight Floating Navbar */}
       <LimelightNavbar 

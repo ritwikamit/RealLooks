@@ -62,22 +62,55 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
     }
   }, [activePage]);
 
-  // High-performance scroll tracking on home page
+  // High-performance zero-reflow scroll tracking on home page
   useEffect(() => {
-    if (activePage !== 'home') return;
-
     let rafId: number;
 
-    const handleScrollTracking = () => {
-      if (isScrollingToRef.current) return;
+    // Cache section positions to prevent synchronous layout recalculations (getBoundingClientRect) during scroll
+    let cachedTargets: { hash: string; index: number; top: number }[] = [];
 
+    const updateCachedPositions = () => {
+      if (activePage !== 'home') return;
+      const sectionTargets = [
+        { hash: 'home', index: 0 },
+        { hash: 'services', index: 1 },
+        { hash: 'scheduler-section', index: 2 },
+        { hash: 'masters', index: 3 },
+        { hash: 'gallery', index: 4 },
+        { hash: 'store', index: 5 },
+        { hash: 'contact', index: 6 },
+      ];
+
+      cachedTargets = sectionTargets.map((item) => {
+        const el = document.getElementById(item.hash);
+        let top = 0;
+        if (el) {
+          let curr: HTMLElement | null = el;
+          while (curr) {
+            top += curr.offsetTop;
+            curr = curr.offsetParent as HTMLElement | null;
+          }
+        }
+        return { ...item, top };
+      });
+    };
+
+    updateCachedPositions();
+    window.addEventListener('resize', updateCachedPositions, { passive: true });
+
+    const handleScroll = () => {
       cancelAnimationFrame(rafId);
       rafId = requestAnimationFrame(() => {
         const scrollY = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
 
-        // 1. Near the top of the page -> Home (index 0)
+        // 1. Update isScrolled status with zero layout thrashing
+        const scrolled = scrollY > 20;
+        setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
+
+        // 2. Active section tracking only on home page
+        if (activePage !== 'home' || isScrollingToRef.current) return;
+
+        // Near top
         if (scrollY < 160) {
           if (activeIndexRef.current !== 0) {
             activeIndexRef.current = 0;
@@ -86,8 +119,11 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
           return;
         }
 
-        // 2. Near the bottom of the page -> Contact (index 6)
-        if (windowHeight + scrollY >= documentHeight - 140) {
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
+
+        // Near bottom -> Contact
+        if (windowHeight + scrollY >= documentHeight - 120) {
           if (activeIndexRef.current !== 6) {
             activeIndexRef.current = 6;
             setActiveIndex(6);
@@ -95,30 +131,15 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
           return;
         }
 
-        // 3. Check section positions from bottom to top
-        const sectionTargets = [
-          { hash: 'home', index: 0 },
-          { hash: 'services', index: 1 },
-          { hash: 'scheduler-section', index: 2 },
-          { hash: 'masters', index: 3 },
-          { hash: 'gallery', index: 4 },
-          { hash: 'store', index: 5 },
-          { hash: 'contact', index: 6 },
-        ];
-
-        // Trigger line is just below sticky header
-        const triggerLine = 140;
+        // Fast numerical check against precomputed offsets
+        const triggerLine = 160;
         let detectedIndex = 0;
 
-        for (let i = sectionTargets.length - 1; i >= 0; i--) {
-          const item = sectionTargets[i];
-          const el = document.getElementById(item.hash);
-          if (el) {
-            const rect = el.getBoundingClientRect();
-            if (rect.top <= triggerLine + 60) {
-              detectedIndex = item.index;
-              break;
-            }
+        for (let i = cachedTargets.length - 1; i >= 0; i--) {
+          const item = cachedTargets[i];
+          if (scrollY >= item.top - triggerLine) {
+            detectedIndex = item.index;
+            break;
           }
         }
 
@@ -129,10 +150,12 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
       });
     };
 
-    window.addEventListener('scroll', handleScrollTracking, { passive: true });
-    handleScrollTracking();
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+
     return () => {
-      window.removeEventListener('scroll', handleScrollTracking);
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', updateCachedPositions);
       cancelAnimationFrame(rafId);
     };
   }, [activePage]);
@@ -157,25 +180,9 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
     };
 
     updateSpotlightPosition();
-    window.addEventListener('resize', updateSpotlightPosition);
+    window.addEventListener('resize', updateSpotlightPosition, { passive: true });
     return () => window.removeEventListener('resize', updateSpotlightPosition);
   }, [displayIndex]);
-
-  useEffect(() => {
-    let scrollRaf: number;
-    const handleScroll = () => {
-      cancelAnimationFrame(scrollRaf);
-      scrollRaf = requestAnimationFrame(() => {
-        const scrolled = window.scrollY > 20;
-        setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
-      });
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      cancelAnimationFrame(scrollRaf);
-    };
-  }, []);
 
   // Fetch saved bookings count
   useEffect(() => {
