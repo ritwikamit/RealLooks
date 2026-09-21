@@ -8,12 +8,7 @@ interface MobileStickyBarProps {
 
 export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onBookClick }) => {
   return (
-    <div 
-      className="fixed bottom-0 left-0 right-0 z-40 lg:hidden border-t border-[#D6A838]/40 px-3 py-2.5 shadow-[0_-8px_30px_rgba(76,91,46,0.12)] backdrop-blur-xl safe-bottom"
-      style={{
-        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(252, 249, 241, 0.94) 35%, rgba(246, 239, 222, 0.95) 70%, rgba(240, 248, 244, 0.94) 100%)',
-      }}
-    >
+    <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden lucid-glass border-t border-white/80 px-3 py-2.5 shadow-[0_-8px_30px_rgba(0,0,0,0.08)] backdrop-blur-xl safe-bottom">
       <div className="flex items-center justify-between gap-2 max-w-md mx-auto">
         
         {/* Book Now Main Button */}
