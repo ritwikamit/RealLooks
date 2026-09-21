@@ -36,17 +36,17 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
         {/* Main 4-Column Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
           
-          {/* Col 1: Enlarged Radiant Logo without duplicate text */}
+          {/* Col 1: Enlarged Logo in Lucid Plaque without duplicate text */}
           <div className="space-y-4">
             <div 
-              className="inline-block cursor-pointer group"
+              className="inline-block p-3 sm:p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-[#D6A838]/50 shadow-[0_6px_24px_rgba(0,0,0,0.25),0_0_20px_rgba(214,168,56,0.3)] cursor-pointer group transition-all hover:scale-[1.03]"
               onClick={scrollToTop}
               title="Real Looks Unisex Salon"
             >
               <img
-                src="/images/logo-light.png"
+                src="/images/logo.png"
                 alt="Real Looks Unisex Salon Logo"
-                className="h-24 sm:h-28 md:h-32 w-auto object-contain filter drop-shadow-[0_4px_24px_rgba(214,168,56,0.45)] select-none transition-transform duration-300 group-hover:scale-105"
+                className="h-14 sm:h-16 md:h-20 w-auto object-contain select-none"
                 loading="lazy"
               />
             </div>
@@ -184,19 +184,19 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
           </div>
 
           {/* Designed and Developed by AC Custom Labs */}
-          <div className="flex flex-wrap items-center justify-center gap-2 text-white/75 text-xs sm:text-sm font-medium">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2 text-white/70 text-xs sm:text-sm font-normal">
             <span className="leading-none">Designed and Developed by</span>
             <a
               href="https://accustomlabs.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center hover:opacity-85 transition-opacity"
+              className="inline-flex items-center hover:opacity-90 transition-opacity"
               title="AC Custom Labs"
             >
               <img
                 src="/images/accustomlabs.png"
                 alt="AC Custom Labs"
-                className="h-4.5 sm:h-5 w-auto object-contain inline-block"
+                className="h-3.5 sm:h-4 w-auto object-contain inline-block align-middle"
               />
             </a>
           </div>

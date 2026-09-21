@@ -206,13 +206,13 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
 
   return (
     <header 
-      className={`sticky top-0 z-50 w-full transition-all duration-300 border-b border-[#D6A838]/40 ${
+      className={`sticky top-0 z-50 w-full transition-all duration-300 border-b border-[#D6A838]/30 ${
         isScrolled
-          ? 'py-2 sm:py-2.5 shadow-[0_16px_45px_rgba(11,25,44,0.5)]'
-          : 'py-2.5 sm:py-3.5 shadow-[0_10px_30px_rgba(11,25,44,0.35)]'
+          ? 'py-2 sm:py-2.5 shadow-[0_10px_30px_rgba(76,91,46,0.08)]'
+          : 'py-2.5 sm:py-3.5 shadow-[0_4px_20px_rgba(76,91,46,0.05)]'
       }`}
       style={{ 
-        background: 'linear-gradient(135deg, rgba(11, 25, 44, 0.96) 0%, rgba(20, 42, 68, 0.95) 45%, rgba(13, 76, 92, 0.96) 100%)',
+        background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.96) 0%, rgba(250, 249, 245, 0.94) 45%, rgba(246, 241, 230, 0.96) 100%)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         transform: 'translate3d(0,0,0)', 
@@ -220,16 +220,16 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
       }}
     >
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* 1. Left: Official Brand Logo directly in header with high contrast and radiance */}
+        {/* 1. Left: Official Brand Logo directly in header with high clarity on luxury gradient */}
         <button
           onClick={() => handleItemClick(0, navItems[0])}
-          className="flex items-center cursor-pointer focus:outline-none transition-all hover:scale-[1.03] flex-shrink-0 p-1 sm:p-1.5 rounded-2xl bg-white/[0.08] hover:bg-white/[0.14] border border-white/15 shadow-xs"
+          className="flex items-center cursor-pointer focus:outline-none transition-all hover:scale-[1.03] flex-shrink-0"
           aria-label="Real Looks Home"
         >
           <img
-            src="/images/logo-light.png"
+            src="/images/logo.png"
             alt="Real Looks Unisex Salon"
-            className="h-10 sm:h-12 md:h-14 w-auto object-contain filter drop-shadow-[0_2px_14px_rgba(214,168,56,0.5)] select-none"
+            className="h-11 sm:h-12 md:h-14 w-auto object-contain select-none"
             loading="eager"
           />
         </button>
@@ -244,7 +244,7 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
             ref={limelightRef}
             className="pointer-events-none absolute top-0 left-0 h-[3.5px] rounded-full bg-gradient-to-r from-[#F5D77F] via-[#D6A838] to-[#C29324] z-10"
             style={{
-              boxShadow: '0 3px 18px 2px rgba(214,168,56,0.75), 0 0 10px #F5D77F',
+              boxShadow: '0 3px 14px 1px rgba(214,168,56,0.65), 0 0 8px #F5D77F',
               transition: 'transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), width 0.22s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease',
               opacity: 0,
               transform: 'translate3d(0,0,0)',
@@ -252,11 +252,11 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
           >
             {/* Spotlight Downward Light Cone Beam */}
             <div
-              className="absolute left-[-20%] top-[3.5px] w-[140%] h-[50px] pointer-events-none opacity-40"
+              className="absolute left-[-20%] top-[3.5px] w-[140%] h-[50px] pointer-events-none opacity-30"
               style={{
                 clipPath: 'polygon(15% 100%, 30% 0%, 70% 0%, 85% 100%)',
-                background: 'linear-gradient(to bottom, rgba(214,168,56,0.5), rgba(214,168,56,0.12) 55%, transparent)',
-                filter: 'drop-shadow(0 0 8px rgba(214,168,56,0.5))',
+                background: 'linear-gradient(to bottom, rgba(214,168,56,0.45), rgba(214,168,56,0.08) 55%, transparent)',
+                filter: 'drop-shadow(0 0 8px rgba(214,168,56,0.4))',
               }}
             />
           </div>
@@ -273,8 +273,8 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
                   onMouseEnter={() => setHoveredIndex(idx)}
                   className={`relative px-3 sm:px-3.5 lg:px-4 py-2 text-[11px] lg:text-xs font-bold tracking-wider uppercase transition-colors duration-150 cursor-pointer select-none ${
                     isSelected
-                      ? 'text-[#FFF2A8] font-black drop-shadow-[0_0_12px_rgba(214,168,56,0.7)] scale-[1.03]'
-                      : 'text-white/80 hover:text-[#FFF4BD] active:scale-95'
+                      ? 'text-[#8E680E] font-black drop-shadow-[0_1px_2px_rgba(214,168,56,0.25)] scale-[1.03]'
+                      : 'text-[#2F3B1A]/85 hover:text-[#8E680E] active:scale-95'
                   }`}
                 >
                   {item.label}
@@ -295,9 +295,9 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
             )}
             <button
               onClick={onOpenBookings}
-              className="btn btn-sm btn-ghost bg-white/10 hover:bg-white/20 text-white border border-white/20 rounded-xl text-xs font-bold gap-2 px-3.5 transition-all cursor-pointer shadow-2xs active:scale-95"
+              className="btn btn-sm btn-ghost bg-[#2F3B1A]/8 hover:bg-[#2F3B1A]/15 text-[#2F3B1A] border border-[#2F3B1A]/15 rounded-xl text-xs font-bold gap-2 px-3.5 transition-all cursor-pointer shadow-2xs active:scale-95"
             >
-              <UserCheck className="w-3.5 h-3.5 text-[#D6A838]" />
+              <UserCheck className="w-3.5 h-3.5 text-[#8E680E]" />
               <span>My Requests</span>
             </button>
           </div>
@@ -323,40 +323,40 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
             )}
             <button
               onClick={onOpenBookings}
-              className="p-2 rounded-xl bg-white/10 text-white border border-[#D6A838]/40 cursor-pointer"
+              className="p-2 rounded-xl bg-[#2F3B1A]/8 text-[#2F3B1A] border border-[#D6A838]/40 cursor-pointer"
               aria-label="My Bookings"
             >
-              <UserCheck className="w-4 h-4 text-[#D6A838]" />
+              <UserCheck className="w-4 h-4 text-[#8E680E]" />
             </button>
           </div>
 
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 rounded-xl bg-white/10 text-white border border-[#D6A838]/40 cursor-pointer"
+            className="p-2 rounded-xl bg-[#2F3B1A]/8 text-[#2F3B1A] border border-[#D6A838]/40 cursor-pointer"
             aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5 text-white" /> : <Menu className="w-5 h-5 text-white" />}
+            {mobileMenuOpen ? <X className="w-5 h-5 text-[#2F3B1A]" /> : <Menu className="w-5 h-5 text-[#2F3B1A]" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden max-w-7xl mx-auto mt-2 rounded-2xl bg-[#0B192C]/98 backdrop-blur-2xl border border-[#D6A838]/40 p-4 space-y-2 shadow-2xl">
+        <div className="md:hidden max-w-7xl mx-auto mt-2 rounded-2xl bg-[#FAF9F6]/98 backdrop-blur-2xl border border-[#D6A838]/40 p-4 space-y-2 shadow-2xl">
           {navItems.map((item, idx) => (
             <button
               key={item.label}
               onClick={() => handleItemClick(idx, item)}
               className={`w-full text-left px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider transition-colors ${
                 activeIndex === idx
-                  ? 'bg-[#D6A838]/25 text-[#FFF2A8] font-black'
-                  : 'text-white/85 hover:bg-white/10'
+                  ? 'bg-[#D6A838]/25 text-[#5A4004] font-black'
+                  : 'text-[#2F3B1A]/85 hover:bg-[#2F3B1A]/8'
               }`}
             >
               {item.label}
             </button>
           ))}
-          <div className="pt-2 border-t border-white/10">
+          <div className="pt-2 border-t border-[#2F3B1A]/10">
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
