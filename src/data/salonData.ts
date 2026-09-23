@@ -120,7 +120,7 @@ export const SERVICES: ServiceItem[] = [
     durationMinutes: 50,
     price: 999,
     targetGender: 'Unisex',
-    image: 'https://images.unsplash.com/photo-1512290900672-1f55b6c0032e?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=600&q=80',
     includes: ['Steam & Ultrasonic Extraction', 'Hydrating Hyaluronic Tonic', 'Ice Globe Massage', 'Moisture Lock']
   },
   {
@@ -318,7 +318,7 @@ export const STORE_PRODUCTS: StoreProduct[] = [
     oldPrice: 3200,
     description: 'Highly-concentrated, weightless reparative styling oil. Dramatically increases shine, softness, and color vibrancy while minimizing flyaways and heat damage up to 450°F.',
     volume: '30 ml',
-    image: 'https://images.unsplash.com/photo-1608248597359-0a8a660a9270?auto=format&fit=crop&w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=600&q=80',
     tag: 'Bestseller'
   },
   {
