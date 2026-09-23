@@ -17,7 +17,7 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
   };
 
   return (
-    <footer className="relative bg-[#171D0E] text-[#F8F9F5] pt-16 pb-28 lg:pb-14 border-t border-[#D6A838]/30 overflow-hidden select-none">
+    <footer className="relative w-full max-w-full bg-[#171D0E] text-[#F8F9F5] pt-16 pb-28 lg:pb-14 border-t border-[#D6A838]/30 overflow-hidden overflow-x-clip select-none">
       
       {/* Background Subtle Gradient Blobs */}
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#12B5AF]/08 rounded-full blur-3xl pointer-events-none" />
@@ -25,7 +25,7 @@ export const ClandestineEnhancedFooter: React.FC<ClandestineEnhancedFooterProps>
 
       {/* Clandestine Giant Watermark Typography Background */}
       <div
-        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 text-center font-serif font-black uppercase text-white/[0.035] tracking-widest whitespace-nowrap text-[12vw] leading-none z-0"
+        className="pointer-events-none absolute bottom-0 left-1/2 -translate-x-1/2 text-center font-serif font-black uppercase text-white/[0.035] tracking-widest whitespace-nowrap text-[12vw] leading-none z-0 max-w-full overflow-hidden"
         aria-hidden="true"
       >
         REAL LOOKS

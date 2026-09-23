@@ -157,7 +157,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen relative flex flex-col font-sans selection:bg-[#4B9CD3]/25 selection:text-[#0D1D27] bg-[#FAF9F6] luxury-artisan-canvas text-[#192018]">
+    <div className="min-h-screen w-full max-w-full overflow-x-clip relative flex flex-col font-sans selection:bg-[#4B9CD3]/25 selection:text-[#0D1D27] bg-[#FAF9F6] luxury-artisan-canvas text-[#192018]">
       
       {/* 1. Global Redesigned Luxury Artisan Canvas & Ambient Color Glows */}
       <FadedAmbientBackground />
@@ -172,7 +172,7 @@ export default function App() {
       />
 
       {/* Main Content View Switcher */}
-      <main className="flex-1">
+      <main className="flex-1 w-full max-w-full overflow-x-clip">
         
         {/* =========================================================
             HOME PAGE: Concise, High-Converting Luxury Landing Page
@@ -186,7 +186,7 @@ export default function App() {
             />
 
             {/* Post-Hero Container with Architectural Edge Overlay */}
-            <div className="relative w-full overflow-hidden">
+            <div className="relative w-full max-w-full overflow-hidden overflow-x-clip">
               <div className="square-mapping-edge-overlay" aria-hidden="true" />
               
               {/* Subtle architectural gold margin guides on desktop */}
@@ -212,16 +212,16 @@ export default function App() {
                     </p>
                   </div>
 
-                  <div className="flex items-center gap-3 flex-shrink-0 relative z-10 w-full sm:w-auto justify-center">
+                  <div className="flex flex-col sm:flex-row items-center gap-3 flex-shrink-0 relative z-10 w-full sm:w-auto justify-center">
                     <button
                       onClick={() => handleNavigate('services')}
-                      className="px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs font-bold tracking-wider uppercase transition-all"
+                      className="w-full sm:w-auto px-5 py-3 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/30 text-xs font-bold tracking-wider uppercase transition-all"
                     >
                       View All Services
                     </button>
                     <button
                       onClick={handleStartBooking}
-                      className="px-6 py-3 rounded-xl bg-gradient-to-r from-[#D6A838] to-[#C29324] hover:from-[#C29324] hover:to-[#8E680E] text-[#1F1703] text-xs font-extrabold tracking-wider uppercase shadow-lg transition-all"
+                      className="w-full sm:w-auto px-6 py-3 rounded-xl bg-gradient-to-r from-[#D6A838] to-[#C29324] hover:from-[#C29324] hover:to-[#8E680E] text-[#1F1703] text-xs font-extrabold tracking-wider uppercase shadow-lg transition-all"
                     >
                       Reserve Slot
                     </button>
@@ -349,7 +349,7 @@ export default function App() {
             DEDICATED PAGE: SERVICES CATALOG
            ========================================================= */}
         {activePage === 'services' && (
-          <div className="relative w-full overflow-hidden py-8 sm:py-12">
+          <div className="relative w-full max-w-full overflow-hidden overflow-x-clip py-8 sm:py-12">
             <div className="square-mapping-edge-overlay" aria-hidden="true" />
             
             {/* Blue Gradient Header Banner */}
@@ -392,7 +392,7 @@ export default function App() {
             DEDICATED PAGE: MASTER ARTISANS & STYLISTS
            ========================================================= */}
         {activePage === 'masters' && (
-          <div className="relative w-full overflow-hidden py-8 sm:py-12">
+          <div className="relative w-full max-w-full overflow-hidden overflow-x-clip py-8 sm:py-12">
             <div className="square-mapping-edge-overlay" aria-hidden="true" />
 
             {/* Blue Gradient Header Banner */}
@@ -431,7 +431,7 @@ export default function App() {
             DEDICATED PAGE: LOOKBOOK GALLERY
            ========================================================= */}
         {activePage === 'gallery' && (
-          <div className="relative w-full overflow-hidden py-8 sm:py-12">
+          <div className="relative w-full max-w-full overflow-hidden overflow-x-clip py-8 sm:py-12">
             <div className="square-mapping-edge-overlay" aria-hidden="true" />
 
             {/* Blue Gradient Header Banner */}
@@ -470,7 +470,7 @@ export default function App() {
             DEDICATED PAGE: BOUTIQUE STORE
            ========================================================= */}
         {activePage === 'store' && (
-          <div className="relative w-full overflow-hidden py-8 sm:py-12">
+          <div className="relative w-full max-w-full overflow-hidden overflow-x-clip py-8 sm:py-12">
             <div className="square-mapping-edge-overlay" aria-hidden="true" />
 
             {/* Blue Gradient Header Banner */}
@@ -509,7 +509,7 @@ export default function App() {
             DEDICATED PAGE: ABOUT & HYGIENE STANDARDS
            ========================================================= */}
         {activePage === 'about' && (
-          <div className="relative w-full overflow-hidden py-8 sm:py-12">
+          <div className="relative w-full max-w-full overflow-hidden overflow-x-clip py-8 sm:py-12">
             <div className="square-mapping-edge-overlay" aria-hidden="true" />
 
             {/* Blue Gradient Header Banner */}
@@ -548,7 +548,7 @@ export default function App() {
             DEDICATED PAGE: LOCATION, HOURS & CONTACT
            ========================================================= */}
         {activePage === 'contact' && (
-          <div className="relative w-full overflow-hidden py-8 sm:py-12">
+          <div className="relative w-full max-w-full overflow-hidden overflow-x-clip py-8 sm:py-12">
             <div className="square-mapping-edge-overlay" aria-hidden="true" />
 
             {/* Blue Gradient Header Banner */}

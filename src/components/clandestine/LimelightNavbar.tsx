@@ -206,7 +206,7 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
 
   return (
     <header 
-      className={`sticky top-0 z-50 w-full transition-all duration-300 border-b border-[#D6A838]/40 ${
+      className={`sticky top-0 z-50 w-full max-w-full overflow-x-clip transition-all duration-300 border-b border-[#D6A838]/40 ${
         isScrolled
           ? 'py-2 sm:py-2.5 shadow-[0_16px_45px_rgba(11,25,44,0.5)]'
           : 'py-2.5 sm:py-3.5 shadow-[0_10px_30px_rgba(11,25,44,0.35)]'

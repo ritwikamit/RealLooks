@@ -576,11 +576,11 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
 
                 {/* Time Period Tabs */}
                 <div>
-                  <div className="flex items-center justify-between mb-2.5">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2.5">
                     <label className="text-xs font-bold text-[#192018] uppercase tracking-wider">
                       Available Time Slots
                     </label>
-                    <div className="flex gap-1">
+                    <div className="flex flex-wrap gap-1">
                       {(['All', 'Morning', 'Afternoon', 'Evening'] as const).map((period) => (
                         <button
                           key={period}

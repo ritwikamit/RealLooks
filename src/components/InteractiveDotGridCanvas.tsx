@@ -63,7 +63,8 @@ export const InteractiveDotGridCanvas: React.FC<InteractiveDotGridCanvasProps> =
 
   return (
     <div
-      className="pointer-events-none fixed inset-0 z-0 overflow-hidden select-none transition-opacity duration-300"
+      className="pointer-events-none fixed inset-0 w-full max-w-full z-0 overflow-hidden overflow-x-clip select-none transition-opacity duration-300"
+      style={{ contain: 'paint' }}
       aria-hidden="true"
     >
       {/* 1. Ambient Golden Illumination Spotlight over the grid lines and dots */}

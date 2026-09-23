@@ -4,7 +4,8 @@ export const FadedAmbientBackground: React.FC = () => {
   return (
     <div 
       aria-hidden="true" 
-      className="pointer-events-none fixed inset-0 overflow-hidden -z-10 select-none bg-[#FAF9F6]"
+      className="pointer-events-none fixed inset-0 w-full max-w-full overflow-hidden overflow-x-clip -z-10 select-none bg-[#FAF9F6]"
+      style={{ contain: 'paint' }}
     >
       {/* 1. Base Luxury Artisan Canvas Texture */}
       <div className="absolute inset-0 bg-[#FAF9F6] luxury-artisan-canvas" />

@@ -34,7 +34,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
   return (
     <section 
       id="home"
-      className="relative min-h-[92vh] flex flex-col justify-between overflow-hidden px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-10"
+      className="relative w-full max-w-full min-h-[92vh] flex flex-col justify-between overflow-hidden px-3.5 sm:px-6 lg:px-8 pt-6 sm:pt-12 pb-10"
       style={{
         backgroundColor: '#FAF9F6',
         transform: 'translate3d(0,0,0)',
@@ -88,7 +88,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
       <div className="relative z-10 max-w-4xl mx-auto w-full my-auto py-6 sm:py-10 flex flex-col items-center text-center">
         
         {/* Luxury Lucid Blur Glassmorphic Center Card with Golden Border */}
-        <div className="relative w-full bg-white/50 sm:bg-white/40 backdrop-blur-2xl border-2 border-[#D6A838] shadow-[0_24px_64px_rgba(11,25,44,0.12),0_0_32px_rgba(214,168,56,0.3)] rounded-3xl p-5 sm:p-10 flex flex-col items-center text-center space-y-6 overflow-hidden">
+        <div className="relative w-full max-w-full bg-white/50 sm:bg-white/40 backdrop-blur-2xl border-2 border-[#D6A838] shadow-[0_24px_64px_rgba(11,25,44,0.12),0_0_32px_rgba(214,168,56,0.3)] rounded-2xl sm:rounded-3xl p-4 sm:p-10 flex flex-col items-center text-center space-y-5 sm:space-y-6 overflow-hidden">
           {/* Subtle gold luxury inner top accent */}
           <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#FFF4BD] to-transparent" />
 
@@ -104,7 +104,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
             <img
               src="/images/logo.png"
               alt="Real Looks Unisex Salon"
-              className="relative h-24 sm:h-28 md:h-32 w-auto object-contain filter drop-shadow-[0_4px_22px_rgba(214,168,56,0.32)] select-none transition-transform duration-300 group-hover:scale-[1.02]"
+              className="relative h-20 sm:h-28 md:h-32 w-auto object-contain filter drop-shadow-[0_4px_22px_rgba(214,168,56,0.32)] select-none transition-transform duration-300 group-hover:scale-[1.02]"
               loading="eager"
             />
           </motion.div>
@@ -114,17 +114,17 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/50 backdrop-blur-xl border border-[#D6A838]/60 shadow-[0_2px_12px_rgba(214,168,56,0.15)]"
+            className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 rounded-full bg-white/50 backdrop-blur-xl border border-[#D6A838]/60 shadow-[0_2px_12px_rgba(214,168,56,0.15)] max-w-full"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#8E680E]" />
-            <span className="text-[11px] font-extrabold tracking-[0.22em] uppercase text-[#533C05]">
+            <Sparkles className="w-3.5 h-3.5 text-[#8E680E] flex-shrink-0" />
+            <span className="text-[9px] sm:text-[11px] font-extrabold tracking-[0.12em] sm:tracking-[0.22em] uppercase text-[#533C05] truncate">
               UNISEX COUTURE SALON & WELLNESS
             </span>
           </motion.div>
 
           {/* Headline with TextSwap */}
-          <div className="space-y-3 max-w-3xl">
-            <h1 className="text-3xl sm:text-5xl lg:text-6xl font-serif-title font-extrabold text-[#141A13] tracking-tight leading-[1.12]">
+          <div className="space-y-3 max-w-3xl w-full">
+            <h1 className="text-2xl xs:text-3xl sm:text-5xl lg:text-6xl font-serif-title font-extrabold text-[#141A13] tracking-tight leading-[1.14] break-words">
               LOOK GOOD.{' '}
               <span className="inline-block sm:inline">FEEL GOOD.</span>{' '}
               <br />
@@ -144,7 +144,7 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
               </span>
             </h1>
 
-            <p className="text-sm sm:text-base lg:text-lg text-[#3D483B] max-w-2xl mx-auto font-normal leading-relaxed pt-1">
+            <p className="text-xs sm:text-base lg:text-lg text-[#3D483B] max-w-2xl mx-auto font-normal leading-relaxed pt-1">
               {SALON_INFO.heroSubtitle} Discover couture hairdressing, formaldehyde-free hair botox, beard sculpting, and radiant bridal artistry curated for men and women in Aurangabad.
             </p>
           </div>
@@ -154,58 +154,58 @@ export const ClandestineHeroSection: React.FC<ClandestineHeroSectionProps> = ({
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 text-xs font-medium pt-1"
+            className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs font-medium pt-1 max-w-full"
           >
-            <div className="flex items-center gap-2 bg-white/60 hover:bg-white/80 backdrop-blur-xl px-3.5 sm:px-4 py-2 rounded-full border border-[#D6A838] shadow-[0_4px_16px_rgba(214,168,56,0.15)] text-[#141A13] transition-colors">
+            <div className="flex items-center gap-2 bg-white/60 hover:bg-white/80 backdrop-blur-xl px-3 sm:px-4 py-2 rounded-full border border-[#D6A838] shadow-[0_4px_16px_rgba(214,168,56,0.15)] text-[#141A13] transition-colors max-w-full">
               <MapPin className="w-3.5 h-3.5 text-[#8E680E] flex-shrink-0" />
-              <span className="font-semibold text-[11px] sm:text-xs">Dani Bigha, Aurangabad, Bihar</span>
+              <span className="font-semibold text-[10.5px] sm:text-xs truncate">Dani Bigha, Aurangabad, Bihar</span>
             </div>
 
-            <div className="flex items-center gap-2 bg-white/60 hover:bg-white/80 backdrop-blur-xl px-3.5 sm:px-4 py-2 rounded-full border border-[#D6A838] shadow-[0_4px_16px_rgba(214,168,56,0.15)] text-[#5A4105] transition-colors">
+            <div className="flex items-center gap-2 bg-white/60 hover:bg-white/80 backdrop-blur-xl px-3 sm:px-4 py-2 rounded-full border border-[#D6A838] shadow-[0_4px_16px_rgba(214,168,56,0.15)] text-[#5A4105] transition-colors max-w-full">
               <Clock className="w-3.5 h-3.5 text-[#8E680E] flex-shrink-0" />
-              <span className="font-semibold text-[11px] sm:text-xs">Open Daily 9:00 AM – 9:00 PM</span>
+              <span className="font-semibold text-[10.5px] sm:text-xs truncate">Open Daily 9:00 AM – 9:00 PM</span>
             </div>
           </motion.div>
 
           {/* Value Props Row (Lucid Blur Cards with Golden Borders) */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-2.5 w-full max-w-2xl pt-1">
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/60 hover:bg-white/80 backdrop-blur-xl border-2 border-[#D6A838] hover:border-[#F3D37A] flex items-center justify-center gap-2 sm:gap-2.5 shadow-[0_4px_16px_rgba(214,168,56,0.2)] hover:shadow-[0_6px_22px_rgba(214,168,56,0.32)] transition-all hover:scale-[1.02]">
-              <div className="w-8 h-8 rounded-xl bg-[#4C5B2E]/12 flex items-center justify-center text-[#2F3B1A] flex-shrink-0">
-                <Scissors className="w-4 h-4" />
+            <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-white/60 hover:bg-white/80 backdrop-blur-xl border-2 border-[#D6A838] hover:border-[#F3D37A] flex items-center justify-center gap-1.5 sm:gap-2.5 shadow-[0_4px_16px_rgba(214,168,56,0.2)] hover:shadow-[0_6px_22px_rgba(214,168,56,0.32)] transition-all hover:scale-[1.02] min-w-0">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#4C5B2E]/12 flex items-center justify-center text-[#2F3B1A] flex-shrink-0">
+                <Scissors className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
-              <div className="text-left leading-tight">
-                <p className="text-[11px] font-bold text-[#141A13]">Unisex Salon</p>
-                <p className="text-[9px] text-[#677565]">Men & Women</p>
-              </div>
-            </div>
-
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/60 hover:bg-white/80 backdrop-blur-xl border-2 border-[#D6A838] hover:border-[#F3D37A] flex items-center justify-center gap-2 sm:gap-2.5 shadow-[0_4px_16px_rgba(214,168,56,0.2)] hover:shadow-[0_6px_22px_rgba(214,168,56,0.32)] transition-all hover:scale-[1.02]">
-              <div className="w-8 h-8 rounded-xl bg-[#D6A838]/20 flex items-center justify-center text-[#8E680E] flex-shrink-0">
-                <Sparkles className="w-4 h-4 text-[#C29324]" />
-              </div>
-              <div className="text-left leading-tight">
-                <p className="text-[11px] font-bold text-[#141A13]">Organic Care</p>
-                <p className="text-[9px] text-[#677565]">Botox & Keratin</p>
+              <div className="text-left leading-tight min-w-0">
+                <p className="text-[10px] sm:text-[11px] font-bold text-[#141A13] truncate">Unisex Salon</p>
+                <p className="text-[8.5px] sm:text-[9px] text-[#677565] truncate">Men & Women</p>
               </div>
             </div>
 
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/60 hover:bg-white/80 backdrop-blur-xl border-2 border-[#D6A838] hover:border-[#F3D37A] flex items-center justify-center gap-2 sm:gap-2.5 shadow-[0_4px_16px_rgba(214,168,56,0.2)] hover:shadow-[0_6px_22px_rgba(214,168,56,0.32)] transition-all hover:scale-[1.02]">
-              <div className="w-8 h-8 rounded-xl bg-[#12B5AF]/15 flex items-center justify-center text-[#0D8F8B] flex-shrink-0">
-                <ShieldCheck className="w-4 h-4" />
+            <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-white/60 hover:bg-white/80 backdrop-blur-xl border-2 border-[#D6A838] hover:border-[#F3D37A] flex items-center justify-center gap-1.5 sm:gap-2.5 shadow-[0_4px_16px_rgba(214,168,56,0.2)] hover:shadow-[0_6px_22px_rgba(214,168,56,0.32)] transition-all hover:scale-[1.02] min-w-0">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#D6A838]/20 flex items-center justify-center text-[#8E680E] flex-shrink-0">
+                <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#C29324]" />
               </div>
-              <div className="text-left leading-tight">
-                <p className="text-[11px] font-bold text-[#141A13]">UV Sterilized</p>
-                <p className="text-[9px] text-[#677565]">Hospital-Grade</p>
+              <div className="text-left leading-tight min-w-0">
+                <p className="text-[10px] sm:text-[11px] font-bold text-[#141A13] truncate">Organic Care</p>
+                <p className="text-[8.5px] sm:text-[9px] text-[#677565] truncate">Botox & Keratin</p>
               </div>
             </div>
 
-            <div className="p-2.5 sm:p-3 rounded-2xl bg-white/60 hover:bg-white/80 backdrop-blur-xl border-2 border-[#D6A838] hover:border-[#F3D37A] flex items-center justify-center gap-2 sm:gap-2.5 shadow-[0_4px_16px_rgba(214,168,56,0.2)] hover:shadow-[0_6px_22px_rgba(214,168,56,0.32)] transition-all hover:scale-[1.02]">
-              <div className="w-8 h-8 rounded-xl bg-[#4C5B2E]/12 flex items-center justify-center text-[#2F3B1A] flex-shrink-0">
-                <Clock className="w-4 h-4" />
+            <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-white/60 hover:bg-white/80 backdrop-blur-xl border-2 border-[#D6A838] hover:border-[#F3D37A] flex items-center justify-center gap-1.5 sm:gap-2.5 shadow-[0_4px_16px_rgba(214,168,56,0.2)] hover:shadow-[0_6px_22px_rgba(214,168,56,0.32)] transition-all hover:scale-[1.02] min-w-0">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#12B5AF]/15 flex items-center justify-center text-[#0D8F8B] flex-shrink-0">
+                <ShieldCheck className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
               </div>
-              <div className="text-left leading-tight">
-                <p className="text-[11px] font-bold text-[#141A13]">Instant Slot</p>
-                <p className="text-[9px] text-[#677565]">Direct Reserve</p>
+              <div className="text-left leading-tight min-w-0">
+                <p className="text-[10px] sm:text-[11px] font-bold text-[#141A13] truncate">UV Sterilized</p>
+                <p className="text-[8.5px] sm:text-[9px] text-[#677565] truncate">Hospital-Grade</p>
+              </div>
+            </div>
+
+            <div className="p-2 sm:p-3 rounded-xl sm:rounded-2xl bg-white/60 hover:bg-white/80 backdrop-blur-xl border-2 border-[#D6A838] hover:border-[#F3D37A] flex items-center justify-center gap-1.5 sm:gap-2.5 shadow-[0_4px_16px_rgba(214,168,56,0.2)] hover:shadow-[0_6px_22px_rgba(214,168,56,0.32)] transition-all hover:scale-[1.02] min-w-0">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-[#4C5B2E]/12 flex items-center justify-center text-[#2F3B1A] flex-shrink-0">
+                <Clock className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </div>
+              <div className="text-left leading-tight min-w-0">
+                <p className="text-[10px] sm:text-[11px] font-bold text-[#141A13] truncate">Instant Slot</p>
+                <p className="text-[8.5px] sm:text-[9px] text-[#677565] truncate">Direct Reserve</p>
               </div>
             </div>
           </div>
