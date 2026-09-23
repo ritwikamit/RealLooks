@@ -207,7 +207,7 @@ export default function App() {
 
               {/* 1. Appealing Blue Gradient VIP Announcement Ribbon */}
               <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-2 mb-10">
-                <div className="rounded-3xl p-6 sm:p-8 bg-gradient-to-r from-[#0D5C75] via-[#163859] to-[#0B192C] border border-[#D6A838]/50 shadow-[0_16px_50px_rgba(11,25,44,0.22)] flex flex-col md:flex-row items-center justify-between gap-6 text-white relative overflow-hidden">
+                <div className="rounded-3xl p-6 sm:p-8 bg-gradient-to-r from-[#187E9C] via-[#163859] to-[#0B192C] border border-[#D6A838]/50 shadow-[0_16px_50px_rgba(11,25,44,0.22)] flex flex-col md:flex-row items-center justify-between gap-6 text-white relative overflow-hidden">
                   {/* Subtle decorative gold light glow */}
                   <div className="absolute -right-20 -bottom-20 w-64 h-64 bg-[#D6A838]/15 rounded-full blur-3xl pointer-events-none" />
                   
@@ -335,7 +335,7 @@ export default function App() {
                 <div className="mt-8 text-center">
                   <button
                     onClick={() => handleNavigate('services')}
-                    className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-gradient-to-r from-[#0D5C75] via-[#163859] to-[#0B192C] text-white font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-xl transition-all border border-[#D6A838]/40"
+                    className="inline-flex items-center gap-2 px-8 py-3.5 rounded-2xl bg-gradient-to-r from-[#187E9C] via-[#163859] to-[#0B192C] text-white font-bold text-xs uppercase tracking-wider shadow-lg hover:shadow-xl transition-all border border-[#D6A838]/40"
                   >
                     <span>View Complete 20+ Service Menu & Prices</span>
                     <Sparkles className="w-4 h-4 text-[#FFF2A8]" />

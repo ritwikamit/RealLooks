@@ -213,7 +213,7 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
           : 'py-2.5 sm:py-3.5 shadow-[0_10px_30px_rgba(11,25,44,0.35)]'
       }`}
       style={{ 
-        background: 'linear-gradient(135deg, rgba(13, 76, 92, 0.96) 0%, rgba(20, 42, 68, 0.95) 50%, rgba(11, 25, 44, 0.96) 100%)',
+        background: 'linear-gradient(135deg, rgba(24, 126, 156, 0.96) 0%, rgba(18, 56, 86, 0.95) 45%, rgba(11, 25, 44, 0.96) 100%)',
         backdropFilter: 'blur(20px)',
         WebkitBackdropFilter: 'blur(20px)',
         transform: 'translate3d(0,0,0)', 
@@ -345,7 +345,7 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden max-w-7xl mx-auto mt-2 rounded-2xl bg-gradient-to-r from-[#0D5C75]/98 via-[#163859]/98 to-[#0B192C]/98 backdrop-blur-2xl border border-[#D6A838]/40 p-4 space-y-2 shadow-2xl">
+        <div className="md:hidden max-w-7xl mx-auto mt-2 rounded-2xl bg-gradient-to-r from-[#187E9C]/98 via-[#163859]/98 to-[#0B192C]/98 backdrop-blur-2xl border border-[#D6A838]/40 p-4 space-y-2 shadow-2xl">
           {navItems.map((item, idx) => (
             <button
               key={item.label}

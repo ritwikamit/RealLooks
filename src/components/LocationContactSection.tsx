@@ -21,7 +21,7 @@ export const LocationContactSection: React.FC = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         
         {/* Contact Info Card with Luxury Blue Gradient */}
-        <div className="lg:col-span-5 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6 bg-gradient-to-br from-[#0D4B5E] via-[#14304D] to-[#0B192C] text-white border border-[#D6A838]/40 shadow-xl relative overflow-hidden">
+        <div className="lg:col-span-5 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6 bg-gradient-to-br from-[#187E9C] via-[#14304D] to-[#0B192C] text-white border border-[#D6A838]/40 shadow-xl relative overflow-hidden">
           {/* Subtle gold glow in corner */}
           <div className="absolute -right-12 -top-12 w-48 h-48 bg-[#D6A838]/10 rounded-full blur-2xl pointer-events-none" />
           

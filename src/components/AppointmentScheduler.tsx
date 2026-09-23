@@ -267,7 +267,7 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
       <div className="lucid-glass rounded-3xl border border-[#D6A838]/30 shadow-[0_20px_50px_0_rgba(11,25,44,0.12)] overflow-hidden">
         
         {/* Step Progress Tracker with Luxury Blue Gradient */}
-        <div className="bg-gradient-to-r from-[#0D5C75] via-[#163859] to-[#0B192C] border-b border-[#D6A838]/30 px-4 sm:px-8 py-4.5 text-white">
+        <div className="bg-gradient-to-r from-[#187E9C] via-[#163859] to-[#0B192C] border-b border-[#D6A838]/30 px-4 sm:px-8 py-4.5 text-white">
           <div className="flex items-center justify-between max-w-3xl mx-auto">
             {[
               { num: 1, label: 'Service' },
