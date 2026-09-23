@@ -379,14 +379,14 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
         </div>
       )}
 
-      {/* Radiant Golden Scroll Progress Indicator Line (Theme Golden Color) */}
+      {/* Lucid Transparent Golden Scroll Progress Indicator Line */}
       <div 
-        className="absolute bottom-0 inset-x-0 h-[2.5px] bg-[#D6A838]/20 pointer-events-none z-30 overflow-hidden" 
+        className="absolute bottom-0 inset-x-0 h-[2px] bg-transparent pointer-events-none z-30 overflow-hidden" 
         aria-hidden="true"
       >
         <div 
           ref={scrollProgressBarRef}
-          className="h-full bg-gradient-to-r from-[#D6A838] via-[#FFF2A8] to-[#D6A838] transition-all duration-75 ease-out shadow-[0_0_10px_rgba(214,168,56,0.95),0_0_3px_#FFF2A8]"
+          className="h-full bg-gradient-to-r from-[#D6A838]/60 via-[#FFF2A8]/80 to-[#D6A838]/60 transition-all duration-75 ease-out shadow-[0_0_8px_rgba(214,168,56,0.6)]"
           style={{ width: '0%' }}
         />
       </div>
