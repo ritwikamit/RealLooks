@@ -26,15 +26,27 @@ export default function App() {
   const [isBookingsModalOpen, setIsBookingsModalOpen] = useState(false);
   const lenisRef = useRef<Lenis | null>(null);
 
-  // Initialize Lenis ultra-smooth momentum scrolling
+  // Initialize Lenis ultra-smooth momentum scrolling (desktop only; mobile uses native GPU momentum scroll)
   useEffect(() => {
+    // Detect touch / smartphone devices to avoid hijacking touchmove gestures
+    const isTouchDevice =
+      typeof window !== 'undefined' &&
+      ('ontouchstart' in window ||
+        navigator.maxTouchPoints > 0 ||
+        window.matchMedia('(pointer: coarse)').matches);
+
+    if (isTouchDevice) {
+      // Smartphones have native hardware-accelerated momentum scrolling built-in
+      return;
+    }
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      touchMultiplier: 1.4,
+      wheelMultiplier: 1,
     });
     lenisRef.current = lenis;
 

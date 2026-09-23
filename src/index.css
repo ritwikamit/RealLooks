@@ -55,11 +55,10 @@
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    overflow-y: auto;
     background-color: #FAF9F6;
     color-scheme: light;
-    overscroll-behavior-y: none;
-    overscroll-behavior-x: none;
-    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -68,16 +67,16 @@
   body {
     width: 100%;
     max-width: 100%;
+    min-height: 100%;
     margin: 0;
     padding: 0;
     background-color: #FAF9F6;
     color-scheme: light;
-    overscroll-behavior-y: none;
-    overscroll-behavior-x: none;
     color: var(--body-text);
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
     overflow-x: hidden;
     -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
     position: relative;
   }
 
@@ -89,12 +88,6 @@
     padding: 0;
     overflow-x: hidden;
     position: relative;
-  }
-
-  @supports (overflow-x: clip) {
-    html, body, #root {
-      overflow-x: clip;
-    }
   }
 
   h1, h2, h3, .font-serif-title {
@@ -358,13 +351,6 @@ html.lenis, html.lenis body {
   height: auto;
   width: 100%;
   max-width: 100%;
-  overflow-x: hidden;
-}
-
-@supports (overflow-x: clip) {
-  html.lenis, html.lenis body {
-    overflow-x: clip;
-  }
 }
 
 .lenis.lenis-smooth {

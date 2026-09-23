@@ -17,6 +17,9 @@ export const InteractiveDotGridCanvas: React.FC<InteractiveDotGridCanvasProps> =
     let timeoutId: ReturnType<typeof setTimeout>;
 
     const handlePointerMove = (e: PointerEvent) => {
+      // Ignore touch gestures so mobile swipe/scroll operates with zero overhead
+      if (e.pointerType === 'touch') return;
+
       const scrollY = window.scrollY;
       const heroEl = document.getElementById('home');
       const heroBottom = heroEl ? heroEl.offsetTop + heroEl.offsetHeight : 600;

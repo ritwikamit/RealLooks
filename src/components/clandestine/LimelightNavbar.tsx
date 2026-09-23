@@ -33,6 +33,7 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
 
   const navItemRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const limelightRef = useRef<HTMLDivElement | null>(null);
+  const isScrollingToRef = useRef(false);
 
   const navItems: NavItem[] = [
     { id: 'home', label: 'Home' },
@@ -268,7 +269,9 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
               return (
                 <button
                   key={item.label}
-                  ref={(el) => (navItemRefs.current[idx] = el)}
+                  ref={(el) => {
+                    navItemRefs.current[idx] = el;
+                  }}
                   onClick={() => handleItemClick(idx, item)}
                   onMouseEnter={() => setHoveredIndex(idx)}
                   className={`relative px-3 sm:px-3.5 lg:px-4 py-2 text-[11px] lg:text-xs font-bold tracking-wider uppercase transition-colors duration-150 cursor-pointer select-none ${
