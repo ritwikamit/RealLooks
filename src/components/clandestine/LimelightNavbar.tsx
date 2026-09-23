@@ -33,6 +33,7 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
 
   const navItemRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const limelightRef = useRef<HTMLDivElement | null>(null);
+  const scrollProgressBarRef = useRef<HTMLDivElement | null>(null);
 
   const navItems: NavItem[] = [
     { id: 'home', label: 'Home' },
@@ -102,11 +103,18 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
       rafId = requestAnimationFrame(() => {
         const scrollY = window.scrollY;
 
-        // 1. Update isScrolled status with zero layout thrashing
+        // 1. Update golden scroll progress line smoothly across all pages
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = maxScroll > 0 ? Math.min(100, Math.max(0, (scrollY / maxScroll) * 100)) : 0;
+        if (scrollProgressBarRef.current) {
+          scrollProgressBarRef.current.style.width = `${progress}%`;
+        }
+
+        // 2. Update isScrolled status with zero layout thrashing
         const scrolled = scrollY > 20;
         setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev));
 
-        // 2. Active section tracking only on home page
+        // 3. Active section tracking only on home page
         if (activePage !== 'home' || isScrollingToRef.current) return;
 
         // Near top
@@ -370,6 +378,18 @@ export const LimelightNavbar: React.FC<LimelightNavbarProps> = ({
           </div>
         </div>
       )}
+
+      {/* Radiant Golden Scroll Progress Indicator Line (Theme Golden Color) */}
+      <div 
+        className="absolute bottom-0 inset-x-0 h-[2.5px] bg-[#D6A838]/20 pointer-events-none z-30 overflow-hidden" 
+        aria-hidden="true"
+      >
+        <div 
+          ref={scrollProgressBarRef}
+          className="h-full bg-gradient-to-r from-[#D6A838] via-[#FFF2A8] to-[#D6A838] transition-all duration-75 ease-out shadow-[0_0_10px_rgba(214,168,56,0.95),0_0_3px_#FFF2A8]"
+          style={{ width: '0%' }}
+        />
+      </div>
     </header>
   );
 };
