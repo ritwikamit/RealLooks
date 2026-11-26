@@ -84,8 +84,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             className="h-24 sm:h-32 w-auto object-contain select-none drop-shadow-[0_8px_28px_rgba(0,0,0,0.45)]"
           />
 
-          {/* Theme Blue Cursive Tagline (No Box) */}
-          <p className="font-script text-3xl sm:text-4xl text-[#6061B6] drop-shadow-[0_0_12px_rgba(252,249,236,0.75)]">
+          {/* Theme Blue Cursive Tagline (No Box, readable over dark video) */}
+          <p className="font-script text-3xl sm:text-4xl text-[#C9B5E0] drop-shadow-[0_2px_12px_rgba(0,0,0,0.65)]">
             Look Good, Feel Like Yourself
           </p>
 

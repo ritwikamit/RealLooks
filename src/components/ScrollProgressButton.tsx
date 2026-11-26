@@ -52,7 +52,7 @@ export const ScrollProgressButton: React.FC = () => {
           transition={{ duration: 0.2 }}
           aria-label="Scroll back to top"
           title="Back to top"
-          className="fixed bottom-20 lg:bottom-7 right-5 z-40 w-13 h-13 rounded-full glass-surface flex items-center justify-center cursor-pointer hover:bg-[#C9B5E0]/50 transition-colors"
+          className="fixed bottom-22 lg:bottom-7 right-4 sm:right-5 z-40 w-13 h-13 rounded-full glass-surface flex items-center justify-center cursor-pointer hover:bg-[#C9B5E0]/50 transition-colors"
         >
           <svg
             className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none"

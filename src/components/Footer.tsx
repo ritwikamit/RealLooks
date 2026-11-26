@@ -192,14 +192,14 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
               href={`https://wa.me/917766833773?text=${encodeURIComponent('Hello AccustomLabs, I saw the Real Looks website and would like to enquire.')}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 leading-none hover:opacity-95 transition-opacity"
+              className="inline-flex items-center gap-2 leading-none hover:opacity-95 transition-opacity"
               aria-label="Enquire with AccustomLabs on WhatsApp"
             >
               <span className="text-white/80">Designed and developed by</span>
               <img
                 src="/images/agencyLogo.webp"
                 alt="AccustomLabs"
-                className="h-6 sm:h-7 w-auto object-contain align-middle"
+                className="h-4 w-auto object-contain align-middle"
                 loading="lazy"
                 decoding="async"
               />
