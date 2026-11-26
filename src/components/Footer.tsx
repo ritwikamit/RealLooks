@@ -170,12 +170,12 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
             <p>© {new Date().getFullYear()} Real Looks Unisex Salon, Aurangabad, Bihar.</p>
 
             {/* Designed & Developed by AccustomLabs */}
-            <div className="flex items-center gap-2.5">
-              <span className="text-white/70">Designed and developed by</span>
+            <div className="inline-flex items-center gap-2 leading-none">
+              <span className="text-white/75">Designed and developed by</span>
               <img
-                src="/images/accustomlabs.svg"
+                src="/images/agencyLogo.png"
                 alt="AccustomLabs"
-                className="h-5 w-auto object-contain brightness-0 invert opacity-90"
+                className="h-3.5 w-auto object-contain align-middle"
                 loading="lazy"
                 decoding="async"
               />
