@@ -7,18 +7,47 @@ interface ReelVideoCardProps {
   className?: string;
 }
 
+const REEL_UNMUTE_EVENT = 'reel-unmute';
+
 export const ReelVideoCard: React.FC<ReelVideoCardProps> = ({ reel, className = '' }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const [isMuted, setIsMuted] = useState(true);
+  const [shouldLoad, setShouldLoad] = useState(false);
 
+  // Auto-mute this video when another video is unmuted
+  useEffect(() => {
+    const onOtherUnmute = (e: Event) => {
+      const unmutedId = (e as CustomEvent<string>).detail;
+      if (unmutedId !== reel.id && videoRef.current) {
+        videoRef.current.muted = true;
+        setIsMuted(true);
+      }
+    };
+    window.addEventListener(REEL_UNMUTE_EVENT, onOtherUnmute);
+    return () => window.removeEventListener(REEL_UNMUTE_EVENT, onOtherUnmute);
+  }, [reel.id]);
+
+  // Lazy-attach video src when near viewport and auto-play/pause on visibility
   useEffect(() => {
     const el = containerRef.current;
-    const video = videoRef.current;
-    if (!el || !video) return;
+    if (!el) return;
 
-    const observer = new IntersectionObserver(
+    const preloadObserver = new IntersectionObserver(
       (entries) => {
+        if (entries.some((e) => e.isIntersecting)) {
+          setShouldLoad(true);
+          preloadObserver.disconnect();
+        }
+      },
+      { rootMargin: '300px' }
+    );
+    preloadObserver.observe(el);
+
+    const playObserver = new IntersectionObserver(
+      (entries) => {
+        const video = videoRef.current;
+        if (!video) return;
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             video.play().catch(() => {});
@@ -27,11 +56,14 @@ export const ReelVideoCard: React.FC<ReelVideoCardProps> = ({ reel, className = 
           }
         });
       },
-      { threshold: 0.45 }
+      { threshold: 0.4 }
     );
+    playObserver.observe(el);
 
-    observer.observe(el);
-    return () => observer.disconnect();
+    return () => {
+      preloadObserver.disconnect();
+      playObserver.disconnect();
+    };
   }, []);
 
   const toggleMute = (e: React.MouseEvent) => {
@@ -41,6 +73,9 @@ export const ReelVideoCard: React.FC<ReelVideoCardProps> = ({ reel, className = 
     const next = !isMuted;
     video.muted = next;
     setIsMuted(next);
+    if (!next) {
+      window.dispatchEvent(new CustomEvent(REEL_UNMUTE_EVENT, { detail: reel.id }));
+    }
   };
 
   return (
@@ -50,11 +85,11 @@ export const ReelVideoCard: React.FC<ReelVideoCardProps> = ({ reel, className = 
     >
       <video
         ref={videoRef}
-        src={reel.videoUrl}
+        src={shouldLoad ? reel.videoUrl : undefined}
         muted={isMuted}
         loop
         playsInline
-        preload="none"
+        preload="metadata"
         className="w-full h-full object-cover"
       />
 

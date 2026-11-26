@@ -42,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     >
       <nav
         aria-label="Primary Navigation"
-        className="navbar max-w-7xl mx-auto px-3 sm:px-5 py-2 rounded-2xl bg-[#FCF9EC]/92 backdrop-blur-xl border border-white/90 shadow-[0_6px_28px_rgba(0,16,91,0.06)] min-h-0"
+        className="navbar max-w-7xl mx-auto px-3 sm:px-5 py-2 rounded-2xl bg-[#FCF9EC]/92 backdrop-blur-xl border border-[#D4AF37]/75 shadow-[0_6px_28px_rgba(0,16,91,0.06)] min-h-0"
       >
         <div className="navbar-start">
           <button

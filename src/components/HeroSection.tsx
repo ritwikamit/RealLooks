@@ -57,6 +57,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         <video
           ref={videoRef}
           src={HERO_REEL_URL}
+          poster="/images/salon-hero-interior.webp"
           autoPlay
           muted
           loop
