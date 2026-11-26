@@ -21,7 +21,7 @@ export const ReelVideoCard: React.FC<ReelVideoCardProps> = ({ reel, className = 
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            video.play().catch(() => {});
+            video.play().catch(() => { });
           } else {
             video.pause();
           }

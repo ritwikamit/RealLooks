@@ -1,6 +1,7 @@
 import React from 'react';
-import { Calendar, Phone, MessageSquare } from 'lucide-react';
+import { Calendar, Phone } from 'lucide-react';
 import { SALON_INFO, buildWhatsAppUrl } from '../data/salonData';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 interface MobileStickyBarProps {
   onBookClick: () => void;
@@ -25,7 +26,7 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onBookClick })
           rel="noopener noreferrer"
           className="btn btn-sm bg-[#B4D7CD] hover:bg-[#9ec9bd] text-[#141413] border-0 font-bold text-xs uppercase rounded-xl glass-btn px-3.5"
         >
-          <MessageSquare className="w-3.5 h-3.5" />
+          <WhatsAppIcon className="w-3.5 h-3.5 text-[#128C7E]" />
           <span>WhatsApp</span>
         </a>
 

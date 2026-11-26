@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { Menu, X, Calendar, BookmarkCheck } from 'lucide-react';
+import React, { useState } from 'react';
+import { Menu, X, Calendar, Phone } from 'lucide-react';
+import { SALON_INFO } from '../data/salonData';
 
 export type PageView = 'home' | 'services' | 'masters' | 'gallery' | 'store' | 'about' | 'contact';
 
@@ -7,7 +8,6 @@ interface NavbarProps {
   activePage: PageView;
   onNavigate: (page: PageView) => void;
   onBookClick: () => void;
-  onOpenBookings: () => void;
 }
 
 const NAV_ITEMS: { id: PageView; label: string }[] = [
@@ -24,28 +24,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   activePage,
   onNavigate,
   onBookClick,
-  onOpenBookings,
 }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [bookingCount, setBookingCount] = useState(0);
-
-  useEffect(() => {
-    const syncBookings = () => {
-      try {
-        const raw = localStorage.getItem('real_looks_bookings');
-        setBookingCount(raw ? JSON.parse(raw).length : 0);
-      } catch {
-        setBookingCount(0);
-      }
-    };
-    syncBookings();
-    window.addEventListener('storage', syncBookings);
-    window.addEventListener('bookingAdded', syncBookings);
-    return () => {
-      window.removeEventListener('storage', syncBookings);
-      window.removeEventListener('bookingAdded', syncBookings);
-    };
-  }, []);
 
   const go = (page: PageView) => {
     setMobileOpen(false);
@@ -53,7 +33,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full px-3 sm:px-6 pt-3">
+    <header className="sticky top-0 z-50 w-full px-4 sm:px-6 lg:px-8 pt-3">
       <nav
         aria-label="Primary Navigation"
         className="navbar max-w-7xl mx-auto px-3 sm:px-5 py-2 rounded-2xl glass-surface min-h-0"
@@ -100,18 +80,14 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
 
         <div className="navbar-end gap-2">
-          <button
-            type="button"
-            onClick={onOpenBookings}
-            className="btn btn-sm bg-[#B4D7CD]/65 hover:bg-[#B4D7CD] text-[#141413] border border-white/60 rounded-xl px-2.5"
-            aria-label="My Bookings"
-            title="My Saved Bookings"
+          <a
+            href={SALON_INFO.telHref}
+            aria-label="Call Salon"
+            title="Call Salon"
+            className="btn btn-sm btn-square bg-[#B4D7CD]/75 hover:bg-[#B4D7CD] text-[#141413] border-0 rounded-xl glass-btn"
           >
-            <BookmarkCheck className="w-4 h-4" strokeWidth={2} />
-            {bookingCount > 0 && (
-              <span className="ml-1 text-[11px] font-bold">{bookingCount}</span>
-            )}
-          </button>
+            <Phone className="w-4 h-4" strokeWidth={2.1} />
+          </a>
 
           <button
             type="button"
@@ -125,7 +101,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="btn btn-sm btn-square lg:hidden bg-[#FFEEB3]/80 text-[#141413] border border-white/60 rounded-xl"
+            className="btn btn-sm btn-square lg:hidden bg-[#FFEEB3]/80 text-[#141413] border-0 rounded-xl"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
           >

@@ -1,6 +1,7 @@
 import React from 'react';
-import { MapPin, Phone, MessageSquare, Clock, Instagram, Facebook, Navigation } from 'lucide-react';
+import { MapPin, Phone, Clock, Instagram, Facebook, Navigation } from 'lucide-react';
 import { SALON_INFO, buildWhatsAppUrl } from '../data/salonData';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 export const LocationContactSection: React.FC = () => {
   return (
@@ -62,7 +63,7 @@ export const LocationContactSection: React.FC = () => {
                 rel="noopener noreferrer"
                 className="btn btn-sm bg-[#F47321] hover:bg-[#e06314] text-white border-0 font-bold text-xs rounded-xl glass-btn px-4"
               >
-                <MessageSquare className="w-3.5 h-3.5" />
+                <WhatsAppIcon className="w-3.5 h-3.5" />
                 <span>WhatsApp</span>
               </a>
               <a

@@ -13,7 +13,10 @@ const FILTER_TABS = [
 export const GallerySection: React.FC = () => {
   const [filter, setFilter] = useState<string>('all');
 
-  const filteredReels = REEL_VIDEOS.filter((reel) => {
+  // Exclude Studio Vibe (reel-feature) from Gallery as it has its own landing section
+  const haircutReels = REEL_VIDEOS.filter((reel) => reel.id !== 'reel-feature');
+
+  const filteredReels = haircutReels.filter((reel) => {
     if (filter === 'photos') return false;
     if (filter === 'all' || filter === 'reels') return true;
     return reel.category === filter;
@@ -22,7 +25,7 @@ export const GallerySection: React.FC = () => {
   const showPhotos = filter === 'all' || filter === 'photos';
 
   return (
-    <section id="gallery" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
+    <section id="gallery" className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       <div className="text-center max-w-2xl mx-auto mb-10">
         <span className="inline-block px-3 py-1 rounded-lg bg-[#8EA8C3]/55 text-[#141413] text-xs font-bold uppercase tracking-wider mb-3">
           Lookbook & Reels
@@ -53,7 +56,7 @@ export const GallerySection: React.FC = () => {
       </div>
 
       {filteredReels.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {filteredReels.map((reel) => (
             <ReelVideoCard key={reel.id} reel={reel} />
           ))}
@@ -61,7 +64,7 @@ export const GallerySection: React.FC = () => {
       )}
 
       {showPhotos && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {GALLERY_ITEMS.map((item) => (
             <article
               key={item.id}
