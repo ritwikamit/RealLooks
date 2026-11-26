@@ -77,8 +77,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
         >
           {/* Big Logo in Hero */}
           <img
-            src="/images/logo.png"
+            src="/images/logo.webp"
             alt="Real Looks Unisex Salon"
+            fetchPriority="high"
             className="h-24 sm:h-32 w-auto object-contain select-none drop-shadow-[0_8px_28px_rgba(0,0,0,0.45)]"
           />
 

@@ -54,7 +54,7 @@ export const ReelVideoCard: React.FC<ReelVideoCardProps> = ({ reel, className = 
         muted={isMuted}
         loop
         playsInline
-        preload="metadata"
+        preload="none"
         className="w-full h-full object-cover"
       />
 

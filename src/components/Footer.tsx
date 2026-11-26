@@ -14,7 +14,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
     <footer className="w-full px-4 sm:px-6 lg:px-8 pt-8 pb-24 lg:pb-10">
       <div className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden text-[#FCF9EC] shadow-[0_24px_60px_rgba(0,16,91,0.18)]">
         <img
-          src="/images/salon-hero-interior.jpg"
+          src="/images/salon-hero-interior.webp"
           alt=""
           aria-hidden="true"
           decoding="async"
@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
             <div className="lg:col-span-4 space-y-5">
               <div className="inline-block bg-[#FCF9EC] p-3.5 rounded-2xl shadow-lg border border-[#D4AF37]/60">
                 <img
-                  src="/images/logo.png"
+                  src="/images/logo.webp"
                   alt="Real Looks Unisex Salon"
                   className="h-24 sm:h-28 w-auto object-contain"
                   loading="lazy"
@@ -173,7 +173,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
             <div className="inline-flex items-center gap-2 leading-none">
               <span className="text-white/75">Designed and developed by</span>
               <img
-                src="/images/agencyLogo.png"
+                src="/images/agencyLogo.webp"
                 alt="AccustomLabs"
                 className="h-3.5 w-auto object-contain align-middle"
                 loading="lazy"

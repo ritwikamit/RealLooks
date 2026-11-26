@@ -52,7 +52,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             aria-label="Real Looks Unisex Salon Home"
           >
             <img
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Real Looks Unisex Salon"
               className="h-10 sm:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
             />

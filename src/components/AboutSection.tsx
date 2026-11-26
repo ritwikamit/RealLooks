@@ -19,7 +19,7 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-5 space-y-4">
             <div className="rounded-2xl overflow-hidden shadow-md">
               <img
-                src="/images/salon-hero-interior.jpg"
+                src="/images/salon-hero-interior.webp"
                 alt="Real Looks Unisex Salon Interior in Dani Bigha"
                 className="w-full h-72 sm:h-80 object-cover"
                 loading="lazy"

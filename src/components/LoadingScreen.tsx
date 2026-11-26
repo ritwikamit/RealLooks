@@ -12,7 +12,7 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
     const timer = setTimeout(() => {
       setVisible(false);
       onComplete?.();
-    }, 650);
+    }, 450);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
@@ -63,11 +63,11 @@ export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             </motion.svg>
 
             <motion.img
-              src="/images/logo.png"
+              src="/images/logo.webp"
               alt="Real Looks Unisex Salon"
               initial={{ scale: 0.92, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.3, ease: 'easeOut' }}
+              transition={{ duration: 0.25, ease: 'easeOut' }}
               className="w-32 h-32 sm:w-36 sm:h-36 object-contain"
             />
           </div>
