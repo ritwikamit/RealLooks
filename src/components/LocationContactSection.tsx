@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { MapPin, Phone, Clock, Instagram, Facebook, Navigation, QrCode, ArrowUpRight } from 'lucide-react';
 import { SALON_INFO, buildWhatsAppUrl } from '../data/salonData';
 import { WhatsAppIcon } from './WhatsAppIcon';
+import { BlurReveal } from './BlurReveal';
 
 export const LocationContactSection: React.FC = () => {
   return (
@@ -14,7 +15,7 @@ export const LocationContactSection: React.FC = () => {
       transition={{ duration: 0.5 }}
       className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20"
     >
-      <div className="text-center max-w-2xl mx-auto mb-10">
+      <BlurReveal className="text-center max-w-2xl mx-auto mb-10">
         <p className="font-script text-3xl sm:text-4xl text-[#6061B6] mb-1">
           Come say hello
         </p>
@@ -24,7 +25,7 @@ export const LocationContactSection: React.FC = () => {
         <p className="mt-2 text-sm sm:text-base text-[#00105B]/70">
           Right in Dani Bigha near Vayuputra Fitness Club, with easy parking outside.
         </p>
-      </div>
+      </BlurReveal>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
         {/* Left Column: Contact Info + Google Review QR */}

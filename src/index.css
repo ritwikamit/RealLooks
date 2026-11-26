@@ -91,6 +91,10 @@
   .font-script {
     font-family: 'Alex Brush', cursive;
   }
+
+  .font-luxury {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
 }
 
 /* Minimalistic + Glassmorphic surfaces */

@@ -17,6 +17,7 @@ import { Footer } from './components/Footer';
 import { MobileStickyBar } from './components/MobileStickyBar';
 import { ScrollProgressButton } from './components/ScrollProgressButton';
 import { BookingModal } from './components/BookingModal';
+import { BlurReveal } from './components/BlurReveal';
 import { REEL_VIDEOS } from './data/salonData';
 
 export default function App() {
@@ -96,7 +97,7 @@ export default function App() {
             {/* 3 Featured Haircut Reels on Landing Page */}
             <section className="py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
               <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-                <div>
+                <BlurReveal>
                   <p className="font-script text-3xl sm:text-4xl text-[#6061B6] mb-1">
                     Confidence in every detail
                   </p>
@@ -106,7 +107,7 @@ export default function App() {
                   <p className="mt-1.5 text-sm text-[#00105B]/70 max-w-xl">
                     Real cuts from our chairs—unedited and natural. Videos play silently on loop; tap the speaker icon anytime for sound.
                   </p>
-                </div>
+                </BlurReveal>
 
                 <button
                   type="button"

@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ShieldCheck, Award, HeartHandshake, MapPin } from 'lucide-react';
 import { SALON_INFO } from '../data/salonData';
+import { BlurReveal } from './BlurReveal';
 
 export const AboutSection: React.FC = () => {
   return (
@@ -43,21 +44,23 @@ export const AboutSection: React.FC = () => {
           </div>
 
           <div className="lg:col-span-7 space-y-5">
-            <p className="font-script text-3xl sm:text-4xl text-[#6061B6]">
-              Why people keep coming back
-            </p>
+            <BlurReveal>
+              <p className="font-script text-3xl sm:text-4xl text-[#6061B6]">
+                Why people keep coming back
+              </p>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00105B] leading-tight">
-              Built Around Listening, Care & Honest Craft
-            </h2>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00105B] leading-tight mt-2">
+                Built Around Listening, Care & Honest Craft
+              </h2>
 
-            <p className="text-sm sm:text-base text-[#00105B]/80 leading-relaxed">
-              At <strong>Real Looks Unisex Salon</strong>, we believe a great haircut or facial changes how you carry your whole day. Right near Vayuputra Fitness Club in Dani Bigha, Aurangabad, we bring together modern hairdressing, traditional beard craft, and gentle skin care for men and women.
-            </p>
+              <p className="text-sm sm:text-base text-[#00105B]/80 leading-relaxed mt-3">
+                At <strong>Real Looks Unisex Salon</strong>, we believe a great haircut or facial changes how you carry your whole day. Right near Vayuputra Fitness Club in Dani Bigha, Aurangabad, we bring together modern hairdressing, traditional beard craft, and gentle skin care for men and women.
+              </p>
 
-            <p className="text-sm text-[#00105B]/75 leading-relaxed">
-              We never guess or rush. Before a scissor touches your hair, we talk about your daily routine, how much time you like spending on styling, and what naturally suits your face—so your look still feels great weeks after you leave.
-            </p>
+              <p className="text-sm text-[#00105B]/75 leading-relaxed mt-2">
+                We never guess or rush. Before a scissor touches your hair, we talk about your daily routine, how much time you like spending on styling, and what naturally suits your face—so your look still feels great weeks after you leave.
+              </p>
+            </BlurReveal>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
               <div className="p-4 rounded-xl glass-surface space-y-1.5">

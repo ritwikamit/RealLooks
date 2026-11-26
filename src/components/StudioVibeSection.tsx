@@ -4,6 +4,7 @@ import { Calendar, MapPin, ShieldCheck, Clock } from 'lucide-react';
 import { REEL_VIDEOS, buildWhatsAppUrl } from '../data/salonData';
 import { ReelVideoCard } from './ReelVideoCard';
 import { WhatsAppIcon } from './WhatsAppIcon';
+import { BlurReveal } from './BlurReveal';
 
 interface StudioVibeSectionProps {
   onBookClick: () => void;
@@ -28,21 +29,23 @@ export const StudioVibeSection: React.FC<StudioVibeSectionProps> = ({ onBookClic
           </div>
 
           <div className="lg:col-span-7 space-y-5">
-            <p className="font-script text-3xl sm:text-4xl text-[#6061B6]">
-              A quiet pause from the rush
-            </p>
+            <BlurReveal>
+              <p className="font-script text-3xl sm:text-4xl text-[#6061B6]">
+                A quiet pause from the rush
+              </p>
 
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00105B] tracking-tight leading-tight">
-              Step Inside Real Looks, Dani Bigha
-            </h2>
+              <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00105B] tracking-tight leading-tight mt-2">
+                Step Inside Real Looks, Dani Bigha
+              </h2>
 
-            <p className="text-sm sm:text-base text-[#00105B]/80 leading-relaxed">
-              Walking into a salon shouldn’t feel loud or hurried. We built a calm, air-conditioned space in Aurangabad where you can sit down, take a breath, and talk openly about what you want—whether it’s a quick trim before an interview or getting ready for your wedding day.
-            </p>
+              <p className="text-sm sm:text-base text-[#00105B]/80 leading-relaxed mt-3">
+                Walking into a salon shouldn’t feel loud or hurried. We built a calm, air-conditioned space in Aurangabad where you can sit down, take a breath, and talk openly about what you want—whether it’s a quick trim before an interview or getting ready for your wedding day.
+              </p>
 
-            <p className="text-sm text-[#00105B]/75 leading-relaxed">
-              When you leave our chair, we want you to feel lighter, sharper, and completely comfortable in your own skin.
-            </p>
+              <p className="text-sm text-[#00105B]/75 leading-relaxed mt-2">
+                When you leave our chair, we want you to feel lighter, sharper, and completely comfortable in your own skin.
+              </p>
+            </BlurReveal>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
               <div className="p-3.5 rounded-2xl glass-surface flex items-center gap-3">

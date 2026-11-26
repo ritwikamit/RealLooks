@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Clock, Check, Scissors } from 'lucide-react';
 import { SERVICES } from '../data/salonData';
+import { BlurReveal } from './BlurReveal';
 
 interface ServicesSectionProps {
   onSelectService: (serviceId: string) => void;
@@ -25,7 +26,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
 
   return (
     <section id="services" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
-      <div className="text-center max-w-2xl mx-auto mb-10">
+      <BlurReveal className="text-center max-w-2xl mx-auto mb-10">
         <p className="font-script text-3xl sm:text-4xl text-[#6061B6] mb-1">
           Tailored to how you want to feel
         </p>
@@ -52,7 +53,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
             </button>
           ))}
         </div>
-      </div>
+      </BlurReveal>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((service) => (

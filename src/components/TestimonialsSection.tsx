@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { CheckCircle2 } from 'lucide-react';
 import { REVIEWS } from '../data/salonData';
+import { BlurReveal } from './BlurReveal';
 
 export const TestimonialsSection: React.FC = () => {
   return (
@@ -13,7 +14,7 @@ export const TestimonialsSection: React.FC = () => {
       transition={{ duration: 0.5 }}
       className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20"
     >
-      <div className="text-center max-w-2xl mx-auto mb-10">
+      <BlurReveal className="text-center max-w-2xl mx-auto mb-10">
         <p className="font-script text-3xl sm:text-4xl text-[#6061B6] mb-1">
           Kind words from our chairs
         </p>
@@ -23,7 +24,7 @@ export const TestimonialsSection: React.FC = () => {
         <p className="mt-2 text-sm sm:text-base text-[#00105B]/70">
           Real stories from people who trust us with their everyday cuts, skin care, and wedding mornings.
         </p>
-      </div>
+      </BlurReveal>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {REVIEWS.map((rev) => (
