@@ -46,7 +46,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen w-full flex flex-col bg-[#FFFDF7] text-[#141413]">
+    <div className="min-h-screen w-full flex flex-col bg-[#FCF9EC] text-[#00105B]">
       <LoadingScreen />
 
       <Navbar
@@ -63,20 +63,19 @@ export default function App() {
               onExploreCuts={() => handleNavigate('gallery')}
             />
 
-            {/* Special Dedicated Section for Studio Vibe Reel */}
             <StudioVibeSection onBookClick={openBooking} />
 
             {/* 3 Featured Haircut Reels on Landing Page */}
             <section className="py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
               <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
                 <div>
-                  <p className="font-script text-2xl sm:text-3xl text-[#F47321] mb-1">
+                  <p className="font-script text-3xl sm:text-4xl text-[#6061B6] mb-1">
                     Confidence in every detail
                   </p>
-                  <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] tracking-tight">
+                  <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00105B] tracking-tight">
                     Fresh From the Chair
                   </h2>
-                  <p className="mt-1.5 text-sm text-[#141413]/70 max-w-xl">
+                  <p className="mt-1.5 text-sm text-[#00105B]/70 max-w-xl">
                     Real cuts from our chairs—unedited and natural. Videos play silently on loop; tap the speaker icon anytime for sound.
                   </p>
                 </div>
@@ -84,7 +83,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => handleNavigate('gallery')}
-                  className="btn btn-sm bg-[#8EA8C3]/75 hover:bg-[#8EA8C3] text-[#141413] border-0 font-bold text-xs uppercase rounded-xl glass-btn px-5 self-start sm:self-auto"
+                  className="btn btn-sm bg-[#00105B] hover:bg-[#6061B6] text-[#FCF9EC] font-bold text-xs uppercase rounded-xl glass-btn gold-border-btn px-5 self-start sm:self-auto"
                 >
                   Watch All 9 Cuts
                 </button>

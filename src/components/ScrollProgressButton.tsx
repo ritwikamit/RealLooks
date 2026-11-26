@@ -52,7 +52,7 @@ export const ScrollProgressButton: React.FC = () => {
           transition={{ duration: 0.2 }}
           aria-label="Scroll back to top"
           title="Back to top"
-          className="fixed bottom-20 lg:bottom-7 right-5 z-40 w-13 h-13 rounded-full glass-surface flex items-center justify-center cursor-pointer hover:bg-[#FFEEB3]/90 transition-colors"
+          className="fixed bottom-20 lg:bottom-7 right-5 z-40 w-13 h-13 rounded-full glass-surface flex items-center justify-center cursor-pointer hover:bg-[#C9B5E0]/50 transition-colors"
         >
           <svg
             className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none"
@@ -63,23 +63,23 @@ export const ScrollProgressButton: React.FC = () => {
               cy="26"
               r={radius}
               fill="none"
-              stroke="#B4D7CD"
+              stroke="#C9B5E0"
               strokeWidth="3"
-              opacity="0.45"
+              opacity="0.55"
             />
             <circle
               cx="26"
               cy="26"
               r={radius}
               fill="none"
-              stroke="#F47321"
+              stroke="#6061B6"
               strokeWidth="3.5"
               strokeLinecap="round"
               strokeDasharray={circumference}
               strokeDashoffset={dashOffset}
             />
           </svg>
-          <ArrowUp className="w-5 h-5 text-[#141413] relative z-10" strokeWidth={2.2} />
+          <ArrowUp className="w-5 h-5 text-[#00105B] relative z-10" strokeWidth={2.2} />
         </motion.button>
       )}
     </AnimatePresence>

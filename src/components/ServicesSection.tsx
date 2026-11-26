@@ -26,13 +26,13 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
   return (
     <section id="services" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <p className="font-script text-2xl sm:text-3xl text-[#F47321] mb-1">
+        <p className="font-script text-3xl sm:text-4xl text-[#6061B6] mb-1">
           Tailored to how you want to feel
         </p>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00105B] tracking-tight">
           What We Do Best
         </h2>
-        <p className="mt-2.5 text-sm sm:text-base text-[#141413]/70">
+        <p className="mt-2.5 text-sm sm:text-base text-[#00105B]/70">
           Honest prices, clean tools, and unhurried care—whether it’s a 30-minute refresh or your big wedding day.
         </p>
 
@@ -44,8 +44,8 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
               onClick={() => setActiveCategory(cat.id)}
               className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                 activeCategory === cat.id
-                  ? 'bg-[#F47321] text-white shadow-sm'
-                  : 'glass-surface text-[#141413]/80 hover:bg-[#FFEEB3]/60'
+                  ? 'bg-[#00105B] text-[#FCF9EC] gold-border-btn'
+                  : 'glass-surface text-[#00105B]/80 hover:bg-[#C9B5E0]/45'
               }`}
             >
               {cat.label}
@@ -70,26 +70,27 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
                 alt={service.name}
                 className="w-full h-full object-cover"
                 loading="lazy"
+                decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#141413]/75 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#00105B]/80 via-transparent to-transparent" />
 
               <div className="absolute top-3 left-3 flex items-center gap-1.5">
-                <span className="px-2.5 py-0.5 rounded-md bg-[#FFEEB3]/90 backdrop-blur-sm text-[#141413] text-[10px] font-bold uppercase">
+                <span className="px-2.5 py-0.5 rounded-md bg-[#FCF9EC]/90 backdrop-blur-sm text-[#00105B] text-[10px] font-bold uppercase">
                   {service.targetGender}
                 </span>
                 {service.isPopular && (
-                  <span className="px-2.5 py-0.5 rounded-md bg-[#F47321] text-white text-[10px] font-bold uppercase">
+                  <span className="px-2.5 py-0.5 rounded-md bg-[#6061B6] border border-[#D4AF37]/70 text-[#FCF9EC] text-[10px] font-bold uppercase">
                     Popular
                   </span>
                 )}
               </div>
 
-              <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between text-white">
-                <span className="text-2xl font-extrabold text-[#FFEEB3]">
+              <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between text-[#FCF9EC]">
+                <span className="text-2xl font-extrabold text-[#FCF9EC]">
                   ₹{service.price}
                 </span>
-                <span className="inline-flex items-center gap-1 text-xs font-semibold bg-black/45 backdrop-blur-md px-2.5 py-1 rounded-lg">
-                  <Clock className="w-3 h-3 text-[#FFEEB3]" />
+                <span className="inline-flex items-center gap-1 text-xs font-semibold bg-[#00105B]/60 backdrop-blur-md px-2.5 py-1 rounded-lg">
+                  <Clock className="w-3 h-3 text-[#C9B5E0]" />
                   {service.durationMinutes} min
                 </span>
               </div>
@@ -97,18 +98,18 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
 
             <div className="card-body p-5 flex-1 flex flex-col justify-between gap-4">
               <div>
-                <h3 className="card-title text-lg font-bold text-[#141413]">
+                <h3 className="card-title text-lg font-bold text-[#00105B]">
                   {service.name}
                 </h3>
-                <p className="text-xs text-[#141413]/70 mt-1.5 leading-relaxed">
+                <p className="text-xs text-[#00105B]/70 mt-1.5 leading-relaxed">
                   {service.description}
                 </p>
 
                 {service.includes && (
                   <ul className="mt-3 space-y-1">
                     {service.includes.slice(0, 3).map((inc, idx) => (
-                      <li key={idx} className="flex items-center gap-2 text-xs text-[#141413]/80 font-medium">
-                        <Check className="w-3.5 h-3.5 text-[#F47321] flex-shrink-0" strokeWidth={2.3} />
+                      <li key={idx} className="flex items-center gap-2 text-xs text-[#00105B]/80 font-medium">
+                        <Check className="w-3.5 h-3.5 text-[#6061B6] flex-shrink-0" strokeWidth={2.3} />
                         <span>{inc}</span>
                       </li>
                     ))}
@@ -119,7 +120,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
               <button
                 type="button"
                 onClick={() => onSelectService(service.id)}
-                className="btn w-full bg-[#B4D7CD]/75 hover:bg-[#F47321] hover:text-white text-[#141413] border-0 font-bold text-xs uppercase tracking-wider rounded-xl glass-btn"
+                className="btn w-full bg-[#C9B5E0]/55 hover:bg-[#00105B] hover:text-[#FCF9EC] text-[#00105B] font-bold text-xs uppercase tracking-wider rounded-xl glass-btn gold-border-btn"
               >
                 <Scissors className="w-3.5 h-3.5" strokeWidth={2} />
                 <span>Book This</span>

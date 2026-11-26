@@ -14,9 +14,9 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onBookClick })
         <button
           type="button"
           onClick={onBookClick}
-          className="btn btn-sm flex-1 bg-[#F47321] hover:bg-[#e06314] text-white border-0 font-bold text-xs uppercase rounded-xl glass-btn"
+          className="btn btn-sm flex-1 bg-[#00105B] hover:bg-[#6061B6] text-[#FCF9EC] font-bold text-xs uppercase rounded-xl glass-btn gold-border-btn"
         >
-          <Calendar className="w-3.5 h-3.5" />
+          <Calendar className="w-3.5 h-3.5 text-[#D4AF37]" />
           <span>Book</span>
         </button>
 
@@ -24,7 +24,7 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onBookClick })
           href={buildWhatsAppUrl('Hello Real Looks Salon, I would like to book an appointment.')}
           target="_blank"
           rel="noopener noreferrer"
-          className="btn btn-sm bg-[#B4D7CD] hover:bg-[#9ec9bd] text-[#141413] border-0 font-bold text-xs uppercase rounded-xl glass-btn px-3.5"
+          className="btn btn-sm bg-[#C9B5E0]/85 hover:bg-[#C9B5E0] text-[#00105B] border-0 font-bold text-xs uppercase rounded-xl glass-btn px-3.5"
         >
           <WhatsAppIcon className="w-3.5 h-3.5 text-[#128C7E]" />
           <span>WhatsApp</span>
@@ -32,9 +32,9 @@ export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onBookClick })
 
         <a
           href={SALON_INFO.telHref}
-          className="btn btn-sm bg-[#FFEEB3] hover:bg-[#f7e094] text-[#141413] border-0 font-bold text-xs uppercase rounded-xl glass-btn px-3.5"
+          className="btn btn-sm bg-[#FCF9EC] hover:bg-[#C9B5E0]/50 text-[#00105B] font-bold text-xs uppercase rounded-xl glass-btn gold-border-btn px-3.5"
         >
-          <Phone className="w-3.5 h-3.5" />
+          <Phone className="w-3.5 h-3.5 text-[#6061B6]" />
           <span>Call</span>
         </a>
       </div>

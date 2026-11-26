@@ -11,42 +11,48 @@ interface FooterProps {
 
 export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
   return (
-    <footer className="w-full px-4 sm:px-6 lg:px-8 pt-6 pb-24 lg:pb-8">
-      <div className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden text-[#FFFDF7] shadow-[0_20px_50px_rgba(20,20,19,0.14)]">
-        {/* Background image darkly faded */}
+    <footer className="w-full px-4 sm:px-6 lg:px-8 pt-8 pb-24 lg:pb-10">
+      <div className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden text-[#FCF9EC] shadow-[0_24px_60px_rgba(0,16,91,0.18)]">
+        {/* Background image darkly faded with royal indigo tone */}
         <img
           src="/images/salon-hero-interior.jpg"
           alt=""
           aria-hidden="true"
+          decoding="async"
           className="absolute inset-0 w-full h-full object-cover z-0"
           loading="lazy"
         />
         <div
-          className="absolute inset-0 z-0 bg-[#141413]/82 backdrop-blur-[2px]"
+          className="absolute inset-0 z-0 bg-gradient-to-br from-[#00105B]/90 via-[#00105B]/85 to-[#6061B6]/78 backdrop-blur-[2px]"
           aria-hidden="true"
         />
 
-        <div className="relative z-10 px-6 sm:px-10 pt-12 pb-8">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/15">
-            <div className="space-y-4">
-              <img
-                src="/images/logo.png"
-                alt="Real Looks Unisex Salon"
-                className="h-20 w-auto object-contain bg-white/90 p-2 rounded-2xl"
-                loading="lazy"
-              />
-              <p className="text-xs text-white/80 leading-relaxed max-w-xs">
+        <div className="relative z-10 px-6 sm:px-12 pt-16 sm:pt-20 pb-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/15">
+            {/* Enlarged Brand Column */}
+            <div className="lg:col-span-4 space-y-5">
+              <div className="inline-block bg-[#FCF9EC] p-3.5 rounded-2xl shadow-lg border border-[#D4AF37]/60">
+                <img
+                  src="/images/logo.png"
+                  alt="Real Looks Unisex Salon"
+                  className="h-24 sm:h-28 w-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+
+              <p className="text-xs sm:text-sm text-white/85 leading-relaxed max-w-sm">
                 {SALON_INFO.tagline}. Clean haircuts, beard styling, facials, and bridal looks in Dani Bigha, Aurangabad.
               </p>
 
-              <div className="flex items-center gap-2.5 pt-1">
+              <div className="flex items-center gap-3 pt-1">
                 <a
                   href={SALON_INFO.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram"
                   title="Instagram"
-                  className="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-[#F47321] transition-colors"
+                  className="w-10 h-10 rounded-xl bg-white/12 backdrop-blur-md text-white border border-white/25 flex items-center justify-center hover:bg-[#6061B6] transition-colors"
                 >
                   <Instagram className="w-4 h-4" />
                 </a>
@@ -56,7 +62,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
                   rel="noopener noreferrer"
                   aria-label="Facebook"
                   title="Facebook"
-                  className="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-[#F47321] transition-colors"
+                  className="w-10 h-10 rounded-xl bg-white/12 backdrop-blur-md text-white border border-white/25 flex items-center justify-center hover:bg-[#6061B6] transition-colors"
                 >
                   <Facebook className="w-4 h-4" />
                 </a>
@@ -66,103 +72,106 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
                   title="WhatsApp"
-                  className="w-10 h-10 rounded-xl bg-white/15 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:bg-[#25D366] transition-colors"
+                  className="w-10 h-10 rounded-xl bg-white/12 backdrop-blur-md text-white border border-white/25 flex items-center justify-center hover:bg-[#25D366] transition-colors"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
                 </a>
               </div>
             </div>
 
-            <div>
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#FFEEB3] mb-4">
+            {/* Explore Links */}
+            <div className="lg:col-span-2">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9B5E0] mb-4">
                 Explore
               </h4>
-              <ul className="space-y-2.5 text-xs font-medium text-white/85">
+              <ul className="space-y-2.5 text-xs sm:text-sm font-medium text-white/85">
                 <li>
-                  <button type="button" onClick={() => onNavigate?.('home')} className="hover:text-[#FFEEB3] cursor-pointer">
+                  <button type="button" onClick={() => onNavigate?.('home')} className="hover:text-[#C9B5E0] cursor-pointer">
                     Home
                   </button>
                 </li>
                 <li>
-                  <button type="button" onClick={() => onNavigate?.('services')} className="hover:text-[#FFEEB3] cursor-pointer">
+                  <button type="button" onClick={() => onNavigate?.('services')} className="hover:text-[#C9B5E0] cursor-pointer">
                     Services & Prices
                   </button>
                 </li>
                 <li>
-                  <button type="button" onClick={() => onNavigate?.('gallery')} className="hover:text-[#FFEEB3] cursor-pointer">
-                    Cuts & Reels Lookbook
+                  <button type="button" onClick={() => onNavigate?.('gallery')} className="hover:text-[#C9B5E0] cursor-pointer">
+                    Cuts & Reels
                   </button>
                 </li>
                 <li>
-                  <button type="button" onClick={() => onNavigate?.('masters')} className="hover:text-[#FFEEB3] cursor-pointer">
+                  <button type="button" onClick={() => onNavigate?.('masters')} className="hover:text-[#C9B5E0] cursor-pointer">
                     Our Team
                   </button>
                 </li>
                 <li>
-                  <button type="button" onClick={() => onNavigate?.('store')} className="hover:text-[#FFEEB3] cursor-pointer">
+                  <button type="button" onClick={() => onNavigate?.('store')} className="hover:text-[#C9B5E0] cursor-pointer">
                     Care Shop
                   </button>
                 </li>
                 <li>
-                  <button type="button" onClick={() => onNavigate?.('about')} className="hover:text-[#FFEEB3] cursor-pointer">
+                  <button type="button" onClick={() => onNavigate?.('about')} className="hover:text-[#C9B5E0] cursor-pointer">
                     About Us
                   </button>
                 </li>
               </ul>
             </div>
 
-            <div className="space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#FFEEB3] mb-4">
+            {/* Location & Hours */}
+            <div className="lg:col-span-3 space-y-3.5">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9B5E0] mb-4">
                 Location & Hours
               </h4>
-              <div className="flex items-start gap-2.5 text-xs text-white/85">
-                <MapPin className="w-4 h-4 text-[#F47321] flex-shrink-0 mt-0.5" />
+              <div className="flex items-start gap-2.5 text-xs sm:text-sm text-white/85">
+                <MapPin className="w-4 h-4 text-[#D4AF37] flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="leading-relaxed">{SALON_INFO.address}</p>
                   <a
                     href={SALON_INFO.mapsUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[#FFEEB3] font-semibold mt-1.5 hover:underline"
+                    className="inline-flex items-center gap-1 text-[#C9B5E0] font-semibold mt-2 hover:underline"
                   >
                     <span>Open in Google Maps</span>
                     <ArrowUpRight className="w-3.5 h-3.5" />
                   </a>
                 </div>
               </div>
-              <div className="flex items-center gap-2.5 text-xs text-white/85 pt-1">
-                <Clock className="w-4 h-4 text-[#B4D7CD] flex-shrink-0" />
+              <div className="flex items-center gap-2.5 text-xs sm:text-sm text-white/85 pt-1">
+                <Clock className="w-4 h-4 text-[#C9B5E0] flex-shrink-0" />
                 <span>{SALON_INFO.hours}</span>
               </div>
             </div>
 
-            <div className="space-y-3">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-[#FFEEB3] mb-4">
+            {/* Book or Call */}
+            <div className="lg:col-span-3 space-y-3.5">
+              <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9B5E0] mb-4">
                 Book or Call
               </h4>
-              <p className="text-xs text-white/80 leading-relaxed">
-                Need a quick slot today? Message us on WhatsApp or tap to call the front desk.
+              <p className="text-xs sm:text-sm text-white/80 leading-relaxed">
+                Ready for a fresh cut or a calm hour to yourself? Message us on WhatsApp or call the front desk.
               </p>
-              <div className="flex flex-col gap-2.5 pt-1">
+              <div className="flex flex-col gap-3 pt-1">
                 <button
                   type="button"
                   onClick={onBookClick}
-                  className="btn btn-sm bg-[#F47321] hover:bg-[#e06314] text-white border-0 font-bold text-xs uppercase rounded-xl glass-btn w-full"
+                  className="btn bg-[#6061B6] hover:bg-[#5051a3] text-[#FCF9EC] font-bold text-xs uppercase rounded-xl glass-btn gold-border-btn w-full"
                 >
-                  Book a Chair
+                  Book Your Chair
                 </button>
                 <a
                   href={SALON_INFO.telHref}
-                  className="btn btn-sm bg-[#FFEEB3] hover:bg-[#f7e094] text-[#141413] border-0 font-bold text-xs uppercase rounded-xl glass-btn w-full"
+                  className="btn bg-[#FCF9EC] hover:bg-[#C9B5E0] text-[#00105B] font-bold text-xs uppercase rounded-xl glass-btn gold-border-btn w-full"
                 >
-                  <Phone className="w-3.5 h-3.5" />
+                  <Phone className="w-3.5 h-3.5 text-[#6061B6]" />
                   <span>Call Salon</span>
                 </a>
               </div>
             </div>
           </div>
 
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/60">
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/65">
             <p>© {new Date().getFullYear()} Real Looks Unisex Salon, Aurangabad, Bihar.</p>
             <p>Men & Women • Open 7 Days</p>
           </div>

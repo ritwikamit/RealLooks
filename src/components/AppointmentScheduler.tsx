@@ -104,17 +104,17 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
   if (submitted) {
     return (
       <div className="glass-mint rounded-2xl p-6 sm:p-8 text-center space-y-5">
-        <div className="w-12 h-12 rounded-2xl bg-[#FFEEB3] flex items-center justify-center mx-auto shadow-sm">
-          <CheckCircle2 className="w-6 h-6 text-[#141413]" />
+        <div className="w-12 h-12 rounded-2xl bg-[#00105B] border border-[#D4AF37]/80 flex items-center justify-center mx-auto shadow-sm">
+          <CheckCircle2 className="w-6 h-6 text-[#D4AF37]" />
         </div>
         <div>
-          <span className="inline-block px-3 py-0.5 rounded-md bg-white/80 text-xs font-bold">
+          <span className="inline-block px-3 py-0.5 rounded-md bg-white/80 text-[#00105B] text-xs font-bold">
             Ref: {submitted.id}
           </span>
-          <h3 className="text-2xl font-extrabold text-[#141413] mt-2">
+          <h3 className="text-2xl font-extrabold text-[#00105B] mt-2">
             Request Ready on WhatsApp
           </h3>
-          <p className="text-sm text-[#141413]/75 mt-1">
+          <p className="text-sm text-[#00105B]/75 mt-1">
             {submitted.serviceName} • {submitted.date} at {submitted.time}
           </p>
         </div>
@@ -124,22 +124,22 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
             href={buildWhatsAppUrl(buildBookingMessage(submitted))}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn bg-[#F47321] hover:bg-[#e06314] text-white border-0 font-bold text-xs uppercase rounded-xl glass-btn px-5"
+            className="btn bg-[#00105B] hover:bg-[#6061B6] text-[#FCF9EC] font-bold text-xs uppercase rounded-xl glass-btn gold-border-btn px-5"
           >
-            <WhatsAppIcon className="w-4 h-4" />
+            <WhatsAppIcon className="w-4 h-4 text-[#D4AF37]" />
             <span>Open WhatsApp</span>
           </a>
           <a
             href={SALON_INFO.telHref}
-            className="btn bg-[#FFEEB3] hover:bg-[#f7e094] text-[#141413] border-0 font-bold text-xs uppercase rounded-xl glass-btn px-5"
+            className="btn bg-[#FCF9EC] hover:bg-[#C9B5E0] text-[#00105B] font-bold text-xs uppercase rounded-xl glass-btn gold-border-btn px-5"
           >
-            <Phone className="w-4 h-4" />
+            <Phone className="w-4 h-4 text-[#6061B6]" />
             <span>Call Salon</span>
           </a>
           <button
             type="button"
             onClick={() => setSubmitted(null)}
-            className="btn glass-surface text-[#141413] font-bold text-xs uppercase rounded-xl glass-btn px-5"
+            className="btn glass-surface text-[#00105B] font-bold text-xs uppercase rounded-xl glass-btn px-5"
           >
             Book Another
           </button>
@@ -152,8 +152,8 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
     <form onSubmit={handleSubmit} className="space-y-5">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <label className="form-control w-full">
-          <span className="label-text text-xs font-bold uppercase tracking-wider text-[#141413]/75 mb-1.5 flex items-center gap-1.5">
-            <Calendar className="w-3.5 h-3.5 text-[#F47321]" />
+          <span className="label-text text-xs font-bold uppercase tracking-wider text-[#00105B]/75 mb-1.5 flex items-center gap-1.5">
+            <Calendar className="w-3.5 h-3.5 text-[#6061B6]" />
             <span>Choose Service</span>
           </span>
           <select
@@ -162,7 +162,7 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
               const found = SERVICES.find((s) => s.id === e.target.value);
               if (found) setSelectedService(found);
             }}
-            className="select select-bordered w-full bg-white/80 border border-[#141413]/15 rounded-xl text-sm font-semibold text-[#141413]"
+            className="select select-bordered w-full bg-white/85 border border-[#00105B]/15 rounded-xl text-sm font-semibold text-[#00105B]"
           >
             {SERVICES.map((s) => (
               <option key={s.id} value={s.id}>
@@ -173,8 +173,8 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
         </label>
 
         <label className="form-control w-full">
-          <span className="label-text text-xs font-bold uppercase tracking-wider text-[#141413]/75 mb-1.5 flex items-center gap-1.5">
-            <User className="w-3.5 h-3.5 text-[#F47321]" />
+          <span className="label-text text-xs font-bold uppercase tracking-wider text-[#00105B]/75 mb-1.5 flex items-center gap-1.5">
+            <User className="w-3.5 h-3.5 text-[#6061B6]" />
             <span>Preferred Stylist</span>
           </span>
           <select
@@ -183,7 +183,7 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
               const found = STYLISTS.find((st) => st.id === e.target.value);
               if (found) setSelectedStylist(found);
             }}
-            className="select select-bordered w-full bg-white/80 border border-[#141413]/15 rounded-xl text-sm font-semibold text-[#141413]"
+            className="select select-bordered w-full bg-white/85 border border-[#00105B]/15 rounded-xl text-sm font-semibold text-[#00105B]"
           >
             {STYLISTS.map((st) => (
               <option key={st.id} value={st.id}>
@@ -195,7 +195,7 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
       </div>
 
       <div>
-        <span className="text-xs font-bold uppercase tracking-wider text-[#141413]/75 mb-2 block">
+        <span className="text-xs font-bold uppercase tracking-wider text-[#00105B]/75 mb-2 block">
           Pick a Date
         </span>
         <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
@@ -208,8 +208,8 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
                 onClick={() => setSelectedDate(d.dateStr)}
                 className={`p-2 rounded-xl text-center cursor-pointer transition-all ${
                   active
-                    ? 'bg-[#F47321] text-white shadow-sm'
-                    : 'bg-white/75 text-[#141413] border border-[#141413]/10 hover:bg-[#FFEEB3]/70'
+                    ? 'bg-[#00105B] text-[#FCF9EC] gold-border-btn'
+                    : 'bg-white/80 text-[#00105B] border border-[#00105B]/10 hover:bg-[#C9B5E0]/45'
                 }`}
               >
                 <span className="block text-[10px] font-semibold uppercase">
@@ -224,8 +224,8 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
       </div>
 
       <div>
-        <span className="text-xs font-bold uppercase tracking-wider text-[#141413]/75 mb-2 flex items-center gap-1.5">
-          <Clock className="w-3.5 h-3.5 text-[#F47321]" />
+        <span className="text-xs font-bold uppercase tracking-wider text-[#00105B]/75 mb-2 flex items-center gap-1.5">
+          <Clock className="w-3.5 h-3.5 text-[#6061B6]" />
           <span>Pick a Time</span>
         </span>
         <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
@@ -238,8 +238,8 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
                 onClick={() => setSelectedTime(slot.time)}
                 className={`py-2 px-2.5 rounded-xl text-xs font-bold cursor-pointer transition-all ${
                   active
-                    ? 'bg-[#B4D7CD] text-[#141413] shadow-xs'
-                    : 'bg-white/75 text-[#141413] border border-[#141413]/10 hover:bg-[#FFEEB3]/70'
+                    ? 'bg-[#6061B6] text-[#FCF9EC] shadow-xs'
+                    : 'bg-white/80 text-[#00105B] border border-[#00105B]/10 hover:bg-[#C9B5E0]/45'
                 }`}
               >
                 {slot.time}
@@ -251,7 +251,7 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <label className="form-control w-full">
-          <span className="label-text text-xs font-bold uppercase tracking-wider text-[#141413]/75 mb-1.5 block">
+          <span className="label-text text-xs font-bold uppercase tracking-wider text-[#00105B]/75 mb-1.5 block">
             Your Name *
           </span>
           <input
@@ -260,12 +260,12 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
             placeholder="e.g. Aman Kumar"
             value={customerName}
             onChange={(e) => setCustomerName(e.target.value)}
-            className="input input-bordered w-full bg-white/80 border border-[#141413]/15 rounded-xl text-sm font-medium text-[#141413]"
+            className="input input-bordered w-full bg-white/85 border border-[#00105B]/15 rounded-xl text-sm font-medium text-[#00105B]"
           />
         </label>
 
         <label className="form-control w-full">
-          <span className="label-text text-xs font-bold uppercase tracking-wider text-[#141413]/75 mb-1.5 block">
+          <span className="label-text text-xs font-bold uppercase tracking-wider text-[#00105B]/75 mb-1.5 block">
             Your Mobile Number *
           </span>
           <input
@@ -274,13 +274,13 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
             placeholder="10-digit mobile number"
             value={customerPhone}
             onChange={(e) => setCustomerPhone(e.target.value)}
-            className="input input-bordered w-full bg-white/80 border border-[#141413]/15 rounded-xl text-sm font-medium text-[#141413]"
+            className="input input-bordered w-full bg-white/85 border border-[#00105B]/15 rounded-xl text-sm font-medium text-[#00105B]"
           />
         </label>
       </div>
 
       <label className="form-control w-full block">
-        <span className="label-text text-xs font-bold uppercase tracking-wider text-[#141413]/75 mb-1.5 block">
+        <span className="label-text text-xs font-bold uppercase tracking-wider text-[#00105B]/75 mb-1.5 block">
           Any Note or Style Request (Optional)
         </span>
         <input
@@ -288,35 +288,35 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
           placeholder="e.g. Low taper fade, or bridal trial query"
           value={customerNotes}
           onChange={(e) => setCustomerNotes(e.target.value)}
-          className="input input-bordered w-full bg-white/80 border border-[#141413]/15 rounded-xl text-sm font-medium text-[#141413]"
+          className="input input-bordered w-full bg-white/85 border border-[#00105B]/15 rounded-xl text-sm font-medium text-[#00105B]"
         />
       </label>
 
       {formError && (
-        <p className="text-xs font-bold text-[#F47321] bg-[#FFEEB3]/70 rounded-xl px-3 py-2">
+        <p className="text-xs font-bold text-[#00105B] bg-[#C9B5E0]/60 rounded-xl px-3 py-2">
           {formError}
         </p>
       )}
 
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-3 border-t border-[#141413]/10">
-        <div className="text-xs font-semibold text-[#141413]/70 flex items-center gap-1.5">
-          <MapPin className="w-3.5 h-3.5 text-[#F47321]" />
+      <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-3 border-t border-[#00105B]/10">
+        <div className="text-xs font-semibold text-[#00105B]/70 flex items-center gap-1.5">
+          <MapPin className="w-3.5 h-3.5 text-[#6061B6]" />
           <span>{SALON_INFO.shortAddress}</span>
         </div>
 
         <div className="flex items-center gap-3 w-full sm:w-auto">
           <a
             href={SALON_INFO.telHref}
-            className="btn bg-[#FFEEB3]/85 hover:bg-[#FFEEB3] text-[#141413] border-0 font-bold text-xs uppercase rounded-xl glass-btn px-4"
+            className="btn bg-[#FCF9EC] hover:bg-[#C9B5E0] text-[#00105B] font-bold text-xs uppercase rounded-xl glass-btn gold-border-btn px-4"
           >
-            <Phone className="w-3.5 h-3.5" />
+            <Phone className="w-3.5 h-3.5 text-[#6061B6]" />
             <span>Call</span>
           </a>
           <button
             type="submit"
-            className="btn flex-1 sm:flex-initial bg-[#F47321] hover:bg-[#e06314] text-white border-0 font-bold text-xs uppercase tracking-wider rounded-xl glass-btn px-6"
+            className="btn flex-1 sm:flex-initial bg-[#00105B] hover:bg-[#6061B6] text-[#FCF9EC] font-bold text-xs uppercase tracking-wider rounded-xl glass-btn gold-border-btn px-6"
           >
-            <WhatsAppIcon className="w-4 h-4" />
+            <WhatsAppIcon className="w-4 h-4 text-[#D4AF37]" />
             <span>Send on WhatsApp</span>
           </button>
         </div>

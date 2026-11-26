@@ -37,7 +37,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 z-50 bg-[#141413]/60 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
+          className="fixed inset-0 z-50 bg-[#00105B]/60 backdrop-blur-md flex items-center justify-center p-3 sm:p-6"
           onClick={onClose}
           role="dialog"
           aria-modal="true"
@@ -51,17 +51,16 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             onClick={(e) => e.stopPropagation()}
             className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto glass-surface rounded-3xl shadow-2xl"
           >
-            {/* Sticky Dialog Header */}
-            <div className="sticky top-0 z-20 px-5 sm:px-7 py-4 bg-[#FFEEB3]/85 backdrop-blur-xl border-b border-[#141413]/10 flex items-center justify-between">
+            <div className="sticky top-0 z-20 px-5 sm:px-7 py-4 bg-[#FCF9EC]/90 backdrop-blur-xl border-b border-[#00105B]/10 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-[#F47321] flex items-center justify-center">
-                  <Calendar className="w-4 h-4 text-white" />
+                <div className="w-9 h-9 rounded-xl bg-[#00105B] border border-[#D4AF37]/80 flex items-center justify-center">
+                  <Calendar className="w-4 h-4 text-[#D4AF37]" />
                 </div>
                 <div>
-                  <h2 className="text-base sm:text-lg font-extrabold text-[#141413]">
+                  <h2 className="text-base sm:text-lg font-extrabold text-[#00105B]">
                     Book or Send an Enquiry
                   </h2>
-                  <p className="text-xs text-[#141413]/70">
+                  <p className="text-xs text-[#00105B]/70">
                     Opens directly in WhatsApp so we can confirm fast
                   </p>
                 </div>
@@ -71,13 +70,12 @@ export const BookingModal: React.FC<BookingModalProps> = ({
                 type="button"
                 onClick={onClose}
                 aria-label="Close booking dialog"
-                className="btn btn-sm btn-square bg-white/85 hover:bg-white text-[#141413] border-0 rounded-xl"
+                className="btn btn-sm btn-square bg-[#C9B5E0]/50 hover:bg-[#C9B5E0] text-[#00105B] border-0 rounded-xl"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
-            {/* Form Body */}
             <div className="p-4 sm:p-6">
               <AppointmentScheduler
                 initialServiceId={initialServiceId}

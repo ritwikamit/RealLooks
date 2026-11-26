@@ -13,7 +13,6 @@ const FILTER_TABS = [
 export const GallerySection: React.FC = () => {
   const [filter, setFilter] = useState<string>('all');
 
-  // Exclude Studio Vibe (reel-feature) from Gallery as it has its own landing section
   const haircutReels = REEL_VIDEOS.filter((reel) => reel.id !== 'reel-feature');
 
   const filteredReels = haircutReels.filter((reel) => {
@@ -27,13 +26,13 @@ export const GallerySection: React.FC = () => {
   return (
     <section id="gallery" className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <p className="font-script text-2xl sm:text-3xl text-[#F47321] mb-1">
+        <p className="font-script text-3xl sm:text-4xl text-[#6061B6] mb-1">
           Real people, real confidence
         </p>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] tracking-tight">
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#00105B] tracking-tight">
           Real Cuts, Zero Filter
         </h2>
-        <p className="mt-2.5 text-sm sm:text-base text-[#141413]/70">
+        <p className="mt-2.5 text-sm sm:text-base text-[#00105B]/70">
           Watch our actual haircuts and styling clips. Videos play automatically as you scroll—tap the speaker icon to unmute.
         </p>
 
@@ -43,10 +42,11 @@ export const GallerySection: React.FC = () => {
               key={tab.id}
               type="button"
               onClick={() => setFilter(tab.id)}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${filter === tab.id
-                  ? 'bg-[#F47321] text-white shadow-sm'
-                  : 'glass-surface text-[#141413]/80 hover:bg-[#FFEEB3]/60'
-                }`}
+              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
+                filter === tab.id
+                  ? 'bg-[#00105B] text-[#FCF9EC] gold-border-btn'
+                  : 'glass-surface text-[#00105B]/80 hover:bg-[#C9B5E0]/45'
+              }`}
             >
               {tab.label}
             </button>
@@ -67,22 +67,23 @@ export const GallerySection: React.FC = () => {
           {GALLERY_ITEMS.map((item) => (
             <article
               key={item.id}
-              className="relative rounded-2xl overflow-hidden shadow-[0_12px_32px_rgba(20,20,19,0.08)] h-72 group"
+              className="relative rounded-2xl overflow-hidden shadow-[0_14px_34px_rgba(0,16,91,0.1)] h-72 group"
             >
               <img
                 src={item.imageUrl}
                 alt={item.title}
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 loading="lazy"
+                decoding="async"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#141413]/80 via-[#141413]/20 to-transparent" />
-              <div className="absolute bottom-3.5 left-3.5 right-3.5 text-white">
-                <span className="inline-block px-2.5 py-0.5 rounded-md bg-[#B4D7CD]/90 text-[#141413] text-[10px] font-bold uppercase mb-1">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#00105B]/85 via-[#00105B]/25 to-transparent" />
+              <div className="absolute bottom-3.5 left-3.5 right-3.5 text-[#FCF9EC]">
+                <span className="inline-block px-2.5 py-0.5 rounded-md bg-[#C9B5E0]/90 text-[#00105B] text-[10px] font-bold uppercase mb-1">
                   {item.categoryLabel}
                 </span>
                 <h3 className="text-sm font-bold">{item.title}</h3>
                 {item.description && (
-                  <p className="text-xs text-white/80 mt-0.5 line-clamp-1">
+                  <p className="text-xs text-[#FCF9EC]/80 mt-0.5 line-clamp-1">
                     {item.description}
                   </p>
                 )}

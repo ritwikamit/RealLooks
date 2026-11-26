@@ -21,7 +21,7 @@ export const ReelVideoCard: React.FC<ReelVideoCardProps> = ({ reel, className = 
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            video.play().catch(() => { });
+            video.play().catch(() => {});
           } else {
             video.pause();
           }
@@ -46,7 +46,7 @@ export const ReelVideoCard: React.FC<ReelVideoCardProps> = ({ reel, className = 
   return (
     <article
       ref={containerRef}
-      className={`relative rounded-2xl overflow-hidden border border-white/40 shadow-[0_12px_32px_rgba(20,20,19,0.1)] bg-[#141413] aspect-[9/15] group ${className}`}
+      className={`relative rounded-2xl overflow-hidden border border-[#C9B5E0]/45 shadow-[0_14px_34px_rgba(0,16,91,0.12)] bg-[#00105B] aspect-[9/15] group ${className}`}
     >
       <video
         ref={videoRef}
@@ -58,30 +58,30 @@ export const ReelVideoCard: React.FC<ReelVideoCardProps> = ({ reel, className = 
         className="w-full h-full object-cover"
       />
 
-      <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#141413]/85 via-[#141413]/40 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#00105B]/90 via-[#00105B]/45 to-transparent pointer-events-none" />
 
       <button
         type="button"
         onClick={toggleMute}
         aria-label={isMuted ? `Unmute ${reel.title}` : `Mute ${reel.title}`}
         title={isMuted ? 'Unmute video' : 'Mute video'}
-        className="absolute top-3 right-3 z-10 w-8 h-8 rounded-xl bg-white/80 backdrop-blur-md border border-white/60 text-[#141413] flex items-center justify-center cursor-pointer hover:bg-[#FFEEB3] transition-colors shadow-sm"
+        className="absolute top-3 right-3 z-10 w-8 h-8 rounded-xl bg-[#FCF9EC]/85 backdrop-blur-md border border-[#D4AF37]/60 text-[#00105B] flex items-center justify-center cursor-pointer hover:bg-[#C9B5E0] transition-colors shadow-sm"
       >
         {isMuted ? (
           <VolumeX className="w-4 h-4" strokeWidth={2} />
         ) : (
-          <Volume2 className="w-4 h-4 text-[#F47321]" strokeWidth={2} />
+          <Volume2 className="w-4 h-4 text-[#6061B6]" strokeWidth={2} />
         )}
       </button>
 
       <div className="absolute bottom-3 left-3 right-3 z-10 pointer-events-none">
-        <span className="inline-block px-2.5 py-0.5 rounded-md bg-[#FFEEB3]/90 backdrop-blur-sm text-[#141413] text-[10px] font-bold uppercase tracking-wider mb-1.5">
+        <span className="inline-block px-2.5 py-0.5 rounded-md bg-[#C9B5E0]/90 backdrop-blur-sm text-[#00105B] text-[10px] font-bold uppercase tracking-wider mb-1.5">
           {reel.categoryLabel}
         </span>
-        <h3 className="text-sm sm:text-base font-bold text-white leading-snug">
+        <h3 className="text-sm sm:text-base font-bold text-[#FCF9EC] leading-snug">
           {reel.title}
         </h3>
-        <p className="text-xs text-white/80 mt-0.5 line-clamp-2 leading-relaxed">
+        <p className="text-xs text-[#FCF9EC]/80 mt-0.5 line-clamp-2 leading-relaxed">
           {reel.description}
         </p>
       </div>
