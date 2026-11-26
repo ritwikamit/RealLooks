@@ -6,14 +6,14 @@ export const TestimonialsSection: React.FC = () => {
   return (
     <section id="reviews" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <span className="inline-block px-3 py-1 rounded-lg bg-[#FFEEB3]/80 text-[#141413] text-xs font-bold uppercase tracking-wider mb-3">
-          Client Words
-        </span>
+        <p className="font-script text-2xl sm:text-3xl text-[#F47321] mb-1">
+          Kind words from our chairs
+        </p>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] tracking-tight">
-          Trusted in Aurangabad
+          Trusted Across Aurangabad
         </h2>
         <p className="mt-2 text-sm sm:text-base text-[#141413]/70">
-          Real feedback from people who visit us for cuts, skin care, and weddings.
+          Real stories from people who trust us with their everyday cuts, skin care, and wedding mornings.
         </p>
       </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ShieldCheck, Award, MapPin } from 'lucide-react';
+import { ShieldCheck, Award, HeartHandshake, MapPin } from 'lucide-react';
 import { SALON_INFO } from '../data/salonData';
 
 export const AboutSection: React.FC = () => {
@@ -34,45 +34,45 @@ export const AboutSection: React.FC = () => {
           </div>
 
           <div className="lg:col-span-7 space-y-5">
-            <span className="inline-block px-3 py-1 rounded-lg bg-white/70 text-[#141413] text-xs font-bold uppercase tracking-wider">
-              About Our Studio
-            </span>
+            <p className="font-script text-2xl sm:text-3xl text-[#F47321]">
+              Why people keep coming back
+            </p>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] leading-tight">
-              A Calm, Clean Salon Right in Dani Bigha
+              Built Around Listening, Care & Honest Craft
             </h2>
 
             <p className="text-sm sm:text-base text-[#141413]/80 leading-relaxed">
-              At <strong>Real Looks Unisex Salon</strong>, good grooming shouldn’t feel rushed. Right near Vayuputra Fitness Club in Aurangabad, we pair modern haircuts and beard craft with gentle skin care for both men and women.
+              At <strong>Real Looks Unisex Salon</strong>, we believe a great haircut or facial changes how you carry your whole day. Right near Vayuputra Fitness Club in Dani Bigha, Aurangabad, we bring together modern hairdressing, traditional beard craft, and gentle skin care for men and women.
             </p>
 
-            <p className="text-sm text-[#141413]/70 leading-relaxed">
-              Every visit starts with a quick chat about what works for your hair and face shape—so you walk out feeling like yourself, just sharper.
+            <p className="text-sm text-[#141413]/75 leading-relaxed">
+              We never guess or rush. Before a scissor touches your hair, we talk about your daily routine, how much time you like spending on styling, and what naturally suits your face—so your look still feels great weeks after you leave.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
-              <div className="flex items-start gap-3 p-4 rounded-xl glass-surface">
-                <div className="w-9 h-9 rounded-lg bg-[#B4D7CD]/75 flex items-center justify-center flex-shrink-0">
-                  <ShieldCheck className="w-4 h-4 text-[#141413]" />
-                </div>
-                <div>
-                  <h3 className="text-xs font-bold text-[#141413]">Sanitized Every Time</h3>
-                  <p className="text-xs text-[#141413]/70 mt-0.5 leading-relaxed">
-                    UV-cleaned scissors, fresh razors, and single-use neck wraps for every guest.
-                  </p>
-                </div>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">
+              <div className="p-4 rounded-xl glass-surface space-y-1.5">
+                <HeartHandshake className="w-5 h-5 text-[#F47321]" />
+                <h3 className="text-xs font-bold text-[#141413]">We Listen First</h3>
+                <p className="text-[11px] text-[#141413]/70 leading-relaxed">
+                  Every visit starts with a real conversation about your hair and comfort.
+                </p>
               </div>
 
-              <div className="flex items-start gap-3 p-4 rounded-xl glass-surface">
-                <div className="w-9 h-9 rounded-lg bg-[#F47321] flex items-center justify-center flex-shrink-0">
-                  <Award className="w-4 h-4 text-white" />
-                </div>
-                <div>
-                  <h3 className="text-xs font-bold text-[#141413]">Trained Stylists</h3>
-                  <p className="text-xs text-[#141413]/70 mt-0.5 leading-relaxed">
-                    Experienced hands for fades, layers, hair botox, facials, and bridal prep.
-                  </p>
-                </div>
+              <div className="p-4 rounded-xl glass-surface space-y-1.5">
+                <ShieldCheck className="w-5 h-5 text-[#141413]" />
+                <h3 className="text-xs font-bold text-[#141413]">Sanitized Tools</h3>
+                <p className="text-[11px] text-[#141413]/70 leading-relaxed">
+                  UV-cleaned scissors, fresh blades, and single-use neck wraps every time.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl glass-surface space-y-1.5">
+                <Award className="w-5 h-5 text-[#F47321]" />
+                <h3 className="text-xs font-bold text-[#141413]">Genuine Products</h3>
+                <p className="text-[11px] text-[#141413]/70 leading-relaxed">
+                  Formaldehyde-free hair care and skin-safe formulas you can trust.
+                </p>
               </div>
             </div>
 

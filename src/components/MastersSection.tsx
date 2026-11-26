@@ -12,14 +12,14 @@ export const MastersSection: React.FC<MastersSectionProps> = ({ onSelectMaster }
   return (
     <section id="masters" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <span className="inline-block px-3 py-1 rounded-lg bg-[#FFEEB3]/80 text-[#141413] text-xs font-bold uppercase tracking-wider mb-3">
-          Our Team
-        </span>
+        <p className="font-script text-2xl sm:text-3xl text-[#F47321] mb-1">
+          Hands you can trust
+        </p>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] tracking-tight">
           Meet the Stylists
         </h2>
         <p className="mt-2 text-sm sm:text-base text-[#141413]/70">
-          Friendly, trained professionals who take the time to get your cut and skin care right.
+          Friendly, trained professionals who take the time to understand your hair, your routine, and what makes you feel confident.
         </p>
       </div>
 

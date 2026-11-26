@@ -70,14 +70,14 @@ export default function App() {
             <section className="py-14 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
               <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
                 <div>
-                  <span className="inline-block px-3 py-1 rounded-lg bg-[#FFEEB3]/80 text-[#141413] text-xs font-bold uppercase tracking-wider mb-2">
-                    In Motion
-                  </span>
+                  <p className="font-script text-2xl sm:text-3xl text-[#F47321] mb-1">
+                    Confidence in every detail
+                  </p>
                   <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] tracking-tight">
                     Fresh From the Chair
                   </h2>
                   <p className="mt-1.5 text-sm text-[#141413]/70 max-w-xl">
-                    Real cuts from our chairs. Videos play silently on loop—tap the speaker icon anytime for sound.
+                    Real cuts from our chairs—unedited and natural. Videos play silently on loop; tap the speaker icon anytime for sound.
                   </p>
                 </div>
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Calendar, MapPin, ShieldCheck, Clock } from 'lucide-react';
-import { REEL_VIDEOS, SALON_INFO, buildWhatsAppUrl } from '../data/salonData';
+import { REEL_VIDEOS, buildWhatsAppUrl } from '../data/salonData';
 import { ReelVideoCard } from './ReelVideoCard';
 import { WhatsAppIcon } from './WhatsAppIcon';
 
@@ -23,16 +23,20 @@ export const StudioVibeSection: React.FC<StudioVibeSectionProps> = ({ onBookClic
 
           {/* Right: Studio Story & Direct Actions */}
           <div className="lg:col-span-7 space-y-5">
-            <span className="inline-block px-3 py-1 rounded-lg bg-white/75 text-[#141413] text-xs font-bold uppercase tracking-wider">
-              Studio Vibe
-            </span>
+            <p className="font-script text-2xl sm:text-3xl text-[#F47321]">
+              A little pause from the rush
+            </p>
 
             <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] tracking-tight leading-tight">
               Step Inside Real Looks, Dani Bigha
             </h2>
 
             <p className="text-sm sm:text-base text-[#141413]/80 leading-relaxed">
-              We built a calm, air-conditioned space where both men and women feel comfortable. No rushed chairs, no loud clutter—just clean tools, good music, and stylists who take pride in every cut.
+              Walking into a salon shouldn’t feel loud or hurried. We built a calm, air-conditioned space in Aurangabad where you can sit down, take a breath, and talk openly about what you want—whether it’s a quick trim before an interview or getting ready for your wedding day.
+            </p>
+
+            <p className="text-sm text-[#141413]/75 leading-relaxed">
+              When you leave our chair, we want you to feel lighter, sharper, and completely comfortable in your own skin.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-1">

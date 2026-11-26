@@ -26,14 +26,14 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
   return (
     <section id="services" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <span className="inline-block px-3 py-1 rounded-lg bg-[#B4D7CD]/60 text-[#141413] text-xs font-bold uppercase tracking-wider mb-3">
-          Service Menu
-        </span>
+        <p className="font-script text-2xl sm:text-3xl text-[#F47321] mb-1">
+          Tailored to how you want to feel
+        </p>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] tracking-tight">
           What We Do Best
         </h2>
         <p className="mt-2.5 text-sm sm:text-base text-[#141413]/70">
-          Honest prices, clean tools, and stylists who listen before they cut.
+          Honest prices, clean tools, and unhurried care—whether it’s a 30-minute refresh or your big wedding day.
         </p>
 
         <div className="flex flex-wrap justify-center gap-2 mt-6">

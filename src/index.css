@@ -78,6 +78,10 @@
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
+
+  .font-script {
+    font-family: 'Dancing Script', cursive;
+  }
 }
 
 /* Minimalistic + Glassmorphic surfaces */

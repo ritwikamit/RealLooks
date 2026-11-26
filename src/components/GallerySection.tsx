@@ -27,9 +27,9 @@ export const GallerySection: React.FC = () => {
   return (
     <section id="gallery" className="py-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <span className="inline-block px-3 py-1 rounded-lg bg-[#8EA8C3]/55 text-[#141413] text-xs font-bold uppercase tracking-wider mb-3">
-          Lookbook & Reels
-        </span>
+        <p className="font-script text-2xl sm:text-3xl text-[#F47321] mb-1">
+          Real people, real confidence
+        </p>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] tracking-tight">
           Real Cuts, Zero Filter
         </h2>
@@ -43,11 +43,10 @@ export const GallerySection: React.FC = () => {
               key={tab.id}
               type="button"
               onClick={() => setFilter(tab.id)}
-              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
-                filter === tab.id
+              className={`px-4 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${filter === tab.id
                   ? 'bg-[#F47321] text-white shadow-sm'
                   : 'glass-surface text-[#141413]/80 hover:bg-[#FFEEB3]/60'
-              }`}
+                }`}
             >
               {tab.label}
             </button>

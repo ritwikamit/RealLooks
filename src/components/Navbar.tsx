@@ -42,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={() => go('home')}
-            className="flex items-center gap-2.5 cursor-pointer group"
+            className="flex items-center cursor-pointer group"
             aria-label="Real Looks Unisex Salon Home"
           >
             <img
@@ -50,9 +50,6 @@ export const Navbar: React.FC<NavbarProps> = ({
               alt="Real Looks Unisex Salon"
               className="h-10 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
             />
-            <span className="hidden sm:inline-block font-bold text-sm tracking-tight text-[#141413]">
-              REAL LOOKS
-            </span>
           </button>
         </div>
 
@@ -65,11 +62,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <button
                     type="button"
                     onClick={() => go(item.id)}
-                    className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer ${
-                      isActive
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer ${isActive
                         ? 'bg-[#FFEEB3]/90 text-[#141413] shadow-xs'
                         : 'text-[#141413]/75 hover:text-[#141413] hover:bg-[#B4D7CD]/35'
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </button>
@@ -120,11 +116,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <button
                     type="button"
                     onClick={() => go(item.id)}
-                    className={`w-full text-left px-3 py-2.5 rounded-xl text-xs font-semibold cursor-pointer transition-colors ${
-                      isActive
+                    className={`w-full text-left px-3 py-2.5 rounded-xl text-xs font-semibold cursor-pointer transition-colors ${isActive
                         ? 'bg-[#F47321] text-white'
                         : 'bg-white/60 text-[#141413] hover:bg-[#FFEEB3]/70'
-                    }`}
+                      }`}
                   >
                     {item.label}
                   </button>

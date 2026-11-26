@@ -3,8 +3,8 @@ import { ServiceItem, Stylist, ReviewItem, GalleryItem, StoreProduct, FAQItem, R
 export const SALON_INFO = {
   name: 'Real Looks Unisex Salon',
   tagline: 'Look Good • Feel Good • Be You',
-  heroHeadline: 'YOUR LOOK. YOUR WAY.',
-  heroSubtitle: 'Simple, clean grooming and beauty care for men and women in Dani Bigha, Aurangabad.',
+  heroHeadline: 'YOUR LOOK. YOUR STORY.',
+  heroSubtitle: 'A quiet chair, a stylist who actually listens, and a cut that makes you smile in the mirror—every single visit in Aurangabad.',
   address: 'Q957+RR4, near Vayuputra Fitness Club, Dani Bigha, Aurangabad, Bihar 824101, India',
   shortAddress: 'Dani Bigha, near Vayuputra Fitness Club, Aurangabad, Bihar',
   telHref: 'tel:+919296142113',
