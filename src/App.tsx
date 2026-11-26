@@ -114,7 +114,7 @@ export default function App() {
                   onClick={() => handleNavigate('gallery')}
                   className="btn btn-sm bg-[#00105B] hover:bg-[#6061B6] text-[#FCF9EC] font-bold text-xs uppercase rounded-xl glass-btn gold-border-btn px-5 self-start sm:self-auto"
                 >
-                  Watch All 9 Cuts
+                  Watch All Cuts
                 </button>
               </div>
 
