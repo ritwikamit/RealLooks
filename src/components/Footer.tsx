@@ -13,7 +13,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
   return (
     <footer className="w-full px-4 sm:px-6 lg:px-8 pt-8 pb-24 lg:pb-10">
       <div className="relative max-w-7xl mx-auto rounded-3xl overflow-hidden text-[#FCF9EC] shadow-[0_24px_60px_rgba(0,16,91,0.18)]">
-        {/* Background image darkly faded with royal indigo tone */}
         <img
           src="/images/salon-hero-interior.jpg"
           alt=""
@@ -29,7 +28,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
 
         <div className="relative z-10 px-6 sm:px-12 pt-16 sm:pt-20 pb-10">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-white/15">
-            {/* Enlarged Brand Column */}
             <div className="lg:col-span-4 space-y-5">
               <div className="inline-block bg-[#FCF9EC] p-3.5 rounded-2xl shadow-lg border border-[#D4AF37]/60">
                 <img
@@ -79,7 +77,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
               </div>
             </div>
 
-            {/* Explore Links */}
             <div className="lg:col-span-2">
               <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9B5E0] mb-4">
                 Explore
@@ -118,7 +115,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
               </ul>
             </div>
 
-            {/* Location & Hours */}
             <div className="lg:col-span-3 space-y-3.5">
               <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9B5E0] mb-4">
                 Location & Hours
@@ -144,7 +140,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
               </div>
             </div>
 
-            {/* Book or Call */}
             <div className="lg:col-span-3 space-y-3.5">
               <h4 className="text-xs font-bold uppercase tracking-wider text-[#C9B5E0] mb-4">
                 Book or Call
@@ -171,9 +166,20 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
             </div>
           </div>
 
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/65">
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/70">
             <p>© {new Date().getFullYear()} Real Looks Unisex Salon, Aurangabad, Bihar.</p>
-            <p>Men & Women • Open 7 Days</p>
+
+            {/* Designed & Developed by AccustomLabs */}
+            <div className="flex items-center gap-2.5">
+              <span className="text-white/70">Designed and developed by</span>
+              <img
+                src="/images/accustomlabs.svg"
+                alt="AccustomLabs"
+                className="h-5 w-auto object-contain brightness-0 invert opacity-90"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
         </div>
       </div>

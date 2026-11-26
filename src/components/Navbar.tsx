@@ -42,7 +42,7 @@ export const Navbar: React.FC<NavbarProps> = ({
     >
       <nav
         aria-label="Primary Navigation"
-        className="navbar max-w-7xl mx-auto px-3 sm:px-5 py-2 rounded-2xl glass-surface min-h-0"
+        className="navbar max-w-7xl mx-auto px-3 sm:px-5 py-2 rounded-2xl bg-[#FCF9EC]/92 backdrop-blur-xl border border-white/90 shadow-[0_6px_28px_rgba(0,16,91,0.06)] min-h-0"
       >
         <div className="navbar-start">
           <button
@@ -80,7 +80,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     <motion.span
                       layoutId="nav-active-pill"
                       transition={{ type: 'spring', stiffness: 380, damping: 32 }}
-                      className="absolute inset-0 rounded-xl bg-[#C9B5E0]/55 border border-[#D4AF37]/50 -z-0"
+                      className="absolute inset-0 rounded-xl bg-white shadow-xs border border-[#D4AF37]/45 -z-0"
                     />
                   )}
                 </li>
@@ -94,15 +94,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             href={SALON_INFO.telHref}
             aria-label="Call Salon"
             title="Call Salon"
-            className="btn btn-sm btn-square bg-[#C9B5E0]/50 hover:bg-[#C9B5E0]/85 text-[#00105B] border border-[#00105B]/10 rounded-xl glass-btn"
+            className="btn btn-sm btn-square bg-white/90 hover:bg-[#C9B5E0]/50 text-[#00105B] border border-[#00105B]/10 rounded-xl glass-btn"
           >
-            <Phone className="w-4 h-4" strokeWidth={2.1} />
+            <Phone className="w-4 h-4 text-[#6061B6]" strokeWidth={2.1} />
           </a>
 
           <button
             type="button"
             onClick={onBookClick}
-            className="btn btn-sm bg-[#00105B] hover:bg-[#6061B6] text-[#FCF9EC] font-bold text-xs tracking-wide rounded-xl glass-btn gold-border-btn px-4"
+            className="btn btn-sm bg-[#FCF9EC] hover:bg-white text-[#00105B] font-bold text-xs tracking-wide rounded-xl glass-btn gold-border-btn px-4"
           >
             <Calendar className="w-3.5 h-3.5 text-[#D4AF37]" strokeWidth={2} />
             <span>Book</span>
@@ -111,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <button
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="btn btn-sm btn-square lg:hidden bg-[#C9B5E0]/55 text-[#00105B] border-0 rounded-xl"
+            className="btn btn-sm btn-square lg:hidden bg-white/85 text-[#00105B] border border-[#00105B]/10 rounded-xl"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
           >
@@ -127,7 +127,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.18 }}
-            className="lg:hidden max-w-7xl mx-auto mt-2 p-3 rounded-2xl glass-surface"
+            className="lg:hidden max-w-7xl mx-auto mt-2 p-3 rounded-2xl bg-[#FCF9EC]/95 backdrop-blur-xl border border-white/90 shadow-lg"
           >
             <ul className="grid grid-cols-2 gap-2">
               {NAV_ITEMS.map((item) => {
@@ -139,8 +139,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                       onClick={() => go(item.id)}
                       className={`w-full text-left px-3 py-2.5 rounded-xl text-xs font-semibold cursor-pointer transition-colors ${
                         isActive
-                          ? 'bg-[#00105B] text-[#FCF9EC] gold-border-btn'
-                          : 'bg-white/60 text-[#00105B] hover:bg-[#C9B5E0]/45'
+                          ? 'bg-white text-[#00105B] gold-border-btn'
+                          : 'bg-white/60 text-[#00105B] hover:bg-[#C9B5E0]/35'
                       }`}
                     >
                       {item.label}

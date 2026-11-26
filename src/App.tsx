@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import Lenis from 'lenis';
 import { Navbar, PageView } from './components/Navbar';
 import { LoadingScreen } from './components/LoadingScreen';
 import { HeroSection } from './components/HeroSection';
@@ -25,6 +26,33 @@ export default function App() {
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   const featuredCutReels = REEL_VIDEOS.filter((r) => r.id !== 'reel-feature').slice(0, 3);
+
+  // Smooth desktop scrolling via Lenis (mobile keeps native momentum scroll)
+  useEffect(() => {
+    const isTouch =
+      'ontouchstart' in window ||
+      navigator.maxTouchPoints > 0 ||
+      window.matchMedia('(pointer: coarse)').matches;
+    if (isTouch) return;
+
+    const lenis = new Lenis({
+      duration: 1.05,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    let rafId = 0;
+    const raf = (time: number) => {
+      lenis.raf(time);
+      rafId = requestAnimationFrame(raf);
+    };
+    rafId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      lenis.destroy();
+    };
+  }, []);
 
   const handleNavigate = (page: PageView) => {
     setActivePage(page);
