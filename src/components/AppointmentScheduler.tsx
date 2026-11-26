@@ -198,7 +198,7 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
         <span className="text-xs font-bold uppercase tracking-wider text-[#00105B]/75 mb-2 block">
           Pick a Date
         </span>
-        <div className="grid grid-cols-5 sm:grid-cols-10 gap-2">
+        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
           {availableDates.map((d) => {
             const active = selectedDate === d.dateStr;
             return (
@@ -228,7 +228,7 @@ export const AppointmentScheduler: React.FC<AppointmentSchedulerProps> = ({
           <Clock className="w-3.5 h-3.5 text-[#6061B6]" />
           <span>Pick a Time</span>
         </span>
-        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2">
           {TIME_SLOTS.map((slot) => {
             const active = selectedTime === slot.time;
             return (

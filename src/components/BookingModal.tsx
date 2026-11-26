@@ -49,7 +49,7 @@ export const BookingModal: React.FC<BookingModalProps> = ({
             exit={{ opacity: 0, scale: 0.96, y: 12 }}
             transition={{ duration: 0.22 }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto glass-surface rounded-3xl shadow-2xl"
+            className="relative w-full max-w-3xl max-h-[92dvh] overflow-y-auto glass-surface rounded-2xl sm:rounded-3xl shadow-2xl"
           >
             <div className="sticky top-0 z-20 px-5 sm:px-7 py-4 bg-[#FCF9EC]/90 backdrop-blur-xl border-b border-[#00105B]/10 flex items-center justify-between">
               <div className="flex items-center gap-2.5">

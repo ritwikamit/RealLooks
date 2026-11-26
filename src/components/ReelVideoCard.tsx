@@ -46,7 +46,7 @@ export const ReelVideoCard: React.FC<ReelVideoCardProps> = ({ reel, className = 
   return (
     <article
       ref={containerRef}
-      className={`relative rounded-2xl overflow-hidden border border-[#C9B5E0]/45 shadow-[0_14px_34px_rgba(0,16,91,0.12)] bg-[#00105B] aspect-[9/15] group ${className}`}
+      className={`relative rounded-2xl overflow-hidden border border-[#C9B5E0]/45 shadow-[0_14px_34px_rgba(0,16,91,0.12)] bg-[#00105B] aspect-[9/13] sm:aspect-[9/15] group ${className}`}
     >
       <video
         ref={videoRef}
@@ -65,7 +65,7 @@ export const ReelVideoCard: React.FC<ReelVideoCardProps> = ({ reel, className = 
         onClick={toggleMute}
         aria-label={isMuted ? `Unmute ${reel.title}` : `Mute ${reel.title}`}
         title={isMuted ? 'Unmute video' : 'Mute video'}
-        className="absolute top-3 right-3 z-10 w-8 h-8 rounded-xl bg-[#FCF9EC]/85 backdrop-blur-md border border-[#D4AF37]/60 text-[#00105B] flex items-center justify-center cursor-pointer hover:bg-[#C9B5E0] transition-colors shadow-sm"
+        className="absolute top-3 right-3 z-10 w-10 h-10 sm:w-8 sm:h-8 rounded-xl bg-[#FCF9EC]/85 backdrop-blur-md border border-[#D4AF37]/60 text-[#00105B] flex items-center justify-center cursor-pointer hover:bg-[#C9B5E0] transition-colors shadow-sm"
       >
         {isMuted ? (
           <VolumeX className="w-4 h-4" strokeWidth={2} />

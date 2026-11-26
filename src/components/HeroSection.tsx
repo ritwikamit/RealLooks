@@ -38,10 +38,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   }, []);
 
   return (
-    <section id="home" className="w-full px-4 sm:px-6 lg:px-8 pt-4 pb-8">
+    <section id="home" className="w-full px-3 sm:px-6 lg:px-8 pt-3 sm:pt-4 pb-6 sm:pb-8">
       <div
         ref={containerRef}
-        className="relative max-w-7xl mx-auto min-h-[80vh] sm:min-h-[85vh] rounded-3xl overflow-hidden flex items-center justify-center px-5 sm:px-12 py-16 shadow-[0_24px_60px_rgba(0,0,0,0.14)]"
+        className="relative max-w-7xl mx-auto min-h-[76dvh] sm:min-h-[84vh] rounded-2xl sm:rounded-3xl overflow-hidden flex items-center justify-center px-4 sm:px-12 py-12 sm:py-16 shadow-[0_24px_60px_rgba(0,0,0,0.14)]"
       >
         {/* Clearly visible hero video with neutral light-dark fade (no blue tint) */}
         <video
@@ -70,12 +70,12 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </p>
 
           {/* Animated Golden Headline */}
-          <h1 className="flex flex-col items-center gap-1 tracking-tight leading-[1.02]">
+          <h1 className="flex flex-col items-center gap-1 tracking-tight leading-[1.04]">
             <motion.span
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.1 }}
-              className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-[#FCF9EC] tracking-[0.06em] uppercase drop-shadow-[0_4px_20px_rgba(0,0,0,0.55)]"
+              className="text-2xl sm:text-5xl lg:text-6xl font-extrabold text-[#FCF9EC] tracking-[0.06em] uppercase drop-shadow-[0_4px_20px_rgba(0,0,0,0.55)]"
             >
               YOUR LOOK.
             </motion.span>
@@ -91,7 +91,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                 scale: { duration: 0.6, delay: 0.22 },
                 backgroundPosition: { duration: 5, repeat: Infinity, ease: 'linear' },
               }}
-              className="text-5xl sm:text-7xl lg:text-[5.25rem] font-extrabold uppercase bg-gradient-to-r from-[#FFF1A8] via-[#D4AF37] to-[#FFE27A] bg-[length:200%_auto] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]"
+              className="text-4xl sm:text-7xl lg:text-[5.25rem] font-extrabold uppercase bg-gradient-to-r from-[#FFF1A8] via-[#D4AF37] to-[#FFE27A] bg-[length:200%_auto] bg-clip-text text-transparent drop-shadow-[0_4px_24px_rgba(0,0,0,0.45)]"
             >
               YOUR STORY.
             </motion.span>

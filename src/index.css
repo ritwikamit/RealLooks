@@ -78,6 +78,16 @@
     -ms-overflow-style: none;
   }
 
+  #root {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  .safe-bottom {
+    padding-bottom: max(0.5rem, env(safe-area-inset-bottom));
+  }
+
   .font-script {
     font-family: 'Alex Brush', cursive;
   }

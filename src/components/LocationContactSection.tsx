@@ -111,8 +111,8 @@ export const LocationContactSection: React.FC = () => {
           </div>
 
           {/* Google My Business Review QR Card */}
-          <div className="glass-surface rounded-3xl p-5 flex items-center gap-4 border border-[#D4AF37]/45">
-            <div className="w-24 h-24 rounded-2xl bg-[#FCF9EC] p-1.5 border border-[#D4AF37]/60 flex-shrink-0 shadow-xs">
+          <div className="glass-surface rounded-3xl p-4 sm:p-5 flex items-center gap-3.5 sm:gap-4 border border-[#D4AF37]/45">
+            <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-[#FCF9EC] p-1.5 border border-[#D4AF37]/60 flex-shrink-0 shadow-xs">
               <img
                 src="/images/google-review-qr.png"
                 alt="Scan QR to review Real Looks Unisex Salon on Google"
@@ -147,11 +147,11 @@ export const LocationContactSection: React.FC = () => {
         </div>
 
         {/* Right Column: Redesigned Map Card */}
-        <div className="lg:col-span-7 relative rounded-3xl overflow-hidden shadow-[0_16px_44px_rgba(0,16,91,0.1)] min-h-[380px] bg-[#C9B5E0]/30 border border-white/80">
+        <div className="lg:col-span-7 relative rounded-3xl overflow-hidden shadow-[0_16px_44px_rgba(0,16,91,0.1)] min-h-[280px] sm:min-h-[380px] bg-[#C9B5E0]/30 border border-white/80">
           <iframe
             title="Real Looks Unisex Salon Location Map"
             src="https://www.google.com/maps?q=Q957%2BRR4,+near+Vayuputra+Fitness+Club,+Dani+Bigha,+Aurangabad,+Bihar+824101,+India&output=embed"
-            className="w-full h-full min-h-[380px] border-0"
+            className="w-full h-full min-h-[280px] sm:min-h-[380px] border-0"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />

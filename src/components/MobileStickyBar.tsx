@@ -9,7 +9,7 @@ interface MobileStickyBarProps {
 
 export const MobileStickyBar: React.FC<MobileStickyBarProps> = ({ onBookClick }) => {
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden glass-surface rounded-none border-x-0 border-b-0 px-3 py-2">
+    <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden glass-surface rounded-none border-x-0 border-b-0 px-3 pt-2 safe-bottom">
       <div className="flex items-center justify-between gap-2 max-w-md mx-auto">
         <button
           type="button"
