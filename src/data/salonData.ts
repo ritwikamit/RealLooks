@@ -12,7 +12,7 @@ export const SALON_INFO = {
   email: 'reallookssalon.aurangabad@gmail.com',
   instagram: 'https://www.instagram.com/reallookssalon_aurangabad/',
   facebook: 'https://www.facebook.com/people/Real-looks-salon/61593344644843/',
-  mapsUrl: 'https://maps.google.com/?q=Q957%2BRR4,+near+Vayuputra+Fitness+Club,+Dani+Bigha,+Aurangabad,+Bihar+824101,+India',
+  mapsUrl: 'https://www.google.com/maps?mstk=AUtExfD4F9ZZiE0k4T_2W0zvD0HpLdf3hpv81M6OzL4sIvFDofwDcKXOkO8D162W8KZnMOf0WQio4X9xA23uLUlwQawLs0Uo1MM6IksH7pUQtXKUbL8AUa9mE_itVJ-MDgVNSXMTQ3De1Bkm7vtEr4XdxO4hGLAZxiyhnUcm5s1Ex-74V7c&hl=en&pvq=Cg0vZy8xMW52djc4eHhsShByZWFsIGxvb2tzIHNhbG9ugAEBkAEB&fvr=1&vet=10CAAQoqAOahcKEwiAkZPmq6aYAxUAAAAAHQAAAAAQBQ..i&cs=1&um=1&ie=UTF-8&fb=1&gl=in&sa=X&ftid=0x398cfd00337fc5f9:0xcd7844fc8aa4df7c',
   hours: 'Open every day • 9:00 AM – 9:00 PM',
   established: 'Aurangabad, Bihar',
 };

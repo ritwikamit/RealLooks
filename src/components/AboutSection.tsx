@@ -29,7 +29,7 @@ export const AboutSection: React.FC = () => {
 
             <div className="grid grid-cols-3 gap-2.5 text-center">
               <div className="p-3 rounded-xl glass-surface">
-                <span className="text-lg font-extrabold text-[#00105B] block">4.5 / 5</span>
+                <span className="text-lg font-extrabold text-[#00105B] block">4.9 / 5</span>
                 <span className="text-[11px] font-semibold text-[#00105B]/65">Google Score</span>
               </div>
               <div className="p-3 rounded-xl bg-[#C9B5E0]/55 backdrop-blur-md">

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Calendar, Scissors, MapPin, Clock, Phone } from 'lucide-react';
+import { Calendar, Scissors, MapPin, Clock, Phone, CheckCircle2 } from 'lucide-react';
 import { HERO_REEL_URL, SALON_INFO } from '../data/salonData';
 
 interface HeroSectionProps {
@@ -159,6 +159,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2 pt-2 text-xs font-semibold text-[#FCF9EC]/90">
+            <a
+              href={SALON_INFO.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[#FFF1A8] hover:underline"
+            >
+              <CheckCircle2 className="w-3.5 h-3.5 text-[#D4AF37]" />
+              <span>4.9 / 5.0 Google Rating</span>
+            </a>
             <span className="inline-flex items-center gap-1.5">
               <MapPin className="w-3.5 h-3.5 text-[#D4AF37]" />
               <span>Dani Bigha, near Vayuputra Fitness Club</span>
