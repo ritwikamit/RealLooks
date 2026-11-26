@@ -56,9 +56,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     <header className="sticky top-0 z-50 w-full px-3 sm:px-6 pt-3">
       <nav
         aria-label="Primary Navigation"
-        className="navbar max-w-7xl mx-auto px-3 sm:px-5 py-2 rounded-2xl brutal-glass min-h-0"
+        className="navbar max-w-7xl mx-auto px-3 sm:px-5 py-2 rounded-2xl glass-surface min-h-0"
       >
-        {/* Left: Brand Logo */}
         <div className="navbar-start gap-2">
           <button
             type="button"
@@ -71,13 +70,12 @@ export const Navbar: React.FC<NavbarProps> = ({
               alt="Real Looks Unisex Salon"
               className="h-10 sm:h-11 w-auto object-contain transition-transform group-hover:scale-105"
             />
-            <span className="hidden sm:inline-block font-extrabold text-sm tracking-tight text-[#141413]">
+            <span className="hidden sm:inline-block font-bold text-sm tracking-tight text-[#141413]">
               REAL LOOKS
             </span>
           </button>
         </div>
 
-        {/* Center: Desktop Nav Links */}
         <div className="navbar-center hidden lg:flex">
           <ul className="flex items-center gap-1">
             {NAV_ITEMS.map((item) => {
@@ -87,10 +85,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <button
                     type="button"
                     onClick={() => go(item.id)}
-                    className={`px-3.5 py-1.5 rounded-lg text-xs font-bold tracking-wide transition-all cursor-pointer ${
+                    className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold tracking-wide transition-all cursor-pointer ${
                       isActive
-                        ? 'bg-[#FFEEB3] text-[#141413] border-2 border-[#141413] shadow-[2px_2px_0px_#141413]'
-                        : 'text-[#141413]/80 hover:text-[#141413] hover:bg-[#B4D7CD]/40 border-2 border-transparent'
+                        ? 'bg-[#FFEEB3]/90 text-[#141413] shadow-xs'
+                        : 'text-[#141413]/75 hover:text-[#141413] hover:bg-[#B4D7CD]/35'
                     }`}
                   >
                     {item.label}
@@ -101,34 +99,33 @@ export const Navbar: React.FC<NavbarProps> = ({
           </ul>
         </div>
 
-        {/* Right: Bookings + Primary CTA + Mobile Toggle */}
         <div className="navbar-end gap-2">
           <button
             type="button"
             onClick={onOpenBookings}
-            className="btn btn-sm bg-[#B4D7CD] hover:bg-[#8EA8C3] text-[#141413] border-2 border-[#141413] rounded-lg px-2.5 relative"
+            className="btn btn-sm bg-[#B4D7CD]/65 hover:bg-[#B4D7CD] text-[#141413] border border-white/60 rounded-xl px-2.5"
             aria-label="My Bookings"
             title="My Saved Bookings"
           >
-            <BookmarkCheck className="w-4 h-4" strokeWidth={2.2} />
+            <BookmarkCheck className="w-4 h-4" strokeWidth={2} />
             {bookingCount > 0 && (
-              <span className="ml-1 text-[11px] font-extrabold">{bookingCount}</span>
+              <span className="ml-1 text-[11px] font-bold">{bookingCount}</span>
             )}
           </button>
 
           <button
             type="button"
             onClick={onBookClick}
-            className="btn btn-sm bg-[#F47321] hover:bg-[#e06314] text-[#141413] font-extrabold text-xs uppercase tracking-wider rounded-lg brutal-btn px-3.5"
+            className="btn btn-sm bg-[#F47321] hover:bg-[#e06314] text-white border-0 font-bold text-xs tracking-wide rounded-xl glass-btn px-4"
           >
-            <Calendar className="w-3.5 h-3.5" strokeWidth={2.3} />
+            <Calendar className="w-3.5 h-3.5" strokeWidth={2} />
             <span>Book</span>
           </button>
 
           <button
             type="button"
             onClick={() => setMobileOpen((prev) => !prev)}
-            className="btn btn-sm btn-square lg:hidden bg-[#FFEEB3] text-[#141413] border-2 border-[#141413] rounded-lg"
+            className="btn btn-sm btn-square lg:hidden bg-[#FFEEB3]/80 text-[#141413] border border-white/60 rounded-xl"
             aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileOpen}
           >
@@ -137,9 +134,8 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </nav>
 
-      {/* Mobile Dropdown Panel */}
       {mobileOpen && (
-        <div className="lg:hidden max-w-7xl mx-auto mt-2 p-3 rounded-2xl brutal-glass-cream">
+        <div className="lg:hidden max-w-7xl mx-auto mt-2 p-3 rounded-2xl glass-surface">
           <ul className="grid grid-cols-2 gap-2">
             {NAV_ITEMS.map((item) => {
               const isActive = activePage === item.id;
@@ -148,10 +144,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <button
                     type="button"
                     onClick={() => go(item.id)}
-                    className={`w-full text-left px-3 py-2.5 rounded-lg text-xs font-bold border-2 cursor-pointer ${
+                    className={`w-full text-left px-3 py-2.5 rounded-xl text-xs font-semibold cursor-pointer transition-colors ${
                       isActive
-                        ? 'bg-[#F47321] text-[#141413] border-[#141413] shadow-[2px_2px_0px_#141413]'
-                        : 'bg-white/75 text-[#141413] border-[#141413]/20 hover:border-[#141413]'
+                        ? 'bg-[#F47321] text-white'
+                        : 'bg-white/60 text-[#141413] hover:bg-[#FFEEB3]/70'
                     }`}
                   >
                     {item.label}

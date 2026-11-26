@@ -77,13 +77,13 @@ export default function App() {
             <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
               <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
                 <div>
-                  <span className="inline-block px-3 py-1 rounded-md bg-[#FFEEB3] border-2 border-[#141413] text-[#141413] text-xs font-extrabold uppercase tracking-wider mb-2">
+                  <span className="inline-block px-3 py-1 rounded-lg bg-[#FFEEB3]/80 text-[#141413] text-xs font-bold uppercase tracking-wider mb-2">
                     In Motion
                   </span>
                   <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] tracking-tight">
                     Fresh From the Chair
                   </h2>
-                  <p className="mt-1.5 text-sm text-[#141413]/75 max-w-xl">
+                  <p className="mt-1.5 text-sm text-[#141413]/70 max-w-xl">
                     Real cuts and studio moments. Videos play silently on loop—tap the speaker icon anytime for sound.
                   </p>
                 </div>
@@ -91,7 +91,7 @@ export default function App() {
                 <button
                   type="button"
                   onClick={() => handleNavigate('gallery')}
-                  className="btn btn-sm bg-[#8EA8C3] hover:bg-[#7b98b6] text-[#141413] font-extrabold text-xs uppercase rounded-xl brutal-btn px-4 self-start sm:self-auto"
+                  className="btn btn-sm bg-[#8EA8C3]/75 hover:bg-[#8EA8C3] text-[#141413] border-0 font-bold text-xs uppercase rounded-xl glass-btn px-4 self-start sm:self-auto"
                 >
                   Watch All Reels
                 </button>
@@ -105,7 +105,7 @@ export default function App() {
             </section>
 
             {/* Quick WhatsApp Booking / Enquiry Form */}
-            <div className="bg-[#FFEEB3]/35 border-y-2 border-[#141413]">
+            <div className="bg-gradient-to-b from-[#FFEEB3]/25 via-[#B4D7CD]/20 to-transparent">
               <AppointmentScheduler
                 initialServiceId={selectedServiceId}
                 initialStylistId={selectedStylistId}

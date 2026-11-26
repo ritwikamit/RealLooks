@@ -5,11 +5,10 @@ import { SALON_INFO } from '../data/salonData';
 export const AboutSection: React.FC = () => {
   return (
     <section id="about" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
-      <div className="brutal-glass-cream rounded-3xl p-6 sm:p-10 lg:p-12">
+      <div className="glass-cream rounded-3xl p-6 sm:p-10 lg:p-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Left Photo + Quick Facts */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="rounded-2xl overflow-hidden border-2 border-[#141413] shadow-[4px_4px_0px_#141413]">
+            <div className="rounded-2xl overflow-hidden shadow-md">
               <img
                 src="/images/salon-hero-interior.jpg"
                 alt="Real Looks Unisex Salon Interior in Dani Bigha"
@@ -19,24 +18,23 @@ export const AboutSection: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-3 gap-2.5 text-center">
-              <div className="p-3 rounded-xl bg-[#FFFDF7] border-2 border-[#141413]">
+              <div className="p-3 rounded-xl glass-surface">
                 <span className="text-lg font-extrabold text-[#141413] block">4.5 / 5</span>
-                <span className="text-[11px] font-bold text-[#141413]/70">Google Score</span>
+                <span className="text-[11px] font-semibold text-[#141413]/65">Google Score</span>
               </div>
-              <div className="p-3 rounded-xl bg-[#B4D7CD] border-2 border-[#141413]">
+              <div className="p-3 rounded-xl bg-[#B4D7CD]/65 backdrop-blur-md">
                 <span className="text-lg font-extrabold text-[#141413] block">100%</span>
-                <span className="text-[11px] font-bold text-[#141413]/70">Clean Tools</span>
+                <span className="text-[11px] font-semibold text-[#141413]/65">Clean Tools</span>
               </div>
-              <div className="p-3 rounded-xl bg-[#8EA8C3] border-2 border-[#141413]">
+              <div className="p-3 rounded-xl bg-[#8EA8C3]/55 backdrop-blur-md">
                 <span className="text-lg font-extrabold text-[#141413] block">Unisex</span>
-                <span className="text-[11px] font-bold text-[#141413]/70">Men & Women</span>
+                <span className="text-[11px] font-semibold text-[#141413]/65">Men & Women</span>
               </div>
             </div>
           </div>
 
-          {/* Right Story */}
           <div className="lg:col-span-7 space-y-5">
-            <span className="inline-block px-3 py-1 rounded-md bg-[#FFFDF7] border-2 border-[#141413] text-[#141413] text-xs font-extrabold uppercase tracking-wider">
+            <span className="inline-block px-3 py-1 rounded-lg bg-white/70 text-[#141413] text-xs font-bold uppercase tracking-wider">
               About Our Studio
             </span>
 
@@ -44,33 +42,33 @@ export const AboutSection: React.FC = () => {
               A Calm, Clean Salon Right in Dani Bigha
             </h2>
 
-            <p className="text-sm sm:text-base text-[#141413]/85 leading-relaxed">
+            <p className="text-sm sm:text-base text-[#141413]/80 leading-relaxed">
               At <strong>Real Looks Unisex Salon</strong>, good grooming shouldn’t feel rushed. Right near Vayuputra Fitness Club in Aurangabad, we pair modern haircuts and beard craft with gentle skin care for both men and women.
             </p>
 
-            <p className="text-sm text-[#141413]/75 leading-relaxed">
+            <p className="text-sm text-[#141413]/70 leading-relaxed">
               Every visit starts with a quick chat about what works for your hair and face shape—so you walk out feeling like yourself, just sharper.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
-              <div className="flex items-start gap-3 p-4 rounded-xl bg-[#FFFDF7] border-2 border-[#141413]">
-                <div className="w-9 h-9 rounded-lg bg-[#B4D7CD] border-2 border-[#141413] flex items-center justify-center flex-shrink-0">
+              <div className="flex items-start gap-3 p-4 rounded-xl glass-surface">
+                <div className="w-9 h-9 rounded-lg bg-[#B4D7CD]/75 flex items-center justify-center flex-shrink-0">
                   <ShieldCheck className="w-4 h-4 text-[#141413]" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-extrabold text-[#141413]">Sanitized Every Time</h3>
+                  <h3 className="text-xs font-bold text-[#141413]">Sanitized Every Time</h3>
                   <p className="text-xs text-[#141413]/70 mt-0.5 leading-relaxed">
                     UV-cleaned scissors, fresh razors, and single-use neck wraps for every guest.
                   </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 p-4 rounded-xl bg-[#FFFDF7] border-2 border-[#141413]">
-                <div className="w-9 h-9 rounded-lg bg-[#F47321] border-2 border-[#141413] flex items-center justify-center flex-shrink-0">
-                  <Award className="w-4 h-4 text-[#141413]" />
+              <div className="flex items-start gap-3 p-4 rounded-xl glass-surface">
+                <div className="w-9 h-9 rounded-lg bg-[#F47321] flex items-center justify-center flex-shrink-0">
+                  <Award className="w-4 h-4 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xs font-extrabold text-[#141413]">Trained Stylists</h3>
+                  <h3 className="text-xs font-bold text-[#141413]">Trained Stylists</h3>
                   <p className="text-xs text-[#141413]/70 mt-0.5 leading-relaxed">
                     Experienced hands for fades, layers, hair botox, facials, and bridal prep.
                   </p>
@@ -78,7 +76,7 @@ export const AboutSection: React.FC = () => {
               </div>
             </div>
 
-            <div className="flex items-center gap-2 text-xs font-bold text-[#141413]/80 pt-1">
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#141413]/75 pt-1">
               <MapPin className="w-4 h-4 text-[#F47321] flex-shrink-0" />
               <span>{SALON_INFO.address}</span>
             </div>

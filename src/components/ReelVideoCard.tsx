@@ -46,7 +46,7 @@ export const ReelVideoCard: React.FC<ReelVideoCardProps> = ({ reel, className = 
   return (
     <article
       ref={containerRef}
-      className={`relative rounded-2xl overflow-hidden border-2 border-[#141413] shadow-[4px_4px_0px_#141413] bg-[#141413] aspect-[9/15] group ${className}`}
+      className={`relative rounded-2xl overflow-hidden border border-white/40 shadow-[0_12px_32px_rgba(20,20,19,0.1)] bg-[#141413] aspect-[9/15] group ${className}`}
     >
       <video
         ref={videoRef}
@@ -58,30 +58,27 @@ export const ReelVideoCard: React.FC<ReelVideoCardProps> = ({ reel, className = 
         className="w-full h-full object-cover"
       />
 
-      {/* Subtle bottom gradient for readable info */}
-      <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#141413]/90 via-[#141413]/45 to-transparent pointer-events-none" />
+      <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-[#141413]/85 via-[#141413]/40 to-transparent pointer-events-none" />
 
-      {/* Top-right small Mute / Unmute button */}
       <button
         type="button"
         onClick={toggleMute}
         aria-label={isMuted ? `Unmute ${reel.title}` : `Mute ${reel.title}`}
         title={isMuted ? 'Unmute video' : 'Mute video'}
-        className="absolute top-3 right-3 z-10 w-8 h-8 rounded-lg bg-[#FFFDF7]/85 backdrop-blur-md border-2 border-[#141413] text-[#141413] flex items-center justify-center cursor-pointer hover:bg-[#FFEEB3] transition-colors shadow-[2px_2px_0px_#141413]"
+        className="absolute top-3 right-3 z-10 w-8 h-8 rounded-xl bg-white/80 backdrop-blur-md border border-white/60 text-[#141413] flex items-center justify-center cursor-pointer hover:bg-[#FFEEB3] transition-colors shadow-sm"
       >
         {isMuted ? (
-          <VolumeX className="w-4 h-4" strokeWidth={2.2} />
+          <VolumeX className="w-4 h-4" strokeWidth={2} />
         ) : (
-          <Volume2 className="w-4 h-4 text-[#F47321]" strokeWidth={2.2} />
+          <Volume2 className="w-4 h-4 text-[#F47321]" strokeWidth={2} />
         )}
       </button>
 
-      {/* Info inside video box */}
       <div className="absolute bottom-3 left-3 right-3 z-10 pointer-events-none">
-        <span className="inline-block px-2 py-0.5 rounded-md bg-[#FFEEB3] border border-[#141413] text-[#141413] text-[10px] font-extrabold uppercase tracking-wider mb-1.5">
+        <span className="inline-block px-2.5 py-0.5 rounded-md bg-[#FFEEB3]/90 backdrop-blur-sm text-[#141413] text-[10px] font-bold uppercase tracking-wider mb-1.5">
           {reel.categoryLabel}
         </span>
-        <h3 className="text-sm sm:text-base font-extrabold text-white leading-snug">
+        <h3 className="text-sm sm:text-base font-bold text-white leading-snug">
           {reel.title}
         </h3>
         <p className="text-xs text-white/80 mt-0.5 line-clamp-2 leading-relaxed">

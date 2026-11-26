@@ -8,7 +8,7 @@ export const FAQSection: React.FC = () => {
   return (
     <section id="faq" className="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto scroll-mt-20">
       <div className="text-center max-w-2xl mx-auto mb-10">
-        <span className="inline-block px-3 py-1 rounded-md bg-[#FFEEB3] border-2 border-[#141413] text-[#141413] text-xs font-extrabold uppercase tracking-wider mb-3">
+        <span className="inline-block px-3 py-1 rounded-lg bg-[#FFEEB3]/80 text-[#141413] text-xs font-bold uppercase tracking-wider mb-3">
           Quick Answers
         </span>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] tracking-tight">
@@ -20,28 +20,25 @@ export const FAQSection: React.FC = () => {
         {FAQS.map((faq, idx) => {
           const isOpen = openIndex === idx;
           return (
-            <div
-              key={idx}
-              className="rounded-2xl brutal-glass overflow-hidden"
-            >
+            <div key={idx} className="rounded-2xl glass-surface overflow-hidden">
               <button
                 type="button"
                 onClick={() => setOpenIndex(isOpen ? null : idx)}
                 aria-expanded={isOpen}
                 className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-4 cursor-pointer"
               >
-                <span className="text-sm sm:text-base font-extrabold text-[#141413]">
+                <span className="text-sm sm:text-base font-bold text-[#141413]">
                   {faq.question}
                 </span>
                 <ChevronDown
-                  className={`w-4 h-4 text-[#141413] flex-shrink-0 transition-transform ${
+                  className={`w-4 h-4 text-[#141413]/70 flex-shrink-0 transition-transform ${
                     isOpen ? 'rotate-180 text-[#F47321]' : ''
                   }`}
                 />
               </button>
 
               {isOpen && (
-                <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-2 text-xs sm:text-sm text-[#141413]/80 leading-relaxed border-t-2 border-[#141413]/10">
+                <div className="px-4 sm:px-5 pb-4 sm:pb-5 pt-2 text-xs sm:text-sm text-[#141413]/75 leading-relaxed border-t border-[#141413]/8">
                   {faq.answer}
                 </div>
               )}

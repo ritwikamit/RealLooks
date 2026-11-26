@@ -52,9 +52,8 @@ export const ScrollProgressButton: React.FC = () => {
           transition={{ duration: 0.2 }}
           aria-label="Scroll back to top"
           title="Back to top"
-          className="fixed bottom-20 lg:bottom-7 right-5 z-40 w-13 h-13 rounded-full bg-[#FFFDF7]/90 backdrop-blur-md border-2 border-[#141413] shadow-[3px_3px_0px_#141413] flex items-center justify-center cursor-pointer hover:bg-[#FFEEB3] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-colors"
+          className="fixed bottom-20 lg:bottom-7 right-5 z-40 w-13 h-13 rounded-full glass-surface flex items-center justify-center cursor-pointer hover:bg-[#FFEEB3]/90 transition-colors"
         >
-          {/* Trail SVG that fills on scroll down and empties on scroll up */}
           <svg
             className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none"
             viewBox="0 0 52 52"
@@ -80,7 +79,7 @@ export const ScrollProgressButton: React.FC = () => {
               strokeDashoffset={dashOffset}
             />
           </svg>
-          <ArrowUp className="w-5 h-5 text-[#141413] relative z-10" strokeWidth={2.5} />
+          <ArrowUp className="w-5 h-5 text-[#141413] relative z-10" strokeWidth={2.2} />
         </motion.button>
       )}
     </AnimatePresence>
