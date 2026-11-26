@@ -7,7 +7,7 @@ export default defineConfig(() => {
   const host =
     process.env.VERCEL_PROJECT_PRODUCTION_URL ||
     process.env.VERCEL_URL ||
-    'real-looks.vercel.app';
+    'reallooks.vercel.app';
   const siteUrl = host.startsWith('http') ? host : `https://${host}`;
 
   return {
