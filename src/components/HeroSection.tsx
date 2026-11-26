@@ -65,7 +65,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           className="absolute inset-0 w-full h-full object-cover z-0"
         />
         <div
-          className="absolute inset-0 z-0 bg-gradient-to-b from-black/38 via-black/26 to-black/58"
+          className="absolute inset-0 z-0 bg-gradient-to-b from-black/52 via-black/42 to-black/68"
           aria-hidden="true"
         />
 
@@ -83,8 +83,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             className="h-24 sm:h-32 w-auto object-contain select-none drop-shadow-[0_8px_28px_rgba(0,0,0,0.45)]"
           />
 
-          {/* Theme Blue Cursive Tagline */}
-          <p className="font-script text-2xl sm:text-3xl text-[#6061B6] bg-[#FCF9EC]/90 backdrop-blur-md px-4 py-1 rounded-xl border border-[#D4AF37]/40 shadow-sm">
+          {/* Theme Blue Cursive Tagline (No Box) */}
+          <p className="font-script text-3xl sm:text-4xl text-[#6061B6] drop-shadow-[0_0_12px_rgba(252,249,236,0.75)]">
             Look Good, Feel Like Yourself
           </p>
 

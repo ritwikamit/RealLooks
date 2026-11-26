@@ -43,7 +43,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
                 {SALON_INFO.tagline}. Clean haircuts, beard styling, facials, and bridal looks in Dani Bigha, Aurangabad.
               </p>
 
-              <div className="flex items-center gap-3 pt-1">
+              <div className="flex flex-wrap items-center gap-2.5 pt-1">
                 <a
                   href={SALON_INFO.instagram}
                   target="_blank"
@@ -73,6 +73,24 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
                   className="w-10 h-10 rounded-xl bg-white/12 backdrop-blur-md text-white border border-white/25 flex items-center justify-center hover:bg-[#25D366] transition-colors"
                 >
                   <WhatsAppIcon className="w-4 h-4" />
+                </a>
+                <a
+                  href={SALON_INFO.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Location on Google Maps"
+                  title="Location"
+                  className="w-10 h-10 rounded-xl bg-white/12 backdrop-blur-md text-white border border-white/25 flex items-center justify-center hover:bg-[#D4AF37] hover:text-[#00105B] transition-colors"
+                >
+                  <MapPin className="w-4 h-4" />
+                </a>
+                <a
+                  href={SALON_INFO.telHref}
+                  aria-label="Call Salon"
+                  title="Call Salon"
+                  className="w-10 h-10 rounded-xl bg-white/12 backdrop-blur-md text-white border border-white/25 flex items-center justify-center hover:bg-[#D4AF37] hover:text-[#00105B] transition-colors"
+                >
+                  <Phone className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -169,17 +187,23 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/70">
             <p>© {new Date().getFullYear()} Real Looks Unisex Salon, Aurangabad, Bihar.</p>
 
-            {/* Designed & Developed by AccustomLabs */}
-            <div className="inline-flex items-center gap-2 leading-none">
-              <span className="text-white/75">Designed and developed by</span>
+            {/* Designed & Developed by AccustomLabs (redirects to 7766833773 WhatsApp) */}
+            <a
+              href={`https://wa.me/917766833773?text=${encodeURIComponent('Hello AccustomLabs, I saw the Real Looks website and would like to enquire.')}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 leading-none hover:opacity-95 transition-opacity"
+              aria-label="Enquire with AccustomLabs on WhatsApp"
+            >
+              <span className="text-white/80">Designed and developed by</span>
               <img
                 src="/images/agencyLogo.webp"
                 alt="AccustomLabs"
-                className="h-3.5 w-auto object-contain align-middle"
+                className="h-6 sm:h-7 w-auto object-contain align-middle"
                 loading="lazy"
                 decoding="async"
               />
-            </div>
+            </a>
           </div>
         </div>
       </div>
