@@ -1,35 +1,52 @@
 import React from 'react';
-import { MapPin, Phone, Clock, Instagram, Facebook, ArrowUp } from 'lucide-react';
-import { BrandLogo } from './BrandLogo';
-import { SALON_INFO } from '../data/salonData';
+import { MapPin, Phone, Clock, Instagram, Facebook, MessageSquare, ArrowUpRight } from 'lucide-react';
+import { SALON_INFO, buildWhatsAppUrl } from '../data/salonData';
+import { PageView } from './Navbar';
 
-export const Footer: React.FC = () => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+interface FooterProps {
+  onNavigate?: (page: PageView) => void;
+  onBookClick?: () => void;
+}
 
+export const Footer: React.FC<FooterProps> = ({ onNavigate, onBookClick }) => {
   return (
-    <footer className="bg-[#121812] text-[#F6F8F5] pt-16 pb-24 lg:pb-12 border-t border-white/10 relative overflow-hidden">
-      {/* Background ambient subtle glow: Tiffany blue + Forest Olive + Gold */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#12B5AF]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#D6A838]/10 rounded-full blur-3xl pointer-events-none" />
+    <footer className="relative w-full text-[#FFFDF7] border-t-2 border-[#141413] overflow-hidden pb-20 lg:pb-8">
+      {/* Background image darkly faded */}
+      <img
+        src="/images/salon-hero-interior.jpg"
+        alt=""
+        aria-hidden="true"
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        loading="lazy"
+      />
+      <div
+        className="absolute inset-0 z-0 bg-[#141413]/85 backdrop-blur-[2px]"
+        aria-hidden="true"
+      />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-white/10">
-          
-          {/* Brand Info */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 pb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-10 border-b border-white/15">
+          {/* Col 1: Logo + Tagline + Social Icons */}
           <div className="space-y-4">
-            <BrandLogo variant="header" light />
-            <p className="text-xs text-white/70 leading-relaxed max-w-xs font-normal">
-              {SALON_INFO.tagline}. Modern grooming, couture hair styling, hair botox & bridal experiences in Aurangabad, Bihar.
+            <img
+              src="/images/logo.png"
+              alt="Real Looks Unisex Salon"
+              className="h-20 w-auto object-contain bg-[#FFFDF7] p-2 rounded-xl border-2 border-[#141413]"
+              loading="lazy"
+            />
+            <p className="text-xs text-white/80 leading-relaxed max-w-xs">
+              {SALON_INFO.tagline}. Clean haircuts, beard styling, facials, and bridal looks in Dani Bigha, Aurangabad.
             </p>
-            <div className="flex gap-3 pt-2">
+
+            {/* All Social Media Icons */}
+            <div className="flex items-center gap-2.5 pt-1">
               <a
                 href={SALON_INFO.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-2xl bg-white/10 hover:bg-[#E1306C] text-white flex items-center justify-center transition-colors border border-white/10"
-                title="Instagram Profile"
+                aria-label="Instagram"
+                title="Instagram"
+                className="w-10 h-10 rounded-xl bg-[#FFEEB3] text-[#141413] border-2 border-[#141413] flex items-center justify-center hover:bg-[#F47321] transition-colors"
               >
                 <Instagram className="w-4 h-4" />
               </a>
@@ -37,84 +54,120 @@ export const Footer: React.FC = () => {
                 href={SALON_INFO.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-2xl bg-white/10 hover:bg-[#1877F2] text-white flex items-center justify-center transition-colors border border-white/10"
-                title="Facebook Page"
+                aria-label="Facebook"
+                title="Facebook"
+                className="w-10 h-10 rounded-xl bg-[#8EA8C3] text-[#141413] border-2 border-[#141413] flex items-center justify-center hover:bg-[#F47321] transition-colors"
               >
                 <Facebook className="w-4 h-4" />
+              </a>
+              <a
+                href={buildWhatsAppUrl('Hello Real Looks Salon, I would like to book an appointment.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="WhatsApp"
+                title="WhatsApp"
+                className="w-10 h-10 rounded-xl bg-[#B4D7CD] text-[#141413] border-2 border-[#141413] flex items-center justify-center hover:bg-[#F47321] transition-colors"
+              >
+                <MessageSquare className="w-4 h-4" />
               </a>
             </div>
           </div>
 
-          {/* Quick Navigation Links */}
+          {/* Col 2: Quick Links */}
           <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#FFF2A8] mb-4">
-              Explore Services
+            <h4 className="text-xs font-extrabold uppercase tracking-wider text-[#FFEEB3] mb-4">
+              Explore
             </h4>
-            <ul className="space-y-2.5 text-xs text-white/75 font-medium">
-              <li><a href="#services" className="hover:text-[#FFF2A8] transition-colors">Executive Haircuts (Men & Women)</a></li>
-              <li><a href="#services" className="hover:text-[#FFF2A8] transition-colors">Royal Beard Sculpt & Shave</a></li>
-              <li><a href="#services" className="hover:text-[#FFF2A8] transition-colors">24K Gold Radiance Facial</a></li>
-              <li><a href="#services" className="hover:text-[#FFF2A8] transition-colors">Nanoplastia & Hair Botox</a></li>
-              <li><a href="#services" className="hover:text-[#FFF2A8] transition-colors">Signature Bridal & Groom Makeovers</a></li>
+            <ul className="space-y-2.5 text-xs font-semibold text-white/85">
+              <li>
+                <button type="button" onClick={() => onNavigate?.('home')} className="hover:text-[#FFEEB3] cursor-pointer">
+                  Home
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => onNavigate?.('services')} className="hover:text-[#FFEEB3] cursor-pointer">
+                  Services & Prices
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => onNavigate?.('gallery')} className="hover:text-[#FFEEB3] cursor-pointer">
+                  Cuts & Reels Lookbook
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => onNavigate?.('masters')} className="hover:text-[#FFEEB3] cursor-pointer">
+                  Our Team
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => onNavigate?.('store')} className="hover:text-[#FFEEB3] cursor-pointer">
+                  Care Shop
+                </button>
+              </li>
+              <li>
+                <button type="button" onClick={() => onNavigate?.('about')} className="hover:text-[#FFEEB3] cursor-pointer">
+                  About Us
+                </button>
+              </li>
             </ul>
           </div>
 
-          {/* Hours & Availability */}
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#FFF2A8] mb-4">
-              Studio Timings
+          {/* Col 3: Location & Hours */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-extrabold uppercase tracking-wider text-[#FFEEB3] mb-4">
+              Location & Hours
             </h4>
-            <div className="space-y-3 text-xs text-white/75 font-normal">
-              <div className="flex items-start gap-2.5">
-                <Clock className="w-4 h-4 text-[#D6A838] flex-shrink-0 mt-0.5" />
-                <div>
-                  <p className="font-bold text-white">Monday – Sunday</p>
-                  <p className="text-white/70">9:00 AM – 9:00 PM</p>
-                  <span className="text-[10px] text-[#5CE0DC] font-semibold block mt-0.5">Online appointment requests accepted 24/7</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Location & Contact */}
-          <div>
-            <h4 className="text-xs font-bold uppercase tracking-widest text-[#FFF2A8] mb-4">
-              Aurangabad Studio
-            </h4>
-            <div className="space-y-3 text-xs text-white/75">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-[#D6A838] flex-shrink-0 mt-0.5" />
-                <p className="leading-relaxed font-normal">
-                  Q957+RR4, near Vayuputra Fitness Club, Dani Bigha, Aurangabad, Bihar 824101
-                </p>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-[#D6A838] flex-shrink-0" />
-                <a href={`tel:${SALON_INFO.phoneClean}`} className="hover:text-[#FFF2A8] text-white font-bold">
-                  {SALON_INFO.phone}
+            <div className="flex items-start gap-2.5 text-xs text-white/85">
+              <MapPin className="w-4 h-4 text-[#F47321] flex-shrink-0 mt-0.5" />
+              <div>
+                <p className="leading-relaxed">{SALON_INFO.address}</p>
+                <a
+                  href={SALON_INFO.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-[#FFEEB3] font-bold mt-1.5 hover:underline"
+                >
+                  <span>Open in Google Maps</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
               </div>
             </div>
+            <div className="flex items-center gap-2.5 text-xs text-white/85 pt-1">
+              <Clock className="w-4 h-4 text-[#B4D7CD] flex-shrink-0" />
+              <span>{SALON_INFO.hours}</span>
+            </div>
           </div>
 
+          {/* Col 4: Direct Call & WhatsApp (no phone number exposed) */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-extrabold uppercase tracking-wider text-[#FFEEB3] mb-4">
+              Book or Call
+            </h4>
+            <p className="text-xs text-white/80 leading-relaxed">
+              Need a quick slot today? Message us on WhatsApp or tap to call the front desk.
+            </p>
+            <div className="flex flex-col gap-2.5 pt-1">
+              <button
+                type="button"
+                onClick={onBookClick}
+                className="btn btn-sm bg-[#F47321] hover:bg-[#e06314] text-[#141413] font-extrabold text-xs uppercase rounded-xl brutal-btn w-full"
+              >
+                Book a Chair
+              </button>
+              <a
+                href={SALON_INFO.telHref}
+                className="btn btn-sm bg-[#FFEEB3] hover:bg-[#f7e094] text-[#141413] font-extrabold text-xs uppercase rounded-xl brutal-btn w-full"
+              >
+                <Phone className="w-3.5 h-3.5" />
+                <span>Call Salon</span>
+              </a>
+            </div>
+          </div>
         </div>
 
-        {/* Bottom Local SEO Bar & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/50">
-          <div>
-            <p>© {new Date().getFullYear()} Real Looks Unisex Salon. All rights reserved.</p>
-            <p className="text-[10px] text-white/40 mt-0.5 font-normal">
-              Premier unisex salon in Dani Bigha, Aurangabad, Bihar • Near Vayuputra Fitness Club
-            </p>
-          </div>
-
-          <button
-            onClick={scrollToTop}
-            className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-bold transition-colors cursor-pointer border border-white/10"
-          >
-            <span>Back to top</span>
-            <ArrowUp className="w-3.5 h-3.5" />
-          </button>
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-white/65">
+          <p>© {new Date().getFullYear()} Real Looks Unisex Salon, Aurangabad, Bihar.</p>
+          <p>Men & Women • Open 7 Days</p>
         </div>
       </div>
     </footer>

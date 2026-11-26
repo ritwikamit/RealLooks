@@ -1,129 +1,78 @@
 import React from 'react';
-import { motion } from 'motion/react';
-import { ShoppingBag, Sparkles, MessageSquare, ShieldCheck } from 'lucide-react';
-import { STORE_PRODUCTS, SALON_INFO } from '../data/salonData';
+import { MessageSquare } from 'lucide-react';
+import { STORE_PRODUCTS, buildWhatsAppUrl } from '../data/salonData';
 
 export const StoreSection: React.FC = () => {
-  const handleInquireProduct = (productName: string, price: number) => {
-    const text = encodeURIComponent(
-      `Hello Real Looks Unisex Salon, I would like to reserve "${productName}" (₹${price}) from your salon boutique. Is it currently available for pickup at your Dani Bigha studio?`
-    );
-    window.open(`https://wa.me/${SALON_INFO.whatsapp}?text=${text}`, '_blank');
-  };
-
   return (
-    <section id="store" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-16">
-      
-      {/* Section Header */}
-      <div className="text-center max-w-3xl mx-auto mb-14">
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full lucid-glass text-[#0D8F8B] text-xs font-bold uppercase tracking-wider mb-3 shadow-2xs">
-          <ShoppingBag className="w-3.5 h-3.5 text-[#D6A838]" />
-          <span>Curated Hair & Skin Boutique</span>
-        </div>
-
-        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif-title font-bold text-[#192018] tracking-tight">
-          Professional Salon-Grade Rituals
+    <section id="store" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
+      <div className="text-center max-w-2xl mx-auto mb-10">
+        <span className="inline-block px-3 py-1 rounded-md bg-[#B4D7CD] border-2 border-[#141413] text-[#141413] text-xs font-extrabold uppercase tracking-wider mb-3">
+          Salon Shop
+        </span>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] tracking-tight">
+          Take-Home Hair & Skin Care
         </h2>
-
-        <p className="mt-3 text-base text-[#677565] max-w-2xl mx-auto leading-relaxed">
-          Maintain your salon-finished silkiness, hair botox shine, and skin radiance at home with authentic professional formulations available in-salon.
+        <p className="mt-2 text-sm sm:text-base text-[#141413]/75">
+          Genuine salon products we use in the studio—reserve on WhatsApp for easy pickup.
         </p>
       </div>
 
-      {/* Products Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        {STORE_PRODUCTS.map((prod, idx) => (
-          <motion.div
+        {STORE_PRODUCTS.map((prod) => (
+          <article
             key={prod.id}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.45, delay: idx * 0.08 }}
-            className="group rounded-3xl overflow-hidden lucid-glass-card border border-white/80 hover:border-[#D6A838]/50 shadow-md hover:shadow-xl hover:scale-[1.01] transition-all duration-300 flex flex-col justify-between"
+            className="card brutal-glass rounded-2xl overflow-hidden flex flex-col justify-between"
           >
-            {/* Image Container */}
-            <div className="relative aspect-[4/3] overflow-hidden bg-[#FAF9F5]">
+            <figure className="relative h-52 overflow-hidden border-b-2 border-[#141413]">
               <img
                 src={prod.image}
                 alt={prod.name}
-                className="w-full h-full object-cover object-center group-hover:scale-106 transition-transform duration-700"
+                className="w-full h-full object-cover"
                 loading="lazy"
-                onError={(e) => {
-                  (e.currentTarget as HTMLImageElement).src =
-                    'https://images.unsplash.com/photo-1526947425960-945c6e72858f?auto=format&fit=crop&w=600&q=80';
-                }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-
-              {/* Tag / Category Badge */}
-              <div className="absolute top-3.5 left-3.5">
-                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-white/95 text-[#2F3B1A] border border-[#D6A838]/40 shadow-xs backdrop-blur-md flex items-center gap-1">
-                  <Sparkles className="w-2.5 h-2.5 text-[#D6A838]" />
-                  <span>{prod.tag || prod.category}</span>
+              {prod.tag && (
+                <span className="absolute top-3 left-3 px-2.5 py-0.5 rounded-md bg-[#FFEEB3] border border-[#141413] text-[#141413] text-[10px] font-extrabold uppercase">
+                  {prod.tag}
                 </span>
-              </div>
+              )}
+              <span className="absolute top-3 right-3 px-2 py-0.5 rounded-md bg-[#FFFDF7] border border-[#141413] text-[#141413] text-[10px] font-extrabold">
+                {prod.volume}
+              </span>
+            </figure>
 
-              {/* Volume Tag */}
-              <div className="absolute top-3.5 right-3.5">
-                <span className="px-2.5 py-1 rounded-full text-[10px] font-bold bg-black/65 text-white/90 border border-white/20 backdrop-blur-md">
-                  {prod.volume}
-                </span>
-              </div>
-            </div>
-
-            {/* Product Details */}
-            <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
-              <div className="space-y-1.5">
-                <span className="text-[10px] text-[#0D8F8B] font-bold tracking-wider uppercase">
+            <div className="card-body p-5 flex-1 flex flex-col justify-between gap-4">
+              <div>
+                <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#F47321]">
                   {prod.category}
                 </span>
-
-                <h3 className="text-base font-serif font-bold text-[#192018] group-hover:text-[#0D8F8B] transition-colors leading-snug">
-                  {prod.name}
-                </h3>
-
-                <p className="text-xs text-[#677565] line-clamp-2 leading-relaxed pt-1">
-                  {prod.description}
-                </p>
+                <h3 className="text-base font-extrabold text-[#141413] mt-0.5">{prod.name}</h3>
+                <p className="text-xs text-[#141413]/75 mt-1.5 leading-relaxed">{prod.description}</p>
               </div>
 
-              {/* Pricing & Inquire Button */}
-              <div className="pt-3 border-t border-black/5 flex items-center justify-between">
-                <div>
-                  <span className="text-[10px] text-[#888888] font-bold uppercase tracking-wider block">Salon Price</span>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-lg font-serif font-bold text-[#192018]">
-                      ₹{prod.price}
-                    </span>
-                    {prod.oldPrice && (
-                      <span className="text-xs text-[#888888] line-through">
-                        ₹{prod.oldPrice}
-                      </span>
-                    )}
-                  </div>
+              <div className="pt-3 border-t-2 border-[#141413]/10 flex items-center justify-between gap-3">
+                <div className="flex items-baseline gap-2">
+                  <span className="text-lg font-extrabold text-[#141413]">₹{prod.price}</span>
+                  {prod.oldPrice && (
+                    <span className="text-xs text-[#141413]/50 line-through">₹{prod.oldPrice}</span>
+                  )}
                 </div>
 
-                <button
-                  onClick={() => handleInquireProduct(prod.name, prod.price)}
-                  className="px-4 py-2.5 rounded-xl bg-gradient-to-r from-[#D6A838] to-[#C29324] hover:from-[#C29324] hover:to-[#8E680E] text-[#1F1703] text-xs font-bold uppercase tracking-wider transition-all duration-200 flex items-center gap-1.5 cursor-pointer shadow-xs active:scale-95"
+                <a
+                  href={buildWhatsAppUrl(
+                    `Hello Real Looks Salon, I'd like to reserve "${prod.name}" (₹${prod.price}) for pickup.`
+                  )}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-sm bg-[#F47321] hover:bg-[#e06314] text-[#141413] font-extrabold text-xs rounded-xl brutal-btn px-3.5"
                 >
                   <MessageSquare className="w-3.5 h-3.5" />
                   <span>Reserve</span>
-                </button>
+                </a>
               </div>
             </div>
-          </motion.div>
+          </article>
         ))}
       </div>
-
-      {/* Authenticity Guarantee Footer */}
-      <div className="mt-12 text-center">
-        <div className="inline-flex items-center gap-3 px-6 py-3 rounded-2xl lucid-glass border border-white/90 shadow-2xs text-xs font-semibold text-[#3D483B]">
-          <ShieldCheck className="w-4 h-4 text-[#12B5AF]" />
-          <span>100% Genuine Certified Professional Formulations • Safe In-Salon Pickup in Dani Bigha</span>
-        </div>
-      </div>
-
     </section>
   );
 };

@@ -1,8 +1,8 @@
-export type ServiceCategory = 
-  | 'hair' 
-  | 'grooming' 
-  | 'facial' 
-  | 'spa' 
+export type ServiceCategory =
+  | 'hair'
+  | 'grooming'
+  | 'facial'
+  | 'spa'
   | 'bridal';
 
 export interface ServiceItem {
@@ -25,9 +25,8 @@ export interface Stylist {
   role: string;
   specialty: string;
   experienceYears: number;
-  availableDays: number[]; // 0=Sunday, 1=Monday, etc.
+  availableDays: number[];
   avatar: string;
-  rating?: number;
   bio?: string;
   specialties?: string[];
 }
@@ -40,8 +39,8 @@ export interface BookingRequest {
   serviceDuration: number;
   stylistId: string;
   stylistName: string;
-  date: string; // YYYY-MM-DD
-  time: string; // HH:mm AM/PM
+  date: string;
+  time: string;
   customerName: string;
   phone: string;
   email?: string;
@@ -58,6 +57,16 @@ export interface ReviewItem {
   service: string;
   comment: string;
   verified: boolean;
+}
+
+export interface ReelItem {
+  id: string;
+  title: string;
+  category: 'feature' | 'hair' | 'grooming';
+  categoryLabel: string;
+  videoUrl: string;
+  description: string;
+  featuredOnHome?: boolean;
 }
 
 export interface GalleryItem {
@@ -85,4 +94,3 @@ export interface FAQItem {
   question: string;
   answer: string;
 }
-

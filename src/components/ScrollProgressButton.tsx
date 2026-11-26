@@ -1,0 +1,88 @@
+import React, { useEffect, useState } from 'react';
+import { ArrowUp } from 'lucide-react';
+import { motion, AnimatePresence } from 'motion/react';
+
+export const ScrollProgressButton: React.FC = () => {
+  const [progress, setProgress] = useState(0);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    let rafId = 0;
+
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const ratio = docHeight > 0 ? Math.min(1, Math.max(0, scrollTop / docHeight)) : 0;
+      setProgress(ratio);
+      setVisible(scrollTop > 80);
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(rafId);
+      rafId = requestAnimationFrame(updateProgress);
+    };
+
+    updateProgress();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      cancelAnimationFrame(rafId);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
+
+  const radius = 22;
+  const circumference = 2 * Math.PI * radius;
+  const dashOffset = circumference * (1 - progress);
+
+  const handleScrollTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.button
+          type="button"
+          onClick={handleScrollTop}
+          initial={{ opacity: 0, scale: 0.85, y: 12 }}
+          animate={{ opacity: 1, scale: 1, y: 0 }}
+          exit={{ opacity: 0, scale: 0.85, y: 12 }}
+          transition={{ duration: 0.2 }}
+          aria-label="Scroll back to top"
+          title="Back to top"
+          className="fixed bottom-20 lg:bottom-7 right-5 z-40 w-13 h-13 rounded-full bg-[#FFFDF7]/90 backdrop-blur-md border-2 border-[#141413] shadow-[3px_3px_0px_#141413] flex items-center justify-center cursor-pointer hover:bg-[#FFEEB3] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-colors"
+        >
+          {/* Trail SVG that fills on scroll down and empties on scroll up */}
+          <svg
+            className="absolute inset-0 w-full h-full -rotate-90 pointer-events-none"
+            viewBox="0 0 52 52"
+          >
+            <circle
+              cx="26"
+              cy="26"
+              r={radius}
+              fill="none"
+              stroke="#B4D7CD"
+              strokeWidth="3"
+              opacity="0.45"
+            />
+            <circle
+              cx="26"
+              cy="26"
+              r={radius}
+              fill="none"
+              stroke="#F47321"
+              strokeWidth="3.5"
+              strokeLinecap="round"
+              strokeDasharray={circumference}
+              strokeDashoffset={dashOffset}
+            />
+          </svg>
+          <ArrowUp className="w-5 h-5 text-[#141413] relative z-10" strokeWidth={2.5} />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+};

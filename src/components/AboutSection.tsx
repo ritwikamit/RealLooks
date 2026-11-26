@@ -1,105 +1,88 @@
 import React from 'react';
-import { motion } from 'motion/react';
-import { Sparkles, Award, ShieldCheck, HeartHandshake, MapPin } from 'lucide-react';
+import { ShieldCheck, Award, MapPin } from 'lucide-react';
 import { SALON_INFO } from '../data/salonData';
 
 export const AboutSection: React.FC = () => {
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-16">
-      <div className="lucid-glass rounded-3xl border border-white/80 p-8 sm:p-12 lg:p-16 shadow-[0_16px_40px_0_rgba(76,91,46,0.08)] relative overflow-hidden">
-        
-        {/* Soft background ambient organic glow in card: Sky Blue + Olive + Gold */}
-        <div className="absolute -top-24 -right-24 w-80 h-80 bg-gradient-to-br from-[#89CFF0]/25 to-[#12B5AF]/20 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-gradient-to-tr from-[#D6A838]/20 to-[#86D6B9]/20 rounded-full blur-3xl pointer-events-none" />
-
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-          
-          {/* Left Visual Column */}
+    <section id="about" className="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto scroll-mt-20">
+      <div className="brutal-glass-cream rounded-3xl p-6 sm:p-10 lg:p-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          {/* Left Photo + Quick Facts */}
           <div className="lg:col-span-5 space-y-4">
-            <div className="relative rounded-2xl overflow-hidden shadow-md border border-white/80 group">
+            <div className="rounded-2xl overflow-hidden border-2 border-[#141413] shadow-[4px_4px_0px_#141413]">
               <img
-                src="https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=800&q=80"
-                alt="Real Looks Salon Interior Ambiance"
-                className="w-full h-80 sm:h-96 object-cover group-hover:scale-105 transition-transform duration-700"
+                src="/images/salon-hero-interior.jpg"
+                alt="Real Looks Unisex Salon Interior in Dani Bigha"
+                className="w-full h-72 sm:h-80 object-cover"
+                loading="lazy"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#192018]/80 via-transparent to-transparent" />
-              
-              <div className="absolute bottom-4 left-4 right-4 text-white">
-                <span className="text-[10px] uppercase font-bold tracking-widest text-[#FFF2A8] block">
-                  Studio Atmosphere
-                </span>
-                <p className="text-sm font-serif font-bold mt-0.5 text-white">
-                  Climate-Controlled Sanctuary in Dani Bigha
-                </p>
-              </div>
             </div>
 
-            {/* Quick Stats Banner with Lucid Glass */}
             <div className="grid grid-cols-3 gap-2.5 text-center">
-              <div className="p-3.5 rounded-2xl lucid-glass border border-white/80">
-                <span className="text-xl font-serif font-extrabold text-[#2F3B1A] block">4.5★</span>
-                <span className="text-[10px] text-[#677565] font-bold">Google Rating</span>
+              <div className="p-3 rounded-xl bg-[#FFFDF7] border-2 border-[#141413]">
+                <span className="text-lg font-extrabold text-[#141413] block">4.5 / 5</span>
+                <span className="text-[11px] font-bold text-[#141413]/70">Google Score</span>
               </div>
-              <div className="p-3.5 rounded-2xl lucid-glass border border-white/80">
-                <span className="text-xl font-serif font-extrabold text-[#C29324] block">100%</span>
-                <span className="text-[10px] text-[#677565] font-bold">Sterile Tools</span>
+              <div className="p-3 rounded-xl bg-[#B4D7CD] border-2 border-[#141413]">
+                <span className="text-lg font-extrabold text-[#141413] block">100%</span>
+                <span className="text-[11px] font-bold text-[#141413]/70">Clean Tools</span>
               </div>
-              <div className="p-3.5 rounded-2xl lucid-glass border border-white/80">
-                <span className="text-xl font-serif font-extrabold text-[#0D8F8B] block">Unisex</span>
-                <span className="text-[10px] text-[#677565] font-bold">Men & Women</span>
+              <div className="p-3 rounded-xl bg-[#8EA8C3] border-2 border-[#141413]">
+                <span className="text-lg font-extrabold text-[#141413] block">Unisex</span>
+                <span className="text-[11px] font-bold text-[#141413]/70">Men & Women</span>
               </div>
             </div>
           </div>
 
-          {/* Right Editorial Story Column */}
-          <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full lucid-glass text-[#0D8F8B] text-xs font-bold uppercase tracking-wider shadow-2xs">
-              <Sparkles className="w-3.5 h-3.5 text-[#D6A838]" />
-              <span>About Real Looks Unisex Salon</span>
-            </div>
+          {/* Right Story */}
+          <div className="lg:col-span-7 space-y-5">
+            <span className="inline-block px-3 py-1 rounded-md bg-[#FFFDF7] border-2 border-[#141413] text-[#141413] text-xs font-extrabold uppercase tracking-wider">
+              About Our Studio
+            </span>
 
-            <h2 className="text-3xl sm:text-4xl font-serif-title font-bold text-[#192018] leading-tight">
-              Crafting Signature Looks in Aurangabad, Bihar
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#141413] leading-tight">
+              A Calm, Clean Salon Right in Dani Bigha
             </h2>
 
-            <p className="text-sm sm:text-base text-[#3D483B] leading-relaxed font-normal">
-              At <strong>Real Looks Unisex Salon</strong>, we believe grooming is more than a routine—it is a confidence ritual. Situated conveniently near Vayuputra Fitness Club in Dani Bigha, our studio blends modern hairdressing artistry, traditional beard craft, and medical-grade aesthetics for both men and women.
+            <p className="text-sm sm:text-base text-[#141413]/85 leading-relaxed">
+              At <strong>Real Looks Unisex Salon</strong>, good grooming shouldn’t feel rushed. Right near Vayuputra Fitness Club in Aurangabad, we pair modern haircuts and beard craft with gentle skin care for both men and women.
             </p>
 
-            <p className="text-sm text-[#677565] leading-relaxed font-normal">
-              Every client receives a dedicated consultation before scissor touches hair or product meets skin. Whether you desire an executive fade, dimensional balayage highlights, hair botox rehabilitation, or a luminous 24K gold facial, our certified specialists are dedicated to your comfort and satisfaction.
+            <p className="text-sm text-[#141413]/75 leading-relaxed">
+              Every visit starts with a quick chat about what works for your hair and face shape—so you walk out feeling like yourself, just sharper.
             </p>
 
-            {/* Key Quality Pillars with Lucid Glass */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              <div className="flex items-start gap-3.5 p-4 rounded-2xl lucid-glass border border-white/80">
-                <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#4C5B2E] to-[#52A296] text-white flex items-center justify-center flex-shrink-0 shadow-xs">
-                  <ShieldCheck className="w-4 h-4" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 pt-1">
+              <div className="flex items-start gap-3 p-4 rounded-xl bg-[#FFFDF7] border-2 border-[#141413]">
+                <div className="w-9 h-9 rounded-lg bg-[#B4D7CD] border-2 border-[#141413] flex items-center justify-center flex-shrink-0">
+                  <ShieldCheck className="w-4 h-4 text-[#141413]" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-[#192018]">Hospital-Grade Sterilization</h4>
-                  <p className="text-[11px] text-[#677565] mt-0.5 leading-relaxed">UV-sterilized scissors, razors, single-use neck strips, and fresh sanitization between clients.</p>
+                  <h3 className="text-xs font-extrabold text-[#141413]">Sanitized Every Time</h3>
+                  <p className="text-xs text-[#141413]/70 mt-0.5 leading-relaxed">
+                    UV-cleaned scissors, fresh razors, and single-use neck wraps for every guest.
+                  </p>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3.5 p-4 rounded-2xl lucid-glass border border-white/80">
-                <div className="w-8 h-8 rounded-xl glossy-gold-btn text-[#4A3502] flex items-center justify-center flex-shrink-0 shadow-xs">
-                  <Award className="w-4 h-4" />
+              <div className="flex items-start gap-3 p-4 rounded-xl bg-[#FFFDF7] border-2 border-[#141413]">
+                <div className="w-9 h-9 rounded-lg bg-[#F47321] border-2 border-[#141413] flex items-center justify-center flex-shrink-0">
+                  <Award className="w-4 h-4 text-[#141413]" />
                 </div>
                 <div>
-                  <h4 className="text-xs font-bold text-[#192018]">Certified Specialists</h4>
-                  <p className="text-[11px] text-[#677565] mt-0.5 leading-relaxed">Trained stylists with deep expertise in diverse hair textures and sensitive skin profiles.</p>
+                  <h3 className="text-xs font-extrabold text-[#141413]">Trained Stylists</h3>
+                  <p className="text-xs text-[#141413]/70 mt-0.5 leading-relaxed">
+                    Experienced hands for fades, layers, hair botox, facials, and bridal prep.
+                  </p>
                 </div>
               </div>
             </div>
 
-            {/* Address callout */}
-            <div className="pt-2 flex items-center gap-2 text-xs text-[#677565]">
-              <MapPin className="w-4 h-4 text-[#C29324] flex-shrink-0" />
+            <div className="flex items-center gap-2 text-xs font-bold text-[#141413]/80 pt-1">
+              <MapPin className="w-4 h-4 text-[#F47321] flex-shrink-0" />
               <span>{SALON_INFO.address}</span>
             </div>
           </div>
-
         </div>
       </div>
     </section>
